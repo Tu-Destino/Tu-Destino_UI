@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../Styles/glider.min.css">
+  <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+  <div class="title-slider">
+    <h4> Cultura</h4>
+  </div>
+  <section class="marco-slider">
+
+        <div class="contenedor">
+     
+  
+          <div class="carousel">
+            <div class="carousel__contenedor">
+              <button aria-label="Anterior" class="carousel__anterior">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+      
+              <div class="carousel__lista">
+                <div class="carousel__elemento">
+      
+                 <div class="caja">
+                  <img src="../Multimedia/main/bosque.jpeg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Relajate con los Sonidos y Vistas de los Bosques de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+                </div>
+                <div class="carousel__elemento">
+                  <div class="caja">
+                    <img src="../Multimedia/main/feriaFlorez.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"> <strong>Maravillate con los Colores que ofrecen las Ferias de Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                  </div>
+                <div class="carousel__elemento">
+                  <div class="caja">
+                    <img src="../Multimedia/main/Panela.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Dale un Gusto a tu Paladar con la Gastronomía de Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                </div>
+                <div class="carousel__elemento">
+                  <div class="caja">
+                    <div class="caja">
+                      <img src="../Multimedia/main/entretenimiento.webp" alt="Rock and Roll Hall of Fame">
+                      <p class="barra-oculta"></p>
+                      <div class="caja-tex">
+                          <h2 class="title-slider"><strong>Disfruta de los Entretenimiento que te ofrece Medellín</strong></h2>
+                          <p class="tex-slider">descripcion</p>
+                        </div>
+                     </div>
+                   
+                   </div>
+                </div>
+        
+                <div class="carousel__elemento">
+                  <div class="caja">
+                    <img src="../Multimedia/main/cc2.jpg" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Admirar el Tamaño y la Belleza de Nuestros Centros Comenciales</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                </div>
+                <div class="carousel__elemento">
+                  <div class="caja">
+                    <img src="../Multimedia/Lugares/historia/MuseoCastillo/museo5.png" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Conoce los Lugares Historicos de Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                </div>
+                <div class="carousel__elemento">
+                  <div class="caja">
+                    <img src="../Multimedia/Lugares/naturaleza/Picacho/Picacho2.jpg" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Disfruta de las vistas Nocturnas que te ofrecen nuestros Miradores</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                </div>
+                <div class="carousel__elemento">
+                  <div class="caja">
+                    <img src="../Multimedia/Lugares/restaurantes/babburguers4.jpg" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"> <strong>Descubre Lugares pocos Conocidos</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                </div>
+              </div>
+      
+              <button aria-label="Siguiente" class="carousel__siguiente">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+      
+            <div role="tablist" class="carousel__indicadores"></div>
+          </div>
+        </div>
+      <script>
+      window.addEventListener('load', function(){
+        new Glider(document.querySelector('.carousel__lista'), {
+          slidesToShow: 1,
+          slidesToScroll: 2,
+          dots: '.carousel__indicadores',
+          arrows: {
+            prev: '.carousel__anterior',
+            next: '.carousel__siguiente'
+          },
+          responsive: [
+            {
+              // screens greater than >= 775px
+              breakpoint: 450,
+              settings: {
+              // Set to `auto` and provide item width to adjust to viewport
+              slidesToShow: 2,
+              slidesToScroll: 2
+              }
+            },{
+              // screens greater than >= 1024px
+              breakpoint: 800,
+              settings: {
+              slidesToShow: 3.5	,
+              slidesToScroll: 3
+              }
+            }
+          ]
+        });
+      });
+      
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+     
+
+  </section>
+  
+
+</body>
+
+</html>

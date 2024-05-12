@@ -1,0 +1,161 @@
+/*------- General-------*/
+*{
+    box-sizing: border-box;
+     padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+  
+  }
+  
+  html{
+
+      font-size: 62.5%;
+      font-family: Helvetica, sans-serif;
+  }
+  
+  body{
+      font-size: 16px;
+    
+    
+     
+  }
+
+  /*----------- Navegador----------*/
+
+
+  .marco-Navegador{
+    position: fixed;
+    top: 0%;
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(134, 130, 130);
+  }
+  .marco-central-nav{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .marco-logo{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Logo-nav{
+    width: 30%;
+    height: 100%;
+  }
+  .cuadro-opciones-nav{
+    width: 35%;
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+  }
+  .opciones-nav{
+    text-decoration: none;
+    color: black;
+    font-size: 1.8rem;
+  }  
+  .marco-buscador-traductor{
+    width: 30%;
+    display: flex;
+    gap: 2rem;
+  }
+  .buscar::placeholder ,.buscar{
+    font-size: 1.3rem;
+  }
+  .btn {
+    font-size: 1.5rem !important;
+  }
+
+  .goog-te-gadget-simple{
+    background-color: rgba(0, 255, 255, 0.137) !important;
+    border-left: 0px !important;;
+    border-top: 0px !important;;
+    border-bottom: 0px !important;
+    border-right: 0px !important;
+    font-size: 1.4rem  !important;
+    display: inline-block  !important;
+    padding-top: 1px  !important;
+    padding-bottom: 2px  !important;
+    cursor: pointer  !important;
+
+  }
+  .VIpgJd-ZVi9od-ORHb-OEVmcd{
+    display: none !important;
+    position: absolute !important;
+    z-index: -3;
+  }
+  .goog-te-gadget-icon{
+    display: none !important;
+  }
+
+  /*menu burger */
+  .checkbtn{
+    font-size: 30px;
+    color: #fff;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #check{
+    display: none;
+  }
+  
+  
+  @media (max-width: 952px){
+    .enlace{
+        padding-left: 20px;
+    }
+    nav ul li a{
+        font-size: 16px;
+    }
+  
+  }
+  
+  @media (max-width: 858px){
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 26vh;
+        background:#f6f7faf2;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+  
+    nav ul{
+      width: 100%;
+      height: 35vh;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+    li a:hover, li a.active{
+        background: none;
+  
+    }
+    #check:checked ~ ul{
+        left:0;
+    }
+  } .checkbtn{
+    position: relative;
+    left: 90%;
+    top:10%;
+  }

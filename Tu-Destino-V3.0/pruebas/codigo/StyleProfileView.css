@@ -1,0 +1,612 @@
+*{
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size: 62.5%;
+}
+body{
+  height: 100vh;
+  width: 100%;
+  font-size: 16px;
+}
+.frame-View{
+width: 100%;
+height: 100%;
+display: flex;
+}
+#admiView{
+display: none;
+}
+#userView{
+  display: flex;
+}
+.nav{
+  width: 15%;
+  height: 100%;
+  background-color: rgb(22, 22, 22);
+  border-right: .1px solid white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  }
+.logo{
+  color: white;
+  height: 10%;
+  border-bottom: solid 2px beige;
+}
+.logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: white;
+}
+.logo a img{
+  width: 9rem;
+  height: 9rem;
+}
+.logo a:hover{
+  color: azure;
+  transform: scale(1.02);
+}
+.options{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  height: 40%;
+  margin: 0 ;
+  padding: 0 ;
+}
+.options li {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  width: 100%;
+  height:17%;
+  margin: 0 ;
+  padding: 0 ;
+}
+.option{
+  border: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 2rem;
+  background-color: rgb(35, 34, 34); 
+  cursor: pointer;
+
+}
+.free{
+  height: 38.6%;
+}
+.low-nav{
+  height: 5%;
+  display: flex; 
+  align-items: center;
+  justify-content: end;
+}
+.low-nav a{
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+}
+.content{
+  width: 85%;
+  height: 100%;
+  background-color: rgb(36, 34, 34);
+}
+.CView{
+  background-image: url(https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg);
+  background-position-x: center;
+  background-position-y: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#CVA2,#CVA1,#CVA4{
+  display: none;
+}
+.ViewCenter{
+  background-color: rgb(36, 34, 34);
+  width: 90%;
+  height: 90%;
+  border: 1rem solid rgba(255, 255, 255, 0.035);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+.VCC{
+  background-color: rgb(31, 31, 31);
+  border: 1rem solid rgb(28, 27, 27);
+  width: 65%;
+  height: 80%;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.VC-profile{
+  width: 100%;
+  height: 22%;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.084);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.PL{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  height: 100%;
+  width: 45%;
+}
+.imgProfile{
+  border-radius: 7rem;
+  width: 15rem;
+  height: 15rem;
+  background-color: rgb(28, 27, 27);
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+.imgProfile img{
+  border-radius: 6.5rem;
+  width: 90%;
+  height: 90%;
+  position: relative;
+  top: 4.5%;
+  left: .4%;
+}
+.texP{
+  font-size: 3rem;
+  color: aliceblue;
+}
+.Pr{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 10%;
+}
+.Pr button{
+  font-size: 1.5rem;
+  margin-bottom: 1.7rem;
+}
+#BtnSummit{
+  display: none;
+}
+.profile-info{
+  width: 84%;
+  height: 70%;
+  border: 1px solid rgba(255, 255, 255, 0.084);
+  border-radius: 1rem;
+  background-color: rgba(2, 2, 21, 0.241);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  color: white;
+  position: relative;
+  left: 10%;
+  top: 10%;
+}
+.update{
+  color: white;
+}
+.update::placeholder{
+  color: white;
+}
+.titleInfo{
+  font-size: 2rem;
+}
+.update{
+  display:none;
+}
+
+.update, .infoV,.infoVe{
+  border: 1px solid black;
+  padding: 10px 20px 5px;
+  width: 60%;
+  border-radius: .5rem;
+  background-color: rgb(24, 23, 23);
+  font-size: 1.5rem;
+}
+/* general styles of information frames */
+.textR{
+  color: white;
+  font-size: 3rem;
+  height: 10%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.listPublic ,.listmodal{
+  height: 75%;
+  width:85%;
+  background-color: rgba(2, 2, 21, 0.241);
+  border-radius: 1rem;
+  border: 10px solid rgba(255, 255, 255, 0.084) ;
+  overflow: scroll;
+ 
+
+}
+
+.public{
+  background-color: rgba(41, 38, 38, 0.789);
+  border: 10px solid rgba(255, 255, 255, 0.084) ;
+  width: 90%;
+  height: 8rem;
+  margin-left: 4.5rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+}
+.public div{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.headPublic, .headPublicmodal,.headPublicUser{
+  background-color:  rgba(2, 2, 21, 0.241);
+  height:6rem;
+  width: 58.5%;
+  display: flex ;
+  align-items: center;
+  margin-left: 4.5rem;
+  border: 10px solid rgba(255, 255, 255, 0.084) ;
+  position: fixed;
+  top: 20%;
+  border-radius: .5rem;
+
+}
+.searchUser{
+  top: 15%;
+  width: 15%;
+}
+
+.searchUser input{
+  width: 89%;
+  background-color: transparent;
+  color: white;
+  height: 4rem;
+  border-radius: .5rem;
+  border: 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.searchUser button {
+  width: 10%;
+  border-radius: 1rem;
+}
+.headPublicmodal,.headPublicUser {
+  margin-left: .0;
+  width: 45%;
+  top: 22%;
+  background-color:  rgba(7, 7, 17, 0.47);
+  border: 10px solid rgba(34, 31, 31, 0.166) ;
+}
+.headPublicUser{
+  width: 80%;
+  top: 16%;
+  margin-left: 2rem;
+}
+.searchUserPost{
+  top:9% ;
+  width: 20%;
+  background-color: #0000007a;
+}
+.searchUserPost input{
+  width: 89%;
+  background-color: transparent;
+  color: white;
+  height: 4rem;
+  border-radius: .5rem;
+  border: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.searchUserPost button{
+  width: 10%;
+  border-radius: 1rem;
+}
+.titleInfo{
+  color: white ;
+  width: 20%;
+  text-align: center;
+  
+}
+.titleInfomodal, .titleInfoUser{
+  width: 25%;
+}
+.titleInfoL{
+  color: white ;
+  width: 25%;
+  text-align: center;
+  
+}
+.publicUser{
+  width: 95.5%;
+  top: 16%;
+  margin-left: 2rem;
+}
+
+.infoPublic{
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  border-right: 2px solid white;
+}
+
+.infoPublicID .infoUserID{
+  border-right: 2px solid white;
+}
+.infoPublicU .infoUserU{
+  border-right: 2px solid white;
+}
+.infoPubliF .infoUserC{
+  border-right: 2px solid white;
+}
+.infoPubliL  {
+  border-right: 2px solid white;
+}
+.infoUserP{
+  border-right: 2px solid white;
+}
+.btnpublic {
+  width: 25%;
+}
+.btnUser{
+  width: 20%;
+}
+.modal{
+  --bs-modal-bg:transparent;
+  --bs-modal-border-color: 0;
+}
+.modal-img img {
+  width: 98%;
+}
+.modal-img{
+    width: 70%;
+    height: 100%;
+    
+}
+.etiquetas{
+  font-size: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  flex-direction: row;
+  width: 100%;
+  overflow-y:auto;
+  -webkit-scrollbar-track-piece:transparent;
+  -webkit-scrollbar-thumb:transparent;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1200px){
+.modal-xl {
+    --bs-modal-width: 869px !important;
+}}
+.text-modal{
+  padding: 1rem;
+  width: 30%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.modal-title{
+text-align: center;
+width: 100%;
+height: 20%;
+font-size: 2rem ;
+color: #000000;
+border-bottom: #0100003a solid 2px;
+}
+.text-modal p{
+  color: #000000;
+  width: 96%;
+  height: auto;
+  font-size: clamp(1.7rem,1vw,2rem);
+  overflow-y: scroll;
+  margin: 0;
+}
+.etiquetas p{
+ border: #fe7600 1px solid;
+ border-radius: 1rem;
+ padding: 2px 6px 2px;
+  width: auto;
+  }
+.marco-btn{
+  height: 12%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btnDetalles button{
+  font-size: clamp(1rem, 1.2vw ,2.1rem) !important;
+  margin: 1rem;
+  color: #ffffdb;
+  padding: 1rem 1.375rem;
+  background: #fe7600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-family: 'Poppins', sans-serif;
+}
+#btnDetalles button:hover{
+  background-color: #ffffdb;
+  color: #fe7600;
+  transform: scale(1.1);
+}
+
+.modal-acco{
+    width: 40%;
+    height: 100%;
+}
+.modal-marco tr{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+}
+.modal-body{
+  display: flex ;
+  flex-direction: column ;
+  background-color:rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(50px)  ;
+  padding: 0 !important;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1.5rem;
+  border-top-left-radius: 1rem;
+  height: 500px;
+}
+.modal{
+  backdrop-filter: blur(10px);
+}
+.modal-dialog{
+  top: 15%;
+}
+
+.modal-footer{
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-top: 0 !important;
+}
+.tituloModal{
+  /*border: 2px solid red;*/
+   width: 100%;
+  
+   margin: 0 !important;
+}
+.modal-header{
+   /*border: 2px solid black;*/
+ margin-bottom: -0.6rem !important;
+ width: 100.6%;
+ border: 0 !important;
+ ;
+
+ }
+.btn-close{
+   background-color: rgba(238, 238, 238, 0.867)!important;
+   height: 2rem !important ;
+   width: 4rem !important;
+   padding: 0.4rem 1rem !important;
+   margin-bottom: -5rem;  
+   border-radius: 0rem !important;
+   border-top-right-radius: 1rem !important;
+   border-top-left-radius: 1rem !important;
+}
+
+.btn-close:hover{
+   background-color: rgba(255, 255, 255, 0.3) !important;
+   backdrop-filter: blur(50px) !important;
+}
+
+.modelAl{
+  position: absolute;
+   background-color: rgba(255, 255, 255, 0.044) ;
+   backdrop-filter: blur(10px);
+   width: 100%;
+   height: 100%;
+   z-index: 10;
+   top: 0%;
+   display: none;
+   justify-content: center;
+   align-items: center;
+}
+.modelAlCon{
+  width: 60%;
+  height: 80%;
+  background-color:rgba(255, 255, 255, 0.3) ;
+  border: solid 1rem rgba(37, 35, 35, 0.63);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+#btnListPubli{
+  font-size: 1.5rem;
+}
+.ViewUser{
+  display: flex;
+  justify-content: left;
+  gap: 5%;
+}
+.profileNavUser{
+  background-color: rgba(41, 38, 38, 0.789);
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.logoUser{
+  width: 100%;
+  background-color: transparent !important;
+  
+}
+.infoUser{
+  display: flex;
+  flex-direction: column;
+  height: 10%;
+  width: 100%;
+  justify-content: center;
+  align-items: center ;
+  
+}
+.infoUser label {
+  color: white;
+  border: 2px solid white;
+}
+.freeUser{
+  width: 100%;
+
+  height: 51%;
+}
+.contentUser{
+  background-color: rgba(33, 28, 28, 0.41) ;
+  backdrop-filter: blur(10px);
+  height: 89%;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

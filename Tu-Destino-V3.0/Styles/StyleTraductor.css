@@ -1,0 +1,77 @@
+body{
+  height: auto !important;
+}
+.VIpgJd-ZVi9od-ORHb table{
+  background-image: none !important;
+  display: none !important;
+}
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none ;
+}
+.goog-te-gadget-simple{
+  background-color: rgba(255, 255, 255, 0) !important;
+border-left: 0 !important;
+border-top: 0 !important;
+border-bottom: 0 !important;
+border-right: 0 !important;
+font-size: 10pt;
+display: inline-block;
+padding-top: 1px;
+padding-bottom: 2px;
+cursor: pointer;
+}
+.goog-te-gadget-icon{
+  display: none !important;
+  background-image: url(../Multimedia/main/logoVr.png) !important ;
+  margin-left: 2px;
+margin-right: 2px;
+width: 19px;
+height: 19px;
+}
+.goog-te-gadget img{
+  vertical-align: middle;
+border: none;
+}
+#traductor {
+  width: 9.5%;
+  padding: 1rem 1.5rem;
+  height: 3rem !important;
+  display: flex ;
+  align-items: center;
+  border: rgba(0, 0, 0, 0.329) solid 1px;
+  border-radius: 1rem;
+  background: #89c0ff;
+  height: 1.5rem;
+  position: absolute;
+  right: 0.3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 110% !important;
+}
+.text-tra{
+ width: 90%;
+
+
+}
+.logo-tra{
+   width: 3,5rem;
+  height: 3.5rem;
+  margin-left: -1.5rem;
+}
+.VIpgJd-ZVi9od-xl07Ob-OEVmcd{
+  z-index: 10000002;
+border: none;
+position: fixed;
+
+box-shadow: 0 3px 8px 2px #312b2b !important;
+visibility: visible;
+box-sizing: content-box;
+width:10% ;
+height: 179px !important;
+left: 91% !important;
+top: 9.1% !important;
+
+align-items: center !important;
+justify-content: left !important;
+}

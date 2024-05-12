@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- links Styles-->
+  <link rel="stylesheet" href="StyleLgares.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+  <link rel="stylesheet" href="../../Styles/glider.min.css">
+  <link rel="stylesheet" href="../../Styles/StyleFooter.css">
+</head>
+<body>
+  <header class="header">
+
+    <div class="logo">
+        <img src="../Multimedia/main/logoMelo.png" alt="Logo de la marca">
+    </div>
+
+    <nav>
+
+      <ul class="nav-links">
+        <li><a href="#">Lugares</a></li>
+        <li><a href="#">Descubre Tu Destino</a></li>
+        <li><a href="#">¿Que Hacer?</a></li>
+      </ul>
+
+      <div class="burger" id="burger">
+        <button> <img src="../Multimedia/main/menuH.png" alt="" width="40rem" height="40rem">
+        </button>
+      </div>
+
+      <div class=" menu-burger" id="menuBurger">
+        <ul>
+          <li><a href="#">Lugares</a></li>
+          <li><a href="#">Descubre Tu Destino</a></li>
+          <li><a href="#">¿Que Hacer?</a></li>
+          <a class="btm btl" href="#"><button>Registro</button></a>
+          <div class="exit" id="exit">
+            <button> <img src="../Multimedia/main/x.png" alt="" width="30rem" height="30rem"></button>
+          </div>
+        </ul>
+      </div>
+
+      <script>
+        const burger =document.querySelector('#burger');
+        const menuBurger = document.querySelector('#menuBurger');
+        burger.addEventListener('click', ()=>{
+          menuBurger.style.display='flex';
+          menuBurger.style.animation= "entradaMenu 1.5s ease";
+        })
+        const exit =document.querySelector('#exit')
+        exit.addEventListener('click',()=>{
+          menuBurger.style.animation= "salidaMenu 1.5s ease";
+          setTimeout( salida,1.45 * 1000, "1")
+        function salida(){
+          menuBurger.style.display='none';
+        }
+          console.log("hola");
+        })
+
+      </script>   
+      
+    </nav>
+    <a class="btm" href="#"><button>Registro</button></a>
+  </header>
+  <div class="space-nav">
+
+  </div>
+  <section class="marco-margin">
+    
+    
+    <div class="marco-map">
+      <div class="tex-map">
+        <h1>Lorem ipsum dolor sit amet.</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, numquam!</p>
+      </div>
+      <div class="map">
+        <img src="./multimedia/Agregar un subtítulo (2) (1).png" alt="">
+      </div>
+    </div>
+
+
+    <section class="marco-collage">
+      <div class="tex-college">
+        <div class="title-collage">
+          <hr style=" width: 30rem; border: 1.5px solid black;">
+              <h2 id="title-section-two">Learn more about the regions</h2>
+        </div>
+        <div class="text-collage">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+        </div>
+      </div>
+      <div class="marco-img">
+        <div class="img-left">
+          <div class="row-left-one">
+            <img class="small-img" src="../../Multimedia/main/entretenimiento.webp" alt="">
+            <h1>title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repellendus iure animi, labore laudantium enim et fugit? Dignissimos, sit beatae laudantium labore excepturi asperiores quaerat?</p>
+          </div>
+          <div class="row-left-two">
+            <img class="big-img" src="../../Multimedia/main/Panela.webp" alt="">
+            <h1>title</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque sit quibusdam odio deserunt voluptas, accusamus odit vitae possimus. Necessitatibus labore ullam repudiandae consequatur accusamus delectus natus est provident animi ratione!</p>
+          </div>
+        </div>
+        <div class="img-right">
+          <div class="row-right-one">
+            <img class="big-img" src="../../Multimedia/main/feriaFlorez.webp" alt="">
+          
+              <h1>title</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum non omnis eveniet fugit aliquam ab sequi blanditiis placeat nisi iste, quasi commodi provident iusto adipisci quidem odit voluptatibus at fugiat.</p>
+  
+        </div>
+          <div class="row-right-two">
+            <img class="small-img" src="../../Multimedia/main/entretenimiento.webp" alt="">
+          
+              <h1>title</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum non omnis eveniet fugit aliquam ab sequi blanditiis placeat nisi iste, quasi commodi provident iusto adipisci quidem odit voluptatibus at fugiat.</p>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>  
+    <div class="marco-titex">
+        <div class="title-ca">
+          <hr style=" width: 30rem; border: 1.5px solid black;">
+              <h2 id="title-section-two">Learn more about the regions</h2>
+        </div>
+        <div class="text-ca">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+        </div>
+      </div>
+  
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista">
+              <div class="carousel__elemento">
+    
+               <div class="caja">
+                <img src="../../Multimedia/main/bosque.jpeg" alt="Rock and Roll Hall of Fame">
+                <p class="barra-oculta"></p>
+                <div class="caja-tex">
+                    <h2 class="title-slider"><strong>Relajate con los Sonidos y Vistas de los Bosques de Medellín</strong></h2>
+                    <p class="tex-slider">descripcion</p>
+                  </div>
+               </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/feriaFlorez.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Maravillate con los Colores que ofrecen las Ferias de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+                </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/Panela.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Dale un Gusto a tu Paladar con la Gastronomía de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <div class="caja">
+                    <img src="../../Multimedia/main/entretenimiento.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Disfruta de los Entretenimiento que te ofrece Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                 
+                 </div>
+              </div>
+      
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/cc2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Admirar el Tamaño y la Belleza de Nuestros Centros Comenciales</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/historia/MuseoCastillo/museo5.png" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Conoce los Lugares Historicos de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/naturaleza/Picacho/Picacho2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Disfruta de las vistas Nocturnas que te ofrecen nuestros Miradores</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/restaurantes/babburguers4.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Descubre Lugares pocos Conocidos</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Learn more about the regions</h2>
+    </div>
+    <div class="text-ca">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior1">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista1">
+              <div class="carousel__elemento">
+    
+               <div class="caja">
+                <img src="../../Multimedia/main/bosque.jpeg" alt="Rock and Roll Hall of Fame">
+                <p class="barra-oculta"></p>
+                <div class="caja-tex">
+                    <h2 class="title-slider"><strong>Relajate con los Sonidos y Vistas de los Bosques de Medellín</strong></h2>
+                    <p class="tex-slider">descripcion</p>
+                  </div>
+               </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/feriaFlorez.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Maravillate con los Colores que ofrecen las Ferias de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+                </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/Panela.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Dale un Gusto a tu Paladar con la Gastronomía de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <div class="caja">
+                    <img src="../../Multimedia/main/entretenimiento.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Disfruta de los Entretenimiento que te ofrece Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                 
+                 </div>
+              </div>
+      
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/cc2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Admirar el Tamaño y la Belleza de Nuestros Centros Comenciales</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/historia/MuseoCastillo/museo5.png" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Conoce los Lugares Historicos de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/naturaleza/Picacho/Picacho2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Disfruta de las vistas Nocturnas que te ofrecen nuestros Miradores</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/restaurantes/babburguers4.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Descubre Lugares pocos Conocidos</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente1">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores1"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Learn more about the regions</h2>
+    </div>
+    <div class="text-ca">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior2">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista2">
+              <div class="carousel__elemento">
+    
+               <div class="caja">
+                <img src="../../Multimedia/main/bosque.jpeg" alt="Rock and Roll Hall of Fame">
+                <p class="barra-oculta"></p>
+                <div class="caja-tex">
+                    <h2 class="title-slider"><strong>Relajate con los Sonidos y Vistas de los Bosques de Medellín</strong></h2>
+                    <p class="tex-slider">descripcion</p>
+                  </div>
+               </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/feriaFlorez.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Maravillate con los Colores que ofrecen las Ferias de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+                </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/Panela.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Dale un Gusto a tu Paladar con la Gastronomía de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <div class="caja">
+                    <img src="../../Multimedia/main/entretenimiento.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Disfruta de los Entretenimiento que te ofrece Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                 
+                 </div>
+              </div>
+      
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/cc2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Admirar el Tamaño y la Belleza de Nuestros Centros Comenciales</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/historia/MuseoCastillo/museo5.png" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Conoce los Lugares Historicos de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/naturaleza/Picacho/Picacho2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Disfruta de las vistas Nocturnas que te ofrecen nuestros Miradores</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/restaurantes/babburguers4.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Descubre Lugares pocos Conocidos</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente2">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Learn more about the regions</h2>
+    </div>
+    <div class="text-ca">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior3">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista3">
+              <div class="carousel__elemento">
+    
+               <div class="caja">
+                <img src="../../Multimedia/main/bosque.jpeg" alt="Rock and Roll Hall of Fame">
+                <p class="barra-oculta"></p>
+                <div class="caja-tex">
+                    <h2 class="title-slider"><strong>Relajate con los Sonidos y Vistas de los Bosques de Medellín</strong></h2>
+                    <p class="tex-slider">descripcion</p>
+                  </div>
+               </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/feriaFlorez.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Maravillate con los Colores que ofrecen las Ferias de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+                </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/Panela.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Dale un Gusto a tu Paladar con la Gastronomía de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <div class="caja">
+                    <img src="../../Multimedia/main/entretenimiento.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Disfruta de los Entretenimiento que te ofrece Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                 
+                 </div>
+              </div>
+      
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/cc2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Admirar el Tamaño y la Belleza de Nuestros Centros Comenciales</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/historia/MuseoCastillo/museo5.png" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Conoce los Lugares Historicos de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/naturaleza/Picacho/Picacho2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Disfruta de las vistas Nocturnas que te ofrecen nuestros Miradores</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/restaurantes/babburguers4.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Descubre Lugares pocos Conocidos</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente3">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Learn more about the regions</h2>
+    </div>
+    <div class="text-ca">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior4">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista4">
+              <div class="carousel__elemento">
+    
+               <div class="caja">
+                <img src="../../Multimedia/main/bosque.jpeg" alt="Rock and Roll Hall of Fame">
+                <p class="barra-oculta"></p>
+                <div class="caja-tex">
+                    <h2 class="title-slider"><strong>Relajate con los Sonidos y Vistas de los Bosques de Medellín</strong></h2>
+                    <p class="tex-slider">descripcion</p>
+                  </div>
+               </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/feriaFlorez.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Maravillate con los Colores que ofrecen las Ferias de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+                </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/Panela.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Dale un Gusto a tu Paladar con la Gastronomía de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <div class="caja">
+                    <img src="../../Multimedia/main/entretenimiento.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Disfruta de los Entretenimiento que te ofrece Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                 
+                 </div>
+              </div>
+      
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/cc2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Admirar el Tamaño y la Belleza de Nuestros Centros Comenciales</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/historia/MuseoCastillo/museo5.png" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Conoce los Lugares Historicos de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/naturaleza/Picacho/Picacho2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Disfruta de las vistas Nocturnas que te ofrecen nuestros Miradores</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/restaurantes/babburguers4.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Descubre Lugares pocos Conocidos</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente4">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Learn more about the regions</h2>
+    </div>
+    <div class="text-ca">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior5">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista5">
+              <div class="carousel__elemento">
+    
+               <div class="caja">
+                <img src="../../Multimedia/main/bosque.jpeg" alt="Rock and Roll Hall of Fame">
+                <p class="barra-oculta"></p>
+                <div class="caja-tex">
+                    <h2 class="title-slider"><strong>Relajate con los Sonidos y Vistas de los Bosques de Medellín</strong></h2>
+                    <p class="tex-slider">descripcion</p>
+                  </div>
+               </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/feriaFlorez.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Maravillate con los Colores que ofrecen las Ferias de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+                </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/Panela.webp" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Dale un Gusto a tu Paladar con la Gastronomía de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <div class="caja">
+                    <img src="../../Multimedia/main/entretenimiento.webp" alt="Rock and Roll Hall of Fame">
+                    <p class="barra-oculta"></p>
+                    <div class="caja-tex">
+                        <h2 class="title-slider"><strong>Disfruta de los Entretenimiento que te ofrece Medellín</strong></h2>
+                        <p class="tex-slider">descripcion</p>
+                      </div>
+                   </div>
+                 
+                 </div>
+              </div>
+      
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/main/cc2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Admirar el Tamaño y la Belleza de Nuestros Centros Comenciales</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/historia/MuseoCastillo/museo5.png" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Conoce los Lugares Historicos de Medellín</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/naturaleza/Picacho/Picacho2.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"><strong>Disfruta de las vistas Nocturnas que te ofrecen nuestros Miradores</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="caja">
+                  <img src="../../Multimedia/Lugares/restaurantes/babburguers4.jpg" alt="Rock and Roll Hall of Fame">
+                  <p class="barra-oculta"></p>
+                  <div class="caja-tex">
+                      <h2 class="title-slider"> <strong>Descubre Lugares pocos Conocidos</strong></h2>
+                      <p class="tex-slider">descripcion</p>
+                    </div>
+                 </div>
+              </div>
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente5">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores5"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-superior">
+      <div class="superior-izquierdo">
+        <img class="logo-footer" src="../Multimedia/main/logoMelo.png" alt="">
+        <div class="option-footer">
+          
+          <a class="btn btn-outline-light" href="#">Lugares</a>
+          <a class="btn btn-outline-light" href="../Html/ApartadoDescubrir.html">Descubrir</a>
+          <a class="btn btn-outline-light" href="#">¿Qué Hacer?</a>
+        </div>
+        
+      </div>
+        <div class="superior-derecho">
+         
+          <div class="tex-form">
+            <h3> Regitra tu Correo</h3>
+          <p>Para recibir Propuestas sobre tu  proximo   Destino</p>
+         
+          
+          <form  method="post" enctype="text/plain">
+            
+            <input type="email" placeholder="Escriba su email" id="email" name="email" required>
+            <input type="submit" value="Enviar">
+          </form>
+           </div>
+            <div class="redes-footer">
+                        <a href="#"><img src="../Multimedia/main/instagram.png" alt=""></a>
+                        <a href="#"><img src="../Multimedia/main/whatsapp.png" alt=""></a>
+                        <a href="#"><img src="../Multimedia/main/facebook.png" alt=""></a>       
+                          </div>
+
+        </div>
+
+
+    </div>
+    <div class="footer-inferior">
+      <p class="footer-sepa">|</p>
+      <p class="Derechos">© 2024 Tu Destino SAS Todos los derechos reservados.</p>
+      <p>|</p>
+      <a href="#"><p> Terminos y Condiciones</p></a>
+      <p>|</p>
+      <a href="#"><p> Terminos del Sitio Web</p></a>
+      <p>|</p>
+      <a href="#"><p> Politicas Privadas</p></a>
+      <p>|</p>
+    </div>
+  </footer>  
+  <script src="AppLugares.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+</body>
+</html>
