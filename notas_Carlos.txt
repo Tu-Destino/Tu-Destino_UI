@@ -1,0 +1,25 @@
+
+
+1. 
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/profileView.html
+
+abrimos el archivo donde esta la vista de administrador 
+
+2. 
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/StyleprofileView.css
+
+cambiamos los atributos para que se muestre solo la vista de admin 
+
+3.
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/User.json
+
+Creamos el objeto ficticio donde almacenaremos los objetos tipo coder 
+
+4. 
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/profileView.html
+
+En el div "modelAl" borramos los apartados de muestra 
