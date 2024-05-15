@@ -3,6 +3,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  border: 0;
 }
 html{
   font-size: 62.5%;
@@ -17,24 +18,33 @@ width: 100%;
 height: 100%;
 display: flex;
 }
+
+/* ----------------------------------Confing View--------------------------------- */
 #admiView{
-display: none;
+display: flex;
 }
 #userView{
-  display: flex;
+  display: none;
 }
+
+/* ---------------------------------------------------------------------------------- */
+
+
+/* ------------------------------NAV------------------------- */
 .nav{
-  width: 15%;
+  width: 25rem;
   height: 100%;
   background-color: rgb(22, 22, 22);
   border-right: .1px solid white;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: fixed;
+  border-right: solid rgb(155, 155, 155) 2.5px;
   }
 .logo{
   color: white;
-  height: 10%;
+  height: 9rem;
   border-bottom: solid 2px beige;
 }
 .logo a {
@@ -45,8 +55,8 @@ display: none;
   color: white;
 }
 .logo a img{
-  width: 9rem;
-  height: 9rem;
+  width: 80px;
+  height: 80px;
 }
 .logo a:hover{
   color: azure;
@@ -94,17 +104,16 @@ display: none;
   margin-right: 2rem;
   margin-bottom: 1rem;
 }
+
+/*---------------------------------------------Content---------------------------------------- */
 .content{
-  width: 85%;
+  width: 100%;
+  margin-left: 25rem;
   height: 100%;
-  background-color: rgb(36, 34, 34);
+  background-color: #f5f5f7;
 }
 .CView{
-  background-image: url(https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg);
-  background-position-x: center;
-  background-position-y: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+
   width: 100%;
   height: 100%;
   display: flex;
@@ -115,10 +124,10 @@ display: none;
   display: none;
 }
 .ViewCenter{
-  background-color: rgb(36, 34, 34);
+  background-color: #f5f5f7;
   width: 90%;
   height: 90%;
-  border: 1rem solid rgba(255, 255, 255, 0.035);
+  border: 4px solid rgb(208, 208, 208);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,21 +135,22 @@ display: none;
   border-radius: 1rem;
 }
 .VCC{
-  background-color: rgb(31, 31, 31);
-  border: 1rem solid rgb(28, 27, 27);
-  width: 65%;
-  height: 80%;
-  border-radius: 1rem;
+  background-color:  #e7e7ed;
+  border: 4px solid rgb(208, 208, 208);
+  width: 90rem;
+  height: 80rem;
+  border-radius: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  padding: 2rem;
 }
 .VC-profile{
   width: 100%;
-  height: 22%;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.084);
+  height: 34%;
+  padding: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,40 +182,54 @@ display: none;
 }
 .texP{
   font-size: 3rem;
-  color: aliceblue;
+  color: rgb(49, 49, 49);
+  font-family:fantasy;
+  font-size: 4rem;
 }
 .Pr{
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25%;
-  height: 10%;
+  width: 10rem;
+  height: 4rem;
+  left: 18.9rem;
+  top: 5rem;
+
 }
 .Pr button{
+  position: relative;
   font-size: 1.5rem;
-  margin-bottom: 1.7rem;
+  width: 100%;
+  height: 100%;
+  background-color: #0071e3;
+  border-radius: 980px;
+  color: #f5f5f7;
 }
+.Pr button:hover{
+  background-color: #1b83ea;
+}
+
 #BtnSummit{
   display: none;
 }
 .profile-info{
-  width: 84%;
-  height: 70%;
+  width: 100%;
+  height: 65%;
   border: 1px solid rgba(255, 255, 255, 0.084);
-  border-radius: 1rem;
-  background-color: rgba(2, 2, 21, 0.241);
+  border-radius: 3rem;
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  justify-content: flex-start;
+  padding: 5rem;
 }
 .info{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   color: white;
   position: relative;
-  left: 10%;
-  top: 10%;
 }
 .update{
   color: white;
@@ -215,18 +239,22 @@ display: none;
 }
 .titleInfo{
   font-size: 2rem;
+  color: #000000;
+  margin: 1rem;
+  text-align: start;
 }
 .update{
   display:none;
 }
 
 .update, .infoV,.infoVe{
-  border: 1px solid black;
-  padding: 10px 20px 5px;
+  border: 2px solid rgb(170, 170, 170);
+  padding: 1.5rem;
   width: 60%;
-  border-radius: .5rem;
-  background-color: rgb(24, 23, 23);
+  height: 5rem;
+  border-radius: 1rem;
   font-size: 1.5rem;
+  color: #2b2b2b;
 }
 /* general styles of information frames */
 .textR{
@@ -334,12 +362,6 @@ display: none;
 .searchUserPost button{
   width: 10%;
   border-radius: 1rem;
-}
-.titleInfo{
-  color: white ;
-  width: 20%;
-  text-align: center;
-  
 }
 .titleInfomodal, .titleInfoUser{
   width: 25%;
