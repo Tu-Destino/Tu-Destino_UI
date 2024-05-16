@@ -16,15 +16,16 @@ export async function post(url,info){
             headers: {
                 "Content-Type":"application/json"
             },
-            body: JSON.stringify(info)  
+            body: JSON.stringify(info) 
         });
         const data = await response.json();
-       if(data.status=="BAD_REQUEST"){
+        if(data.status=="BAD_REQUEST"){
         isPost= false;
-       }else{
+        console.log(data);
+        }else{
         isPost=true;
-       }
-       
+        }
+
 
     } catch (error) {
         console.log(error);
@@ -68,13 +69,21 @@ export async function update (url,info){
 
 // METODO DELETE - REcibe la URL de lo que se va a borrar, concatendad con el id
 export async function deleteHttp(url){
+    let isPost= false;
     try {
         const response = await fetch(url,{
             method: "DELETE",
         });
         const data = await response.json();
-        return data;
+        if(data.status=="BAD_REQUEST"){
+            isPost= false;
+            console.log(data);
+            }else{
+            isPost=true;
+            }
+    
     } catch (error) {
         console.error(error);
     }
+    return isPost
 };

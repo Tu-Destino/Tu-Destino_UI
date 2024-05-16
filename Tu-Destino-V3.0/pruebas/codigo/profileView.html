@@ -108,7 +108,7 @@
             <div class="textR">
               <h2>Lista de publicaciones para revisión</h2>
             </div>
-            <div class="listPublic" >
+            <div class="listPublic">
               <div class="headPublic">
                 <label class="titleInfo">ID</label>
                 <label class="titleInfo">Usuario</label>
@@ -286,12 +286,13 @@
 
             <div class="listPublic" id="listPlace">
               <!----------------------------- Card Places----------------------------- -->
-                <!-- // 8  -->
+              <!-- // 8  -->
               <!-- --------------------------------------------------------------- -->
             </div>
           </div>
         </section>
 
+        <!-- FORMULARIO  -->
         <section class="CView" id="CVA5">
           <div class="ViewCenter">
             <div class="nav_createPlace">
@@ -300,7 +301,7 @@
               </div>
               <div class="button_createPlace"></div>
               <div class="button_createPlace">
-                <button id="create_place">Guardar</button>
+                <button id="load_place">Guardar</button>
               </div>
             </div>
 
@@ -351,7 +352,7 @@
 
               <div class="createPlace_contentInput">
                 <label class="titleInput_createPlace">Tipo de lugar:</label>
-                <select class="createPlace_input">
+                <select class="createPlace_input" id="CPI_tipo">
                   <option value="CULTURA">Cultura</option>
                   <option value="NATURALEZA">Naturaleza</option>
                   <option value="HISTORIA">Historia</option>
@@ -404,7 +405,7 @@
                 <input
                   required
                   class="createPlace_input"
-                  id="CPI_price"
+                  id="CPI_url"
                   type="url"
                   value=""
                   placeholder="Ingrese el link de la informacion..."

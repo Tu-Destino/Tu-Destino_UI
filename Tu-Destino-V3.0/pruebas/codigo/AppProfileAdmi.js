@@ -23,7 +23,7 @@ const btnSearch = document.getElementById("btnSearch");
 const btnCreateLugar = document.getElementById("create_place"); //6
 const formulario = document.getElementById("CVA5"); //6
 const principal = document.getElementById("CVA4"); // 6
-const cancelar = document.getElementById("btnPlace_cancel");
+const cancelar = document.getElementById("btnPlace_cancel"); //7
 
 //Events
 btnEdit.addEventListener("click", () => {
@@ -91,6 +91,8 @@ cancelar.addEventListener("click", () => {
   formulario.style.display = "none";
 });
 
+// 11
+// limpieza
 function limpieza() {
   const contenedor = document.getElementById("listPlace");
   contenedor.innerHTML = "";
@@ -105,7 +107,6 @@ async function extraerLugar() {
 
   await lugares.forEach((lugar) => {
     const { titulo, id } = lugar;
-    console.log(lugar);
     const hijo = document.createElement("p");
     const lugartHtml = `
     <div class="public">
@@ -167,8 +168,6 @@ editar.forEach((local) => {
 
 // 10
 // borrado
-
-
 async function eliminarLugar(id_lugar) {
   const lugares = await get(UrlPlace);
   lugares.forEach(async (lugar) => {
@@ -177,8 +176,8 @@ async function eliminarLugar(id_lugar) {
     if (id == id_lugar) {
       let confirmacion = confirm("Seguro de que deseas eliminar este lugar?");
       if (confirmacion == true) {
-        console.log(UrlPlace + `/${id_lugar}`);
-        await extraerLugar();
+        await deleteHttp(UrlPlace + `/${id_lugar}`)
+        await extraerLugar()
         console.log("lugar eliminado");
       } else {
         console.log("lugar no eliminado");
@@ -187,7 +186,59 @@ async function eliminarLugar(id_lugar) {
   });
 }
 
-
-
 // 11
+// el boton de editar queda pendiente pues falta la vista
 
+// Vista del formulario
+
+// Selectores
+const nombreLugar = document.getElementById("CPI_title");
+const descripcionLugar = document.getElementById("CPI_description");
+const infolLugar = document.getElementById("CPI_info");
+const telefonoLugar = document.getElementById("CPI_phone");
+const tipoLugar = document.getElementById("CPI_tipo");
+const direccionLugar = document.getElementById("CPI_address");
+const horarioLugar = document.getElementById("CPI_schedule");
+const webLugar = document.getElementById("CPI_linkWeb");
+const precioLugar = document.getElementById("CPI_price");
+const urlLugar = document.getElementById("CPI_url");
+const btnGuardar = document.getElementById("load_place");
+
+// objeto vacio
+var newLugar = {};
+
+async function create() {
+  newLugar = {
+    enum_tipo: tipoLugar.value,
+    titulo: nombreLugar.value,
+    detalles: descripcionLugar.value,
+    precio: precioLugar.value,
+    horario: horarioLugar.value,
+    direccion: direccionLugar.value,
+    link_direccion: "",
+    vr: "",
+    web: webLugar.value,
+    telefono: telefonoLugar.value,
+    puntuacion: 0,
+    info: infolLugar.value,
+    btn_url: urlLugar.value,
+  };
+
+  return newLugar;
+}
+
+btnGuardar.addEventListener("click", async () => {
+  await subir(await create());
+  console.log(newLugar);
+});
+
+async function subir(newLugar) {
+  const lugares = await post(UrlPlace, newLugar);
+
+  if (lugares == true) {
+    alert("el lugar ha sido creado exitosamente");
+    window.location.href = "profileView.html"
+  } else {
+    alert("verifica los campos antes de subir");
+  }
+}
