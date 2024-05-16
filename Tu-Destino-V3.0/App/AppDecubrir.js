@@ -9,53 +9,34 @@
  //Funciones, objetos, array y variables importadas
     import { criteriosFiltros,/*filtrarTipo,*/buscarInfo,DataFiltrados} from "./Modulos/ModuloFiltros.js";
     import {ContenedorImagenes }from "./Modulos/ModuloSelectores.js"
+    import {get,UrlPost} from "../pruebas/jsonPruebas/apiConnection.js";
      // import { DataImg } from "../DataBase/Data-Img.js";
      // import { DataSpanish } from "../DataBase/Data-Spanish.js";
 
  // extraer informacion de las Databases (JSON) 
-  function  DataImgJson() {
-     // version ltc
-    //descargar https://nodejs.org/en/download/
-    // npm install -g json-server
-    // cd Tu-Destino-V2.0/DataBase
-    // usar json-server Data-img.json -p 4552
+ async function  DataImgJson() {
+       const datos =await get(UrlPost);
+       localStorage.setItem('DataImg',JSON.stringify(datos))
+       console.log(datos);
 
-   /* fetch("http://localhost:4552/img")
-    .then(validar=>{
-      return validar.json()
-    })
-    .then(datos=>{
-    localStorage.setItem('DataImg',JSON.stringify(datos))
-    })*/
-    fetch("../DataBase/Data-img.json")
-    .then(validar=>{
-      return validar.json()
-    })
-    .then(datos=>{
-    localStorage.setItem('DataImg',JSON.stringify(datos))
-    })
-  /*   fetch("../DataBase/Data-Spanish.js")
-    .then(validar=>{
-      return validar.json()
-    })
-    .then(datos=>{
-    localStorage.setItem('BaseSpanish',JSON.stringify(datos))
-    })
-  */
 }
+ DataImgJson()  
  const Datag=localStorage.getItem('DataImg')
- export const DataImg = JSON.parse(Datag)
+  export const DataImg = JSON.parse(Datag)
  //const DataS=localStorage.getItem('BaseSpanish')
  // const DataSpanish =JSON.parse(DataS)
 
  // Evento DOM
  document.addEventListener('DOMContentLoaded',()=>{
-  DataImgJson()  
+  
   selectImg()
 
   CargaImagenes(desordenar(DataImg))
 })
 
+
+const storageModal=document.getElementById("storageModal");
+const btnPost=document.getElementById("btnPost");
 
 
 
@@ -85,20 +66,20 @@ export function CargaImagenes(DataImg){
   const tipoEstructura = getRandomInt(4)
   if(tipoEstructura == 0 || tipoEstructura == 2){  
     DataImg.forEach(img => {
-        const {ubicacion,decripcion,nombre} = img;
+        const {titulo,descripcion,urlImg} = img;
         const inyectarIMG =document.createElement('h7')
         inyectarIMG.innerHTML=`
-        <a class=" imagenes car "   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  href=""><img value="${nombre}" src="${ubicacion}" imagen="${ubicacion}" des="${decripcion}" nombre="${nombre}"  ></a>
+        <a class=" imagenes car "   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  href=""><img value="${titulo}" src="${urlImg}" imagen="${urlImg}" des="${descripcion}" nombre="${titulo}"  ></a>
         `
         ContenedorImagenes.appendChild(inyectarIMG)
       });
   }
   else if (tipoEstructura == 1 || tipoEstructura == 3){ 
     DataImg.forEach(img => {
-      const {ubicacion,decripcion,nombre} = img;
+      const {titulo,descripcion,urlImg} = img;
       const inyectarIMG =document.createElement('h7')
       inyectarIMG.innerHTML=`
-      <a class=" imagenes car "  data-bs-toggle="modal" data-bs-target="#staticBackdrop" href=""><img  src="${ubicacion}"imagen="${ubicacion}" des="${decripcion}" nombre="${nombre}" class="car" ></a>
+      <a class=" imagenes car "   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  href=""><img value="${titulo}" src="${urlImg}" imagen="${urlImg}" des="${descripcion}" nombre="${titulo}"  ></a>
       `
       ContenedorImagenes.appendChild(inyectarIMG)
     });
@@ -109,11 +90,11 @@ export function CargaImagenes(DataImg){
 // funacion para cargar mas imagenes cuando el scroll llegue al final de la pagina
 function CargaImagenesScroll(DataImg){
   DataImg.forEach(img => {
-    const {ubicacion,decripcion,nombre} = img;
+    const {titulo,descripcion,urlImg} = img;
   const inyectarIMG =document.createElement('h7')
    
     inyectarIMG.innerHTML=`
-    <a class=" imagenes car " data-bs-toggle="modal" data-bs-target="#staticBackdrop" href=""><img value="${nombre}" src="${ubicacion}" imagen="${ubicacion}" des="${decripcion}" nombre="${nombre}" class="car" ></a>
+    <a class=" imagenes car "   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  href=""><img value="${titulo}" src="${urlImg}" imagen="${urlImg}" des="${descripcion}" nombre="${titulo}"  ></a>
     `
     ContenedorImagenes.appendChild(inyectarIMG)
   });
@@ -130,18 +111,8 @@ function CargaImagenesScroll(DataImg){
   criteriosFiltros.infinite=1
  const busquedad = DataImg.filter(filtrarHistoria)
  .filter(filtrarHistoria)
-  //const busquedad =filtrarHistoria()
-   //console.log(filtrarHistoria());
-   
   console.log(DataFiltrados);
-  // console.log(busquedad);
-   // console.log(criteriosFiltros);
-    CargaImagenes(DataFiltrados) 
-
-  // [].filter(validar)
-  // {}.filter(cultura,restaurante, etc)
-  // [].filter("mas etiquesta")
-     
+    CargaImagenes(DataFiltrados)    
  }
 /*-----------Funciones ------------ */
 
@@ -224,18 +195,114 @@ window.addEventListener("scroll", ()=>{
     </td>
       `
       infoModal.appendChild(infoInterna)
-      const padreDet = document.querySelector('#padreBoton')
-      // Boton Detalles
-      btnD.innerHTML=` 
-      
-      `
-      padreDet.appendChild(btnD)
+     
     } 
 
+    function CambioModal(){
+      const modalImg=`
+      `
 
-
+      const modalPost=`
+      <!-- Modal post de las imagenes -->
+      <div class="modal fade" id="staticBackdropz" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div >
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="modal-marco">
+                 <div class="modal-marco">
+                  <td class="modal-img">
+                    <img src="" width="600px" height="500px">
+                  </td>
+                  <td class="text-modal">
+                    <h1 class="modal-title tituloModal " id="staticBackdropLabelA">titulo</h1>
+                    <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates alias, id quaerat expedita commodi voluptatem pariatur. Eos unde rerum odit illo eum, aliquam, corrupti delectus aspernatur adipisci quae fuga amet iste quibusdam hic cumque quidem, voluptatibus sapiente ut animi error.</p>
+                    <div class="marco-btn">
+                    <a id="btnDetalles" href="ApartadoDescubrir.html"><button>Mas detalles</button></a>
+                    </div>
+                  </td>
     
+                 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      `
+    }
+ // Buscador 
+//Ejecutando funciones
+document.getElementById("icon-search").addEventListener("click", mostrar_buscador);
+document.getElementById("cover-ctn-search").addEventListener("click", ocultar_buscador);
 
+//Declarando variables
+const bars_search =       document.getElementById("ctn-bars-search");
+const  cover_ctn_search =  document.getElementById("cover-ctn-search");
+const  inputSearch =       document.getElementById("inputSearch");
+const  box_search =        document.getElementById("box-search");
+
+
+//Funcion para mostrar el buscador
+function mostrar_buscador(){
+
+    bars_search.style.top = "80px";
+    cover_ctn_search.style.display = "block";
+    inputSearch.focus();
+
+    if (inputSearch.value === ""){
+        box_search.style.display = "none";
+    }
+
+}
+
+//Funcion para ocultar el buscador
+export function ocultar_buscador(){
+
+    bars_search.style.top = "-10px";
+    cover_ctn_search.style.display = "none";
+    inputSearch.value = "";
+    box_search.style.display = "none";
+
+}
+
+
+//Creando filtrado de busqueda
+
+document.getElementById("inputSearch").addEventListener("keyup", buscador_interno);
+
+function buscador_interno(){
+
+
+   const filter = inputSearch.value.toUpperCase();
+    const li = box_search.getElementsByTagName("li");
+
+    //Recorriendo elementos a filtrar mediante los "li"
+    for (let i = 0; i < li.length; i++){
+
+       let a = li[i].getElementsByTagName("button")[0];
+       
+        const textValue = a.textContent || a.innerText;
+
+        if(textValue.toUpperCase().indexOf(filter) > -1){
+
+            li[i].style.display = "";
+            box_search.style.display = "block";
+
+            if (inputSearch.value === ""){
+                box_search.style.display = "none";
+            }
+
+        }else{
+            li[i].style.display = "none";
+        }
+
+    }
+
+
+
+}
 
 
   /* -----------NOTAS IPORTANTES!!!!!------------ */

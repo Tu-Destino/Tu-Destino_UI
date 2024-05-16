@@ -1,5 +1,5 @@
 //import { carouselHistoria } from "./Modulos/ModuloSelectores.js";
-import { DataSpanish } from "../DataBase/Data-Spanish.js";
+import { UrlPlace, UrlPost, get } from "../pruebas/jsonPruebas/apiConnection.js";
 window.addEventListener('load', function(){
   new Glider(document.querySelector('.carousel__lista'), {
     slidesToShow: 1,
@@ -330,7 +330,12 @@ window.addEventListener('load', function(){
     ]
   });
 });
+async function Data(url){
+   
+  return await get(url);
+};
 
+ const DataSpanish= await Data(UrlPlace)
 //Selectores 
   const carouselHistoria=document.getElementById('carouselHistoria');
   const carouselCultura=document.getElementById('carouselCultura');
@@ -339,41 +344,54 @@ window.addEventListener('load', function(){
   const carouselHospedajes = document.getElementById('carouselHospedajes');
   const carouselActividades=document.getElementById('carouselActividades')
 document.addEventListener('DOMContentLoaded', ()=>{
-  info();
+   info();
 })
 
 // extraer informacion de json-serve
 
-function info(){
+async function info(){
 
-  fetch("http://localhost:4552/img")
-.then(validar=>{
-  return validar.json()
-})
-.then(data=>{
-  localStorage.setItem('ApartadoLugares',JSON.stringify(data));
-})
-
+  localStorage.setItem('ApartadoLugares',JSON.stringify( await get(UrlPost)));
 }
 const dato = localStorage.getItem('ApartadoLugares');
 const DataBase = JSON.parse(dato);
 
 // criterios de organizacion
 const criterios ={
-  history: 'historia',
-  cultura: 'cultural',
-  naturaleza: 'naturaleza',
-  restaurante: 'restaurante',
-  hospedajes: 'hospedaje',
-  actividades: 'actividades',
+  history: 'HISTORIA',
+  cultura: 'CULTURA',
+  naturaleza: 'NATURALEZA',
+  restaurante: 'RESTAURANTE',
+  hospedajes: 'HOSPEDAJE',
+  actividades: 'ACTIVIDADE',
 }
 
-//---funciones para agregar img a carouseles---*/
-function imgCarousel(criterio,infor ,padre){
-  const Carga= infor.filter(data=> {     return  data.tipo == criterio; });
-  Carga.forEach(lugar => {
+//---funciones para agregar img a carouseles---*
+ async function extraerImg(comparar){
+  const listURl=new Array();
+  const datos = await get(UrlPost)
+ await datos.forEach(data=>{
+      const {urlImg,place}= data;
+      const {id}= place;
 
-    const {imagenes,titulo} = lugar
+      if (id==comparar) {
+          listURl.push(urlImg);
+      }
+      if (listURl.length==0) {
+          listURl.unshift("https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg")
+      }
+  })
+  return listURl;
+}
+
+async function imgCarousel(criterio,infor ,padre){
+  const Carga= infor.filter(data=> {     return  data.enum_tipo == criterio; });
+  //console.log(lugar[0]);
+console.log(criterio);
+  Carga.forEach(async lugar => {
+
+    const {titulo,id} = lugar
+    const imagenes = await extraerImg(id)
     const ele =document.createElement("div");
     ele.classList.add("carousel__elemento");
     ele.innerHTML = `
@@ -395,108 +413,108 @@ function imgCarousel(criterio,infor ,padre){
   });
 
 }
-imgCarousel(criterios.history,DataSpanish,carouselHistoria);
-imgCarousel(criterios.cultura,DataSpanish,carouselCultura);
-imgCarousel(criterios.naturaleza,DataSpanish,carouselNaturaleza);
-imgCarousel(criterios.restaurante,DataSpanish,carouselRestaurante);
-imgCarousel(criterios.hospedajes,DataSpanish,carouselHospedajes);
-imgCarousel(criterios.actividades,DataSpanish,carouselActividades);
+await imgCarousel(criterios.history,DataSpanish,carouselHistoria);
+await imgCarousel(criterios.cultura,DataSpanish,carouselCultura);
+await imgCarousel(criterios.naturaleza,DataSpanish,carouselNaturaleza);
+await imgCarousel(criterios.restaurante,DataSpanish,carouselRestaurante);
+await imgCarousel(criterios.hospedajes,DataSpanish,carouselHospedajes);
+await imgCarousel(criterios.actividades,DataSpanish,carouselActividades);
 
-// Selectores 
-//historia
-    //one
-const historiaElementOne = document.getElementById('Basílica-de-Nuestra-Señora-de-la-Candelaria')
-const HElementOne=document.getElementById('Basílica-de-Nuestra-Señora-de-la-Candelaria1')
-    //two
-const historiaElementTwo = document.getElementById('Museo-el-Castillo')
-const HElementTwo=document.getElementById('Museo-el-Castillo1')
-    //three
-const historiaElementThree = document.getElementById('Parque-Berrío')
-const HElementThree = document.getElementById('Parque-Berrío1')
+// // Selectores 
+// //historia
+//     //one
+// const historiaElementOne = document.getElementById('Basílica-de-Nuestra-Señora-de-la-Candelaria')
+// const HElementOne=document.getElementById('Basílica-de-Nuestra-Señora-de-la-Candelaria1')
+//     //two
+// const historiaElementTwo = document.getElementById('Museo-el-Castillo')
+// const HElementTwo=document.getElementById('Museo-el-Castillo1')
+//     //three
+// const historiaElementThree = document.getElementById('Parque-Berrío')
+// const HElementThree = document.getElementById('Parque-Berrío1')
 
-// cultura
-    //one
-const culturaElementOne =document.getElementById('Museo-Casa-de-la-Memoria')
-const CElementOne =document.getElementById('Museo-Casa-de-la-Memoria1')
-    //two
-const culturaElementtwo =document.getElementById('Cementerio-Museo-de-San-Pedro')
-const CElementTwo =document.getElementById('Cementerio-Museo-de-San-Pedro1')
-    //three
-const culturaElementthree =document.getElementById('Palacio-de-la-cultura-Rafael-Ubire')
-const CElementThree =document.getElementById('Palacio-de-la-cultura-Rafael-Ubire1')
+// // cultura
+//     //one
+// const culturaElementOne =document.getElementById('Museo-Casa-de-la-Memoria')
+// const CElementOne =document.getElementById('Museo-Casa-de-la-Memoria1')
+//     //two
+// const culturaElementtwo =document.getElementById('Cementerio-Museo-de-San-Pedro')
+// const CElementTwo =document.getElementById('Cementerio-Museo-de-San-Pedro1')
+//     //three
+// const culturaElementthree =document.getElementById('Palacio-de-la-cultura-Rafael-Ubire')
+// const CElementThree =document.getElementById('Palacio-de-la-cultura-Rafael-Ubire1')
 
-// naturaleza
-    //one
-const naturalezaElementone = document.getElementById('Jardin-Botánico');
-const NElementOne = document.getElementById('Jardin-Botánico1')
-    //two
-const naturalezaElementonetwo = document.getElementById('Parque-Arví');
-const NElementTwo = document.getElementById('Parque-Arví1');
-    //three
-const naturalezaElementthree = document.getElementById('Cerro-el-Picacho');
-const NElementThree = document.getElementById('Cerro-el-Picacho1');
-//restaurantes
-    //one
-const restauranteElementone = document.getElementById('Bad-Burgers');
-const RElementOne = document.getElementById('Bad-Burgers1');
-    //two
-//const restauranteElementonetwo = document.getElementById('');
-//const RElementTwo = document.getElementById('1');
+// // naturaleza
+//     //one
+// const naturalezaElementone = document.getElementById('Jardin-Botánico');
+// const NElementOne = document.getElementById('Jardin-Botánico1')
+//     //two
+// const naturalezaElementonetwo = document.getElementById('Parque-Arví');
+// const NElementTwo = document.getElementById('Parque-Arví1');
+//     //three
+// const naturalezaElementthree = document.getElementById('Cerro-el-Picacho');
+// const NElementThree = document.getElementById('Cerro-el-Picacho1');
+// //restaurantes
+//     //one
+// const restauranteElementone = document.getElementById('Bad-Burgers');
+// const RElementOne = document.getElementById('Bad-Burgers1');
+//     //two
+// //const restauranteElementonetwo = document.getElementById('');
+// //const RElementTwo = document.getElementById('1');
 
 
-//eventos 
-//Historia
-historiaElementOne.addEventListener('click',()=>{
-  console.log(HElementOne.textContent);
-  compararinfo(HElementOne.textContent)
-})
+// //eventos 
+// //Historia
+// historiaElementOne.addEventListener('click',()=>{
+//   console.log(HElementOne.textContent);
+//   compararinfo(HElementOne.textContent)
+// })
 
-historiaElementTwo.addEventListener('click',()=>{
-  console.log(HElementTwo.textContent);
-  compararinfo(HElementTwo.textContent)
-})
-historiaElementThree.addEventListener('click',()=>{
-  console.log(HElementThree.textContent);
-  compararinfo(HElementThree.textContent)
-})
-//Cultura
-culturaElementOne.addEventListener('click',()=>{
-  console.log(CElementOne.textContent);
-  compararinfo(CElementOne.textContent)
-})
+// historiaElementTwo.addEventListener('click',()=>{
+//   console.log(HElementTwo.textContent);
+//   compararinfo(HElementTwo.textContent)
+// })
+// historiaElementThree.addEventListener('click',()=>{
+//   console.log(HElementThree.textContent);
+//   compararinfo(HElementThree.textContent)
+// })
+// //Cultura
+// culturaElementOne.addEventListener('click',()=>{
+//   console.log(CElementOne.textContent);
+//   compararinfo(CElementOne.textContent)
+// })
 
-culturaElementtwo.addEventListener('click',()=>{
-  console.log(CElementTwo.textContent);
-  compararinfo(CElementTwo.textContent)
-})
+// culturaElementtwo.addEventListener('click',()=>{
+//   console.log(CElementTwo.textContent);
+//   compararinfo(CElementTwo.textContent)
+// })
 
-culturaElementthree.addEventListener('click',()=>{
-  console.log(CElementThree.textContent);
-  compararinfo(CElementThree.textContent)
-})
-//naturaleza
+// culturaElementthree.addEventListener('click',()=>{
+//   console.log(CElementThree.textContent);
+//   compararinfo(CElementThree.textContent)
+// })
+// //naturaleza
 
-naturalezaElementone.addEventListener('click',()=>{
-  console.log(NElementOne.textContent);
-  compararinfo(NElementOne.textContent)
-})
+// naturalezaElementone.addEventListener('click',()=>{
+//   console.log(NElementOne.textContent);
+//   compararinfo(NElementOne.textContent)
+// })
 
-naturalezaElementonetwo.addEventListener('click',()=>{
-  console.log(NElementTwo.textContent);
-  compararinfo(NElementTwo.textContent)
-})
+// naturalezaElementonetwo.addEventListener('click',()=>{
+//   console.log(NElementTwo.textContent);
+//   compararinfo(NElementTwo.textContent)
+// })
 
-naturalezaElementthree.addEventListener('click',()=>{
-  console.log(NElementThree.textContent);
-  compararinfo(NElementThree.textContent)
-})
+// naturalezaElementthree.addEventListener('click',()=>{
+//   console.log(NElementThree.textContent);
+//   compararinfo(NElementThree.textContent)
+// })
 
-//restaurante
+// //restaurante
 
-restauranteElementone.addEventListener('click',()=>{
-  console.log(RElementOne.textContent);
-  compararinfo(RElementOne.textContent)
-})
+// restauranteElementone.addEventListener('click',()=>{
+//   console.log(RElementOne.textContent);
+//   compararinfo(RElementOne.textContent)
+// })
 
 
 

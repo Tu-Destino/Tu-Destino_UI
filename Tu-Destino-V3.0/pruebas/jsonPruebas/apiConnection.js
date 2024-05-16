@@ -1,5 +1,10 @@
 
-export const UrlBase = "https://tu-destino-business-logic.onrender.com/"
+export const UrlBase = "https://tu-destino-business-logic.onrender.com/";
+export const UrlComent = "https://tu-destino-business-logic.onrender.com/comment";
+export const UrlPost = "https://tu-destino-business-logic.onrender.com/postDiscover";
+export const UrlUser= "https://tu-destino-business-logic.onrender.com/user";
+export const UrlPlace= "https://tu-destino-business-logic.onrender.com/place";
+export const UrlPublication= "https://tu-destino-business-logic.onrender.com/publication";
 
 
 
@@ -22,14 +27,16 @@ export async function post(url,info){
 
 // READ - OBTENER DATOS DEL JSON
 export async function get(url){
+let varia;
     try {
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
-        return data;
+        varia= data;
     } catch (error) {
         console.error(error);
     }
+    return varia;
 };
 
 // METODO UPDATE - para actualizar datos de la base de datos json
