@@ -9,14 +9,17 @@ const viewAdmi3 = document.getElementById("viewAdmi3");
 const CVA3 = document.getElementById("CVA3");
 const viewAdmi4 = document.getElementById("viewAdmi4");
 const CVA4 = document.getElementById("CVA4");
+const formularios = document.getElementById("CVA5") //6
 
 //Events
+
 
 viewAdmi1.addEventListener("click",() => {
   CVA1.style.display="flex";
   CVA2.style.display="none";
   CVA3.style.display="none";
   CVA4.style.display="none";
+  formularios.style.display="none" //6
 });
 
 viewAdmi2.addEventListener("click",() => {
@@ -24,6 +27,7 @@ viewAdmi2.addEventListener("click",() => {
   CVA2.style.display="flex";
   CVA3.style.display="none";
   CVA4.style.display="none";
+  formularios.style.display="none" //6
 });
 
 viewAdmi3.addEventListener("click",() => {
@@ -31,6 +35,7 @@ viewAdmi3.addEventListener("click",() => {
   CVA2.style.display="none";
   CVA3.style.display="flex";
   CVA4.style.display="none";
+  formularios.style.display="none" //6
 });
 
 viewAdmi4.addEventListener("click",() => {
@@ -38,6 +43,7 @@ viewAdmi4.addEventListener("click",() => {
   CVA2.style.display="none";
   CVA3.style.display="none";
   CVA4.style.display="flex";
+  formularios.style.display="none" //6
 });
 
 //artisanal modal

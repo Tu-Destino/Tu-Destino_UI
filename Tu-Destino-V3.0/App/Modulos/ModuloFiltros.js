@@ -2,6 +2,7 @@
 
 // importados
 import { DataSpanish } from "../../DataBase/Data-Spanish.js";
+import { UrlPlace, get } from "../../pruebas/jsonPruebas/apiConnection.js";
 import { DataImg, CargaImagenes, limpiar } from "../AppDecubrir.js";
 import { ReiVeces, limpiarStyle}   from "./ModuloSelectores.js"; 
 
@@ -92,14 +93,14 @@ import { ReiVeces, limpiarStyle}   from "./ModuloSelectores.js";
         console.log('filtrado de Data-img');
         DataFiltrados= DataImg.filter(data=> {     return  data.etiquetas.includes(criterio) })
        
-           console.log(DataFiltrados);
+          // console.log(DataFiltrados);
         CargaImagenes(DataFiltrados)
     }
     else{
         console.log('filtrado de Data-filtrado');
         const f= DataFiltrados
         DataFiltrados= f.filter(data=> {     return  data.etiquetas.includes(criterio) } )          
-            console.log(DataFiltrados);
+          //  console.log(DataFiltrados);
             CargaImagenes(DataFiltrados)
     }
     }
@@ -108,17 +109,33 @@ import { ReiVeces, limpiarStyle}   from "./ModuloSelectores.js";
 
   
  // funciones de filtro para comparar y extraer la informacion correspondiente del lugar seleccionado
- export function buscarInfo(){
-  const informacion= DataSpanish.filter(filraNombre)
- localStorage.setItem('lugar',JSON.stringify( informacion))
+ export async function buscarInfo(){
+  //const informacion= DataSpanish.filter(filraNombre)
+  const informacion= await get(UrlPlace)
+ console.log(await filraNombre(informacion));
+ localStorage.setItem('lugar',JSON.stringify(await filraNombre(informacion)))
   }
- export function filraNombre(nombre){
-  if(criteriosFiltros.nombre){
-   return nombre.titulo == criteriosFiltros.nombre
+ export async function filraNombre(nombre){
+  let result;
+
+  await nombre.forEach(element => {
+   
+      if(criteriosFiltros.nombre){
+        if (element.titulo == criteriosFiltros.nombre) {
+               
+            result= element;
+        }
+  
   }
   else{
-   return nombre
+   result= "NO hay lugar"
   }
+ 
+
+  });
+
+    return result;
+
  }
 
  export function limpieza (){

@@ -142,7 +142,9 @@ display: flex;
   align-items: center;
   justify-content: center;
 }
-#CVA5,#CVA2,#CVA1,#CVA4{
+
+/* 5. */
+#CVA2,#CVA5,#CVA4,#CVA3{
   display: none;
 }
 .ViewCenter{
@@ -307,7 +309,7 @@ display: flex;
   border-left: solid #d0d0d0 2px;
 }
 
-#create_place{
+#load_place {
   margin-left:2rem ;
   width: 75%;
   height: 100% ;
@@ -318,7 +320,25 @@ display: flex;
   font-family: "Inter", sans-serif;
   border-radius: 1.5rem;
 }
+
+#create_place {
+  margin-left:2rem ;
+  width: 75%;
+  height: 100% ;
+  padding: 1rem;
+  font-size: 2.6rem;
+  background-color: #1c7ce2 ;
+  color:#e3efff;
+  font-family: "Inter", sans-serif;
+  border-radius: 1.5rem;
+}
+
 #create_place:hover{
+  background-color: #e3efff;
+  color: #1c7ce2;
+}
+
+#load_place:hover{
   background-color: #e3efff;
   color: #1c7ce2;
 }
