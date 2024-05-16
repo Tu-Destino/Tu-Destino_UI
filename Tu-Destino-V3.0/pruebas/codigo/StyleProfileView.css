@@ -1,9 +1,23 @@
+
+
+@import url('https://fonts.cdnfonts.com/css/poppins');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+
 *{
   text-decoration: none;
   list-style: none;
   margin: 0;
   padding: 0;
+  border: 0;
+  /* animation: rotateL 5s ease; */
 }
+@keyframes rotateL{
+  0%{transform: rotate(0); }
+  100%{transform: rotate(360deg);}
+
+}
+
 html{
   font-size: 62.5%;
 }
@@ -18,26 +32,32 @@ height: 100%;
 display: flex;
 }
 
-/* 2 */
-
+/* ----------------------------------Confing View--------------------------------- */
 #admiView{
 display: flex;
 }
 #userView{
   display: none;
 }
+
+/* ---------------------------------------------------------------------------------- */
+
+
+/* ------------------------------NAV------------------------- */
 .nav{
-  width: 15%;
+  width: 25rem;
   height: 100%;
   background-color: rgb(22, 22, 22);
   border-right: .1px solid white;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: fixed;
+  border-right: solid rgb(155, 155, 155) 2.5px;
   }
 .logo{
   color: white;
-  height: 10%;
+  height: 9rem;
   border-bottom: solid 2px beige;
 }
 .logo a {
@@ -48,8 +68,8 @@ display: flex;
   color: white;
 }
 .logo a img{
-  width: 9rem;
-  height: 9rem;
+  width: 80px;
+  height: 80px;
 }
 .logo a:hover{
   color: azure;
@@ -97,53 +117,53 @@ display: flex;
   margin-right: 2rem;
   margin-bottom: 1rem;
 }
+
+/*---------------------------------------------Content---------------------------------------- */
 .content{
-  width: 85%;
+  width: 100%;
+  margin-left: 25rem;
   height: 100%;
-  background-color: rgb(36, 34, 34);
+  background-color: #f5f5f7;
 }
 .CView{
-  background-image: url(https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg);
-  background-position-x: center;
-  background-position-y: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#CVA2,#CVA1,#CVA4{
+#CVA2,#CVA1,#CVA4,#CVA3{
   display: none;
 }
 .ViewCenter{
-  background-color: rgb(36, 34, 34);
-  width: 90%;
-  height: 90%;
-  border: 1rem solid rgba(255, 255, 255, 0.035);
+  background-color: #f5f5f7;
+  width: 110rem;
+  height: 80rem;
+  border: 4px solid rgb(208, 208, 208);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
+  justify-content: flex-start;
+  border-radius: 3rem;
 }
 .VCC{
-  background-color: rgb(31, 31, 31);
-  border: 1rem solid rgb(28, 27, 27);
-  width: 65%;
-  height: 80%;
-  border-radius: 1rem;
+  background-color:  #e7e7ed;
+  border: 4px solid rgb(208, 208, 208);
+  width: 90rem;
+  height: 80rem;
+  border-radius: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  padding: 2rem;
 }
 .VC-profile{
   width: 100%;
-  height: 22%;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.084);
+  height: 34%;
+  padding: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,40 +195,57 @@ display: flex;
 }
 .texP{
   font-size: 3rem;
-  color: aliceblue;
+  color: rgb(49, 49, 49);
+  font-family: "Inter", sans-serif;
+  font-size: 4rem;
 }
 .Pr{
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25%;
-  height: 10%;
+  width: 12rem;
+  height: 5rem;
+  left: 18.9rem;
+  top: 5rem;
+
 }
 .Pr button{
+  position: relative;
   font-size: 1.5rem;
-  margin-bottom: 1.7rem;
+  width: 100%;
+  height: 100%;
+  background-color: #1c7ce2;
+  border-radius: 980px;
+  color: #f5f5f7;
+  font-family: "Inter", sans-serif;
 }
+.Pr button:hover{
+  background-color: #e3efff;
+  color: #1c7ce2;
+  border: solid #519def 2px;
+}
+
 #BtnSummit{
   display: none;
 }
 .profile-info{
-  width: 84%;
-  height: 70%;
+  width: 100%;
+  height: 65%;
   border: 1px solid rgba(255, 255, 255, 0.084);
-  border-radius: 1rem;
-  background-color: rgba(2, 2, 21, 0.241);
+  border-radius: 3rem;
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  justify-content: flex-start;
+  padding: 5rem;
 }
 .info{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   color: white;
   position: relative;
-  left: 10%;
-  top: 10%;
 }
 .update{
   color: white;
@@ -218,63 +255,163 @@ display: flex;
 }
 .titleInfo{
   font-size: 2rem;
+  color: #000000;
+  margin: 1rem;
+  text-align: start;
 }
 .update{
   display:none;
 }
 
 .update, .infoV,.infoVe{
-  border: 1px solid black;
-  padding: 10px 20px 5px;
+  border: 2px solid rgb(170, 170, 170);
+  padding: 1.5rem;
   width: 60%;
-  border-radius: .5rem;
-  background-color: rgb(24, 23, 23);
+  height: 5rem;
+  border-radius: 1rem;
   font-size: 1.5rem;
+  color: #2b2b2b;
 }
 /* general styles of information frames */
 .textR{
   color: white;
   font-size: 3rem;
-  height: 10%;
-  width: 90%;
+  height: 13%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  border-bottom: solid #919191 3px ;
+  padding: 1.5rem;
+}
+
+.filters_manage_places{
+  width: 75%;
+  height: 100%;
+  color: #1d1d1f;
+}
+
+.create_place{
+  width: 25%;
+  height: 100%;
+  border-left: solid #d0d0d0 2px;
+}
+
+#create_place{
+  margin-left:2rem ;
+  width: 75%;
+  height: 100% ;
+  padding: 1rem;
+  font-size: 2.6rem;
+  background-color: #1c7ce2 ;
+  color:#e3efff;
+  font-family: "Inter", sans-serif;
+  border-radius: 1.5rem;
+}
+#create_place:hover{
+  background-color: #e3efff;
+  color: #1c7ce2;
 }
 
 .listPublic ,.listmodal{
-  height: 75%;
-  width:85%;
-  background-color: rgba(2, 2, 21, 0.241);
-  border-radius: 1rem;
-  border: 10px solid rgba(255, 255, 255, 0.084) ;
+  height: 80%;
+  width:90%;
+  border-radius: 2rem;
+  border: 5px solid #d0d0d0 ;
   overflow: scroll;
- 
-
 }
 
 .public{
-  background-color: rgba(41, 38, 38, 0.789);
-  border: 10px solid rgba(255, 255, 255, 0.084) ;
+  background-color: #f5f5f7;
+  border: 5px solid rgb(182, 182, 182) ;
   width: 90%;
-  height: 8rem;
+  height: 10rem;
   margin-left: 4.5rem;
-  border-radius: 1rem;
+  border-radius: 2.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   display: flex ;
   align-items: center;
   justify-content: center;
 }
+
+
 .public div{
-  width: 100%;
+  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  padding: 1.5rem;
 }
+
+.infoPlaceD{
+  height: 100% !important;
+} 
+
+.btnPlaces_datils{
+  width: 75%;
+  height: 100%;
+  border-radius: 3rem;
+  font-family: "Inter", sans-serif;
+}
+
+.btnUser{
+  height: 100%;
+  padding: 1rem !important;
+}
+
+.btnDelete_place{
+  width: 40px;
+  height: 40px;
+  margin-right: 2rem;
+  background-color: rgb(237, 83, 83);
+  border-radius: 0.5rem;
+}
+
+.btnDelete_place:hover{
+  background-color: rgb(255, 133, 133);
+}
+
+.btnEdit_place{
+  width: 40px;
+  height: 40px;
+  background-color: #bfdbff ;
+  border-radius: 0.5rem;
+}
+
+.btnEdit_place:hover{
+  background-color: #deecff;
+}
+
+.infoPlaceT{
+  background-color: #d9d9d9;
+  height: 100% !important;
+  width: 100% !important;
+  border-radius: 3rem;
+  color: #1d1d1f !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important;
+}
+
+.infoPlaceT_name{
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  background-color: #dcd7e8;
+  border: solid  #beb6d0  2px ;
+  padding: 1.4rem;
+  border-radius: 3rem ;
+
+}
+
+.infoPlaceT_text{
+  margin-left: 1rem;
+}
+
 .headPublic, .headPublicmodal,.headPublicUser{
   background-color:  rgba(2, 2, 21, 0.241);
   height:6rem;
@@ -338,12 +475,6 @@ display: flex;
   width: 10%;
   border-radius: 1rem;
 }
-.titleInfo{
-  color: white ;
-  width: 20%;
-  text-align: center;
-  
-}
 .titleInfomodal, .titleInfoUser{
   width: 25%;
 }
@@ -367,7 +498,6 @@ display: flex;
   justify-content: center;
   width: 100%;
   height: 50%;
-  border-right: 2px solid white;
 }
 
 .infoPublicID .infoUserID{
@@ -416,6 +546,91 @@ display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* -----------------------------CVA5--------------------------------- */
+
+.nav_createPlace{
+  color: white;
+  font-size: 3rem;
+  height: 13%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  border-bottom: solid #919191 3px ;
+  padding: 1.5rem;
+}
+
+.button_createPlace{
+  height: 100%;
+  width: 26.4rem;
+  
+}
+
+#btnPlace_cancel{
+  margin-left:2rem ;
+  width: 75%;
+  height: 100% ;
+  padding: 1rem;
+  font-size: 2.6rem;
+  background-color: #868686 ;
+  color:#e3efff;
+  font-family: "Inter", sans-serif;
+  border-radius: 1.5rem;  
+}
+
+#btnPlace_cancel:hover{
+  background-color: #e3efff;
+  color:  #868686;
+}
+
+#content_createPlace{
+  height: 80%;
+  width:90%;
+  border-radius: 2rem;
+  border: 5px solid #d0d0d0 ;
+  overflow: scroll;
+  display: flex;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.createPlace_contentInput{
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+}
+
+.titleInput_createPlace{
+  font-family: "Inter", sans-serif;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.createPlace_input{
+  width: 95%;
+  height: 4rem;
+  border-radius: 1rem;
+  padding-left: 1.5rem;
+  border: solid #d1d1d1 2px;
+  margin-bottom: 2rem;
+}
+
+#CPI_description{
+  resize: none;
+  height: 12rem;
+  
+}
+
+#CPI_info{
+  resize: none;
+  height: 12rem;
+}
+
+/* --------------------------------------------------------------- */
+
 
 @media (min-width: 1200px){
 .modal-xl {
