@@ -9,6 +9,7 @@ export const UrlPublication= "https://tu-destino-business-logic.onrender.com/pub
 
 
 export async function post(url,info){
+    let isPost= false;
     try {
         const response = await fetch(url,{
             method: "POST",
@@ -18,11 +19,19 @@ export async function post(url,info){
             body: JSON.stringify(info)  
         });
         const data = await response.json();
-        console.log(data);
-        return data;
+       if(data.status=="BAD_REQUEST"){
+        isPost= false;
+       }else{
+        isPost=true;
+       }
+       
+
     } catch (error) {
-        console.error(error);
+        console.log(error);
+        isPost= false;
     }
+    console.log(isPost);
+    return isPost
 }
 
 // READ - OBTENER DATOS DEL JSON

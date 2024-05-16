@@ -147,7 +147,7 @@ window.addEventListener("scroll", ()=>{
 
     // Funciones para la informacion interna de las imagenes
     // Evento click de la Img
-   function selectImg(){
+   export function selectImg(){
       const ImagenDetalles = document.querySelector('#Conte-img')
      ImagenDetalles.addEventListener('click',Imgdetalles)
    } 

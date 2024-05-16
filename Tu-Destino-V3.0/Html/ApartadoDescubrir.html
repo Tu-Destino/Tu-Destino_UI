@@ -9,6 +9,7 @@
     <script defer type="module" src="../App/AppDecubrir.js  "></script>
     <script defer type="module" src="../App/Modulos/ModuloSelectores.js"></script>
     <script defer type="module" src="../App/FuncionesPostDescubrir.js"></script>
+    <script defer type="module" src="../App/Modulos/upload.js"></script>
     <!----------Link-------->
     <link rel="stylesheet" href="../Styles/StyleTraductor.css">
     <link rel="stylesheet" href="../Styles/StyleDescubrir.css">
@@ -134,36 +135,69 @@
      
   </script>
 </button>
-<div class="marco-izquierdo-espacio">
+<!-- Modal Alert -->
+<div class="modalAlert" id="modalResuld">
+  <div class="AlertCenter">
+    <div class="textAlert">
+    <h2 id="TextResult"></h2>
+    <h3 id="TextResultPe"></h3>
   
+  </div>
+    <div class="optionAlert">
+      <button type="button" class="btn " id="btnCerrarResul"></button>
+    </div>
+
+  </div>
+</div>
+<!--Modal de result-->
+<div class="modalAlert" id="modalAlert">
+  <div class="AlertCenter">
+    <div class="textAlert">
+    <h2>Tienes que iniciar sesión para poder postear</h2>
+    <h3>¿Quieres iniciar sesión?</h3>
+  </div>
+    <div class="optionAlert">
+      <button type="button" class="btn " id="btnAceptar"><a href="#">Iniciar sesion</a></button>
+      <button type="button" class="btn " id="btnCancelar">seguir viendo</button>
+    </div>
+
+  </div>
+</div>
+<div class="marco-izquierdo-espacio">
    <!-- espacio para estructuración --> 
+
+
 </div>
 <section id="storageModal">
   <div class="centerModalPost">
     <div class="">
-      <div class="modal-content">
-        <div >
-          <button type="button" class="btn-close" ></button>
+      <div class="modal-content contentPOst">
+        <div class="Barra_post">
+          <button type="button" class="btn-close" id="btnClosePost"></button>
 
         </div>
-        <div class="modal-body">
+        <div class="modal-body bodyPost">
           <table class="modal-marco">
              <div class="modal-marco" >
               <td class="modal-img frame_img_post">
-                <input class="post_img" id="post_img" accept="image/png,image/jpeg" onchange="showPreview(event);"  type="file" >
+                <input class="post_img" id="post_img" accept="image/png,image/jpeg" onchange="showPreview(event); "  type="file" >
                 <div class="img_post">
                      <img src="" alt="" id="imgUpload" width="600px" height="470px">
                 </div>
-                <script>
+                <script >
+             
                   function showPreview(evet){
                     if(evet.target.files.length > 0){
                       var src= URL.createObjectURL(evet.target.files[0]);
-                      var preview=document.getElementById("imgUpload");
+                       var preview=document.getElementById("imgUpload");
                       preview.src=src;
-                    
+                      
+                     
                     }
                   }
+  
                 </script>
+                
              
               </td>
               <td class="text-modal text_modal_post">
