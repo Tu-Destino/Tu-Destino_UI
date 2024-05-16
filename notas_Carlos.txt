@@ -1,25 +1,55 @@
 
 
-1. 
+1.
 
 > Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/profileView.html
 
-abrimos el archivo donde esta la vista de administrador 
+abrimos el archivo donde esta la vista de administrador
 
-2. 
+2.
 
 > Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/StyleprofileView.css
 
-cambiamos los atributos para que se muestre solo la vista de admin 
+cambiamos los atributos para que se muestre solo la vista de admin
 
 3.
 
 > Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/User.json
 
-Creamos el objeto ficticio donde almacenaremos los objetos tipo coder 
+Creamos el objeto ficticio donde almacenaremos los objetos tipo coder
 
-4. 
+4.
 
 > Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/profileView.html
 
-En el div "modelAl" borramos los apartados de muestra 
+En el div "modelAl" borramos los apartados de muestra
+
+                        Jueves 16 de mayo 2024
+
+5.
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/
+StyleProfileView.css
+
+se cambio la clase del formulario #CVA1 a #CVA5 para que quede
+oculta por defecto
+
+6. 
+funcionalidad del boton crear lugar 
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/AppProfileAdmi.js
+
+genero los selectores para el boton y para la vista del lugar
+
+oculto el formulario por defecto
+
+hago que al oir el boton se muestre el formulario
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/
+AppProfileView.js
+
+hacemos que el formulario aparezca oculto cuando salto entre vistas
+
+7.
+
+

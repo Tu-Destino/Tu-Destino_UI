@@ -133,7 +133,9 @@ display: flex;
   align-items: center;
   justify-content: center;
 }
-#CVA2,#CVA1,#CVA4,#CVA3{
+
+/* 5. */
+#CVA2,#CVA5,#CVA4,#CVA3{
   display: none;
 }
 .ViewCenter{
