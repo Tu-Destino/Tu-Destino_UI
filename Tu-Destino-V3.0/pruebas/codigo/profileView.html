@@ -53,8 +53,8 @@
           </div>
           <div class="profile-info">
             <div class="info">
-              <label class="titleInfo">Nombre:</label>
-            <input class="update" id="IName"  type="text" value="Juan Cardenas" placeholder="Juan Cardenas">
+                <label class="titleInfo">Nombre:</label>
+              <input class="update" id="IName"  type="text" value="Juan Cardenas" placeholder="Juan Cardenas">
             <label class="infoV" > Juan Cardenas</label>
             </div>
             <div class="info">
@@ -207,74 +207,96 @@
   </section>
   <section class="CView" id="CVA4">
     <div class="ViewCenter">
-    <div class="textR"> <h2>Lista de publicaciones</h2></div>
+    <div class="textR"> 
+      <div class="filters_manage_places"></div>
+      <div class="create_place"><button id="create_place">Crear Lugar</button></div>
+    </div>
+
     <div class="listPublic">
-      <div class="headPublic">
+
+      <!----------------------------- Card Places----------------------------- -->
+      <div class="public">
+        <div>
+          <div class="infoPlaceT infoPublic">
+            <label class="infoPlaceT_name">name_place</label>
+            <label class="infoPlaceT_text">  Id: 32fdf2fgweq11</label>
+          </div>
+        </div>
         
-        <label class="titleInfo titleInfoL">ID</label>
-        <label class="titleInfo titleInfoL">Titulo</label>
-        <label class="titleInfo titleInfoL">Ver Detalles🖋️</label>
-        <label class="titleInfo titleInfoL">Opciones</label>
+        <div>
+          <label class="infoPlaceD infoPublic"><button class="btnPlaces_datils"> Ver Detalles </button></label>
+          <div class="btnUser">
+            <button class="btnDelete_place">🗑️</button>
+            <button class="btnEdit_place">🖋️</button>
+          </div>
+        </div>   
       </div>
-      <div class="public">
-        <div><label class="infoPlaceID infoPublic ">1</label></div>
-        <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-        <div class="btnUser">
-          <button class="btnDeleteUser">🗑️</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPlaceID infoPublic ">1</label></div>
-        <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-        <div class="btnUser">
-          <button class="btnDeleteUser">🗑️</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPlaceID infoPublic ">1</label></div>
-        <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-        <div class="btnUser">
-          <button class="btnDeleteUser">🗑️</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPlaceID infoPublic ">1</label></div>
-        <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-        <div class="btnUser">
-          <button class="btnDeleteUser">🗑️</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPlaceID infoPublic ">1</label></div>
-        <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-        <div class="btnUser">
-          <button class="btnDeleteUser">🗑️</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPlaceID infoPublic ">1</label></div>
-        <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-        <div class="btnUser">
-          <button class="btnDeleteUser">🗑️</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPlaceID infoPublic ">1</label></div>
-        <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-        <div class="btnUser">
-          <button class="btnDeleteUser">🗑️</button>
-        </div>
-      </div>
+      <!-- --------------------------------------------------------------- -->
+
     </div>
     </div>
   </section>
+
+  <section class="CView" id="CVA5">
+    <div class="ViewCenter">
+    <div class="nav_createPlace"> 
+      <div class="button_createPlace"><button id="btnPlace_cancel">Cancelar</button></div>
+      <div class="button_createPlace"></div>
+      <div class="button_createPlace"><button id="create_place">Guardar</button></div>
+    </div>
+
+    <div id="content_createPlace">    
+
+      <div class="createPlace_contentInput">
+        <label class="titleInput_createPlace">Nombre de el lugar:</label>
+        <input required class="createPlace_input" id="CPI_title"  type="text" value="" placeholder="Ingrese el nombre del lugar...">
+      
+        <label class="titleInput_createPlace">Descripcion:</label>
+        <textarea required  class="createPlace_input" id="CPI_description" rows="4" cols="50" placeholder="Ingrese la descripcion del lugar..."></textarea>
+        
+        <label class="titleInput_createPlace">Info:</label>
+        <textarea required  class="createPlace_input" id="CPI_info" rows="4" cols="50" placeholder="Ingrese la informacion del lugar..."></textarea>
+      
+        <label class="titleInput_createPlace">Numero telefonico:</label>
+        <input required class="createPlace_input" id="CPI_phone"  type="tel" value="" placeholder="Ingrese el numero telefonico...">
+      
+      </div>  
+
+      <div class="createPlace_contentInput">
+          <label class="titleInput_createPlace">Tipo de lugar:</label>
+          <Select  class="createPlace_input">
+            <option value="CULTURA">Cultura</option>
+            <option value="NATURALEZA">Naturaleza</option>
+            <option value="HISTORIA">Historia</option>
+            <option value="ACTIVIDAD">Actividad</option>
+            <option value="RESTAURANTE">Restaurante</option>
+            <option value="HOSPEDAJES">Hospedaje</option>
+
+          </Select>
+
+          <label class="titleInput_createPlace">Direccion:</label>
+          <input required class="createPlace_input" id="CPI_address" type="text" value="" placeholder="Ingrese la direccion...">
+      
+          <label class="titleInput_createPlace">Horario:</label>
+          <input required class="createPlace_input" id="CPI_schedule" type="text" value="" placeholder="Ingrese el horario...">
+      
+          <label class="titleInput_createPlace">Web:</label>
+          <input required class="createPlace_input" id="CPI_linkWeb" type="url" value="" placeholder="Ingrese el link de la pagina web...">
+      
+          <label class="titleInput_createPlace">Precio:</label>
+          <input required class="createPlace_input" id="CPI_price" type="text" value="" placeholder="Ingrese el precio...">
+      
+          <label class="titleInput_createPlace">URL Informacion:</label>
+          <input required class="createPlace_input" id="CPI_price" type="url" value="" placeholder="Ingrese el link de la informacion...">
+      
+          
+        </div>
+
+    </div>
+    </div>
+  </section>
+
+
   </div>
 </section>
 <section class="frame-View" id="userView">
