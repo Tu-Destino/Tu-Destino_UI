@@ -150,37 +150,50 @@
           <table class="modal-marco">
              <div class="modal-marco" >
               <td class="modal-img frame_img_post">
-                <input class="post_img" id="post_img" accept="image/png,image/jpeg"  type="file" >
+                <input class="post_img" id="post_img" accept="image/png,image/jpeg" onchange="showPreview(event);"  type="file" >
                 <div class="img_post">
-                     <img src="" alt="" width="600px" height="470px">
+                     <img src="" alt="" id="imgUpload" width="600px" height="470px">
                 </div>
+                <script>
+                  function showPreview(evet){
+                    if(evet.target.files.length > 0){
+                      var src= URL.createObjectURL(evet.target.files[0]);
+                      var preview=document.getElementById("imgUpload");
+                      preview.src=src;
+                    
+                    }
+                  }
+                </script>
              
               </td>
-              <td class="text-modal">
+              <td class="text-modal text_modal_post">
                 <div class="UserPost_info">
                   <img src="https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg" alt="">
                   <h2>Juan cardenas florez</h2>
                 </div>
-                <div class="UserPost_Searh">
+             
                     <div id="ctn-icon-search">
                       <i class="fas fa-search" id="icon-search"></i>
                     </div>
                     <div id="icon-menu">
                       <i class="fas fa-bars"></i>
                     </div>
-                </div>
+                
                 <!-- Opciones del buscador del lugar -->
-                <div id="ctn-bars-search">
-                  <input type="text" value=""  id="inputSearch" placeholder="¿Qué deseas buscar?">
+                <div id="ctn-bars-search"> 
+                  <label for="textinput"></label>
+                  <input type="text" name="textinput" value=""  required id="inputSearch" placeholder="Nombre de lugar">
               </div>
                 <!-- contenedor de opciones -->
               <ul id="box-search">
-              <li><button class="btnOptSearch" value="${titulo}" ><i class="fas fa-search"></i>${titulo}</button></li>
+              
 
               </ul>
           
               <div id="cover-ctn-search"></div>
-                
+                <div class="UserPost_descrip">
+                  <textarea placeholder="Ingrese la una descripción para el post" id="textArea" cols="50" rows="8"></textarea>
+                </div>
               <div class="UserPost_Tags">
                 <Button value="Arquitectura" class="post_Tags" >Arquitectura</Button>
                 <Button value="historia" class="post_Tags" >historia</Button>

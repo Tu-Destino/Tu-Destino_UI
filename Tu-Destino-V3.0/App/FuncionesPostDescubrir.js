@@ -23,8 +23,11 @@ async function loadOptionSearch(){
 await loadOptionSearch();
 const options = document.querySelectorAll(".btnOptSearch");
 const  inputSearch = document.getElementById("inputSearch");
+const  textArea = document.getElementById("textArea");
 const tags = document.querySelectorAll(".post_Tags");
 const btnSave =document.getElementById("post_Save");
+const post_img =document.getElementById("post_img");
+const imgUpload = document.getElementById("imgUpload")
 console.log(tags);
 let listTags= new Array();
 
@@ -46,7 +49,12 @@ options.forEach(option => {
     ocultar_buscador()
   })
 })
+post_img.addEventListener("click",()=>{
 
+  console.log(imgUpload.src);
+
+
+})
 
 
 tags.forEach(tag=>{
@@ -73,7 +81,11 @@ tags.forEach(tag=>{
   }
 })})
 
+
+
 btnSave.addEventListener("click", ()=>{
   post.etiquetas=listTags.toString()
+  post.descripcion=textArea.value;
+  post.urlImg=post_img.value;
   console.log(post);
 })

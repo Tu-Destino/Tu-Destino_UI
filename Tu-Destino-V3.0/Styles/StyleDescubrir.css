@@ -569,6 +569,12 @@ background-color: white;
 width: 70%;
 
 }
+.text_modal_post{
+  width: 40%;
+}
+.frame_img_post{
+  width: 60%;
+}
 /* Zona de las images*/
 .frame_img_post{
   width: 600px;
@@ -593,6 +599,8 @@ width: 70%;
 .UserPost_info{
   display: flex;
   gap: 2rem;
+  width: 100%;
+  height: 15%;
 }
 .UserPost_info img{
 width: 5rem;
@@ -603,7 +611,13 @@ border-radius: 5rem;
 /*Buscador */
 /*Buscador de contenido*/
 
-
+.UserPost_Searh{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #ctn-icon-search{
   position: absolute;
@@ -628,17 +642,20 @@ border-radius: 5rem;
 
 #ctn-bars-search{
 
-  top: -10px;
-  width: 100%;
   background: #fff;
   padding: 20px;
+  height: 15%;
   z-index: 9;
   transition: all 600ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 #ctn-bars-search input{
   display: block;
-  width: 100%;
+
   margin: auto;
   padding: 10px;
   font-size: 18px;
@@ -684,12 +701,25 @@ border-radius: 5rem;
   z-index: 7;
   display: none;
 }
+
+/* textArea */
+.UserPost_descrip{
+  width: 100%;
+  height: 20%;
+  margin-bottom: 2rem;
+}
+#textArea{
+  width: 100%;
+  resize: none;
+}
+
 /* Zona de etiquetas*/
 .UserPost_Tags{
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
   width: 100%;
+  height: 35%;
   
 }
 .post_Tags{
@@ -708,7 +738,7 @@ border-radius: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  height: 10%;
   width: 100%;
   padding: 5px;
   border-radius: 5px;
