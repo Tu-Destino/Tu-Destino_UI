@@ -1,3 +1,15 @@
+// importacion del URL del metodo get para lugares
+// 8
+import {
+  UrlPlace,
+  UrlPublication,
+  UrlUser,
+  get,
+  post,
+  update,
+  deleteHttp,
+} from "../jsonPruebas/apiConnection.js";
+
 //  Html selectors
 const labeles = document.querySelectorAll(".infoV");
 const inputs = document.querySelectorAll(".update");
@@ -11,6 +23,8 @@ const btnSearch = document.getElementById("btnSearch");
 const btnCreateLugar = document.getElementById("create_place"); //6
 const formulario = document.getElementById("CVA5"); //6
 const principal = document.getElementById("CVA4"); // 6
+const cancelar = document.getElementById("btnPlace_cancel");
+
 //Events
 btnEdit.addEventListener("click", () => {
   labeles.forEach((labe) => {
@@ -23,12 +37,13 @@ btnEdit.addEventListener("click", () => {
   btnSummit.style.display = "block";
 });
 
-
 // ocultar el formulario por defecto
 // 6
-const dom = document.addEventListener(`DOMContentLoaded`, () => {
+// 8
+document.addEventListener(`DOMContentLoaded`, async () => {
   formulario.style.display = "none";
 });
+await extraerLugar();
 
 const admi = {
   name: "",
@@ -68,3 +83,111 @@ btnCreateLugar.addEventListener("click", () => {
   formulario.style.display = "flex";
   console.log("boton");
 });
+
+//funcion para regresar
+// 7
+cancelar.addEventListener("click", () => {
+  principal.style.display = "flex";
+  formulario.style.display = "none";
+});
+
+function limpieza() {
+  const contenedor = document.getElementById("listPlace");
+  contenedor.innerHTML = "";
+}
+
+// inyeccion de lugares para admin
+// 8
+async function extraerLugar() {
+  const lugares = await get(UrlPlace);
+  const padre = document.getElementById("listPlace");
+  limpieza();
+
+  await lugares.forEach((lugar) => {
+    const { titulo, id } = lugar;
+    console.log(lugar);
+    const hijo = document.createElement("p");
+    const lugartHtml = `
+    <div class="public">
+    <div>
+      <div class="infoPlaceT infoPublic">
+        <label class="infoPlaceT_name">${titulo}</label>
+        <label class="infoPlaceT_text"> Id: ${id}</label>
+      </div>
+    </div>
+
+    <div>
+      <label class="infoPlaceD infoPublic"
+        ><button class="btnPlaces_datils" value="${id}">
+          Ver Detalles
+        </button></label
+      >
+      <div class="btnUser">
+        <button class="btnDelete_place" value="${id}">🗑️</button>
+        <button class="btnEdit_place" value="${id}">🖋️</button>
+      </div>
+    </div>
+  </div>
+  `;
+    hijo.innerHTML = lugartHtml;
+    padre.appendChild(hijo);
+
+    const tagBorrar = document.querySelectorAll(".btnDelete_place");
+
+    tagBorrar.forEach((borrar) => {
+      borrar.addEventListener("click", () => {
+        console.log("entro al boton");
+        eliminarLugar(borrar.value);
+        console.log("value" + borrar.value);
+      });
+    });
+  });
+}
+
+// 9
+// editado
+const editar = document.querySelectorAll(".btnPlaces_datils");
+
+async function extraerLocal(id_lugar) {
+  const lugares = await get(UrlPlace);
+  lugares.forEach((lugar) => {
+    const { id } = lugar;
+    if (id == id_lugar) {
+      console.log(lugar);
+      localStorage.setItem("LugarEdict", JSON.stringify(lugar));
+    }
+  });
+}
+
+editar.forEach((local) => {
+  local.addEventListener("click", () => {
+    extraerLocal(local.value);
+  });
+});
+
+// 10
+// borrado
+
+
+async function eliminarLugar(id_lugar) {
+  const lugares = await get(UrlPlace);
+  lugares.forEach(async (lugar) => {
+    const { id } = lugar;
+
+    if (id == id_lugar) {
+      let confirmacion = confirm("Seguro de que deseas eliminar este lugar?");
+      if (confirmacion == true) {
+        console.log(UrlPlace + `/${id_lugar}`);
+        await extraerLugar();
+        console.log("lugar eliminado");
+      } else {
+        console.log("lugar no eliminado");
+      }
+    }
+  });
+}
+
+
+
+// 11
+
