@@ -34,8 +34,8 @@ StyleProfileView.css
 se cambio la clase del formulario #CVA1 a #CVA5 para que quede
 oculta por defecto
 
-6. 
-funcionalidad del boton crear lugar 
+6.
+funcionalidad del boton crear lugar
 
 > Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/AppProfileAdmi.js
 
@@ -51,5 +51,38 @@ AppProfileView.js
 hacemos que el formulario aparezca oculto cuando salto entre vistas
 
 7.
+funcionalidad boton cancelar del formulario
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/AppProfileAdmi.js
+
+Creamos los selectores y evento click para regresar a la vista principal 
+
+8.
+inyeccion de lugares para admin
+
+> Tu-Destino_UI/Tu-Destino-V3.0/pruebas/codigo/AppProfileAdmi.js
+
+Generamos una funcion asincrona donde se llame el metodo get del
+UrlPlace
+
+-Creamos un selector que sea el padre de donde queremos inyectar
+los lugares
+
+- Creamos un foreach que lea todos los lugares y extraiga los datos
+que queremos (nombre y id)
+- Generamos un elemento "p"
+- Creamos el formato HTml de como se van a inyectar las cosas
+de forma dinamica
+
+- hacemos la asignacion de hijo y padre
+
+9.
+inyeccion de coders
+
+
+
+
+
+
 
 

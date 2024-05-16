@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="StyleProfileView.css" />
     <!-- Scrips-->
     <script defer src="AppProfileView.js"></script>
-    <script defer src="AppProfileAdmi.js"></script>
+    <script defer type="module" src="AppProfileAdmi.js"></script>
     <script defer src="AppProfileUser.js"></script>
   </head>
   <body>
@@ -108,7 +108,7 @@
             <div class="textR">
               <h2>Lista de publicaciones para revisión</h2>
             </div>
-            <div class="listPublic">
+            <div class="listPublic" >
               <div class="headPublic">
                 <label class="titleInfo">ID</label>
                 <label class="titleInfo">Usuario</label>
@@ -284,28 +284,9 @@
               </div>
             </div>
 
-            <div class="listPublic">
+            <div class="listPublic" id="listPlace">
               <!----------------------------- Card Places----------------------------- -->
-              <div class="public">
-                <div>
-                  <div class="infoPlaceT infoPublic">
-                    <label class="infoPlaceT_name">name_place</label>
-                    <label class="infoPlaceT_text"> Id: 32fdf2fgweq11</label>
-                  </div>
-                </div>
-
-                <div>
-                  <label class="infoPlaceD infoPublic"
-                    ><button class="btnPlaces_datils">
-                      Ver Detalles
-                    </button></label
-                  >
-                  <div class="btnUser">
-                    <button class="btnDelete_place">🗑️</button>
-                    <button class="btnEdit_place">🖋️</button>
-                  </div>
-                </div>
-              </div>
+                <!-- // 8  -->
               <!-- --------------------------------------------------------------- -->
             </div>
           </div>
@@ -486,7 +467,7 @@
         </div>
         <div class="contentUser">
           <div class="textR"><h2>Lista de publicaciones para revisión</h2></div>
-          <div class="listPublic">
+          <div class="listPublic" id="listPublicaciones">
             <div class="headPublic headPublicUser searchUserPost">
               <input
                 type="text"
