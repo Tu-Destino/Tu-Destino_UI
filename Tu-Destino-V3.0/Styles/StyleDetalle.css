@@ -801,7 +801,79 @@ body{
       color: rgb(11, 201, 11);
 
     }
+    /* Modo de edicion */
+    .btnEdit_place{
+      width: 40px;
+      height: 40px;
+      background-color: #bfdbff ;
+      border-radius: 0.5rem;
+      position: absolute;
+      right: 5.5%;
+      top: 10.6%;
+    }
     
+    .btnEdit_place:hover{
+      background-color: #deecff;
+    }
+    .textarea{
+      width: 100%;
+      resize: none;
+    }
+    .Edict{
+      width: 100%;
+      border-radius: .5rem;
+    }
+    .edicPhone, .edicWeb{
+      width: 95%;
+    }
+    .edicPhone::placeholder, .edicWeb::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .edictTitle::placeholder{
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    .edictTitle{
+      width: 40rem;
+      height: 4rem;
+    }
+
+    .editPrice, .editHorario{
+      height: 3.2rem;
+    }
+    .editPrice::placeholder, .editHorario::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .editDirec{
+      position: absolute;
+      top: 34.25rem;
+      height: 4rem;
+      width: 94%;
+    }
+    .editDirec::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .editDescrip::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .editInfo::placeholder{
+      text-align: center;
+      font-size:2rem;
+    }
+    .editUrl{
+      width:100% ;
+      height: 4rem;
+    }
+    .editUrl::placeholder{
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    /* Responsives */
     @media screen and (max-width: 1300px){
       .opiniones{
         height: 74.5%;       
@@ -1063,3 +1135,4 @@ body{
   height: 40%;
  }
 }
+
