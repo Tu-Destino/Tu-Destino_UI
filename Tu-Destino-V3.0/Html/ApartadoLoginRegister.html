@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../Styles/StyleLoginRegister.css" />
+  <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css " rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <title>Tu Destino | Login</title>
+</head>
+
+<body class="bodyInicio">
+  <div class="container" id="container">
+    <!-- STUDENTS -->
+    <div class="form-container sign-in">
+      <form action="http://localhost:3000/v1/api/auth/login" method="post">
+        <div class="logo">
+            <img src="../pruebas/Lugares/multimedia/xifc580gecox85cpz8zv.jpg" alt="Logo de la marca">
+          </a>
+      </div>
+        <h1>Iniciar sesión</h1>
+        <input type="email" name="email" placeholder="email" />
+        <input type="password" name="password" placeholder="Contraseña" />
+        <button id="buttonLogin" href="" type="submit">Iniciar Sesion</button>
+      </form> 
+    </div>
+<!-- PSYCHOLOGIST -->
+    <div class="form-container sign-up">
+      <form action="http://localhost:3000/v1/api/auth/register" method="post">
+        <div class="logo">
+            <img src="../pruebas/Lugares/multimedia/xifc580gecox85cpz8zv.jpg" alt="Logo de la marca">
+          </a>
+      </div>
+        <h1>Registrarse</h1>
+        <input type="text" name="username" placeholder="usuario" />
+        <input type="email" name="email" placeholder="email" />
+        <input type="password" name="password" placeholder="Contraseña" />
+        <button id="buttonRegister" href="" type="submit">Regisatrarse</button>
+      </form>
+    </div>
+
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>¿Ya tienes una cuenta?</h1>
+          <p class="textoProfesor">
+            ¡Reencuéntrate con la maravilla.!
+          </p>
+          <button class="hidden" id="register">Inicia sesión</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>¿No tienes una cuenta?</h1>
+          <p class="textoEstudiante">
+            ¡Únete a la aventura, empieza a explorar lo desconocido.!
+          </p>
+          <button class="hidden" id="login">Registrarse</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js "></script>
+  <script type="module" src="../App/AppLogin.js"></script>
+  <script src="https://kit.fontawesome.com/bb0a767d46.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
