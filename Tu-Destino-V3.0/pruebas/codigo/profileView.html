@@ -15,268 +15,236 @@
 </head>
 <body>
 <section class="frame-View" id="admiView">
-<div class="nav">
-<div class="logo">
-  <a href="#"> 
-    <img src="https://res.cloudinary.com/dhtmy6izv/image/upload/b_rgb:161616/e_negate/Multimedia/main/logovr/scydq89pzvaozcoj4pr6.jpg" alt="logo Tu Destino">
-    <h2>Tu Destino</h2>
-  </a>
-</div>
-<ul class="options">
-  <li><button class="option" id="viewAdmi1">Perfil</button></li>
-  <li><button class="option" id="viewAdmi2">Revisión</button></li>
-  <li><button class="option" id="viewAdmi3">Administrar Usuarios</button></li>
-  <li><button class="option" id="viewAdmi4">Administrar lugares</button></li>
-</ul>
-<div class="free">
 
-</div>
-<div class="low-nav">
-  <a href="#"><button id="SignOff">Cerrar Sesión</button></a>
-</div>
-</div>
-<div class="content">
-<section class="CView" id="CVA1">
-  <div class="ViewCenter">
-      <div class="VCC"> 
-        <div class="VC-profile">
-          <div class="PL">
-            <div class="imgProfile">
-              <img src="https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg" alt="">
+  <div class="nav">
+    <div class="logo">
+      <a href="#"> 
+        <img src="https://res.cloudinary.com/dhtmy6izv/image/upload/b_rgb:161616/e_negate/Multimedia/main/logovr/scydq89pzvaozcoj4pr6.jpg" alt="logo Tu Destino">
+      </a>
+    </div>
+    <ul class="options">
+      <li><button class="option" id="viewAdmi1">Perfil</button></li>
+      <li><button class="option" id="viewAdmi2">Revisión</button></li>
+      <li><button class="option" id="viewAdmi3">Administrar Usuarios</button></li>
+      <li><button class="option" id="viewAdmi4">Administrar lugares</button></li>
+    </ul>
+    <div class="free">
+
+    </div>
+    <div class="low-nav">
+      <a href="#"><button id="SignOff">Cerrar Sesión</button></a>
+    </div>
+  </div>
+
+  <div class="content">
+  <section class="CView" id="CVA1">
+    <label class="CView_title">Perfil</label>
+        <div class="VCC"> 
+          <div class="VC-profile">
+            <div class="PL">
+              <div class="imgProfile">
+                <img src="https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg" alt="">
+              </div>
+              <div class="texP">Juan Cardenas</div>
             </div>
-            <div class="texP">Juan Cardenas</div>
+            <div class="Pr">
+              <button id="BtnUpdate">Editar Perfil</button>
+              <button id="BtnSummit">Actualizar</button>
+            </div>
           </div>
-          <div class="Pr">
-            <button id="BtnUpdate">Editar Perfil</button>
-            <button id="BtnSummit">Actualizar</button>
+          <div class="profile-info">
+            <div class="info">
+                <label class="titleInfo">Nombre:</label>
+              <input class="update" id="IName"  type="text" value="Juan Cardenas" placeholder="Juan Cardenas">
+            <label class="infoV" > Juan Cardenas</label>
+            </div>
+            <div class="info">
+              <label class="titleInfo">Correo:</label>
+              <input class="update" id="IEmail" type="email" value="Cardenas@gmail.com" placeholder="Cardenas@gmail.com">
+              <label class="infoV"  > Cardenas@gmail.com</label>
+            </div>
+            <div class="info">
+              <label class="titleInfo">Contraseña:</label>
+            <input class="update" type="password" id="IPass" value="12345" placeholder="********">
+            <label class="infoV" > *********</label>
+            </div>
+            <div class="info">
+              <label class="titleInfo">Rol:</label>
+              <label class="infoVe">Administrador</label>
+            </div>
           </div>
         </div>
-        <div class="profile-info">
-          <div class="info">
-            <label class="titleInfo">Nombre:</label>
-          <input class="update" id="IName"  type="text" value="Juan Cardenas" placeholder="Juan Cardenas">
-          <label class="infoV" > Juan Cardenas</label>
-          </div>
-          <div class="info">
-            <label class="titleInfo">Correo:</label>
-            <input class="update" id="IEmail" type="email" value="Cardenas@gmail.com" placeholder="Cardenas@gmail.com">
-            <label class="infoV"  > Cardenas@gmail.com</label>
-          </div>
-          <div class="info">
-            <label class="titleInfo">Contraseña:</label>
-          <input class="update" type="password" id="IPass" value="12345" placeholder="********">
-          <label class="infoV" > *********</label>
-          </div>
-          <div class="info">
-            <label class="titleInfo">Rol:</label>
-            <label class="infoVe">Administrador</label>
-          </div>
-        </div>
-      </div>
-  </div>
-</section>
-<section class="CView" id="CVA2">
-  <div class="ViewCenter">
-    <div class="textR"> <h2>Lista de publicaciones para revisión</h2></div>
-    <div class="listPublic">
-      <div class="headPublic">
-       
-        <label class="titleInfo">ID</label>
-        <label class="titleInfo">Usuario</label>
-        <label class="titleInfo O">Fecha publicación</label>
-        <label class="titleInfo ">Lugar</label>
-        <label class="titleInfo">Opciones</label>
+  </section>
+  <section class="CView" id="CVA2">
+    <label class="CView_title">Revision de publicaciones</label>
+    <div class="ViewCenter_review">
 
-      </div>
-      <div class="public">
-        <div><label class="infoPublicID infoPublic ">1</label></div>
-        <div><label class="infoPublicU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPubliF infoPublic">2021-05-20</label></div>
-        <div><label class="infoPubliL infoPublic">Lugar 1</label></div>
-        <div class="btnpublic">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Detalles
-          </button>
-          <button class="btnAcceptPub">🆗</button>
-          <button class="btnDenegPub">⛔</button>
+      <!------------------------------- Card Post review------------------------------>
+        <div class="pending_publication">
+          <div class="contentPending_img">
+            <img src="#" alt="">
+          </div>
+
+          <div class="contentPending_center">
+            <div class="contentPending_centerTop">
+              <button type="button" class="btnDetailsPub " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Detalles</button>            
+              <button class="btnDenegPub">Denegar</button>
+              <button class="btnAcceptPub">Aceptar</button>
+            </div>
+            <div class="contentPending_centerBottom">
+              <label class="pubPending_descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor debitis similique a laboriosam cum soluta doloremque molestias autem sint eius, recusandae, eos et architecto quo ab dolorum officia iusto enim.</label>
+            </div>
+          </div>
+          
+          <div class="contentPending_end">
+            <label class="pubPending_name">👤 User_name</label>
+            <label class="pubPending_date">12 may 2024 📅</label>
+          </div>
         </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPublicID infoPublic ">1</label></div>
-        <div><label class="infoPublicU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPubliF infoPublic">2021-05-20</label></div>
-        <div><label class="infoPubliL infoPublic">Lugar 1</label></div>
-        <div class="btnpublic">
-          <button class="btnDetailsPub">Detalles</button>
-          <button class="btnAcceptPub">🆗</button>
-          <button class="btnDenegPub">⛔</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPublicID infoPublic ">1</label></div>
-        <div><label class="infoPublicU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPubliF infoPublic">2021-05-20</label></div>
-        <div><label class="infoPubliL infoPublic">Lugar 1</label></div>
-        <div class="btnpublic">
-          <button class="btnDetailsPub">Detalles</button>
-          <button class="btnAcceptPub">🆗</button>
-          <button class="btnDenegPub">⛔</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPublicID infoPublic ">1</label></div>
-        <div><label class="infoPublicU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPubliF infoPublic">2021-05-20</label></div>
-        <div><label class="infoPubliL infoPublic">Lugar 1</label></div>
-        <div class="btnpublic">
-          <button class="btnDetailsPub">Detalles</button>
-          <button class="btnAcceptPub">🆗</button>
-          <button class="btnDenegPub">⛔</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPublicID infoPublic ">1</label></div>
-        <div><label class="infoPublicU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPubliF infoPublic">2021-05-20</label></div>
-        <div><label class="infoPubliL infoPublic">Lugar 1</label></div>
-        <div class="btnpublic">
-          <button class="btnDetailsPub">Detalles</button>
-          <button class="btnAcceptPub">🆗</button>
-          <button class="btnDenegPub">⛔</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPublicID infoPublic ">1</label></div>
-        <div><label class="infoPublicU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPubliF infoPublic">2021-05-20</label></div>
-        <div><label class="infoPubliL infoPublic">Lugar 1</label></div>
-        <div class="btnpublic">
-          <button class="btnDetailsPub">Detalles</button>
-          <button class="btnAcceptPub">🆗</button>
-          <button class="btnDenegPub">⛔</button>
-        </div>
-      </div>
-      <div class="public">
-        <div><label class="infoPublicID infoPublic ">1</label></div>
-        <div><label class="infoPublicU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoPubliF infoPublic">2021-05-20</label></div>
-        <div><label class="infoPubliL infoPublic">Lugar 1</label></div>
-        <div class="btnpublic">
-          <button class="btnDetailsPub">Detalles</button>
-          <button class="btnAcceptPub">🆗</button>
-          <button class="btnDenegPub">⛔</button>
-        </div>
-      </div>
         
-    
+        
+        
     </div>
-  </div>
-</section>
-<section class="CView" id="CVA3">
-  <div class="ViewCenter">
-    <div class="textR"> <h2>Lista de usuarios</h2></div>
-    <div class="listPublic">
-      <div class="headPublic searchUser">
-        <input type="text" id="searchUser" value="" placeholder="Buscar Usuario ">
-        <button id="btnSearch">🔎 </button>
-      </div>
-      <div class="headPublic">
-       
-        <label class="titleInfo">ID</label>
-        <label class="titleInfo">Nombre</label>
-        <label class="titleInfo">Correo</label>
-        <label class="titleInfo">Publicaciones</label>
-        <label class="titleInfo">Opciones</label>
-        
-      </div>
-      <div class="public">
-        <div><label class="infoUserID infoPublic ">1</label></div>
-        <div><label class="infoUserU infoPublic">Juan Cardenas</label></div>
-        <div><label class="infoUserC infoPublic">2021-05-20</label></div>
-        <div><label class="infoUserP infoPublic"><button class="btnPublics" id="btnListPubli">Listar publicaciones</button></label></div>
-        <div class="btnUser">
-          <button class="btnEditUser">🖋️</button>
-          <button class="btnDeleteUser">🗑️</button>
+  </section>
+  <section class="CView" id="CVA3">
+    <label class="CView_title">Administrar Usuarios</label>
+
+    <div class="ViewCenter">
+      <div class="textR">
+        <div class="headPublic searchUser">
+          <input type="text" id="searchUser" value="" placeholder="Buscar Usuario ">
+          <button id="btnSearch">🔎 </button>
         </div>
       </div>
-     
-    
+      <div class="listPublic">
+        
+        <!-- <div class="public">
+          <div><label class="infoUserID infoPublic ">1</label></div>
+          <div><label class="infoUserU infoPublic">Juan Cardenas</label></div>
+          <div><label class="infoUserC infoPublic">2021-05-20</label></div>
+          <div><label class="infoUserP infoPublic"><button class="btnPublics" id="btnListPubli">Listar publicaciones</button></label></div>
+          <div class="btnUser">
+            <button class="btnEditUser">🖋️</button>
+            <button class="btnDeleteUser">🗑️</button>
+          </div>
+        </div> -->
       
-    </div>  
+        <div class="public">
+          <div>
+            <div class="infoPlaceT infoPublic">
+              <label class="infoPlace_name" id="infoUser_name">name_place</label>
+              <label class="infoPlace_text"  id="infoUser_id">Id: 32fdf2fgweq11</label>
+            </div>
+          </div>
+          
+          <div>
+            <div class="btnUser">
+              <button class="btnDelete_place" id="btnDelete_user">🗑️</button>
+              <button class="btnEdit_place" id="btnEdit_user">🖋️</button>
+            </div>
+          </div>   
+        </div>
+      
+        
+      </div>  
+    </div>
+  </section>
+  <section class="CView" id="CVA4">
+    <label class="CView_title">Administrar lugares</label>
+    <div class="ViewCenter">
+    <div class="textR"> 
+      <div class="filters_manage_places"></div>
+      <div class="create_place"><button id="create_place">Crear Lugar</button></div>
+    </div>
+
+    <div class="listPublic">
+
+      <!----------------------------- Card Places----------------------------- -->
+      <div class="public">
+        <div>
+          <div class="infoPlaceT infoPublic">
+            <label class="infoPlace_name" id="infoPlace_name">name_place</label>
+            <label class="infoPlace_text" id="infoPlace_id">  Id: 32fdf2fgweq11</label>
+          </div>
+        </div>
+        
+        <div>
+          <label class="infoPlaceD infoPublic"><button class="btnPlaces_datils"> Ver Detalles </button></label>
+          <div class="btnUser">
+            <button class="btnDelete_place" id="btnDelete_place">🗑️</button>
+            <button class="btnEdit_place" id="btnEdit_place">🖋️</button>
+          </div>
+        </div>   
+      </div>
+      
+      <!-- --------------------------------------------------------------- -->
+
+    </div>
+    </div>
+  </section>
+
+  <section class="CView" id="CVA5">
+    <label class="CView_title">Crear Lugar</label>
+    <div class="ViewCenter">
+    <div class="nav_createPlace"> 
+      <div class="button_createPlace"><button id="btnPlace_cancel">Cancelar</button></div>
+      <div class="button_createPlace"></div>
+      <div class="button_createPlace"><button id="create_place">Guardar</button></div>
+    </div>
+
+    <div id="content_createPlace">    
+
+      <div class="createPlace_contentInput">
+        <label class="titleInput_createPlace">Nombre de el lugar:</label>
+        <input required class="createPlace_input" id="CPI_title"  type="text" value="" placeholder="Ingrese el nombre del lugar...">
+      
+        <label class="titleInput_createPlace">Descripcion:</label>
+        <textarea required  class="createPlace_input" id="CPI_description" rows="4" cols="50" placeholder="Ingrese la descripcion del lugar..."></textarea>
+        
+        <label class="titleInput_createPlace">Info:</label>
+        <textarea required  class="createPlace_input" id="CPI_info" rows="4" cols="50" placeholder="Ingrese la informacion del lugar..."></textarea>
+      
+        <label class="titleInput_createPlace">Numero telefonico:</label>
+        <input required class="createPlace_input" id="CPI_phone"  type="tel" value="" placeholder="Ingrese el numero telefonico...">
+      
+      </div>  
+
+      <div class="createPlace_contentInput">
+          <label class="titleInput_createPlace">Tipo de lugar:</label>
+          <Select  class="createPlace_input">
+            <option value="CULTURA">Cultura</option>
+            <option value="NATURALEZA">Naturaleza</option>
+            <option value="HISTORIA">Historia</option>
+            <option value="ACTIVIDAD">Actividad</option>
+            <option value="RESTAURANTE">Restaurante</option>
+            <option value="HOSPEDAJES">Hospedaje</option>
+
+          </Select>
+
+          <label class="titleInput_createPlace">Direccion:</label>
+          <input required class="createPlace_input" id="CPI_address" type="text" value="" placeholder="Ingrese la direccion...">
+      
+          <label class="titleInput_createPlace">Horario:</label>
+          <input required class="createPlace_input" id="CPI_schedule" type="text" value="" placeholder="Ingrese el horario...">
+      
+          <label class="titleInput_createPlace">Web:</label>
+          <input required class="createPlace_input" id="CPI_linkWeb" type="url" value="" placeholder="Ingrese el link de la pagina web...">
+      
+          <label class="titleInput_createPlace">Precio:</label>
+          <input required class="createPlace_input" id="CPI_price" type="text" value="" placeholder="Ingrese el precio...">
+      
+          <label class="titleInput_createPlace">URL Informacion:</label>
+          <input required class="createPlace_input" id="CPI_price" type="url" value="" placeholder="Ingrese el link de la informacion...">
+      
+          
+        </div>
+
+    </div>
+    </div>
+  </section>
+
+
   </div>
-</section>
-<section class="CView" id="CVA4">
-  <div class="ViewCenter">
-  <div class="textR"> <h2>Lista de publicaciones</h2></div>
-  <div class="listPublic">
-    <div class="headPublic">
-       
-      <label class="titleInfo titleInfoL">ID</label>
-      <label class="titleInfo titleInfoL">Titulo</label>
-      <label class="titleInfo titleInfoL">Ver Detalles🖋️</label>
-      <label class="titleInfo titleInfoL">Opciones</label>
-    </div>
-    <div class="public">
-      <div><label class="infoPlaceID infoPublic ">1</label></div>
-      <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-      <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-      <div class="btnUser">
-        <button class="btnDeleteUser">🗑️</button>
-      </div>
-    </div>
-    <div class="public">
-      <div><label class="infoPlaceID infoPublic ">1</label></div>
-      <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-      <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-      <div class="btnUser">
-        <button class="btnDeleteUser">🗑️</button>
-      </div>
-    </div>
-    <div class="public">
-      <div><label class="infoPlaceID infoPublic ">1</label></div>
-      <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-      <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-      <div class="btnUser">
-        <button class="btnDeleteUser">🗑️</button>
-      </div>
-    </div>
-    <div class="public">
-      <div><label class="infoPlaceID infoPublic ">1</label></div>
-      <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-      <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-      <div class="btnUser">
-        <button class="btnDeleteUser">🗑️</button>
-      </div>
-    </div>
-    <div class="public">
-      <div><label class="infoPlaceID infoPublic ">1</label></div>
-      <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-      <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-      <div class="btnUser">
-        <button class="btnDeleteUser">🗑️</button>
-      </div>
-    </div>
-    <div class="public">
-      <div><label class="infoPlaceID infoPublic ">1</label></div>
-      <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-      <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-      <div class="btnUser">
-        <button class="btnDeleteUser">🗑️</button>
-      </div>
-    </div>
-    <div class="public">
-      <div><label class="infoPlaceID infoPublic ">1</label></div>
-      <div><label class="infoPlaceT infoPublic">Juan Cardenas</label></div>
-      <div><label class="infoPlaceD infoPublic"><button class="btnPublics">🖋️ Ver Detalles 🖋️</button></label></div>
-      <div class="btnUser">
-        <button class="btnDeleteUser">🗑️</button>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
-</div>
 </section>
 <section class="frame-View" id="userView">
 <div class="CView ViewUser">
@@ -458,47 +426,7 @@
 
 </div>
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div  id="tituloInterno">
-        <div class="modal-header">
-          
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="modal-body">
-        <table class="modal-marco">
-           <div class="modal-marco" id="padreModal">
-            <tr>
-              <td class="modal-img">
-                <img src="https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg" width="600px" height="500px">
-              </td>
-              <td class="text-modal">
-                <h1 class="modal-title tituloModal " id="staticBackdropLabel">lugar de la publicaciones</h1>
-                <h1 class="tituloModal etiquetas " id="staticBackdropLabel">
-                  <p>etiquetas</p>
-                  <p>etiquetas</p>
-                  <p>etiquetas</p>
-                  <p>etiquetas</p>
-                  <p>etiquetas</p>
-                  <p>etiquetas</p>
-                  <p>etiquetas</p>
-                  <p>etiquetas</p>
-                </h1>
-                
-                <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente iusto ea quibusdam aliquid voluptatem! Odio esse aliquid eius impedit eveniet id excepturi, nulla veritatis rem saepe tempora, ratione laborum. Quos?</p>
-                <div class="marco-btn">
-                <a id="btnDetalles" href="#"><button>Mas detalles</button></a>
-                </div>
-              </td>
-            </tr>
 
-           </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
