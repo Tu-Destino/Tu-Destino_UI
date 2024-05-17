@@ -2,11 +2,8 @@
 // 8
 import {
   UrlPlace,
-  UrlPublication,
-  UrlUser,
   get,
   post,
-  update,
   deleteHttp,
 } from "../jsonPruebas/apiConnection.js";
 
@@ -93,7 +90,7 @@ cancelar.addEventListener("click", () => {
 
 // 11
 // limpieza
-function limpieza() {
+function limpieza(){
   const contenedor = document.getElementById("listPlace");
   contenedor.innerHTML = "";
 }
@@ -133,6 +130,7 @@ async function extraerLugar() {
     hijo.innerHTML = lugartHtml;
     padre.appendChild(hijo);
 
+    //10
     const tagBorrar = document.querySelectorAll(".btnDelete_place");
 
     tagBorrar.forEach((borrar) => {
@@ -189,7 +187,9 @@ async function eliminarLugar(id_lugar) {
 // 11
 // el boton de editar queda pendiente pues falta la vista
 
-// Vista del formulario
+// 12
+// Vista del formulario para crear
+
 
 // Selectores
 const nombreLugar = document.getElementById("CPI_title");

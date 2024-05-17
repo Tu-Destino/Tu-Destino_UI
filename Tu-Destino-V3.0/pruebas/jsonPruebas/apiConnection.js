@@ -51,6 +51,7 @@ let varia;
 
 // METODO UPDATE - para actualizar datos de la base de datos json
 export async function update (url,info){
+    let isPost= false;
     try {
         const response = await  fetch(url,{
             method: "PUT",
@@ -60,10 +61,16 @@ export async function update (url,info){
             body: JSON.stringify(info),
         });
         const data = response.json();
-        return data;
+        if(data.status=="BAD_REQUEST"){
+            isPost= false;
+            console.log(data);
+            }else{
+            isPost=true;
+            }
     } catch (error) {
         console.error(error);
     }
+    return isPost
 }
 
 
