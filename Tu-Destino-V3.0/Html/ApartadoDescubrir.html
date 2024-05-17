@@ -170,15 +170,14 @@
 </div>
 <section id="storageModal">
   <div class="centerModalPost">
-    <div class="">
       <div class="modal-content contentPOst">
         <div class="Barra_post">
           <button type="button" class="btn-close" id="btnClosePost"></button>
 
         </div>
         <div class="modal-body bodyPost">
-          <table class="modal-marco">
-             <div class="modal-marco" >
+          <table class="modal-marco modal-marco-create">
+            
               <td class="modal-img frame_img_post">
                 <input class="post_img" id="post_img" accept="image/png,image/jpeg" onchange="showPreview(event); "  type="file" >
                 <div class="img_post">
@@ -190,15 +189,12 @@
                     if(evet.target.files.length > 0){
                       var src= URL.createObjectURL(evet.target.files[0]);
                        var preview=document.getElementById("imgUpload");
-                      preview.src=src;
-                      
-                     
+                      preview.src=src;                                      
                     }
                   }
   
                 </script>
                 
-             
               </td>
               <td class="text-modal text_modal_post">
                 <div class="UserPost_info">
@@ -216,7 +212,7 @@
                 <!-- Opciones del buscador del lugar -->
                 <div id="ctn-bars-search"> 
                   <label for="textinput"></label>
-                  <input type="text" name="textinput" value=""  required id="inputSearch" placeholder="Nombre de lugar">
+                  <input type="text" name="textinput" value=""  required id="inputSearch" placeholder="Nombre del lugar 🔎">
               </div>
                 <!-- contenedor de opciones -->
               <ul id="box-search">
@@ -226,7 +222,7 @@
           
               <div id="cover-ctn-search"></div>
                 <div class="UserPost_descrip">
-                  <textarea placeholder="Ingrese la una descripción para el post" id="textArea" cols="50" rows="8"></textarea>
+                  <textarea placeholder="Ingrese una descripción para este post" id="textArea" cols="50" rows="8"></textarea>
                 </div>
               <div class="UserPost_Tags">
                 <Button value="Arquitectura" class="post_Tags" >Arquitectura</Button>
@@ -243,12 +239,10 @@
                 
               </td>
 
-             </div>
+             
           </table>
         </div>
       </div>
-    </div>
-
   </div>  
 </section>
 <!-- Contenedor para las imagenes -->

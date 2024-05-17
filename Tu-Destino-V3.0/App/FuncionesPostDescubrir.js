@@ -106,7 +106,7 @@ tags.forEach(tag=>{
     console.log(tag.value);
     listTags.push(tag.value);
     console.log(listTags);
-      tag.style.background="red"
+      tag.style.background="#bbaedb"
     }else {
       console.log("eliminar");
       
