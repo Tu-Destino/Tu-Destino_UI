@@ -18,28 +18,28 @@
   <div class="container" id="container">
     <!-- STUDENTS -->
     <div class="form-container sign-in">
-      <form action="http://localhost:3000/v1/api/auth/login" method="post">
+      <form  id="myForm">
         <div class="logo">
             <img src="../pruebas/Lugares/multimedia/xifc580gecox85cpz8zv.jpg" alt="Logo de la marca">
           </a>
       </div>
         <h1>Iniciar sesión</h1>
-        <input type="email" name="email" placeholder="email" />
-        <input type="password" name="password" placeholder="Contraseña" />
+        <input id="emailLogin" type="email" name="email" placeholder="email" />
+        <input id="passwordLogin" type="password" name="password" placeholder="Contraseña" />
         <button id="buttonLogin" href="" type="submit">Iniciar Sesion</button>
       </form> 
     </div>
 <!-- PSYCHOLOGIST -->
     <div class="form-container sign-up">
-      <form action="http://localhost:3000/v1/api/auth/register" method="post">
+      <form  id="myForm">
         <div class="logo">
             <img src="../pruebas/Lugares/multimedia/xifc580gecox85cpz8zv.jpg" alt="Logo de la marca">
           </a>
       </div>
         <h1>Registrarse</h1>
-        <input type="text" name="username" placeholder="usuario" />
-        <input type="email" name="email" placeholder="email" />
-        <input type="password" name="password" placeholder="Contraseña" />
+        <input id="usernameRegister" type="text" name="username" placeholder="usuario" />
+        <input id="emailRegister" type="email" name="email" placeholder="email" />
+        <input id="passwordRegister" type="password" name="password" placeholder="Contraseña" />
         <button id="buttonRegister" href="" type="submit">Regisatrarse</button>
       </form>
     </div>
