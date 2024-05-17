@@ -1,3 +1,4 @@
+import { UrlBase,UrlComent,UrlPost,get } from "../pruebas/jsonPruebas/apiConnection.js"
 //Evento del DOM 
 const dom = document.addEventListener(`DOMContentLoaded`,()=>{
     const lugarParse = localStorage.getItem("buscaLugar")
@@ -33,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   })
 
-console.log("fafaofja");
 //selectores
 const marcoSupe =document.querySelector('.marco-principal')
 const title = document.querySelector("h1")
@@ -54,19 +54,23 @@ const titlehis=document.getElementById('titlehist')
 const marcoTrans=document.getElementById('marcoTrans')
 let texHist;
 const MHistoria =document.getElementById('MHistoria')
+const listUser=new Array();
+const listComent=new Array();
 
 //funcion para inyectar la informacion dinamicamente 
-function loadContent(lugar){
+ async function loadContent(lugar){
     //destructurando los elementos de cada lugar para posteriormente inyectarlos dinamicamente
-    const {titulo,imagenes,historia,textDetalles,usuarios,correo,direccion,horario,comentarios,precio,telefono,web , BtnConoce,puntuacion,opiniones }= lugar
+    const {id ,titulo,info,detalles,direccion,horario,precio,telefono,web , btn_url,puntuacion }= lugar;
+
+  
+
     //titulo dinamico
     title.textContent = titulo
     //descripcion dinamica
     const descrip = document.createElement("p");
     descrip.classList.add("descrip")
-    descrip.textContent = textDetalles
+    descrip.textContent = detalles
     descripcion.appendChild(descrip)   
-    console.log(lugar);
     /* precio y horario */
     precio1.innerHTML = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADzUlEQVR4nO2ZTWhVRxTHJ0bT6Mu9///clzQNPlHUSkX8ou3CTUUoLlqXLhRXIip+thDqBxV0pSuXKrgUuqghYKoBt24quixqBUUXLsRoNPU7URM5ei5OL++Zd++797730D8M4d35/M2cMzNnYsxnfYKy1gLACQB3SI6TnKghjZK8bK39KVeIjo6OLgD/1Dj4iXIpNxgXQv76vj8vhWanAehVmEsmbwj5nWLzbQry0uQIca2rq+urtPugmpdp1JUIgqBEsg/AY0kk+z3P+zpXkJQghss49nAQBDNzAUnDJ0j2af2zMnBJAM7poP/MHCQtx8Z7U5pwZ99aO0vbHckUJM3dCcB/ClLKFSTtLZZkv7Z1TmAkARjUQfdlApLFOeF53gKSD8o5u+/7892y4VXHGNPSUBChgiCYKY4tZqam1heFEJF8oyBTGvawq0YkXytIq2lWCBHJMQWZZvIyJwBzAfwK4LC1dl2hUPhSB/ODOHN3d3ch1mDMu7ovFeSLPCBaSB4k+cp1XgDPARwH8FS/7Y4LAuCZ1O3p6ZmRNYTM2u/O4K+RPErytAsmQEl2HuiZI0FbphBa94XWPWWMmRrmWWtXkHyoeZtMApEckvqFQqE7MwiR7/urw1n3PK8YzQewVtu+moDDhD4SBIGfGYTIWrtYQcYrdNaiszpeKpWmx2kbwBxte8xd6bQg2qMfSN7SdjZWGJA8RoxKxBeDow3AX9ruYKoQsp2SvElypfvdWrtNZ+56dLAAvpXVAHAhJsSAtjlU9g0AgK3hnDim9f6IZE3V3UryeiOQi2QwlVZrMggx3XKFxAxOJvSJVt0K5RI3O5oJ4Mfw4ieT5eYFQbCwSrNqqwpCQW4ryLKEjnfjI2UuaNu/mfhqqxpCO7uone2J04usnta7W6kMyQ1a5u9aIEgumbQGyTVqHuPipHF6A/CvnrI/V8hfpSCPE0Lcrwoissu8gyG5vdp64rDhqpTbSeQaMpn5pQYRSgDiwohfhfEByXtyamvA0w7giPNwvT8XiCQwnZ2dPWF4CuCJcxkckVuu83uw4ilcGWKpqVURmB0fKwvgkDwcSFxBcieAK861XZz0QF0gksBEY+disei5zzp1gwgFYLMDs8ukL4E4oxAP5epislIEJnY01xAQGcLkDxEKwJaUYP4H4fv+dyZvoXaY+kNUgPnFJIN4VFeIGmAaDyKU7/tbq4RpXIgyMHIN2WuaEaIcjLV2X1NChBLTCs1MgjN9yBhwwtzlplnEDzDuP2lkJb43zSZr7XqN/+Ul8HyxWPym3mP6LFMHvQVfL/e0XNEogAAAAABJRU5ErkJggg==">Precio: ${precio}`
     horario1.innerHTML = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADsUlEQVR4nO2aW29MURTHf41qRwh6U970USr4Emgpyltd3ki9KCmvLm/E5UXSpJ+DVIMgEpfWpa5BW01Q+qCNN0WQkZX8d7LDmemZM3vODPFPTjIze++11zpr7bXXZeA//l3UA53AGWAAeAV8Ar7psc8vNWZztgF1VAgywB7gCvATyBb4/AAuA7uB2nIIsAA4DEx5TH0FrgNHpZlVeuPz9dTpNxs7BtzQGrf+A9Crl5MKNgMTHgP3gb3AkgS0lgL7gAcevddAOyWEval+b8OHwIaA9NuARx79vlJoZ7kYtw0+AweAeTHXDgF3Ys6dBxwEZj1tNxMILVJ3Vl5ndYHr3RsuBGuAUa0bFw9FockjeA9oTEAjiSDIOdzS2glZRSJkPHMy01iYkE5SQdCeQ56ZJToz/Z452WVHGQQxNHhWYQ6gYBfrDnahZyK0IO7MOAdg3i32ZefuCfNOVIAghkPe4Y9lYke8eyKui01DkGrgsWiZUHlRq1DBJq8nDEIJYtgkWlNzaWW35yGoQEGqPE+6M9/Eq5pksVMlCmLoFr1BcqBeYfXXhAFgWoLUKb/5novP7drwGmERWhDDTdHcQgTOatDyiUoX5IRono4aHNDg1r9AkO2ieSFqcEyDlsWFwHxPy1nl6fZbCLSKptUF/sCMBi22CYFzETm6CRMCjaI3HTX4TYM1gTabjhDkYyDatV6doOSCvIsQ5H0agswENC1LyN5ECHKSFExrLNBhXwY8E623wKTit1MBtd2a77A792sVwGI08dRLyFZQGuzI536dq7TiWbGaeK7vpcKJfBdipwatWlipmvg9ROkgRzDmgkarACbRxLMSa8IFty5oXEwOXBZDVsaMi/spCmHYr/0ukQe7NMlqsXFxV/PTEKIKGBGPXXNdNO81cSOVhw7xNhmnDdGrySOBig+hUA08EW89cRZkvFqvFZQrBb3iabSQplC7Fs2qOFZurAO+iKeCWxl93hsIFdqT8I4aFy/nkxDIeK51qIgidjFYBAyLh+Fi+oxNCsxcW8G+p4V64LbXjiu64dPiqdbMbC3pnIlx7WlR+cpQhJs9M5tV7dXcYWhUyzt98cwp+EWb8RxAVgXl9oA3trUy3D3hDnZJe+9tntpd1b474b8Y6hU7ubAjK1MK2S2eUzuHvHAmq4jUwuvjqju1ym3X6GlQ02iH5tz06gQu7Ogp1z8galUVH1QKkC3w+a7MtKtcAkRhiWqxlrVdVII14/2pxj6/UHp6WnNz5hP/wV+OX0o1XZFqyWfnAAAAAElFTkSuQmCC">Horario: ${horario}`
@@ -94,11 +98,14 @@ function loadContent(lugar){
     iniciarMap()
    
     /* Ineyectar IMG a slider */
-    inyectarImgSlider(imagenes)
-    texHistoria(historia)
-    agregarBTNC(BtnConoce)
-    comentario(puntuacion,opiniones)
-    opinione(usuarios,comentarios)
+    await extraerImg(id)
+    texHistoria(info)
+    agregarBTNC(btn_url)
+   await extraerComentarios(id)
+    comentario(puntuacion)
+    opinione(listUser,listComent)
+
+   
 }
 let contador =0;
 function inyectarImgSlider(imagenes){
@@ -145,7 +152,7 @@ function agregarBTNC(boton){
 }   
 
 function texHistoria(histo){
-    console.log(histo);
+    
     const hijo=document.createElement('p');
     hijo.innerHTML=`
     <p id="tex-hist">${histo}</p>
@@ -155,17 +162,49 @@ function texHistoria(histo){
     
 }
 
-function comentario(punto,opinion){
+function comentario(punto){
     const padre=document.getElementById('puntos')
     const hijo=document.createElement('p');
     hijo.innerHTML=`
     <p>${punto}</p>
-    <p class="dif">${opinion}</p>
+
     `
     padre.appendChild(hijo)
 }
+ async function extraerImg(comparar){
+    const listURl=new Array();
+    const datos = await get(UrlPost)
+   await datos.forEach(data=>{
+        const {urlImg,place}= data;
+        const {id}= place;
+ 
+        if (id==comparar) {
+            listURl.push(urlImg);
+        }
+        if (listURl.length==0) {
+            listURl.unshift("https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg")
+        }
+    })
+    inyectarImgSlider(listURl)
+}
 
-function opinione(usu,opi){
+async function extraerComentarios(id_place){
+
+    const datos = await get(UrlComent)
+   await datos.forEach(data=>{
+       const {comentary,user,place}= data;
+       const {name}= user;
+       const {id}=place
+       if(id==id_place){
+        listComent.unshift(comentary);
+        listUser.unshift(name);
+       }           
+    })
+
+} 
+
+async function opinione(usu,opi){
+
    
     for (let index = 0; index < usu.length; index++) {
       

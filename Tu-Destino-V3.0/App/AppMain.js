@@ -1,102 +1,44 @@
 "use strict"
 
-import { DataSpanish } from "../DataBase/Data-Spanish.js";
-//$(window).scroll( function(){
 
-  //  Calcular el scroll que hace el usuario
- // let pixel = $(window).scrollTop()
+import { get,UrlPlace } from "../pruebas/jsonPruebas/apiConnection.js";
 
-  //  Mostrar por consola ese scroll
-  
-  const box_search = document.getElementById("box-search");
+async function Data(url){
+   
+  return await get(url);
+};
 
+ const DataSpanish= await Data(UrlPlace)
+const box_search = document.getElementById("box-search");
 
 cargarOpciones()
-export function cargarOpciones(){
-	
+export  function cargarOpciones(){
 
-	DataSpanish.forEach((data)=>{
+	  DataSpanish.forEach((data)=>{
 		const {titulo} = data
 		const opciones =document.createElement('li')
-		const ides =`${titulo}`;
-		opciones.id= ides.replaceAll(' ','-')
+        //The class is given with which the object will be called
+		const ides =`optionSearchMain`;
 		opciones.innerHTML=`
-		<li ><a href="Tu-Destino-V2.0//Html/ApartadoDetallesBuscardor.html" ><i class="fas fa-search" ></i>${titulo}</a></li>
+		<li ><a class="${ides}" href="./Tu-Destino-V3.0/Html/ApartadoDetallesBuscardor.html" ><i class="fas fa-search " ></i>${titulo}</a></li>
 		`
 		box_search.appendChild(opciones)
+
 	})
   }
-  const clickCementerio=document.getElementById('Cementerio-Museo-de-San-Pedro')
-const clickPalacio =document.getElementById('Palacio-de-la-cultura-Rafael-Ubire')
-const clickMuseo =document.getElementById('Museo-Casa-de-la-Memoria')
-const clickBasilica =document.getElementById('Basílica-de-Nuestra-Señora-de-la-Candelaria')
-const clickCastillo =document.getElementById('Museo-el-Castillo')
-const clickBerrio=document.getElementById('Parque-Berrío')
-const clickBotanico=document.getElementById('Jardin-Botánico')
-const clickArvi=document.getElementById('Parque-Arví')
-const clickBad=document.getElementById('Bad-Burgers')
-const clickPicacho=document.getElementById('Cerro-el-Picacho')
-const clickALaurales=document.getElementById('Alojamiento-laureles-estadio-Medellín')
- 
- 
-  clickCementerio.addEventListener('click',(e)=>{
-	  dataDetalles.nombre=clickCementerio.textContent.replace('\n\t\t' ,'').slice(0,-3)
-	  console.log(dataDetalles);
-  	infoDetalles(dataDetalles.nombre)
-  })
+  // Select all classes to add an event
+const list= document.querySelectorAll(".optionSearchMain");
 
-clickPalacio.addEventListener('click',()=>{
-	dataDetalles.nombre=clickPalacio.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
+// The list of options is reiterated to add an event to each one
+   list.forEach(element => {
+    element.addEventListener('click',(e)=>{
+        console.log(element);
+        dataDetalles.nombre=element.textContent
+        infoDetalles(dataDetalles.nombre)
+        console.log(dataDetalles.nombre);
+    })
+}) 
 
-clickMuseo.addEventListener('click',()=>{
-    dataDetalles.nombre=clickMuseo.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-clickBasilica.addEventListener('click',()=>{
-    dataDetalles.nombre=clickBasilica.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-clickCastillo.addEventListener('click',()=>{
-    dataDetalles.nombre=clickCastillo.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-clickBerrio.addEventListener('click',()=>{
-    dataDetalles.nombre=clickBerrio.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-clickBotanico.addEventListener('click',()=>{
-    dataDetalles.nombre=clickBotanico.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-clickArvi.addEventListener('click',()=>{
-	dataDetalles.nombre=clickArvi.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-clickBad.addEventListener('click',()=>{
-    dataDetalles.nombre=clickBad.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-clickPicacho.addEventListener('click',()=>{
-    dataDetalles.nombre=clickPicacho.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-clickALaurales.addEventListener('click',()=>{
-    dataDetalles.nombre=clickALaurales.textContent.replace('\n\t\t','').slice(0,-3)
-    infoDetalles(dataDetalles.nombre)
-})
-
-
-
-//}) 
 
 window.addEventListener('load', function(){
 	new Glider(document.querySelector('.carousel__lista'), {
