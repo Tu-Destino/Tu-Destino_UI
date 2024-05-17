@@ -49,14 +49,5 @@ viewAdmi4.addEventListener("click",() => {
 //artisanal modal
 //Selector
 const modal = document.getElementById("modelAl");
-const btnListPubli = document.getElementById("btnListPubli");
-const btnCloseal = document.getElementById("btnCloseAl");
-//Events
 
-btnListPubli.addEventListener("click",() => {
-  modal.style.display="flex";
-});
-btnCloseal.addEventListener("click",() => {
-  modal.style.display="none";
-})
 
