@@ -609,12 +609,20 @@ display: flex;
   border: solid  #beb6d0  2px ;
   padding: 1.4rem;
   border-radius: 3rem ;
-
+  overflow-y:hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
-.infoPlaceT_text{
+.infoPlace_text{
   margin-left: 1rem;
 }
+
+.infoplace_name{
+  width: 80%;
+}
+
+
 
 .headPublic, .headPublicmodal,.headPublicUser{
   background-color:  rgba(2, 2, 21, 0.241);

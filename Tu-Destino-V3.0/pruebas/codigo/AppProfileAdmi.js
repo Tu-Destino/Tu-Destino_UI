@@ -109,8 +109,8 @@ async function extraerLugar() {
     <div class="public">
     <div>
       <div class="infoPlaceT infoPublic">
-        <label class="infoPlaceT_name">${titulo}</label>
-        <label class="infoPlaceT_text"> Id: ${id}</label>
+        <label class="infoPlace_name infoplace_name">${titulo}</label>
+        <label class="infoPlace_text "> Id: ${id}</label>
       </div>
     </div>
 
