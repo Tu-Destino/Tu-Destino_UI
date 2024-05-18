@@ -72,8 +72,8 @@ const postear={
   etiquetas:"",
   url_img:"",
   place:0,
-  user_id:"25239669-e8f2-4594-ba20-e25b18bca2c3"
-
+  user_id:"25239669-e8f2-4594-ba20-e25b18bca2c3",
+  Enum_estado:"PENDIENTE"
 }
 
 async function buscarLugar(nombre){

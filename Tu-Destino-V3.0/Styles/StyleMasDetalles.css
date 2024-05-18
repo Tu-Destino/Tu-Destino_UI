@@ -339,6 +339,10 @@ body{
   margin-bottom: 0.3;
   font-size: clamp(1rem, 1.2vw ,2rem);
   line-height: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 #precio img{  
   margin: 0.4rem;
@@ -366,6 +370,7 @@ body{
     background-image: url("../Multimedia/png-clipart-water-turquoise-font-water-blue-text.png");
     font-size:clamp(1rem, 1.2vw ,2rem);
     margin: 1.5rem 0 3rem 1rem;
+    display: flex;
   }
   #telefono img{
     margin: 0.5rem;
@@ -374,6 +379,7 @@ body{
   #paginaWeb{
     margin-left: 1rem;
     font-size: clamp(1rem, 1.2vw ,2rem);
+    display: flex;
   }
   #paginaWeb img{
     margin: 0.5rem;
@@ -801,7 +807,7 @@ body{
       color: rgb(11, 201, 11);
 
     }
-    /* Modo de edicion */
+    /* -------------Modo de edicion --------------------*/
     .btnEdit_place{
       width: 40px;
       height: 40px;
@@ -810,10 +816,18 @@ body{
       position: absolute;
       right: 5.5%;
       top: 10.6%;
+      font-size: 2rem;
     }
     
     .btnEdit_place:hover{
       background-color: #deecff;
+    }
+    .Save{
+      right: 7.6%;
+      display: none;
+    }
+    #btnCancel_place{
+      display: none;
     }
     .textarea{
       width: 100%;
@@ -822,6 +836,7 @@ body{
     .Edict{
       width: 100%;
       border-radius: .5rem;
+      display: none;
     }
     .edicPhone, .edicWeb{
       width: 95%;

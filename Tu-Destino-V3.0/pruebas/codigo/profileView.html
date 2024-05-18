@@ -11,6 +11,7 @@
   <script defer src="AppProfileView.js"></script>
   <script defer type="module" src="AppProfileAdmi.js"></script>
   <script defer src="AppProfileUser.js"></script>
+  <script defer type="module" src="PendientesAppProfileAdmin.js"></script>
 
 </head>
 <body>
@@ -77,7 +78,7 @@
   </section>
   <section class="CView" id="CVA2">
     <label class="CView_title">Revision de publicaciones</label>
-    <div class="ViewCenter_review">
+    <div class="ViewCenter_review" id="ViewCenter_review">
 
       <!------------------------------- Card Post review------------------------------>
         <div class="pending_publication">
@@ -86,13 +87,21 @@
           </div>
 
           <div class="contentPending_center">
-            <div class="contentPending_centerTop">
+            <div class="contentPending_centerLeft">
+              <label class="pubPending_titulo">${titulo}</label>
+              <label class="pubPending_descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor debitis similique a laboriosam cum soluta doloremque molestias autem sint eius, recusandae, eos et architecto quo ab dolorum officia iusto enim.</label>             
+            </div>
+            <div class="contentPending_centerRight">
               <button type="button" class="btnDetailsPub " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Detalles</button>            
               <button class="btnDenegPub">Denegar</button>
               <button class="btnAcceptPub">Aceptar</button>
-            </div>
-            <div class="contentPending_centerBottom">
-              <label class="pubPending_descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor debitis similique a laboriosam cum soluta doloremque molestias autem sint eius, recusandae, eos et architecto quo ab dolorum officia iusto enim.</label>
+              <li class="etiPub">
+                <label for="">ejemplo</label>
+                <label for="">ejemplo</label>
+                <label for="">ejemplo</label>
+              </li>
+
+              
             </div>
           </div>
           
