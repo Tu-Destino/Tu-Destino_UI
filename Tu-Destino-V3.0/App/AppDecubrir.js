@@ -248,7 +248,7 @@ const  box_search =        document.getElementById("box-search");
 function mostrar_buscador(){
 
     bars_search.style.top = "80px";
-    cover_ctn_search.style.display = "block";
+    cover_ctn_search.style.display = "flex";
     inputSearch.focus();
 
     if (inputSearch.value === ""){
