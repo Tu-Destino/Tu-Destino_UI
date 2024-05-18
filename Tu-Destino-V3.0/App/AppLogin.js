@@ -41,11 +41,13 @@ const Register = async (e) => {
         },
         body: JSON.stringify(formData),
       });
+      const token = await response.json()
       if (response.ok) {
         window.location.href = '../pruebas/main.html'
-        console.log('Registro exitoso');
+        localStorage.setItem('token', JSON.stringify(token));
         
-      } else {
+      }
+       else {
         console.error('Error en el registro');
       }
     } catch (error) {
@@ -76,7 +78,6 @@ const Login = async (e) => {
       const token = await response.json()
       if (response.ok) {
         window.location.href = '../pruebas/main.html'
-        console.log(token);
         localStorage.setItem('token', JSON.stringify(token));
         
       } else {
