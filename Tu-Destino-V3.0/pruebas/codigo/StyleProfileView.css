@@ -399,18 +399,33 @@ display: flex;
   margin-left: 2rem;
   margin-right: 2rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .contentPending_center div{
   display: flex;
-  width: 100%;
+  flex-direction: column;
   align-items: center;
   padding: 1rem;
+  gap: 1.3rem;
 }
-.contentPending_centerTop{
-  height: 35%;
+
+.pubPending_titulo{
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-family: "Inter", sans-serif;
+}
+
+.contentPending_centerLeft{
+  width: 75%;
+}
+
+.contentPending_centerRight{
+  height: 100%;
+
   display: flex;
   justify-content: space-around ;
+  gap: 0.5rem !important;
 }
 
 .btnAcceptPub{
@@ -449,6 +464,18 @@ display: flex;
 .btnDetailsPub:hover{
   background-color: #e3efff ;
   color:  rgb(100, 100, 100);
+}
+
+.etiPub{
+  position: fixed;
+  padding: 1rem;
+  max-width: 30rem;
+  top: -30px;
+  background-color: #519def;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  display: none;
 }
 
 .contentPending_centerBottom{

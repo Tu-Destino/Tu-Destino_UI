@@ -40,31 +40,30 @@ async function inyeccionPublic() {
       fecha_publicacion,
       user_id,
     } = publi;
-    const hijo = document.createElement("p");
+    const hijo = document.createElement("div");
+    hijo.className = "pending_publication"
     console.log(enum_estado);
     if (enum_estado == "PENDIENTE") {
       const publicHtml = `
-        <div class="pending_publication">
                 <div class="contentPending_img">
                     <img src="${url_img}" alt="">
                 </div>
     
                 <div class="contentPending_center">
-                    <div class="contentPending_centerTop">
-                    <button type="button" class="btnDetailsPub " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Detalles</button>            
-                    <button class="btnDenegPub" value="${id}">Denegar</button>
-                    <button class="btnAcceptPub" value="${id}" >Aceptar</button>
-                    </div>
-                    <div class="contentPending_centerBottom">
+                    <div class="contentPending_centerLeft">
+                    <label class="pubPending_titulo">${titulo}</label>  
                     <label class="pubPending_descrip">${descripcion}</label>
-                    <label class="pubPending_titulo">${titulo}</label>
+                    </div>
+                    <div class="contentPending_centerRight">
+                      <button type="button" class="btnDetailsPub " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Etiquetas</button>            
+                      <button class="btnDenegPub" value="${id}">Denegar</button>
+                      <button class="btnAcceptPub" value="${id}" >Aceptar</button>
                     </div>
                 </div>
                 
                 <div class="contentPending_end">
                     <label class="pubPending_name">👤 ${user_id.name}</label>
                     <label class="pubPending_date">📅 ${fecha_publicacion}</label>
-                </div>
                 </div>
         `;
       hijo.innerHTML = publicHtml;
