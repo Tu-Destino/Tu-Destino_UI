@@ -1,0 +1,1153 @@
+/*--------------General----------*/
+/* Fuente */
+
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@600&display=swap');
+@import url('https://fonts.cdnfonts.com/css/gt-walsheim-trial');
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+                
+
+/*https://responsively.app/download */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+html{
+    font-size: 62.5%;
+
+  
+}
+
+body{
+
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 3rem;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+
+/*----------------Navegador---------*/
+.header{
+    background-color: rgba(251,251,253,0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgb(185, 185, 185);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+    padding: 5px 10%;
+    width: 100%;
+    position: fixed;
+    z-index: 50;
+    top: 0%;
+  }
+
+  .header .logo{
+    cursor: pointer;
+    height: auto;
+    margin-bottom: 0.4rem;
+
+  }
+
+  .header .logo img{
+    height: 62px;
+    width: auto;
+    transition: all 0.3s;
+  }
+
+  .header .logo img:hover{
+    transform: scale(1.1);
+  }
+
+  .header .nav-links{
+    list-style: none;
+  }
+
+  .header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;    
+    margin-top: 1rem;
+  }
+
+  .header .nav-links li:hover{
+    transform: scale(1.1);
+  }
+
+  .header .nav-links a{
+    font-size: 20PX;
+    color: #000000;
+    text-decoration: none;    
+  }
+
+  .header .nav-links li a:hover{
+    color: #a4a4a4;
+  }
+
+  .header .btm button{
+    font-weight: 20px;
+    color: #ffffff;
+    padding: 9px 25px;
+    background: #89c0ff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  .btm{
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  .header .btm button:hover{
+    background-color: #e2f1f8;
+    color: #89c0ff;
+    transform: scale(1.1);
+  }
+
+  .burger button{
+    background-color: transparent;
+    border: 0;
+    display: none;
+  }
+
+  .menu-burger{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem ;
+    width: 600px;
+    height: 300px;
+
+    background-color: #0a0a0aef;
+    backdrop-filter: blur(30px);
+  }
+  .menu-burger ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .menu-burger ul li a{
+    font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  font-size: 2rem;
+  color: #ffffff;
+  }
+
+  .menu-burger ul li :hover{
+    color: #a1cbfc;
+  }
+  .exit button img{
+
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+  .exit button{
+    background-color: transparent !important;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
+    border: 0;
+    background-color: rgba(34, 33, 33, 0.897);
+
+  }
+  @keyframes entradaMenu{
+    0%{
+      top: -600%;
+    }
+    100%{
+      top: 0%;
+    }
+  }
+  @keyframes salidaMenu{
+    0%{
+      top: 0%;
+    }
+    99%{
+      top: -600%;
+    }
+    100%{
+      display: none;
+    }
+  }
+  /*-------------------@media navegador--------------------------*/
+  @media screen  and (max-width: 941px){
+    .nav-links  li a{
+      font-size: 1.5rem !important;
+    }
+  }
+  @media screen  and (max-width: 925px){
+    .nav-links  li a{
+      font-size: 1.4rem !important;
+    }
+  }
+
+  @media screen and (max-width: 800px){
+  .burger button{
+      width: 4rem;
+      display: flex;
+      background-color: transparent;
+    }
+    .menu-burger{
+      left:0%;
+      top: 0%;
+      height: 300px;
+      width: 100%;
+    }
+    .burger img:hover{
+      transform: scale(1.2);
+    }
+  .nav-links{
+      display: none;
+    }
+    .btm{
+      display: none;
+    }
+    .btl{
+      display: flex !important;
+    }
+
+
+  }
+
+.espacio-nav{
+    width: 100%;
+    height: 55px;
+}
+  /*-------------------------Title---------------------------*/
+
+  .headern    {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24rem;
+    margin-top: 1rem;
+    flex-direction: column;
+   }
+    
+   h1{
+    font-family: 'GT Walsheim Trial', sans-serif;                         
+    font-size: clamp(3rem, 4vw, 6rem) !important;    
+    text-align: center;
+    margin: 1rem;                         
+   }
+   .headern h2{
+    font-size: clamp(4rem, 4vw, 6rem)!important;
+    color: #89C0FF;
+    font-family: 'GT Walsheim Trial', sans-serif;  
+   }
+   /*----------------------------slider--------------------------*/
+.marco-izquierdo{
+  width: 75%;
+  height: 100%;
+
+}
+.carousel , .carousel-inner,.carousel-item  ,.carousel-item.active, .w-100{
+  height: 100% !important;
+  border-radius: 2rem;  
+}
+
+
+  /*--------------------------marco Principal-------------------*/
+
+
+  .marco-center{
+    width: 100%;
+    height: 55rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+    .marco-izquierdo{
+       width: 35%;
+       height: 100%;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       gap: 0.5rem;
+       backdrop-filter: blur(30px);
+    }
+    .marco-derecho{
+      width: 55%;
+      border-radius: 2rem;
+      height: 100%;
+      background-color: #45a049;
+    }
+    .marco-descrip{
+      width: 100%;
+      height: 40%;
+      display: flex;
+    justify-content: center;
+      border:  rgb(197, 197, 212) 2px solid;
+      border-radius: 2rem;
+    }
+    #div1{
+      margin-top: 2rem;
+      width: 90%;
+      font-size: 1.5rem;
+    }
+    #titleDes{
+      font-size: 2rem;
+      height: 12%;
+    }
+    .descrip{
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 75%;
+      font-size: clamp(1.5rem,1.5vw,2rem);
+    }
+    .marco-bajo{
+      width: 100%;
+      height: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     gap: 0.5rem;
+    }
+    .horarios{
+      width: 49%;
+      height: 100%;
+      border:  rgb(197, 197, 212) 2px solid;
+      border-radius: 2rem;
+    }
+    .contac{
+      width: 49%;
+      height: 100%;
+      border:  rgb(197, 197, 212) 2px solid;
+      border-radius: 2rem;  
+    }
+
+    /* precio y horario */
+#precio{
+  height: 20%;
+  margin: 1rem;
+  margin-bottom: 0.3;
+  font-size: clamp(1rem, 1.2vw ,2rem);
+  line-height: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#precio img{  
+  margin: 0.4rem;
+  width:clamp(2rem,2.5vw, 4rem) ;
+}
+#horario{
+  height: 57%;
+  margin: 1rem;
+  margin-top: 2.6rem;
+  font-size: clamp(1rem, 1.2vw ,2rem);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#horario img{
+  margin: 0.5rem;
+  margin-bottom: 0;
+  width:clamp(2rem,2.5vw, 3rem)
+}
+
+/* tel y web */
+
+  #telefono{
+    background-image: url("../Multimedia/png-clipart-water-turquoise-font-water-blue-text.png");
+    font-size:clamp(1rem, 1.2vw ,2rem);
+    margin: 1.5rem 0 3rem 1rem;
+    display: flex;
+  }
+  #telefono img{
+    margin: 0.5rem;
+    width:clamp(2rem,2.5vw, 4rem) ;
+  }
+  #paginaWeb{
+    margin-left: 1rem;
+    font-size: clamp(1rem, 1.2vw ,2rem);
+    display: flex;
+  }
+  #paginaWeb img{
+    margin: 0.5rem;
+    width:clamp(2rem,2.5vw, 4rem) 
+  }
+.marco-maps{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:  rgb(197, 197, 212) 2px solid;
+  border-radius: 2rem;
+}
+
+    /*----------Parte Baja---------*/
+    .marco-segundario{
+      width: 100%;
+      height: 47rem;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      gap: 2rem;
+      background-color: #f5f5f7;
+    }
+    .marco-historia{
+      width: 45%;
+      height: 90%;
+      background-color:#ffffff;
+      border-radius: 2.5rem;
+    }
+    .marco-historia h3{
+      width: 100%;
+      text-align: center;
+      margin-top: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.5rem, 2vw,2.2rem) !important;
+      background: url('../Multimedia/subrayado1.1.1.png');
+      background-position-x: center;
+      background-position-y: center;
+      background-size: cover;
+      padding: 20px;
+      color: #000000;
+      
+    }
+    .tex-histo{
+      margin: 2rem 3rem 1rem 4rem;
+      font-size: 1.8rem;
+      overflow: auto;
+      height: 50%;
+    }
+    .BtnOrgarni{
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+    }
+    /* boton melo caramelo */
+      .btn2{
+          margin-top: 1rem;
+          position: relative;
+          display: inline-block;
+          width: 277px;
+          height: 50px;
+          font-size: 1em;
+          font-weight: bold;
+          line-height: 60px;
+          text-align: center;
+          text-transform: uppercase;
+          background-color: transparent;
+          cursor: pointer;
+          text-decoration:none;
+          font-family: 'Roboto', sans-serif;
+          font-weight:900;
+          font-size:17px;
+          letter-spacing: 0.045em;
+      }
+      
+      .btn2 svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+      }
+      
+      .btn2 svg rect {
+      
+          stroke-width: 4;
+          stroke-dasharray: 353, 0;
+          stroke-dashoffset: 0;
+          -webkit-transition: all 600ms ease;
+          transition: all 600ms ease;
+      }
+      .lapipz{
+        color: #fb7d45  ;
+        color: #fe7600 ;
+      }
+      
+      .btn2 span{
+        background: #fe7600;
+        background: -moz-linear-gradient(left,#fe7600 0%, #fe7600 100%);
+        background: -webkit-linear-gradient(left,#fe7600 0%, #f8aa83  100%);
+        background: linear-gradient(to right, #fb7d45  0%, #f8aa83 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='FD7E41', endColorstr='#f8aa83',GradientType=1 );
+      
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      
+      .btn2:hover svg rect {
+          stroke-width: 4;
+          stroke-dasharray: 196, 543;
+          stroke-dashoffset: 437;
+
+      }
+    /* ----------------- */
+    .marco-comentarios{
+      width: 45%;
+      height: 90%;
+      background-color: rgba(255, 255, 255, 0.764);
+      border-radius: 2.5rem;
+      text-align: start;
+    }
+    .marco-comentarios h3{
+      font-size: clamp(1.5rem, 2vw,2.2rem)!important;
+      margin: 1rem;
+      height: 10%;
+      display: flex;
+      justify-content: center;
+    }
+    .puntua{
+      font-size: clamp(1.5rem, 1.5vw,2rem);
+      text-align: center;
+      height: 15%;
+      
+      }
+      .dif{
+        margin-top: -1.8rem;
+      }
+    .opiniones{
+      height: 73%;
+      overflow:auto;
+      margin-top: 1rem;
+      gap: 0.6rem;
+      border-radius: 3rem;
+    }
+
+    #opini p{
+        display: flex;
+      justify-content: center;
+    }
+
+    .op{
+      background-color: #efeff2;
+      width: 95%;
+      border: #e8e8eb 1px solid;
+      height: auto;
+      border-radius: 2.5rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    
+    }
+    .op p{
+      
+       border-radius: 1rem;
+       font-size: 1.6rem;
+       width:20%; 
+       padding: 1px 10px;
+
+    }
+    .op .te{
+      width: 97%;
+      background-color:#ffffff;
+      border:  #dfdfe4 1px solid;
+      padding: 1rem;
+      border-radius: 2rem;
+    }
+    .opName{
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .opName p{
+      margin: 1rem 0 0.1rem 1rem;
+    }
+    /*------------- VR -------------*/
+    .marco-Vr{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height:1380px;
+      
+    
+    }
+    .vr-interno{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 1.5rem;
+      padding-top: 18rem;
+     
+    }
+
+    .logo-vr{
+    width: 11rem;
+    height: 11rem;
+    margin: 0 auto 44px auto;
+    }
+/* -----------------------------------------animacion logo vr -----------------------------------*/
+.logo-animation {
+  width: 11rem; 
+  height: 11rem; 
+  animation: rotate-logo 1.5s linear; /* nombre de la animación, duración, tipo de animación */
+  animation-play-state: paused; 
+}
+@keyframes rotate-logo {
+  0% {
+    transform:rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(1000deg); 
+  }
+}
+
+
+    /* ------------------------------------------------------------------------------------- */
+    .title-vr{
+      text-align: center;
+      margin: 1rem;
+      width: 980px;
+      padding: 3rem;
+    }
+    .title-vr h4{
+        font-size:clamp(4rem, 5vw, 8rem);
+        line-height: 98%;
+        color:#1d1d1f;
+    }
+    .text-vr{
+      text-align: center;
+      height: auto;
+      width: 43%  ;
+      }
+      .tex-stro{
+        color: #000000ad
+      }
+      .tuDes{
+        color: #89c0ff
+      }
+    
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,500&display=swap');
+
+      .text-vr p{
+        margin: 1rem 4rem 0 4rem;
+        font-size: clamp(1.8rem, 2vw,2.4rem);
+        color: #86868b;
+        font-family: 'Poppins', sans-serif;
+      }
+      #marcoImgVr{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50rem;
+        width: 100%;
+      }
+      #imgVr{
+        display: flex;
+        justify-content: center;
+        width: 60%;
+        height: 100%;
+      }
+      #imgVr img{
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        width: clamp(250px,40vw,400px);
+        height:clamp(250px,40vw,400px);
+      }
+   
+   
+    /*---------Footer---------------*/
+    footer{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 20rem;
+      background-color: #2c3031;
+    }
+    .footer-superior{
+      display: flex;
+      height: 90%;
+      border-bottom: white 1px outset;
+      
+    }
+    .superior-izquierdo{
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      
+      
+    }
+    .superior-derecho{
+      margin-top: 2rem;
+      display: flex;
+  
+      justify-content: center;
+      gap: 0rem;
+      width: 50%;
+      border-left: 1px white outset;
+      margin-bottom: 2rem;
+    }
+    .superior-derecho .tex-form {
+      margin-left: 2rem;
+    }
+
+    .tex-form{
+      color: white;
+      width: 80%;
+      margin-top: 2rem;
+     
+    }
+    form{
+      color: white;
+      width: 100%;
+     height: 5rem;
+    }
+    .logo-footer{
+      width:20rem;
+      height: 14rem;
+      margin-left: 4rem;
+      margin-top: 0;
+       margin-right: 3rem;
+    }
+    .option-footer{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+      gap: 0rem ;
+
+    }
+    .option-footer  a{
+      color: #ffffff;
+     margin-left: 2rem;
+    
+     height:100% !important;
+     padding: 3px 10px;
+     font-size: 1.8rem !important;
+     border-radius: 1rem !important;
+     margin-bottom: 0 !important;
+     margin-right: 0 !important;
+    
+    }
+    .option-footer  a:hover{
+      background-color: #683f3f9c !important;
+     
+    }
+    .redes-footer{
+    
+      gap: 1rem;
+      display: flex;
+      flex-direction: column;
+    width: 20%;
+      margin-bottom: 1rem;
+    }
+
+    .redes-footer img{
+      width: 3.5rem;
+      height: 3.5rem;
+      margin-right: 0.5rem;
+      
+      
+    }
+    
+    input[type="email"] {
+      width: 190px;
+      padding: 1px 10px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+      background-color: #f8f8f8;
+    }
+    input[type="submit"] {
+      width: 20%;
+      background-color: #4caf50;
+      color: white;
+      padding: 2px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    form input::placeholder{
+      font-size: 15px;
+    }
+   
+    .tex-form{
+      font-size: 12px;
+    }
+    form label{
+      font-size: 15px;
+    }
+    .footer-inferior {
+      border: 1px solid white;
+    }
+    .footer-sepa{
+      margin-left: 1rem;
+    }
+    .footer-inferior , .footer-inferior a{
+      height: 10%;
+      display: flex;
+      color: white;
+      gap: 3rem;
+      text-decoration: none;
+      font-size: 10px;
+    }
+    .footer-inferior a:hover{
+      color: rgb(11, 201, 11);
+
+    }
+    /* -------------Modo de edicion --------------------*/
+    .btnEdit_place{
+      width: 40px;
+      height: 40px;
+      background-color: #bfdbff ;
+      border-radius: 0.5rem;
+      position: absolute;
+      right: 5.5%;
+      top: 10.6%;
+      font-size: 2rem;
+    }
+    
+    .btnEdit_place:hover{
+      background-color: #deecff;
+    }
+    .Save{
+      right: 7.6%;
+      display: none;
+    }
+    #btnCancel_place{
+      display: none;
+    }
+    .textarea{
+      width: 100%;
+      resize: none;
+    }
+    .Edict{
+      width: 100%;
+      border-radius: .5rem;
+      display: none;
+    }
+    .edicPhone, .edicWeb{
+      width: 95%;
+    }
+    .edicPhone::placeholder, .edicWeb::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .edictTitle::placeholder{
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    .edictTitle{
+      width: 40rem;
+      height: 4rem;
+    }
+
+    .editPrice, .editHorario{
+      height: 3.2rem;
+    }
+    .editPrice::placeholder, .editHorario::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .editDirec{
+      position: absolute;
+      top: 34.25rem;
+      height: 4rem;
+      width: 94%;
+    }
+    .editDirec::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .editDescrip::placeholder{
+      text-align: center;
+      font-size: 2rem;
+    }
+    .editInfo::placeholder{
+      text-align: center;
+      font-size:2rem;
+    }
+    .editUrl{
+      width:100% ;
+      height: 4rem;
+    }
+    .editUrl::placeholder{
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    /* Responsives */
+    @media screen and (max-width: 1300px){
+      .opiniones{
+        height: 74.5%;       
+      }
+    }
+    @media screen and (max-width: 1150px){
+      .opiniones{
+        height: 76%;       
+      }
+      .title-vr{
+        width: 80%;
+      }
+    }
+    @media screen and (max-width: 1000px){
+      .opiniones{
+        height: 78%;       
+      }
+      
+    }
+    @media screen and (max-width: 800px) {
+      .footer-superior{
+    
+        flex-direction: column;
+      height: 75% !important;
+      }
+      .superior-izquierdo{
+    
+        margin-bottom: 0  !important;
+        width: 90% !important;
+      }
+      .superior-derecho{
+       width: 100% !important;
+       border-left: 0rem !important;
+       margin-left: 2rem;
+     
+      }
+      footer{
+        height: 35.5rem !important;
+    
+    
+      }
+      .option-footer{
+        align-items: safe;
+      }
+      .superior-derecho .tex-form, form{
+        margin-left: 1rem !important;
+        margin-bottom: 0 !important;
+      }
+      .superior-izquierdo .logo-footer{
+        height: 9rem;
+        width: 15rem;
+        margin-left: 1rem ;
+        margin-right: 1rem;
+      }
+      .option-footer .btn{
+        font-size: 1.4rem !important;
+        margin-left: 1rem !important;
+        padding: 3px 5px;
+      }
+      .redes-footer{
+        position: relative;
+          top: -50%;
+          left: 4%;
+        gap: 1.5rem !important;
+      }
+      .footer-inferior, .footer-sepa a{
+        height: 25% !important;
+        text-align: center;
+      }
+      .opiniones{
+        height: 77.6%;       
+      }
+
+    }
+    @media screen and (max-width: 675px){
+      #opini p{
+        margin-bottom: 0.3rem;
+      }
+      .opiniones{
+        height: 79%;       
+      }
+      .btn2 span{
+        font-size: 1rem;
+      background: rgb(255,130,130);
+      background: -moz-linear-gradient(left,  rgba(255,130,130,1) 0%, rgba(225,120,237,1) 100%);
+      background: -webkit-linear-gradient(left,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%);
+      background: linear-gradient(to right,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
+      
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      
+      .btn2:hover svg rect {
+          stroke-width: 4;
+          stroke-dasharray: 80, 249;
+          stroke-dashoffset: 160;
+    
+      }
+      .btn2 svg rect{
+        width: 150px;
+        height: 40px;
+      }
+      .btn2 svg {
+        width: 160px;
+        height: 50px;
+        left: auto;
+      }
+      .btn2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;#marcoImgVr{
+          height: 30rem;
+          width: 1005;
+        }
+        align-items: center;
+      }
+      .texMas{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* precio y horario */
+      #precio img{  
+        margin: 0.1rem;
+    }
+    .marco-center{
+      flex-direction: column-reverse;
+      height: 95rem;
+      justify-content: center;
+      align-items: center;
+     }
+     .marco-izquierdo{
+      width: 98%;
+     }
+     .marco-derecho{
+      width: 98%;
+     }
+     .texMas{
+      font-size: 1.7rem;
+     }
+     .btnConoce{
+      font-size: 1.5rem;
+      margin-top: 6px;
+      padding: 0.8rem 1rem;
+     }
+     .btnConoce a{
+      font-size: 1.2rem;
+     }
+     /* telefono y veb */
+      #telefono{
+      font-size: 1.8rem;
+      }
+      #telefono img{
+        width:3rem;
+      }
+      #paginaWeb{
+        font-size: 1.8rem;
+      }
+      #paginaWeb img{
+        width:3rem;
+      }
+      /* precio y horario */
+      #precio{
+        margin: 1.5rem 0 1rem 1rem;
+        font-size: 1.8rem;
+      }
+      #precio img{  
+        margin: 0.4rem;
+        width:2.5rem ;
+      }
+      #horario{
+        height: 60%;
+        margin-top: 0.8rem;
+        font-size: 1.5rem;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #horario img{
+        margin: 0.5rem;
+        width: 2.5rem ;
+      }
+      .text-vr{
+        text-align: center;
+        height: auto;
+        width: 63%  ;
+        }
+        
+    }
+    @media screen and (max-width: 666px){
+      .opiniones{
+        height: 75%;       
+      }
+    }
+
+    @media screen and (max-width: 555px){
+    .text-vr{
+      width: 70%;
+    }
+    .title-vr{
+      width: 70%;
+    }
+    #precio{
+      font-size: 1.4rem;
+    }
+    .text-vr p{
+      font-size: 1.5rem;
+      }
+    }
+
+
+@media screen and (max-width: 412px){
+  .opiniones{
+    height: 75%;       
+  }
+  .text-vr{
+    width: 100%;
+  }
+  .title-vr{
+    width: 90%;
+  }
+  .texMas{
+    font-size: 1.3rem;
+   }
+   .btnConoce{
+    padding: 0.2rem 1rem;
+  }
+
+}
+
+@media screen and (max-width: 403px){
+  .opiniones{
+    height: 71%;       
+  }
+  #opini p{
+    display: block;
+  }
+  #telefono{
+  font-size: 1.5rem;
+  }
+  #telefono img{
+    width:2.2rem;
+  }
+  #paginaWeb{
+    font-size:1.5rem;
+  }
+  #paginaWeb img{
+    width:2.2rem;
+  }
+
+ }
+
+@media screen and (max-width: 290px){
+ .tex-histo{
+  height: 40%;
+ }
+}
+

@@ -66,6 +66,7 @@ export async function update (url,info){
             console.log(data);
             }else{
             isPost=true;
+            console.log(await data);
             }
     } catch (error) {
         console.error(error);
