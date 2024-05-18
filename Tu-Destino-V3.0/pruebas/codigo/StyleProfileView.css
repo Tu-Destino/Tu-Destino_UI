@@ -413,7 +413,13 @@ display: flex;
   background-color: #ffffff;
   padding: 1rem;
   border-radius: 2rem;
+  overflow-y: hidden;
+  overflow-y:auto;
   font-family: "Inter", sans-serif;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .contentPending_centerLeft{
@@ -467,15 +473,27 @@ display: flex;
 }
 
 .etiPub{
-  position: fixed;
-  padding: 1rem;
-  max-width: 30rem;
-  top: -30px;
-  background-color: #519def;
+  padding: 5px;
+  width: 10rem;
+  height: 30rem;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   z-index: 10;
   display: none;
+  overflow: auto;
+
+  gap: .2rem;
+  border-radius: 1rem;
+  
+  
+}
+.etiPub label {
+text-align: center;
+  text-wrap: nowrap;
+  width: 100%;
+  height: auto;
+  font-size: 1.5rem;
 }
 
 .contentPending_centerBottom{
@@ -560,6 +578,14 @@ display: flex;
   border-radius: 3rem;
   font-family: "Inter", sans-serif;
 }
+.btnPlaces_datils a{
+  width: 75%;
+  text-decoration: none;
+  color: #1c7ce2;
+  height: 100%;
+  border-radius: 3rem;
+  font-family: "Inter", sans-serif;
+}
 
 .btnUser{
   height: 100%;
@@ -620,6 +646,7 @@ display: flex;
 
 .infoplace_name{
   width: 80%;
+  background-color: #e7e4f0;
 }
 
 

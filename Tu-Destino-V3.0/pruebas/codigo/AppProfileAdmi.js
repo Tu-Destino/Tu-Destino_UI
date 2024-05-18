@@ -117,12 +117,12 @@ async function extraerLugar() {
     <div>
       <label class="infoPlaceD infoPublic"
         ><button class="btnPlaces_datils" value="${id}">
-          Ver Detalles
+         Ver Detalles🖋️
         </button></label
       >
       <div class="btnUser">
         <button class="btnDelete_place" value="${id}">🗑️</button>
-        <button class="btnEdit_place" value="${id}">🖋️</button>
+
       </div>
     </div>
   </div>
@@ -154,6 +154,7 @@ async function extraerLocal(id_lugar) {
     if (id == id_lugar) {
       console.log(lugar);
       localStorage.setItem("LugarEdict", JSON.stringify(lugar));
+      window.location.href = "../../Html/MasDetalles.html";
     }
   });
 }

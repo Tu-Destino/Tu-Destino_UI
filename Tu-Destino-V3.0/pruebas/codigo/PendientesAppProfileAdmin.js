@@ -23,13 +23,20 @@ const revision = document.getElementById("viewAdmi2");
 
 revision.addEventListener("click", () => {
   inyeccionPublic();
+
 });
+
+function DesConcatTags(tags) {
+
+  const listtag = tags.split(',')
+  return listtag
+}
 
 async function inyeccionPublic() {
   const publication = await get(UrlPublication);
   const padre = document.getElementById("ViewCenter_review");
   /*limpieza();*/
-
+  let conta=0
   await publication.forEach((publi) => {
     const {
       id,
@@ -38,8 +45,14 @@ async function inyeccionPublic() {
       enum_estado,
       descripcion,
       fecha_publicacion,
+      etiquetas,
       user_id,
     } = publi;
+  
+  const listtags= DesConcatTags(etiquetas)
+    
+    const fechaMod= fecha_publicacion.slice(0,10)
+
     const hijo = document.createElement("div");
     hijo.className = "pending_publication"
     console.log(enum_estado);
@@ -55,22 +68,59 @@ async function inyeccionPublic() {
                     <label class="pubPending_descrip">${descripcion}</label>
                     </div>
                     <div class="contentPending_centerRight">
-                      <button type="button" class="btnDetailsPub " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Etiquetas</button>            
-                      <button class="btnDenegPub" value="${id}">Denegar</button>
-                      <button class="btnAcceptPub" value="${id}" >Aceptar</button>
+                      <button class="btnDetailsPub" id="btnDetailsPub${conta}" >Etiquetas</button>
+                      <li class="etiPub" id="etiPub${conta}" >
+                      
+                     </li>
+              
+                      <button class="btnDenegPub" id="btnDenegPub${conta}" value="${id}">Denegar</button>
+                      <button class="btnAcceptPub" id="btnAcceptPub${conta}" value="${id}" >Aceptar</button>
                     </div>
                 </div>
                 
                 <div class="contentPending_end">
                     <label class="pubPending_name">👤 ${user_id.name}</label>
-                    <label class="pubPending_date">📅 ${fecha_publicacion}</label>
+                    <label class="pubPending_date">📅 ${fechaMod}</label>
                 </div>
         `;
+        
+        
+      let contetags;
       hijo.innerHTML = publicHtml;
       padre.appendChild(hijo);
+      listtags.forEach(tag=>{
+        const hijo=document.createElement("label")
+        hijo.className="tags_review"
+        hijo.textContent = `${tag}`
+        contetags = document.getElementById(`etiPub${conta}`)
+        contetags.appendChild(hijo);
+      })
+      const btnDetailsPub = document.getElementById(`btnDetailsPub${conta}`);
+       const btnDenegPub = document.getElementById(`btnDenegPub${conta}`);
+       const btnAcceptPub = document.getElementById(`btnAcceptPub${conta}`);
+       let clickCo=0;
+      btnDetailsPub.addEventListener("click", () => {
+       
+        if (clickCo===0) {
+       contetags.style.display = "flex";
+       btnDenegPub.style.display = "none";
+       btnAcceptPub.style.display = "none";
+      clickCo++;  
+      }else if(clickCo==1){
+        contetags.style.display = "none";
+        btnDenegPub.style.display = "block";
+        btnAcceptPub.style.display = "block";
+        clickCo=0;
+      }
 
+      });
+
+      
+
+    conta++;
       //14
     }
+
   });
 
   const tagAprobar = document.querySelectorAll(".btnAcceptPub");

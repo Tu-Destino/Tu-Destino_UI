@@ -42,7 +42,7 @@ const modalResuld=document.getElementById("modalResuld");
 const btnCerrarResul=document.getElementById("btnCerrarResul");
 const TextResult=document.getElementById("TextResult");
 const TextResultPe=document.getElementById("TextResultPe");
-
+const post_cancelar=document.getElementById("post_cancelar");
 
 let listTags= new Array();
 storageModal.style.display="none";
@@ -65,6 +65,10 @@ btbModalPost.addEventListener("click",()=>{
 btnClosePost.addEventListener("click",()=>{
   storageModal.style.display="none";
 });
+
+post_cancelar.addEventListener("click",()=>{
+  storageModal.style.display="none";
+})
 
 const postear={
   titulo:"",
