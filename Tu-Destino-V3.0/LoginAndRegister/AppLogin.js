@@ -34,7 +34,7 @@ const Register = async (e) => {
     }
 
     try {
-      const response = await fetch('https://tu-destino-authentication.onrender.com/v1/api/auth/register', {
+      const response = await fetch('http://localhost:3000/v1/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Login = async (e) => {
     }
 
     try {
-      const response = await fetch('https://tu-destino-authentication.onrender.com/v1/api/auth/login', {
+      const response = await fetch('http://localhost:3000/v1/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

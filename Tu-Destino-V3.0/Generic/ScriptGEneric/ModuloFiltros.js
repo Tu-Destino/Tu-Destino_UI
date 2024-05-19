@@ -83,7 +83,11 @@ import { ReiVeces, limpiarStyle}   from "./ModuloSelectores.js";
     }
 
   /*-------Funcion padre para filtrar las etiquedas seleccionas----*/
-   
+  function DesConcatTags(tags) {
+
+    const listtag = tags.split(',')
+    return listtag
+  }
 
   export function filtrarBotones(verifica,criterio){
     criteriosFiltros.infinite=2
@@ -91,9 +95,9 @@ import { ReiVeces, limpiarStyle}   from "./ModuloSelectores.js";
     console.log(`filtros activoS : ${verifica} || Criterio del filtro: ${criterio}`);
     if (verifica===false) {
         console.log('filtrado de Data-img');
-        DataFiltrados= DataImg.filter(data=> {     return  data.etiquetas.includes(criterio) })
-       
-          // console.log(DataFiltrados);
+        DataFiltrados= DataImg.filter(data=> {    return  DesConcatTags(data.etiquetas).includes(criterio) })
+      ; 
+          console.log(DataFiltrados);
         CargaImagenes(DataFiltrados)
     }
     else{
