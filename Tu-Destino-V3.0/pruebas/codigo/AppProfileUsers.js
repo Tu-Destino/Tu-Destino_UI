@@ -1,14 +1,59 @@
-// importacion de URLs
-// 13
+// importacion del URL del metodo get para lugares
+// 8
 import {
   UrlPlace,
-  UrlPublication,
   get,
-  update,
   post,
   deleteHttp,
-  UrlPost,
+  UrlPublication,
 } from "../jsonPruebas/apiConnection.js";
+
+//  Html selectors
+const labeles = document.querySelectorAll(".infoV");
+const inputs = document.querySelectorAll(".update");
+const btnSummit = document.getElementById("BtnSummit");
+const btnEdit = document.getElementById("BtnUpdate");
+const Iname = document.getElementById("IName");
+const IEmail = document.getElementById("IEmail");
+const IPass = document.getElementById("IPass");
+const searchUser = document.getElementById("searchUser");
+const btnSearch = document.getElementById("btnSearch");
+const btnCreateLugar = document.getElementById("create_place"); //6
+const formulario = document.getElementById("CVA5"); //6
+const principal = document.getElementById("CVA4"); // 6
+const cancelar = document.getElementById("btnPlace_cancel"); //7
+const viewAdmi1 = document.getElementById("viewAdmi1");
+const CVA1 = document.getElementById("CVA1");
+const viewAdmi2 = document.getElementById("viewAdmi2");
+const CVA2 = document.getElementById("CVA2");
+
+//Events
+viewAdmi1.addEventListener("click",() => {
+  CVA1.style.display="flex";
+  CVA2.style.display="none";
+});
+
+viewAdmi2.addEventListener("click",() => {
+  CVA1.style.display="none";
+  CVA2.style.display="flex";
+});
+
+
+btnEdit.addEventListener("click", () => {
+  labeles.forEach((labe) => {
+    labe.style.display = "none";
+  });
+  btnEdit.style.display = "none";
+  inputs.forEach((ite) => {
+    ite.style.display = "flex";
+  });
+  btnSummit.style.display = "block";
+});
+
+function extraerUser() {
+
+}
+
 
 // funcion de limpieza
 
@@ -31,9 +76,19 @@ function DesConcatTags(tags) {
   const listtag = tags.split(',')
   return listtag
 }
+async function publicacionOfUsers() {
+  const publication = await get(UrlPublication);
+
+  publication.forEach(publi=>{
+  
+    const {user} = publi;
+    
+  })
+}
+
 
 async function inyeccionPublic() {
-  const publication = await get(UrlPublication);
+  const publication = await publicacionOfUsers()
   const padre = document.getElementById("ViewCenter_review");
   limpieza();
   
@@ -229,3 +284,9 @@ async function aprobarlugar(id_public) {
 
 
 //14
+
+
+
+
+
+
