@@ -73,7 +73,7 @@ const postear={
   url_img:"",
   place:0,
   user_id:"25239669-e8f2-4594-ba20-e25b18bca2c3",
-  Enum_estado:"PENDIENTE"
+  enum_estado:"PENDIENTE"
 }
 
 async function buscarLugar(nombre){
