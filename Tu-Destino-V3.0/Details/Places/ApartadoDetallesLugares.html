@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles</title>
+  <!-- links Styles-->
+  <link rel="stylesheet" href="../Styles/StyleLgares.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+  <link rel="stylesheet" href="../../Generic/StylesGeneric/glider.min.css">
+  <link rel="stylesheet" href="../../Generic/StylesGeneric/StyleFooter.css">
+  <link rel="stylesheet" href="../../Generic/StylesGeneric/StyleTraductor.css">
+  <script defer src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <header class="header">
+
+    <div class="logo">
+        <a href="../../../index.html"><img src="../Multimedia/main/logoMelo.png" alt="Logo de la marca"></a>
+    </div>
+
+    <nav>
+
+      <ul class="nav-links">
+        <li><a href="../../Places/ApartadoLugares.html">Lugares</a></li>
+        <li><a href="../../PostDiscover/ApartadoDescubrir.html">Descubre Tu Destino</a></li>
+        <li><a href="#">¿Que Hacer?</a></li>
+      </ul>
+
+      <div class="burger" id="burger">
+        <button> <img src="../Multimedia/main/menuH.png" alt="" width="40rem" height="40rem">
+        </button>
+      </div>
+
+      <div class=" menu-burger" id="menuBurger">
+        <ul>
+          <li><a href="../../Places/ApartadoLugares.html">Lugares</a></li>
+          <li><a href="../../PostDiscover/ApartadoDescubrir.html">Descubre Tu Destino</a></li>
+          <li><a href="#">¿Que Hacer?</a></li>
+          <a class="btm btl" href="#"><button>Registro</button></a>
+          <div class="exit" id="exit">
+            <button> <img src="../Multimedia/main/x.png" alt="" width="30rem" height="30rem"></button>
+          </div>
+        </ul>
+      </div>
+
+      <script>
+        const burger =document.querySelector('#burger');
+        const menuBurger = document.querySelector('#menuBurger');
+        burger.addEventListener('click', ()=>{
+          menuBurger.style.display='flex';
+          menuBurger.style.animation= "entradaMenu 1.5s ease";
+        })
+        const exit =document.querySelector('#exit')
+        exit.addEventListener('click',()=>{
+          menuBurger.style.animation= "salidaMenu 1.5s ease";
+          setTimeout( salida,1.45 * 1000, "1")
+        function salida(){
+          menuBurger.style.display='none';
+        }
+          console.log("hola");
+        })
+
+
+      </script>   
+      
+    </nav>
+    <a class="btm" href="#"><button>Registro</button></a>
+    <button class="btm" id="traductor">
+      <img class="logo-tra" src="../Multimedia/main/logoVr.png" alt="">
+     <div id="google_translate_element" class="google"></div>
+     <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'es,ca,en,fr,pt,de,tr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true}, 'google_translate_element');
+              }
+         
+      </script>
+</button>
+
+  </header>
+  <div class="space-nav">
+
+  </div>
+  <section class="marco-margin">
+    
+    
+    <div class="marco-map">
+      <div class="tex-map">
+        <h1>Comunas <br> de Medellin</h1>
+        <p>En Medellín, encontrarás una variedad de comunas, cada una con su propio encanto distintivo. ¡Descubre Medellín, comuna por comuna!</p>
+      </div>
+      <div class="map">
+        <img src="../Multimedia/Lugares/Mapa (1).png" alt="">
+      </div>
+    </div>
+
+
+    <section class="marco-collage">
+      <div class="tex-college">
+        <div class="title-collage">
+          <hr style=" width: 30rem; border: 0.5px solid black;">
+              <h2 id="title-section-two">Lugares destacados</h2>
+        </div>
+        <div class="text-collage">
+          <p>Medellín, ciudad de contrastes, ofrece experiencias únicas en cada rincón.¡Explora y disfruta la magia de Medellín!</p>
+        </div>
+      </div>
+      <div class="marco-img">
+        <div class="img-left">
+          <div class="row-left-one">
+            <img class="small-img" src="../Multimedia/Lugares/historia/MuseoCastillo/MuseoC3.jpg" alt="">
+            <h2>Museo el Castillo</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repellendus iure animi, labore laudantium enim et fugit? Dignissimos, sit beatae laudantium labore excepturi asperiores quaerat?</p>
+          </div>
+          <div class="row-left-two">
+            <img class="big-img" src="../Multimedia/Lugares/historia/parqueberrio/berrio1.png" alt="">
+            <h2>Parque Berrio</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque sit quibusdam odio deserunt voluptas, accusamus odit vitae possimus. Necessitatibus labore ullam repudiandae consequatur accusamus delectus natus est provident animi ratione!</p>
+          </div>
+        </div>
+        <div class="img-right">
+          <div class="row-right-one">
+            <img class="big-img" src="../Multimedia/Lugares/historia/basilica/Basilica-candelaria.jpeg" alt="">
+          
+              <h2>Basilica la Candelaria</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum non omnis eveniet fugit aliquam ab sequi blanditiis placeat nisi iste, quasi commodi provident iusto adipisci quidem odit voluptatibus at fugiat.</p>
+  
+        </div>
+          <div class="row-right-two">
+            <img class="small-img" src="../Multimedia/Lugares/cultura/Palacio Rafael Uribe Cultura/PalacioUribe2.jpg" alt="">
+          
+              <h2>Palacio de la Cultura</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum non omnis eveniet fugit aliquam ab sequi blanditiis placeat nisi iste, quasi commodi provident iusto adipisci quidem odit voluptatibus at fugiat.</p>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>  
+    <div class="marco-titex">
+        <div class="title-ca">
+          <hr style=" width: 30rem; border: 1.5px solid black;">
+              <h2 id="title-section-two">Lugares Historicos</h2>
+        </div>
+        <div class="text-ca">
+          <p>Conoce y disfruta de los lugares historicos que tiene la ciudad de Medellin</p>
+        </div>
+      </div>
+  
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista" id="carouselHistoria">
+              
+              
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Lugares Historicos</h2>
+    </div>
+    <div class="text-ca">
+      <p>Conoce los lugares Historicos que tiene Medellin para ofrecerte</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior1">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista1" id="carouselCultura">
+             
+              
+              
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente1">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores1"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Lugares Naturales</h2>
+    </div>
+    <div class="text-ca">
+      <p>Conoce los lugares naturales que te ofrece Medellin</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior2">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista2" id="carouselNaturaleza">
+              
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente2">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Restaurante</h2>
+    </div>
+    <div class="text-ca">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior3">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista3" id="carouselRestaurante">
+              
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente3">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Hospedajes</h2>
+    </div>
+    <div class="text-ca">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis in molestias sint repellat.</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior4">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista4" id="carouselHospedajes">
+              
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente4">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="marco-collage frame-actividad">
+    <div class="tex-college">
+      <div class="title-collage">
+        <hr style=" width: 30rem; border: 1.5px solid black;">
+            <h2 id="title-section-two">Actividades Destacadas</h2>
+      </div>
+      <div class="text-collage">
+        <p>Esta son las actividades mas destacadas en Medellin.</p>
+      </div>
+    </div>
+    <div class="marco-img">
+      <div class="img-left">
+        <div class="row-left-one">
+          <img class="small-img" src="../Multimedia/Lugares/Actividades/Metrocable/metro3.jpeg" alt="">
+          <h1>Metro</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repellendus iure animi, labore laudantium enim et fugit? Dignissimos, sit beatae laudantium labore excepturi asperiores quaerat?</p>
+        </div>
+        <div class="row-left-two">
+          <img class="big-img" src="../Multimedia/Lugares/Actividades/ParapenteSanFelix/parapente.jpg" alt="">
+          <h1>Paseo en Parapente</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque sit quibusdam odio deserunt voluptas, accusamus odit vitae possimus. Necessitatibus labore ullam repudiandae consequatur accusamus delectus natus est provident animi ratione!</p>
+        </div>
+      </div>
+      <div class="img-right">
+        <div class="row-right-one">
+          <img class="big-img" src="../Multimedia/Lugares/Actividades/RecorridoBicicleta/bici3.jpg" alt="">
+        
+            <h1>Paseo en Bicicleta</h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum non omnis eveniet fugit aliquam ab sequi blanditiis placeat nisi iste, quasi commodi provident iusto adipisci quidem odit voluptatibus at fugiat.</p>
+
+      </div>
+        <div class="row-right-two">
+          <img class="small-img" src="" alt="">
+        
+            <h1>Paseo en Parapente</h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum non omnis eveniet fugit aliquam ab sequi blanditiis placeat nisi iste, quasi commodi provident iusto adipisci quidem odit voluptatibus at fugiat.</p>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="marco-titex2">
+    <div class="title-ca">
+      <hr style=" width: 30rem; border: 1.5px solid black;">
+          <h2 id="title-section-two">Lugares Historicos</h2>
+    </div>
+    <div class="text-ca">
+      <p>Conoce y disfruta de la historia de la ciudad de Medellin</p>
+    </div>
+  </div>
+  <section class="Frame-Carruseles">
+  
+    <div class="Frame-Interno">
+      <div class="contenedor">
+     
+  
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior5">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+    
+            <div class="carousel__lista5" id="carouselActividades">
+              
+            </div>
+    
+            <button aria-label="Siguiente" class="carousel__siguiente5">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+    
+          <div role="tablist" class="carousel__indicadores5"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer-distributed">
+    <hr>
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>Sobre Nosotros</span>
+            <strong>Tu Destino</strong> Nos dedicamos a sumergirte en la belleza de los lugares menos explorados
+            de Colombia. Te llevamos más allá de los típicos destinos turísticos para que te sientas como en
+            casa. Nuestro objetivo es que disfrutes de la autenticidad y calidez de nuestra tierra.
+        </p>
+        <div class="footer-icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+        </div>
+    </div>
+    
+
+    <div class="footer-center">
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Colombia</span>
+                Antioquia</p>
+        </div>
+
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>+57 32**9**258</p>
+        </div>
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:sagar00001.co@gmail.com">tudestino@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-left">
+        <img class="logo" src="../pruebas/Lugares/multimedia/xifc580gecox85cpz8zv.jpg" alt="">
+
+        <p class="footer-links">
+            <a href="../../Places/ApartadoLugares.html">Lugares</a>
+            |
+            <a href="../../PostDiscover/ApartadoDescubrir.html">Descubre Tu Destino</a>
+            |
+            <a href="#">¿Que Hacer?</a>
+            
+
+        </p>
+
+
+        <p class="footer-company-name">Copyright © 2024 <strong>Tu Destino</strong> All rights reserved</p>
+    </div>
+    <hr>
+</footer>   
+  <script  src="../../Places/AppLugares.js" type="module"> </script>
+  <script  src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
