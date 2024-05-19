@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@600&display=swap');
 @import url('https://fonts.cdnfonts.com/css/gt-walsheim-trial');
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
                 
 
 /*https://responsively.app/download */
@@ -237,6 +239,7 @@ body{
     height: 24rem;
     margin-top: 1rem;
     flex-direction: column;
+      margin-bottom: 2.5rem;
    }
     
    h1{
@@ -389,6 +392,7 @@ body{
   width: 100%;
   height: 30%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border:  rgb(197, 197, 212) 2px solid;
@@ -435,6 +439,8 @@ body{
       width: 100%;
       text-align: center;
       font-size: 2rem;
+      display: flex;
+      justify-content: center;
     }
     /* boton melo caramelo */
       .btn2{
@@ -481,10 +487,9 @@ body{
         background: -moz-linear-gradient(left,#fe7600 0%, #fe7600 100%);
         background: -webkit-linear-gradient(left,#fe7600 0%, #f8aa83  100%);
         background: linear-gradient(to right, #fb7d45  0%, #f8aa83 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='FD7E41', endColorstr='#f8aa83',GradientType=1 );
-      
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='FD7E41', endColorstr='#f8aa83',GradientType=1 );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       
       .btn2:hover svg rect {
@@ -524,7 +529,7 @@ body{
       gap: 0.6rem;
       border-radius: 3rem;
     }
-
+  
     #opini p{
         display: flex;
       justify-content: center;
@@ -808,14 +813,21 @@ body{
 
     }
     /* -------------Modo de edicion --------------------*/
+    #contentBtn_editPlace{
+      width: 90.5%;
+      height: 5rem;
+      margin-bottom: -2.5rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: end;
+    }
+  
+
     .btnEdit_place{
-      width: 40px;
+      width: 130px;
       height: 40px;
       background-color: #bfdbff ;
       border-radius: 0.5rem;
-      position: absolute;
-      right: 5.5%;
-      top: 10.6%;
       font-size: 2rem;
     }
     
@@ -828,18 +840,35 @@ body{
     }
     #btnCancel_place{
       display: none;
+      width: auto;
     }
+
+    
+
     .textarea{
       width: 100%;
       resize: none;
     }
     .Edict{
       width: 100%;
-      border-radius: .5rem;
+      border-radius: 1rem;
+      border: solid #81e399 5px;
       display: none;
+      padding: 0.6rem;
+      font-size: 1.5rem;
     }
+    .editTitle{
+      display: none;
+      border: 0;
+      font-family: "Inter", sans-serif;
+      font-size: 1.8rem;
+      margin: 0.8rem;
+      margin-left: 2rem;
+    }
+
     .edicPhone, .edicWeb{
       width: 95%;
+      margin: 0 !important;
     }
     .edicPhone::placeholder, .edicWeb::placeholder{
       text-align: center;
@@ -851,7 +880,9 @@ body{
     }
     .edictTitle{
       width: 40rem;
-      height: 4rem;
+      height: 8rem;
+      font-size: 2.5rem;
+      padding-left: 1rem;
     }
 
     .editPrice, .editHorario{
@@ -862,9 +893,6 @@ body{
       font-size: 2rem;
     }
     .editDirec{
-      position: absolute;
-      top: 34.25rem;
-      height: 4rem;
       width: 94%;
     }
     .editDirec::placeholder{
@@ -880,8 +908,9 @@ body{
       font-size:2rem;
     }
     .editUrl{
-      width:100% ;
+      width:95% ;
       height: 4rem;
+      margin-left: 2rem;
     }
     .editUrl::placeholder{
       font-size: 1.5rem;

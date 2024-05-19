@@ -124,11 +124,17 @@
     <div class="headern">
       <h2>Conoce:</h2>
       <h1 class="originView"></h1>
-      <button class="btnEdit_place" id="btnCancel_place">✖️</button>
-      <button class="btnEdit_place" id="btnEdit_place">🖋️</button>
-      <button class="btnEdit_place Save" id="btnSave_place">💾</button>
-      <input  class="Edict edictTitle "  id="EdictTitle" type="text" placeholder="Titulo del lugar" value="">
+      <input  class="Edict edictTitle "  id="EdictTitle" type="text" placeholder="Titulo del lugar" value="">   
     </div>
+
+    <!-- --------------------Btns Edit-------------------- -->
+
+    <div id="contentBtn_editPlace">
+      <button class="btnEdit_place" id="btnCancel_place">✖️</button>
+      <button class="btnEdit_place" id="btnEdit_place">Editar 🖋️</button>
+      <button class="btnEdit_place Save" id="btnSave_place">Guardar 💾</button>
+    </div> 
+
     <!---------------marco Principal--------->
 
     <section class="marco-center">
@@ -144,24 +150,30 @@
         <div class="marco-bajo">
           <div class="horarios">
             <div id="precio">
+              <label class="Edict editTitle">Url Maps:  </label>  
               <input class="Edict editPrice"  id="EdictPrice" type="text" placeholder=" Precio del lugar" value="">
             </div>
             <div id="horario">
+              <label class="Edict editTitle">Url Maps:  </label>  
               <input class="Edict editHorario"  id="EdictHorario" type="text" placeholder="Horario lugar" value="">
             </div>
           </div>
-          <input class="Edict editDirec"  id="EdictDirec" type="text" placeholder="Dirección de lugar" value="">
 
           <div class="contac">
-            <div id="telefono">
-                  <input class="Edict edicPhone"  id="EdictPhone" type="text" placeholder="Telefono" value="">
+            <label class="Edict editTitle2">Telefono:  </label>  
+            <div id="telefono edicPhone">
+              <input class="Edict "  id="EdictPhone" type="text" placeholder="Telefono" value="">
             </div>
+            <label class="Edict editTitle2">Web:</label>  
             <div id="paginaWeb">
+              
               <input class="Edict edicWeb"  id="EdictWeb" type="text" placeholder="Pagina Web" value="">
             </div>
           </div>
         </div>
         <div class="marco-maps" id="div4">
+          <label class="Edict editTitle">Url Maps:  </label>  
+          <input class="Edict editDirec"  id="EdictDirec" type="text" placeholder="Dirección de lugar" value="">
 
         </div>
       </div>
@@ -197,9 +209,11 @@
       <div class="marco-historia" id="MHistoria">
         <h3>Un Poco de Historia</h3>
         <div class="tex-histo" id="Historia">
+
           <textarea class="Edict textarea editInfo" rows="7" id="EdictInfo" placeholder="Informacion del lugar" value=""></textarea>
         </div>  
-           <input class="Edict editUrl"  id="EdictUrl" type="text" placeholder="Url boton del  lugar" value="">
+          <label class="Edict editTitle">Url mas info: </label>  
+          <input class="Edict editUrl"  id="EdictUrl" type="text" placeholder="Url boton del  lugar" value="">
 
       </div>
       <div class="marco-comentarios" id="comentarios">
