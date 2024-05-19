@@ -127,6 +127,14 @@ con el URL y el objeto nuevo
 
 //13
 
+                        sabado 18 de mayo 2024
+
+15. Tu-Destino_UI\Tu-Destino-V3.0\pruebas\codigo\UsuarioAppPorfileadmin.js
+
+creacion nuevo script para usuarios 
+
+16.
+
 
 
 

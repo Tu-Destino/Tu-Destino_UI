@@ -1,6 +1,5 @@
 {
   "liveServer.settings.port": 5500,
-<<<<<<< HEAD
   "liveServer.settings.ignoreFiles": [
 
 
@@ -12,9 +11,6 @@
   "liveServer.settings.mount": [
 
   ],
-  "liveServer.settings.ChromeDebuggingAttachment": false
-=======
-  "liveServer.settings.root": "",
-  "liveServer.settings.CustomBrowser": "firefox"
->>>>>>> 46247d7e6958a6f8f862170e44027b32789dea4c
+  "liveServer.settings.ChromeDebuggingAttachment": false,
+  "liveServer.settings.CustomBrowser": null
 }
