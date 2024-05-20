@@ -55,8 +55,10 @@ const Register = async (e) => {
     }
   };
 
-buttonRegister.addEventListener('click', Register)
-
+// buttonRegister.addEventListener('click', Register)
+buttonRegister.addEventListener('click', ()=>{
+  window.location.href = '../../index.html'
+})
 
 const Login = async (e) => {
     e.preventDefault();
@@ -88,7 +90,10 @@ const Login = async (e) => {
     }
   };
 
-buttonLogin.addEventListener('click', Login)
+//buttonLogin.addEventListener('click', Login)
+buttonLogin.addEventListener('click', ()=>{
+  window.location.href = '../../index.html'
+})
 
 
 

@@ -638,9 +638,7 @@ color: #680808;
   background: #f5020200;
 }
 @media screen  and (max-width: 1000px){
-  .bottom-section{  
-    object-fit: ;
-  }
+
 }
 @media screen  and (max-width: 941px){
   .nav-links  li a{
@@ -652,11 +650,6 @@ color: #680808;
   .nav-links  li a{
     font-size: 1.4rem !important;
   }
-  
-}
-
-@media screen  and (max-width: 830px){
- 
   
 }
 
@@ -798,13 +791,84 @@ color: #680808;
     display: none;
   }
 }
+@media  screen and (max-width: 698px){
+  .category {
+    width: 33% ;
+    height: 100% ;
+    flex-wrap: wrap;
+    
+  }
+  .bottom-section{
+    height: 20rem;
+  }
+  .category img{
+    width: 100%;
+  }
+  .box p{
+     font-size: calc(2vw + 8px);
+  }
+  #text1,#text2,#text3{
+    font-size: calc(2vw + 8px);
+  }
+}
+@media  screen and (max-width: 550px){
+  .box p{
+    font-size: calc(2vw + 4px);
+ }
+  #text1,#text2,#text3{
+    font-size: calc(2vw + 4px);
+  }
+  .category {
+    width: 33% ;
+    height: 70% ;
+    flex-wrap: nowrap;
+    
+  }
 
+}
+
+@media  screen and (max-width: 500px){
+  .box p{
+    font-size: calc(1vw + 6px);
+ }
+  #text1,#text2,#text3{
+    font-size: calc(1vw + 6px);
+  }
+
+}
 @media screen and(max-width: 421px) {
 
  .Derechos{
   font-family: 7rem !important;
  }
+}
+@media screen and (max-width: 300px){
 
+    .category {
+    width: 33% !important;
+    height: 100% !important;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .bottom-section{
+    height: 20rem;
+  }
+  .category img{
+    width:80%;
+    border-radius: 1rem;
+  }
+  .box p{
+     font-size: calc(1vw + 6px);
+  }
+  #text1,#text2,#text3{
+    font-size: calc(1vw + 7px);
+  }
+  .carousel__anterior {
+    left: clamp(54%,65vw,95%) !important;
+  }
   
 }
 .cls-1{
@@ -875,6 +939,7 @@ color: #680808;
       top: 64%;
       
     }
+
   }
  
 /*------------  tercer -------------*/
