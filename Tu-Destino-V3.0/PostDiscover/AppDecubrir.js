@@ -260,7 +260,7 @@ function mostrar_buscador(){
 //Funcion para ocultar el buscador
 export function ocultar_buscador(){
 
-    bars_search.style.top = "-10px";
+    // bars_search.style.top = "-10px";
     cover_ctn_search.style.display = "none";
     inputSearch.value = "";
     box_search.style.display = "none";

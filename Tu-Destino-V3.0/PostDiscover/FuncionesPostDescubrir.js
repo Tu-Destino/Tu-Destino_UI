@@ -140,8 +140,8 @@ btnSave.addEventListener("click",async  ()=>{
   if (isPost == true) {
     modalResuld.style.display = 'flex';
     TextResult.textContent="Publicación creada..."
-    TextResultPe.textContent="En espera de la revición"
-    btnCerrarResul.innerHTML="<a href='../Html/ApartadoDescubrir.html'>Cerrar</a>"
+    TextResultPe.textContent="En espera de la revisión"
+    btnCerrarResul.innerHTML="<a href='ApartadoDescubrir.html'>Cerrar</a>"
   }else{
     modalResuld.style.display = 'flex';
     TextResult.textContent="Publicación no creada..."
