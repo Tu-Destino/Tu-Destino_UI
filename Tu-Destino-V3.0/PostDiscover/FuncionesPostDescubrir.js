@@ -3,7 +3,9 @@
 import{UrlPlace, UrlPublication, get,post} from "../Generic/ScriptGEneric/apiConnection.js"
 import { ocultar_buscador } from "./AppDecubrir.js";
 import { addImg } from "../Generic/ScriptGEneric/upload.js";
+import {validarToken} from "../Generic/Security/linksGuardian.js"
 const boxSearch =document.getElementById("box-search");
+
 
 
 let islogin=true;
@@ -35,7 +37,6 @@ const imgUpload = document.getElementById("imgUpload");
 const storageModal=document.getElementById("storageModal");
 const btbModalPost=document.getElementById("btbModalPost");
 const btnClosePost=document.getElementById("btnClosePost");
-const modalAlert=document.getElementById("modalAlert");
 const btnAceptar=document.getElementById("btnAceptar");
 const btnCancelar=document.getElementById("btnCancelar");
 const modalResuld=document.getElementById("modalResuld");
@@ -46,22 +47,18 @@ const post_cancelar=document.getElementById("post_cancelar");
 
 let listTags= new Array();
 storageModal.style.display="none";
+
 btbModalPost.addEventListener("click",()=>{
-  if (islogin) {
+  if (validarToken()) {
+    islogin = true
     storageModal.style.display="flex";
   } else {
-    modalAlert.style.display="flex";
-    btnAceptar.addEventListener("click",()=>{
-      modalAlert.style.display="none";
-      window.location.href="../Html/Login.html"
-    })
-    btnCancelar.addEventListener("click",()=>{
-      modalAlert.style.display="none";
-    })
+    console.log("no salio nada");
+    }
   }
 
   
-});
+);
 btnClosePost.addEventListener("click",()=>{
   storageModal.style.display="none";
 });
