@@ -10,9 +10,14 @@ const CVA3 = document.getElementById("CVA3");
 const viewAdmi4 = document.getElementById("viewAdmi4");
 const CVA4 = document.getElementById("CVA4");
 const formularios = document.getElementById("CVA5") //6
-
+const SignOff =document.getElementById("SignOff");
 //Events
 
+SignOff.addEventListener("click",()=>{
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  window.location.href = "../../../index.html";
+})
 
 viewAdmi1.addEventListener("click",() => {
   CVA1.style.display="flex";
@@ -51,3 +56,4 @@ viewAdmi4.addEventListener("click",() => {
 const modal = document.getElementById("modelAl");
 
 
+// profile 

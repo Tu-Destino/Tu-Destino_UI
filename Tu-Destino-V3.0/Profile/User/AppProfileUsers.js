@@ -6,6 +6,7 @@ import {
   post,
   deleteHttp,
   UrlPublication,
+  UrlUser,
 } from "../../Generic/ScriptGEneric/apiConnection.js";
 
 //  Html selectors
@@ -16,18 +17,19 @@ const btnEdit = document.getElementById("BtnUpdate");
 const Iname = document.getElementById("IName");
 const IEmail = document.getElementById("IEmail");
 const IPass = document.getElementById("IPass");
-const searchUser = document.getElementById("searchUser");
-const btnSearch = document.getElementById("btnSearch");
-const btnCreateLugar = document.getElementById("create_place"); //6
-const formulario = document.getElementById("CVA5"); //6
-const principal = document.getElementById("CVA4"); // 6
-const cancelar = document.getElementById("btnPlace_cancel"); //7
+
 const viewAdmi1 = document.getElementById("viewAdmi1");
 const CVA1 = document.getElementById("CVA1");
 const viewAdmi2 = document.getElementById("viewAdmi2");
 const CVA2 = document.getElementById("CVA2");
-
+const SignOff =document.getElementById("SignOff");
 //Events
+
+SignOff.addEventListener("click",()=>{
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  window.location.href = "../../../index.html";
+})
 viewAdmi1.addEventListener("click",() => {
   CVA1.style.display="flex";
   CVA2.style.display="none";
@@ -49,9 +51,15 @@ btnEdit.addEventListener("click", () => {
   });
   btnSummit.style.display = "block";
 });
-
-function extraerUser() {
-
+const admi = {
+  name: "",
+  email: "",
+  password: "",
+  
+};
+async function extraerUser() {
+  const users = await get(UrlUser)
+  const userLogin = JSON.parse(localStorage.getItem('user')) 
 }
 
 

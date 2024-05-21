@@ -1,4 +1,5 @@
 
+ import { UrlUser, post } from '../Generic/ScriptGEneric/apiConnection.js';
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
@@ -20,8 +21,60 @@ registerBtn.addEventListener('click',()=>{
     container.classList.remove('active');
     inputs.forEach(input => {
         input.value = "";
+        
     })
 });
+
+function decodeToken(token) {
+  try {
+      const decodedToken = jwt_decode(token);
+      console.log(decodedToken);
+      const user ={ 
+        rol: decodedToken.role,
+        id:decodedToken.id,
+        email:decodedToken.email
+      } // Cambia 'id' por el nombre del campo que contiene el ID en tu token
+      console.log(user);
+      localStorage.setItem('user', JSON.stringify(user));
+  } catch (error) {
+      console.error('Error al decodificar el token:', error);
+  }
+}
+function redireccion(){
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  if (user==null) {
+     alert('Correo / password incorrectos')
+  }else{
+if (user.rol=="user") {
+  window.location.href = '../../index.html'
+} else if (user.rol=="admin") {
+  window.location.href = '../Profile/Admi/profileView.html'
+}else if(user.rol=="superAdmin"){
+  window.location.href = '../Profile/Admi/profileView.html'
+}
+}
+}
+async function addUser(){
+  const user =JSON.parse(localStorage.getItem('user'));
+  const newUser={
+    name: user.username,
+    email: user.email,
+    password:user.password,
+    enum_rol: "USER",
+    coolies_id:"6"
+  }
+  const isAdd= await post(UrlUser, newUser);
+  if (isAdd) {
+    alert('Usuario creado correctamente')
+  }else{
+    alert('No se pudo crear el usuario')
+  } 
+}
+function cleanStorage(){
+  localStorage.removeItem('user');
+  localStorage.removeItem('token');
+}
 
 
 const Register = async (e) => {
@@ -34,6 +87,7 @@ const Register = async (e) => {
     }
 
     try {
+      cleanStorage()
       const response = await fetch('http://localhost:3000/v1/api/auth/register', {
         method: 'POST',
         headers: {
@@ -41,13 +95,17 @@ const Register = async (e) => {
         },
         body: JSON.stringify(formData),
       });
-      const token = await response.json()
+      const accesToken = await response.json()
+      const token= accesToken.access_token
       if (response.ok) {
-        window.location.href = '../../index.html';
+        decodeToken(token);
+        await addUser();
+        redireccion();
         localStorage.setItem('token', JSON.stringify(token));
         
       }
        else {
+        redireccion();
         console.error('Error en el registro');
       }
     } catch (error) {
@@ -55,10 +113,10 @@ const Register = async (e) => {
     }
   };
 
-// buttonRegister.addEventListener('click', Register)
-buttonRegister.addEventListener('click', ()=>{
-  window.location.href = '../../index.html'
-})
+buttonRegister.addEventListener('click', Register)
+// buttonRegister.addEventListener('click', ()=>{
+//   window.location.href = '../../index.html'
+// })
 
 const Login = async (e) => {
     e.preventDefault();
@@ -69,6 +127,7 @@ const Login = async (e) => {
     }
 
     try {
+      cleanStorage()
       const response = await fetch('http://localhost:3000/v1/api/auth/login', {
         method: 'POST',
         headers: {
@@ -77,23 +136,24 @@ const Login = async (e) => {
         body: JSON.stringify(formData),
       });
 
-      const token = await response.json()
+      const accesToken = await response.json()
+      const token= accesToken.access_token
       if (response.ok) {
-        window.location.href = '../../index.html'
+        decodeToken(token);
+        redireccion();
         localStorage.setItem('token', JSON.stringify(token));
         
       } else {
+        redireccion();
         console.error('Error al iniciar sesion');
       }
     } catch (error) {
+      redireccion();
       console.error('Error al iniciar sesion', error);
     }
   };
 
-//buttonLogin.addEventListener('click', Login)
-buttonLogin.addEventListener('click', ()=>{
-  window.location.href = '../../index.html'
-})
+buttonLogin.addEventListener('click', Login)
 
 
 

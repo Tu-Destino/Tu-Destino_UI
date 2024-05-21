@@ -5,6 +5,8 @@ import {
   get,
   post,
   deleteHttp,
+  UrlUser,
+  update,
 } from "../../Generic/ScriptGEneric/apiConnection.js";
 
 //  Html selectors
@@ -15,6 +17,9 @@ const btnEdit = document.getElementById("BtnUpdate");
 const Iname = document.getElementById("IName");
 const IEmail = document.getElementById("IEmail");
 const IPass = document.getElementById("IPass");
+const LName = document.querySelector(".LName");
+const LEmail = document.querySelector(".LEmail");
+const infoVe=document.querySelector(".infoVe")
 const searchUser = document.getElementById("searchUser");
 const btnSearch = document.getElementById("btnSearch");
 const btnCreateLugar = document.getElementById("create_place"); //6
@@ -34,27 +39,62 @@ btnEdit.addEventListener("click", () => {
   btnSummit.style.display = "block";
 });
 
+const admi = {
+  id:"",
+  name: "",
+  email: "",
+  password: "",
+  enum_rol: "",
+};
+const admiNest={
+  username: "",
+  email: "",
+  password: "",
+}
+async function extraerUser(){
+  const users = await get(UrlUser)
+  const userlogin=JSON.parse(localStorage.getItem('user'));
+ 
+  users.forEach(user=>{
+    const {email,name,password,enum_rol}=user;
+   
+    if(email==userlogin.email){
+      console.log(user);
+      LName.innerHTML=name;
+      LEmail.innerHTML=email;
+      Iname.value=name;
+      IEmail.value=email;
+     
+      
+      admi.id=userlogin.id
+      admi.enum_rol=enum_rol;
+      if(enum_rol=="admin"){
+        infoVe.innerHTML="Administrador"
+      }
+    }
+  })
+
+}
 // ocultar el formulario por defecto
-// 6
+
 // 8
 document.addEventListener(`DOMContentLoaded`, async () => {
   formulario.style.display = "none";
 });
 await extraerLugar();
+await extraerUser()
 
-const admi = {
-  name: "",
-  email: "",
-  password: "",
-};
 const search = {
   user: "",
 };
 
-btnSummit.addEventListener("click", () => {
+btnSummit.addEventListener("click",async () => {
   admi.name = Iname.value;
   admi.email = IEmail.value;
   admi.password = IPass.value;
+  admiNest.username = Iname.value;
+  admiNest.email = IEmail.value;
+  admiNest.password =  IPass.value;
   btnSummit.style.display = "none";
   inputs.forEach((ite) => {
     ite.style.display = "none";
@@ -65,6 +105,16 @@ btnSummit.addEventListener("click", () => {
   });
   btnEdit.style.display = "block";
   console.log(admi);
+  console.log(admiNest);
+  console.log("http://localhost:3000/v1/api/users"+ `/${admi.id}`);
+  if(await update("http://localhost:3000/v1/api/users"+ `/${admi.id}`,admiNest ==true)){
+      if (await update(UrlUser,admi)==true){ {
+        await extraerUser()
+
+      }
+    }
+  }
+  
 });
 
 btnSearch.addEventListener("click", () => {
