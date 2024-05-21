@@ -56,6 +56,7 @@ let texHist;
 const MHistoria =document.getElementById('MHistoria')
 const listUser=new Array();
 const listComent=new Array();
+const dateComment = new Array();
 
 //funcion para inyectar la informacion dinamicamente 
  async function loadContent(lugar){
@@ -103,7 +104,7 @@ const listComent=new Array();
     agregarBTNC(btn_url)
    await extraerComentarios(id)
     comentario(puntuacion)
-    opinione(listUser,listComent)
+    opinione(listUser,listComent,dateComment)
 
    
 }
@@ -192,19 +193,19 @@ async function extraerComentarios(id_place){
 
     const datos = await get(UrlComent)
    await datos.forEach(data=>{
-       const {comentary,user,place}= data;
+       const {comment,user,place, date }= data;
        const {name}= user;
        const {id}=place
        if(id==id_place){
-        listComent.unshift(comentary);
+        dateComment.unshift(date)
+        listComent.unshift(comment);
         listUser.unshift(name);
        }           
     })
 
 } 
 
-async function opinione(usu,opi){
-
+function opinione(usu,opi,date){
    
     for (let index = 0; index < usu.length; index++) {
       
@@ -212,8 +213,11 @@ async function opinione(usu,opi){
     const hijo=document.createElement('p');
     hijo.innerHTML=`
         <div class="op">
-        <p>${usu[index]}</p>
-        <p class="te">${opi[index]}</p>
+            <div class="opName">
+                <p>👤 ${usu[index]}</p>
+                <p>${date[index]}</p>
+            </div>
+                <p class="te">${opi[index]}</p>
         </div>
         `
         padre.appendChild(hijo)
