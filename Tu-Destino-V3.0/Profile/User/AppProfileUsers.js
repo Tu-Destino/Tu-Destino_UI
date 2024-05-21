@@ -1,10 +1,8 @@
 // importacion del URL del metodo get para lugares
 // 8
 import {
-  UrlPlace,
   get,
-  post,
-  deleteHttp,
+  update,
   UrlPublication,
   UrlUser,
 } from "../../Generic/ScriptGEneric/apiConnection.js";
@@ -17,13 +15,17 @@ const btnEdit = document.getElementById("BtnUpdate");
 const Iname = document.getElementById("IName");
 const IEmail = document.getElementById("IEmail");
 const IPass = document.getElementById("IPass");
-
+const LName = document.querySelector(".LName");
+const LEmail = document.querySelector(".LEmail");
+const infoVe=document.querySelector(".infoVe")
+const texP= document.querySelector(".texP");
 const viewAdmi1 = document.getElementById("viewAdmi1");
 const CVA1 = document.getElementById("CVA1");
 const viewAdmi2 = document.getElementById("viewAdmi2");
 const CVA2 = document.getElementById("CVA2");
 const SignOff =document.getElementById("SignOff");
 //Events
+
 
 SignOff.addEventListener("click",()=>{
   localStorage.removeItem("user");
@@ -42,6 +44,8 @@ viewAdmi2.addEventListener("click",() => {
 
 
 btnEdit.addEventListener("click", () => {
+
+
   labeles.forEach((labe) => {
     labe.style.display = "none";
   });
@@ -52,15 +56,70 @@ btnEdit.addEventListener("click", () => {
   btnSummit.style.display = "block";
 });
 const admi = {
+  id:"",
   name: "",
   email: "",
   password: "",
-  
+  enum_rol: "",
 };
-async function extraerUser() {
-  const users = await get(UrlUser)
-  const userLogin = JSON.parse(localStorage.getItem('user')) 
+const admiNest={
+  username: "",
+  email: "",
+  password: "",
 }
+async function extraerUser(){
+  const users = await get(UrlUser)
+  const userlogin=JSON.parse(localStorage.getItem('user'));
+ 
+  users.forEach(user=>{
+    const {email,name,password,enum_rol}=user;
+   
+    if(email==userlogin.email){
+      console.log(user);
+      LName.innerHTML=name;
+      LEmail.innerHTML=email;
+      texP.textContent=name;
+      Iname.value=name;
+      IEmail.value=email;
+     
+      
+      admi.id=userlogin.id
+      admi.enum_rol=enum_rol;
+      if(enum_rol=="user"){
+        infoVe.innerHTML="Usuario:"
+      }
+    }
+  })
+
+}
+await extraerUser()
+btnSummit.addEventListener("click",async () => {
+  admi.name = Iname.value;
+  admi.email = IEmail.value;
+  admi.password = IPass.value;
+  admiNest.username = Iname.value;
+  admiNest.email = IEmail.value;
+  admiNest.password =  IPass.value;
+  btnSummit.style.display = "none";
+  inputs.forEach((ite) => {
+    ite.style.display = "none";
+  });
+
+  labeles.forEach((labe) => {
+    labe.style.display = "block";
+  });
+  btnEdit.style.display = "block";
+  console.log(admi);
+  console.log(admiNest);
+  console.log("http://localhost:3000/v1/api/users"+ `/${admi.id}`);
+  if(await update("http://localhost:3000/v1/api/users"+ `/${admi.id}`,admiNest ==true)){
+      if (await update(UrlUser,admi)==true){ {
+          await extraerUser()
+      }
+    }
+  }
+  
+});
 
 
 // funcion de limpieza
@@ -216,81 +275,6 @@ var postear = {
   place: 0,
   user: "",
 };
-
-async function rellenar(e) {
-  const lugares = await get(UrlPlace);
-
-  lugares.forEach((lugar) => {
-    const { titulo } = lugar;
-    if (e.titulo == titulo) {
-      postear.titulo = e.titulo;
-      postear.descripcion = e.descripcion;
-      postear.etiquetas = e.etiquetas;
-      postear.urlImg = e.url_img;
-      postear.place = lugar.id;
-      postear.user = e.user_id.id;
-    }
-  });
-}
-
-async function DenegarLugar(id_public){
-  const publicaciones = await get(UrlPublication);
-  publicaciones.forEach(async (publication) => {
-    const { id, user_id } = publication;
-
-    if (id==id_public){
-        let confirmar = confirm("Deseas denegar esta publicacion?");
-        if (confirmar == true) {
-          const newPublib={
-            titulo: publication.titulo,
-            descripcion: publication.descripcion,
-            etiquetas: publication.etiquetas,
-            url_img: publication.url_img,
-            place: publication.place,
-            user_id: user_id.id,
-            enum_estado:"RECHAZADO",
-          }
-     
-          await update(UrlPublication+`/${id_public}`,newPublib)
-          inyeccionPublic()
-        }
-    }
-})
-}
-
-async function aprobarlugar(id_public) {
-    const publicaciones = await get(UrlPublication);
-    publicaciones.forEach(async (publication) => {
-    const { id, user_id } = publication;
-
-    console.log(id, id_public);
-    if (id == id_public) {
-  let confirmar = confirm("Deseas aprobar esta publicacion?");
-
-    if (confirmar == true) {
-        const newPublib={
-          titulo: publication.titulo,
-          descripcion: publication.descripcion,
-          etiquetas: publication.etiquetas,
-          url_img: publication.url_img,
-          place: publication.place,
-          user_id: user_id.id,
-          enum_estado:"APROBADO",
-        }
-
-
-        await rellenar(publication) 
-  console.log("id"+ id_public + "nuevo estado", newPublib);
-        await update(UrlPublication+`/${id_public}`,newPublib)
-
-        await post(UrlPost , postear)
-        inyeccionPublic()
-      } else {
-        console.log("lugar no aprobado");
-      }
-    }
-  });
-}
 
 
 
