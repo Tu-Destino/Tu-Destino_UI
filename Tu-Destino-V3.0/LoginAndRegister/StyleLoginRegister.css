@@ -169,7 +169,7 @@
     border-radius: 150px 0 0 100px;
     z-index: 1000;
     background-size: cover;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../pruebas/Lugares/multimedia/a.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(https://res.cloudinary.com/dhtmy6izv/image/upload/Multimedia/den1krumk48nfabnwiir.jpg);
   }
   
   .container.active .toggle-container {

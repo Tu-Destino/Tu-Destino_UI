@@ -20,7 +20,8 @@ const IPass = document.getElementById("IPass");
 const LName = document.querySelector(".LName");
 const LEmail = document.querySelector(".LEmail");
 const infoVe=document.querySelector(".infoVe")
-const searchUser = document.getElementById("searchUser");
+const texP= document.querySelector(".texP");
+;const searchUser = document.getElementById("searchUser");
 const btnSearch = document.getElementById("btnSearch");
 const btnCreateLugar = document.getElementById("create_place"); //6
 const formulario = document.getElementById("CVA5"); //6
@@ -62,6 +63,7 @@ async function extraerUser(){
       console.log(user);
       LName.innerHTML=name;
       LEmail.innerHTML=email;
+      texP.textContent=name;
       Iname.value=name;
       IEmail.value=email;
      
@@ -88,6 +90,34 @@ const search = {
   user: "",
 };
 
+
+async function updateNest (url,info){
+  let isPost= false;
+  const token = localStorage.getItem('token');
+  try {
+      const response = await  fetch(url,{
+          method: "PATH",
+          headers: {
+              "Content-Type":"application/json",
+        //      "Authorization":`Bearer ${token}` ,
+          },
+          body: JSON.stringify(info),
+      });
+      const data = response.json();
+      if(data.status=="BAD_REQUEST"){
+          isPost= false;
+          console.log(data);
+          }else{
+          isPost=true;
+          console.log(await data);
+          }
+  } catch (error) {
+      console.error(error);
+  }
+  return isPost
+}
+
+
 btnSummit.addEventListener("click",async () => {
   admi.name = Iname.value;
   admi.email = IEmail.value;
@@ -107,9 +137,9 @@ btnSummit.addEventListener("click",async () => {
   console.log(admi);
   console.log(admiNest);
   console.log("http://localhost:3000/v1/api/users"+ `/${admi.id}`);
-  if(await update("http://localhost:3000/v1/api/users"+ `/${admi.id}`,admiNest ==true)){
+  if(await updateNest("http://localhost:3000/v1/api/users"+ `/${admi.id}`,admiNest ==true)){
       if (await update(UrlUser,admi)==true){ {
-        await extraerUser()
+          await extraerUser()
 
       }
     }
