@@ -1,24 +1,86 @@
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import './places.css'
+const obj = [
+  {
+    name: "Algun parque de Medellin",
+    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
+  },
+  {
+    name: "Nose como se llama este...",
+    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
+  },
+  {
+    name: "Museo el castillo",
+    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
+  },
+  {
+    name: "Logo Perron de Tu Destino",
+    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
+  },
+  
+  {
+    name: "Logo Perron de Tu Destino",
+    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
+  },
+  
+  {
+    name: "Logo Perron de Tu Destino",
+    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
+  },
+  
+  {
+    name: "Logo Perron de Tu Destino",
+    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
+  },
+];
+const ImageWithText = ({ src, text, onMouseEnter, onMouseLeave }) => {
+  return (
+    <div
+      className="relative w-full h-full border-8 border-white transition-transform duration-300 transform hover:scale-105"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <img
+        src={src}
+        alt=""
+        className="w-full h-full object-cover rounded-[.7rem] rounded-r-[.7rem] "
+      />
+      <div className="absolute bottom-0 left-0 right-0 w-2/4  rounded-bl-[.7rem] border-[1px] border-white bg-black bg-opacity-80 text-white p-2  text-[0.7rem] md:text-[0.9rem] ">
+        <h2 className="text-center text-wrap">{text}</h2>
+      </div>
+    </div>
+  );
+};
 
-import React, { useState } from 'react';
-const obj=[
-  {
-    name:"prueba 11",
-    img:"https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg"
-  },
-  {
-    name:" 2222",
-    img:"https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg"
-  },
-  {
-    name:"333333",
-    img:"https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg"
-  },
-  {
-    name:"4444",
-    img:"https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg"
-  }
-]
-
+const CollageColumn = ({ images, handleMouseEnter, handleMouseLeave }) => {
+  return (
+    <div className="w-full md:w-2/4 h-full flex flex-col">
+      <div className="flex w-full h-[140px] md:h-2/4 relative">
+        <ImageWithText
+          src={images[0].img}
+          text={images[0].name}
+          onMouseEnter={() => handleMouseEnter(0)}
+          onMouseLeave={handleMouseLeave}
+        />
+        <ImageWithText
+          src={images[1].img}
+          text={images[1].name}
+          onMouseEnter={() => handleMouseEnter(1)}
+          onMouseLeave={handleMouseLeave}
+        />
+      </div>
+      <div className="relative w-full h-[11rem] md:h-2/4 ">
+        <ImageWithText
+          src={images[2].img}
+          text={images[2].name}
+          onMouseEnter={() => handleMouseEnter(2)}
+          onMouseLeave={handleMouseLeave}
+        />
+      </div>
+    </div>
+  );
+};
 
 const Collage = ({ info }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -32,80 +94,41 @@ const Collage = ({ info }) => {
   };
 
   return (
-    <section className="w-full md:h-[30rem] lg:h-[35rem] flex justify-center items-center">
-      <div className="w-full md:w-4/5 lg:w-3/4 h-4/5 bg-slate-300 border-8 flex flex-col md:flex-row">
-        <div className="w-full md:w-2/4 h-full flex flex-col">
-          <div className="flex w-full h-2/4 relative">
-            <div
-              className="relative w-2/4 md:f-full border-8"
-              onMouseEnter={() => handleMouseEnter(0)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <img src={info[0].img} alt="" className="w-full h-full object-cover" />
-              <div
-                className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm transition-transform duration-300 ${
-                  hoveredIndex === 0 ? 'animate-slideUp' : 'animate-slideDown'
-                }`}
-              >
-                <h1 className='text-red-700'>{info[0].name}</h1>
-                <button className=''>Detalles</button>
-              </div>
-            </div>
-            <div
-              className="relative w-2/4 h-full border-8"
-              onMouseEnter={() => handleMouseEnter(1)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <img src={info[1].img} alt="" className="w-full h-full object-cover" />
-              <div
-                className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm transition-transform duration-300 ${
-                  hoveredIndex === 1 ? 'animate-slideUp' : 'animate-slideDown'
-                }`}
-              >
-                {info[1].name}
-              </div>
-            </div>
-          </div>
-          <div
-            className="relative w-full h-2/4 border-8"
-            onMouseEnter={() => handleMouseEnter(2)}
+    <section className="w-full md:h-[30rem] lg:h-[40rem] flex justify-center items-center">
+      <div className="w-full md:w-[99%] lg:w-[98%] h-4/5 lg:h-full border-8 border-white flex flex-col md:flex-row">
+        <CollageColumn
+          images={info.slice(0, 3)}
+          handleMouseEnter={handleMouseEnter}
+          handleMouseLeave={handleMouseLeave}
+        />
+        <div className="relative w-full md:w-2/4 h-full ">
+          <ImageWithText
+            src={info[3].img}
+            text={info[3].name}
+            onMouseEnter={() => handleMouseEnter(3)}
             onMouseLeave={handleMouseLeave}
-          >
-            <img src={info[2].img} alt="" className="w-full h-40 md:h-full object-cover" />
-            <div
-              className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm transition-transform duration-300 ${
-                hoveredIndex === 2 ? 'animate-slideUp' : 'animate-slideDown'
-              }`}
-            >
-              {info[2].name}
-            </div>
-          </div>
-        </div>
-        <div
-          className="relative w-full md:w-2/4 h-full border-8"
-          onMouseEnter={() => handleMouseEnter(3)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <img src={info[3].img} alt="" className="w-full h-full object-cover" />
-          <div
-            className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm transition-transform duration-300 ${
-              hoveredIndex === 3 ? 'animate-slideUp' : 'animate-slideDown'
-            }`}
-          >
-            {info[3].name}
-          </div>
+          />
         </div>
       </div>
     </section>
   );
 };
 
+///------------------------------------------
 
 
- const Places = () => {  
-  return <>
-  <Collage info={obj}/>
-  </>
-}
+
+
+
+//  <Collage info={obj} />
+const Places = () => {
+  return (
+    <>
+   
+   <ContainerSlider img={obj}  />
+    
+    </>
+  );
+};
 
 export default Places;

@@ -4,18 +4,18 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        slideUp: {
-          '0%': { transform: 'translateY(100%)', opacity: 0 },
-          '100%': { transform: 'translateY(0)', opacity: 1 },
+        zoomImg: {
+          '0%': {transform:'scale(1)' },
+          '100%': {transform:'scale(1.1)' },
         },
-        slideDown: {
-          '0%': { transform: 'translateY(0)', opacity: 1 },
-          '100%': { transform: 'translateY(100%)', opacity: 0 },
+        deszommImg: {
+          '0%': {transform:'scale(1.1)' },
+          '100%': { transform:'scale(1)'},
         },
       },
       animation: {
-        slideUp: 'slideUp 0.3s ease-out forwards',
-        slideDown: 'slideDown 0.3s ease-out forwards',
+        zoomImg: 'zoomImg 0.3s ease-out forwards',
+        deszommImg: 'deszommImg 0.3s ease-out forwards',
       },
     },
   },
