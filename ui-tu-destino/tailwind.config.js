@@ -1,24 +1,18 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
-  theme: {
-    extend: {
-      keyframes: {
-        zoomImg: {
-          '0%': {transform:'scale(1)' },
-          '100%': {transform:'scale(1.1)' },
-        },
-        deszommImg: {
-          '0%': {transform:'scale(1.1)' },
-          '100%': { transform:'scale(1)'},
-        },
-      },
-      animation: {
-        zoomImg: 'zoomImg 0.3s ease-out forwards',
-        deszommImg: 'deszommImg 0.3s ease-out forwards',
-      },
-    },
-  },
-  plugins: [],
-}
 
+
+// tailwind.config.js
+const {nextui} = require("@nextui-org/react");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html", "./src/**/*.{js,jsx}",
+    // make sure it's pointing to the ROOT node_module
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  darkMode: "class",
+  plugins: [nextui()],
+};

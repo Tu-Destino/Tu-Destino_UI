@@ -1,10 +1,15 @@
-import Footer from './Components/Footer/Footer'
-import Places from './Components/Places/Places'
-function App(){
-  return <div className='App h-screen' >
-    
-  <Places/>
- 
-  </div>
+import SearchBar from "./Components/Main/SearchBar";
+import NavigationBar from "./Components/NavigationBar/NavigationBar";
+
+function App() {
+  return (
+    <div className="App w-screen h-screen">
+      <NavigationBar/>
+      <SearchBar/>
+      <SearchBar/>
+      <SearchBar/>
+    </div>
+  )
 }
+
 export default App;
