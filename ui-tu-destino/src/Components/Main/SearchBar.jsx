@@ -1,10 +1,6 @@
 import { useState } from "react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-} from "@nextui-org/react";
+import SearchIcon from '@mui/icons-material/Search';
+
 
 function SearchBar() {
   const [textInput, setTextInput] = useState("");
@@ -35,17 +31,17 @@ function SearchBar() {
         <h1 className="mb-14 text-6xl poppins-semibold text-zinc-800">
           ¿Tienes un lugar en mente?
         </h1>
-        <div className="bg-white w-3/4 h-16 flex items-center rounded-full mb-[3px] justify-between border-1 border-indigo-100">
+        <div className="bg-white w-[42rem] h-16 flex items-center rounded-full mb-[3px] justify-between border-1 border-indigo-100">
           {/* Input de búsqueda */}
           <input
             onChange={handleSearch}
-            className="h-full w-3/4 outline-none ml-6 rounded-lg"
+            className="h-full flex-1 outline-none ml-6 rounded-lg text-ellipsis"
             type="text"
             placeholder="Lugares para visitar, cosas que hacer, hoteles..."
           />
           {/* Botón de búsqueda */}
-          <button className="bg-indigo-600 hover:bg-indigo-500 px-5 py-3 rounded-3xl text-white mr-3">
-            Buscar
+          <button className="bg-[#ff5757] hover:bg-[#ff8181] w-12 h-12 rounded-3xl text-white  mx-[10px]">
+            <SearchIcon/>
           </button>
         </div>
 

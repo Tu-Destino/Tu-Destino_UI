@@ -7,7 +7,7 @@ function Login() {
     <div>
       <Popover placement="bottom-start" offset={10} className="w-52">
         <PopoverTrigger>
-          <button className="w-20 h-12 rounded-3xl border border-[#e0e0e0] flex items-center justify-center gap-2 hover:drop-shadow-md">
+          <button className="w-20 mr-4 h-12 rounded-3xl border border-[#e0e0e0] flex items-center justify-center gap-2 hover:drop-shadow-md">
             <MenuIcon />
             <AccountCircleIcon />
           </button>
