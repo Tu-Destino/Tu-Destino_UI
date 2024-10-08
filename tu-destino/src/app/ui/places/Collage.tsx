@@ -1,7 +1,15 @@
+'use client'
 import { useState } from "react";
 
-const ImageWithText = ({ src, text, onMouseEnter, onMouseLeave }) => {
-  const [namePlace, setnamePlace] = useState(text);
+type ImageWithTextProps = {
+  src: string;
+  text: string;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+};
+
+const ImageWithText = ({ src, text, onMouseEnter, onMouseLeave }: ImageWithTextProps) => {
+  const [namePlace, setnamePlace] = useState<string>(text);
   const searchPlace = () => {
     console.log(namePlace);
   };
@@ -24,7 +32,12 @@ const ImageWithText = ({ src, text, onMouseEnter, onMouseLeave }) => {
   );
 };
 
-const CollageColumn = ({ images, handleMouseEnter, handleMouseLeave }) => {
+type CollageColumnProps = {
+  images: { img: string; name: string }[];
+  handleMouseEnter: (index: number) => void;
+  handleMouseLeave: () => void;
+};
+const CollageColumn = ({ images, handleMouseEnter, handleMouseLeave }: CollageColumnProps) => {
   return (
     <div className="w-full md:w-2/4 h-full flex flex-col">
       <div className="flex w-full h-[140px] md:h-2/4 relative">
@@ -53,17 +66,20 @@ const CollageColumn = ({ images, handleMouseEnter, handleMouseLeave }) => {
   );
 };
 
-const Collage = ({ info }) => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+type CollageProps = {
+  info: { img: string; name: string }[];
+};
 
-  const handleMouseEnter = (index) => {
+const Collage = ({ info }: CollageProps) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleMouseEnter = (index: number) => {
     setHoveredIndex(index);
   };
 
   const handleMouseLeave = () => {
     setHoveredIndex(null);
   };
-
   return (
     <section className="w-full md:h-[30rem] lg:h-[38rem] flex flex-col justify-center items-center">
       <h1 className="h-[6%] w-[95%]"> Descubre estos Lugares</h1>
@@ -85,4 +101,5 @@ const Collage = ({ info }) => {
     </section>
   );
 };
+
 export default Collage;

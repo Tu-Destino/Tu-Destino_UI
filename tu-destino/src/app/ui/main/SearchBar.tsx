@@ -1,4 +1,5 @@
-import { useState } from "react";
+'use client'
+import { useState, ChangeEvent } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 
 
@@ -16,7 +17,8 @@ function SearchBar() {
   ];
 
   // Manejador de cambio de texto en el input
-  const handleSearch = (e) => {
+  const handleSearch = (e:ChangeEvent<HTMLInputElement> ) => {
+    e.preventDefault();
     setTextInput(e.target.value.toLowerCase());
   };
 

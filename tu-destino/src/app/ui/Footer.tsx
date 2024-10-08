@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+'use client'
+import Link from "next/link";
+import  { useState ,FC } from "react";
 
-function Option({ text, url, css }) {
+interface OptionProps {
+  text: string;
+  url: string;
+  css: string;
+}
+
+const Option: FC<OptionProps> = ({ text, url, css }) => {
   return (
-    <a href={url} className={css}>
+    <Link href={url} className={`  ${css}`}>
       {text}
-    </a>
+    </Link>
   );
 }
 
 function Higher() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     // Lógica para manejar la suscripción con el correo electrónico
     console.log(email);

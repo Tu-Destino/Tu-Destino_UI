@@ -1,8 +1,6 @@
-import React, { useRef, useState } from "react";
-import Carrusel from "./Carrusel";
-import Collage from "./Collage";
-import Footer from '../Footer/Footer'
-import "./places.css";
+import Footer from "../ui/Footer";
+import Carrusel from "../ui/places/Carrusel";
+import Collage from "../ui/places/Collage";
 
 const obj = [
   {
@@ -38,7 +36,8 @@ const obj = [
   },
 ];
 
-const Places = () => {
+
+export default function PlacesPage() {
   return (
     <>
       <nav className="w-full h-[4rem] fixed bg-slate-300 z-50"> </nav>
@@ -66,9 +65,5 @@ const Places = () => {
       />
       <Footer/>
     </>
-  );
-};
-
-
-
-export default Places;
+  )
+}

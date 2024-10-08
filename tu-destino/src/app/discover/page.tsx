@@ -1,5 +1,6 @@
-import Gallery from './Gallery'
-import ButtonPanel from './ButtonPanel'
+import ButtonPanel from "../ui/discover/ButtonPanel";
+import Gallery from "../ui/discover/Gallery";
+
 const obj = [
   {
     name: "Algun parque de Medellin",
@@ -71,15 +72,12 @@ const obj = [
 ];
 
 
-function Discover() {
-  
-  return(
+export default function page() {
+  return (
     <section className='w-full h-full bg-slate-950 flex flex-row'>
     <ButtonPanel/>
-    <Gallery places={obj}/>
+    <Gallery initialPlaces={obj}/>
     
     </section>
   )
 }
-
-export default Discover;
