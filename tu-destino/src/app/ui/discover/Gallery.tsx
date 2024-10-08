@@ -15,6 +15,11 @@ const Gallery: React.FC<GalleryProps> = ({ initialPlaces }) => {
   const [places, setPlaces] = useState<Place[]>(initialPlaces);
   const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Solo se ejecuta en el cliente
+  }, []);
 
   const handleImageClick = (event: React.MouseEvent<HTMLImageElement>, place: Place) => {
     event.preventDefault();
@@ -23,10 +28,13 @@ const Gallery: React.FC<GalleryProps> = ({ initialPlaces }) => {
   };
 
   const loadMorePlaces = () => {
-    setPlaces((prev) => [...prev, ...prev]);
+    if (isClient) {
+      setPlaces((prev) => [...prev, ...prev]);
+    }
   };
 
   useEffect(() => {
+    if (!isClient) return;
     const container = document.querySelector('.gallery-container');
 
     const handleScroll = () => {
@@ -44,7 +52,7 @@ const Gallery: React.FC<GalleryProps> = ({ initialPlaces }) => {
         container.removeEventListener('scroll', handleScroll);
       }
     };
-  }, []);
+  }, [isClient]);
 
   return (
     <div className="md:w-[90%] lg:w-[80%] h-full bg-slate-800 flex items-center justify-center overflow-scroll gallery-container">
