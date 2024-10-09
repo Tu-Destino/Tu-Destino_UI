@@ -1,5 +1,5 @@
-import ButtonPanel from "../ui/discover/ButtonPanel";
-import Gallery from "../ui/discover/Gallery";
+import ButtonPanel from "../../components/discover/ButtonPanel";
+import Gallery from "../../components/discover/Gallery";
 
 const obj = [
   {

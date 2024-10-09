@@ -1,6 +1,6 @@
-import Footer from "../ui/Footer";
-import Carrusel from "../ui/places/Carrusel";
-import Collage from "../ui/places/Collage";
+import Footer from "../../components/Footer";
+import Carrusel from "../../components/places/Carrusel";
+import Collage from "../../components/places/Collage";
 
 const obj = [
   {
