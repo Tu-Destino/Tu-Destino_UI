@@ -1,8 +1,9 @@
-
+import './../styles/globals.css'
 import Image from "next/image";
-import Footer from './ui/Footer'
-import NavigationBar from "./ui/main/nav/NavigationBar";
-import SearchBar from "./ui/main/SearchBar";
+import Footer from '../components/Footer'
+import NavigationBar from "../components/main/nav/NavigationBar";
+import SearchBar from "../components/main/SearchBar";
+
 export default function Home() {
   return (<>
       <NavigationBar/>
