@@ -16,8 +16,8 @@ function NavigationBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <nav className="bg-white w-full h-[63px] flex flex-row border-b border-[#e0e0e0] fixed z-50">
-      <div className="md:hidden w-12 flex justify-center items-center">
+    <nav className="bg-white w-full h-[74px] flex flex-row border-b border-[#e0e0e0] fixed z-40">
+      <div className="md:hidden  w-12 flex justify-center items-center">
         <button onClick={onOpen}>
           <MenuIcon />
         </button>
@@ -26,10 +26,10 @@ function NavigationBar() {
           placement="top-center"
           onOpenChange={onOpenChange}
         >
-          <ModalContent>
+          <ModalContent >
             {(onClose) => (
               <>
-                <ModalBody className="mt-8 mb-4 flex justify-center items-center">
+                <ModalBody className=" mt-8 mb-4 flex justify-center items-center">
                   <Link className={`hover:bg-slate-100 w-full text-center p-3 rounded-xl ${poppins.className} font-normal`} href="/places">
                     Lugares
                   </Link>
@@ -56,8 +56,8 @@ function NavigationBar() {
           />
         </Link>
       </div>
-      <div className="bg-slate-300 flex-grow md:w-[30%] h-full"></div>
-      <div className="flex w-[9.5rem] md:w-[48%] lg:w-[35%] h-full  items-center justify-around ">
+      <div className="flex-grow md:w-[30%] h-full"></div>
+      <div className=" flex w-[9.5rem] md:w-[48%] lg:w-[35%] h-full  items-center justify-around ">
         <div className="hidden md:flex flex-1 justify-around">
           <Link
             className="w-28 h-10 flex items-center justify-center rounded-3xl hover:bg-slate-100"
