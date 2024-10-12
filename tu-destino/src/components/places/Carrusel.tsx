@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -58,7 +58,11 @@ const Arrow: React.FC<ArrowProps> = ({ className, style, onClick }) => (
   />
 );
 
-const ArrowResponsiveLeft: React.FC<ArrowProps> = ({ className, style, onClick }) => (
+const ArrowResponsiveLeft: React.FC<ArrowProps> = ({
+  className,
+  style,
+  onClick,
+}) => (
   <div
     className={className}
     style={{
@@ -77,7 +81,11 @@ const ArrowResponsiveLeft: React.FC<ArrowProps> = ({ className, style, onClick }
   />
 );
 
-const ArrowResponsiveRight: React.FC<ArrowProps> = ({ className, style, onClick }) => (
+const ArrowResponsiveRight: React.FC<ArrowProps> = ({
+  className,
+  style,
+  onClick,
+}) => (
   <div
     className={className}
     style={{
