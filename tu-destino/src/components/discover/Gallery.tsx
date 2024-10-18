@@ -36,7 +36,7 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
   return (
     <>
       <img
-        className="w-full h-[316px] cursor-pointer"
+        className="w-full  h-auto aspect-square cursor-pointer object-cover"
         onClick={handleClick}
         src={place.img}
         alt={`imagen de ${place.name}`}
@@ -139,8 +139,8 @@ const Gallery: FC<GalleryProps> = ({ initialPlaces }) => {
   }, [isClient]);
 
   return (
-    <div className="md:w-[90%] lg:w-[80%] h-full bg-slate-800 flex items-center justify-center overflow-scroll gallery-container">
-      <div className="mt-8 grid grid-cols-3 gap-1 h-full w-full md:w-[90%] lg:w-[90%]">
+    <div className="md:w-[90%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
+      <div className="mt-8 grid grid-cols-3 gap-[2px] md:gap-1 h-full w-full md:w-[90%] lg:w-[90%]">
         {places.map((place, index) => (
           <CardImg key={index} place={place} />
         ))}
