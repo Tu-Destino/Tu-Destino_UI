@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,21 +17,13 @@ const ImgCard: React.FC<ImgCardProps> = ({ url, name }) => {
   };
 
   return (
-    <button
-      onClick={searchPlace}
-      value={name}
-      className="w-full px-4 md:px-1 xl:px-3 h-full bg-center card"
-    >
-      <div
-        className="card__background bg-cover bg-center rounded-2xl relative z-10"
-        style={{ backgroundImage: `url(${url})` }}
-      >
-        <div className="card__content mt-4">
-          <p className="card__category">Places</p>
-          <h3 className="card__heading">{name}</h3>
-        </div>
-      </div>
-    </button>
+    <div className="card__content rounded-sm aspect-square relative">
+      <img
+        src={url}
+        alt={`imagen de ${name}`}
+        className="aspect-square w-full object-cover card__background rounded-md"
+      />
+    </div>
   );
 };
 
@@ -41,64 +33,66 @@ interface ArrowProps {
   onClick?: () => void;
 }
 
-const Arrow: React.FC<ArrowProps> = ({ className, style, onClick }) => (
+const ArrowRight: React.FC<ArrowProps> = ({ className, style, onClick }) => (
   <div
     className={className}
     style={{
       ...style,
       background: "black",
-      height: "3rem",
+      height: "2rem",
       width: "1.5rem",
       display: "flex",
       alignItems: "center",
       borderRadius: "2rem",
       justifyContent: "center",
+      position: 'absolute',
+      top: '-4%',
+      right: '1rem',
+      transform: 'translateY(-50%)',
+      zIndex: 10
     }}
     onClick={onClick}
   />
 );
 
-const ArrowResponsiveLeft: React.FC<ArrowProps> = ({
-  className,
-  style,
-  onClick,
-}) => (
+const ArrowLeft: React.FC<ArrowProps> = ({ className, style, onClick }) => (
   <div
     className={className}
     style={{
       ...style,
       background: "red",
-      height: "3rem",
+      height: "2rem",
       width: "1.5rem",
       display: "flex",
       alignItems: "center",
       borderRadius: "2rem",
       justifyContent: "center",
-      position: "absolute",
-      left: "-3.5%",
+      position: 'absolute',
+      top: '-4%',
+      right: '48px',
+      transform: 'translateY(-50%)',
+      zIndex: 10
     }}
     onClick={onClick}
   />
 );
-
-const ArrowResponsiveRight: React.FC<ArrowProps> = ({
-  className,
-  style,
-  onClick,
-}) => (
+const ArrowDisamble: React.FC<ArrowProps> = ({ className, style, onClick }) => (
   <div
     className={className}
     style={{
       ...style,
       background: "red",
-      height: "3rem",
+      height: "2rem",
       width: "1.5rem",
-      display: "flex",
+      display: "none",
       alignItems: "center",
       borderRadius: "2rem",
       justifyContent: "center",
-      position: "absolute",
-      right: "-3.5%",
+      position: 'absolute',
+      top: '-4%',
+      right: '48px',
+      transform: 'translateY(-50%)',
+      zIndex: 10
     }}
     onClick={onClick}
   />
@@ -113,20 +107,30 @@ interface CarruselProps {
 const Carrusel: React.FC<CarruselProps> = ({ places, title, text }) => {
   const settings = {
     className: "center",
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    nextArrow: <Arrow />,
-    prevArrow: <Arrow />,
+    centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
+    speed: 300,
+    slidesToShow: 1,
+    nextArrow: <ArrowDisamble />,
+    prevArrow: <ArrowDisamble />,
     responsive: [
+      {
+        breakpoint: 1900,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: false,
+          nextArrow: <ArrowRight />,
+          prevArrow: <ArrowLeft />,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 1,
           infinite: true,
           dots: false,
         },
@@ -137,34 +141,34 @@ const Carrusel: React.FC<CarruselProps> = ({ places, title, text }) => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          nextArrow: <ArrowDisamble />,
+          prevArrow: <ArrowDisamble />,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          nextArrow: <ArrowResponsiveRight />,
-          prevArrow: <ArrowResponsiveLeft />,
+          slidesToScroll: 3,
+          nextArrow: <ArrowDisamble />,
+          prevArrow: <ArrowDisamble />,
         },
       },
     ],
   };
 
   return (
-    <section className="w-full bg-slate-200 h-[25rem] md:h-[20rem] xl:h-[35rem] flex flex-col items-center justify-center mb-4">
-      <div className="w-[90%] mb-4 text-2xl">
+    <section className="w-full flex items-center justify-center flex-col relative">
+      <div className="w-full px-8 h-auto relative">
         <h1>{title}</h1>
-        <p className="text-lg">{text}</p>
+        <h3>{text}</h3>
       </div>
-      <div className="w-11/12">
-        <div className="slider-container h-[20rem] md:h-[15rem] xl:h-[24.8rem]">
-          <Slider {...settings}>
-            {places.map((imagen, index) => (
-              <ImgCard key={index} url={imagen.img} name={imagen.name} />
-            ))}
-          </Slider>
-        </div>
+      <div className="w-[90%] relative">
+        <Slider {...settings}>
+          {places.map((imagen, index) => (
+            <ImgCard key={index} url={imagen.img} name={imagen.name} />
+          ))}
+        </Slider>
       </div>
     </section>
   );

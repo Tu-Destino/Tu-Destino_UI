@@ -1,48 +1,107 @@
-
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
-import { ChangeEvent, ReactNode, useEffect, useState } from "react";
+import { ChangeEvent, ReactNode, useEffect, useRef, useState } from "react";
+import Flicking, { FlickingProps } from "@egjs/react-flicking";
+import { Sync } from "@egjs/flicking-plugins"
+import "@egjs/flicking-plugins/dist/flicking-plugins.css";
+import '@egjs/react-flicking/dist/flicking.css';
+import '../../styles/globals.css'
 
 type IconsProps={
-  Component: ReactNode
+  Component: ReactNode,
+  list: string
 }
 type AutocompleteProps = {
   suggestions: string[];
 };
+type FilterDrop = {
+  suggestions: string[];
+  select: string[];
+  setStateValue: React.Dispatch<React.SetStateAction<string[]>>
+};
+
 
 type TagsProps = {
-  labels: string[];
+  labels: string;
 };
 
 export const Tags: React.FC<TagsProps> = ({ labels }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const flicking0 = useRef<Flicking>(null);
+  const flicking1 = useRef<Flicking>(null);
+  const [plugins, setPlugins] = useState([new Sync({ type: 'camera', synchronizedFlickingOptions: [] })]);
+  
+  const tags: string[] = labels.split(',');
 
-  const handleClick = (label: string) => {
-    if (selectedTags.includes(label)) {
-      setSelectedTags(selectedTags.filter(tag => tag !== label));
-    } else {
-      setSelectedTags([...selectedTags, label]);
+  useEffect(() => {
+    if (flicking0.current && flicking1.current ) {
+      const syncPlugin = new Sync({
+        type: "camera",
+        synchronizedFlickingOptions: [
+          {
+            flicking: flicking0.current,
+            isClickable: false
+          },
+          {
+            flicking: flicking1.current,
+            isClickable: false
+          }
+        ]
+      });
+      setPlugins([syncPlugin]);
     }
-  };
+  }, [flicking0, flicking1]);
+
+  const half = Math.ceil(tags.length / 2);
+  const tags0 = tags.slice(0, half);
+  const tags1 = tags.slice(half);
+  
+  const handleClick = (tag: string) => {
+    setSelectedTags(prevSelectedTags => {
+      if (prevSelectedTags.includes(tag)) {
+        return prevSelectedTags.filter(selectedTag => selectedTag !== tag);
+      } else {
+        return [...prevSelectedTags, tag];
+      }
+    });
+  }
 
   return (
-    <div>
-      {labels.map((label, index) => (
-        <button
-          key={index}
-          onClick={() => handleClick(label)}
-          style={{
-            backgroundColor: selectedTags.includes(label) ? 'blue' : 'initial',
-            color: selectedTags.includes(label) ? 'white' : 'black',
-            padding: '5px',
-            border: '1px solid black',
-            cursor: 'pointer',
-            margin: '5px'
-          }}
-        >
-          {label}
-        </button>
-      ))}
-    </div>
+    <>
+      <Flicking ref={flicking0}
+        className="mb-4 w-auto"
+        align="prev"
+        bound={true}
+        bounce={30}
+        plugins={plugins}
+        key={selectedTags.join(',') + "0"}
+      >
+        {tags0.map((tag, index) => (
+          <button 
+            key={index} 
+            className={`mr-2 p-2 ${selectedTags.includes(tag) ? 'bg-blue-500 text-white' : 'bg-yellow-300 text-black'}`}
+            onClick={() => handleClick(tag)}
+          >
+            {tag}
+          </button>
+        ))}
+      </Flicking>
+      <Flicking ref={flicking1}
+        className="mb-4 w-auto"
+        align="prev"
+        bound={true}
+        bounce={30}
+        key={selectedTags.join(',') + "1"}
+      >
+        {tags1.map((tag, index) => (
+          <button 
+            key={index} 
+            className={`mr-2 p-2 ${selectedTags.includes(tag) ? 'bg-blue-500 text-white' : 'bg-yellow-300 text-black'}`}
+            onClick={() => handleClick(tag)}
+          >
+            {tag}
+          </button>
+        ))}
+      </Flicking>
+    </>
   );
 }
 
@@ -60,7 +119,7 @@ export const ImageUploader: React.FC = () => {
 
   return (
     <>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+      <input type="file" accept="image/*" onChange={handleImageChange} className="absolute bg-transparent w-[90%]" />
       {imageSrc && <img src={imageSrc as string} alt="preview" className=' h-[200px] w-full object-cover' />}
     </>
   );
@@ -103,7 +162,7 @@ export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
         placeholder="Escribe algo..."
       />
       {showSuggestions && (
-        <ul className="absolute border border-t-0 bg-white w-full max-h-60 overflow-y-auto">
+        <ul className="absolute border border-t-0 bg-white w-full max-h-40 overflow-y-auto z-20" >
           {filteredSuggestions.length > 0 ? (
             filteredSuggestions.map((suggestion, index) => (
               <li
@@ -125,33 +184,81 @@ export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
   );
 }
 
-export const Drop: React.FC<IconsProps> = ({ Component }) => {
-  const [isVisible, setIsVisible] = useState(false);
+const Filter: React.FC<FilterDrop> = ({ suggestions, select,setStateValue }) => {
 
+    const flickingRef = useRef<Flicking>(null);
+    const [plugins, setPlugins] = useState<Sync[]>([]);
+
+    useEffect(() => {
+      if (flickingRef.current) {
+        const syncPlugin = new Sync({
+          type: "index",
+          synchronizedFlickingOptions: [
+            {
+              flicking: flickingRef.current,
+              isClickable: false
+            }
+          ]
+        });
+        setPlugins([syncPlugin]);
+      }
+    }, [flickingRef]);
+  
+    
+    const handleClick = (tag: string) => {
+      setStateValue(prevSelectedTags => {
+        if (prevSelectedTags.includes(tag)) {
+          return prevSelectedTags.filter(select => select !== tag);
+        } else {
+          return [...prevSelectedTags, tag];
+        }
+      });
+    };  
+
+  
+    return (
+      <Flicking ref={flickingRef}
+        className="mb-4"
+        align="prev"
+        bound={true}
+        bounce={30}
+        plugins={plugins}
+        key={select.join(',')} // Fuerza la actualización del componente
+      >
+        {suggestions.map((tag, index) => (
+          <button 
+            key={index} 
+            className={`mr-2 p-2 border ${select.includes(tag) ? 'bg-blue-500 text-white' : 'bg-yellow-300 text-black'}`}
+            onClick={() => handleClick(tag)}
+          >
+            {tag}
+          </button>
+        ))}
+      </Flicking>
+    );
+  };
+
+
+export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [filterTags, setFilterTags] = useState<string[]>([]);
   const toggleBox = () => {
     setIsVisible(!isVisible);
   };
 
-  const handleClickOutside = (event: MouseEvent | Event) => {
-    if (isVisible && !(event.target as HTMLElement).closest('.drop-box')) {
-      setIsVisible(false);
-    }
-  };
 
-  useEffect(() => {
-    if (isVisible) {
-      document.addEventListener('click', handleClickOutside);
-      window.addEventListener('scroll', handleClickOutside);
-    } else {
-      document.removeEventListener('click', handleClickOutside);
-      window.removeEventListener('scroll', handleClickOutside);
-    }
+  const handleClean = () =>{
+    setFilterTags([])
+  }
 
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      window.removeEventListener('scroll', handleClickOutside);
-    };
-  }, [isVisible]);
+
+  const tags: string[] = list.split(',');
+
+
+  const third = Math.ceil(tags.length / 3);
+  const tags0 = tags.slice(0, third);
+  const tags1 = tags.slice(third, third * 2);
+  const tags2 = tags.slice(third * 2);
 
   return (
     <>
@@ -162,8 +269,14 @@ export const Drop: React.FC<IconsProps> = ({ Component }) => {
         {Component}
       </button>
       {isVisible && (
-        <div className="drop-box absolute bottom-[4.2rem] h-[18rem] w-full left-0 bg-white border border-gray-300 p-4 shadow-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nobis aperiam dolorem explicabo asperiores animi assumenda voluptates! Dolores laboriosam voluptates aspernatur deserunt minima accusantium, et obcaecati atque eius voluptatibus maxime. Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ab temporibus dolorem assumenda quae.
+        <div className="drop-box absolute bottom-[4.2rem] h-[18rem] w-full left-0 bg-white border border-gray-300 p-4 shadow-lg overflow-y-scroll">
+          <Filter suggestions={tags0} select={filterTags} setStateValue={setFilterTags}/>
+          <Filter suggestions={tags1} select={filterTags} setStateValue={setFilterTags}/>
+          <Filter suggestions={tags2} select={filterTags} setStateValue={setFilterTags}/>
+        
+          <div className=" w-full bg-slate-400 h-[10%]"> 
+            <button onClick={handleClean}>Limpiar</button> <button> Buscar</button> 
+          </div>
         </div>
       )}
     </>

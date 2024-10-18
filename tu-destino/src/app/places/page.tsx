@@ -40,30 +40,15 @@ const obj = [
 export default function PlacesPage() {
   return (
     <>
-      <nav className="w-full h-[4rem] fixed bg-slate-300 z-50"> </nav>
+      
       <div className="h-[4rem]"> </div>
-      <Collage info={obj} />
+    
       <Carrusel
         places={obj}
         title={"Naturaleza"}
         text={"Lorem ipsum dolor sit amet."}
       />
-      <Carrusel
-        places={obj}
-        title={"Cultura"}
-        text={"Lorem ipsum dolor sit amet."}
-      />
-      <Carrusel
-        places={obj}
-        title={"Historia"}
-        text={"Lorem ipsum dolor sit amet."}
-      />
-      <Carrusel
-        places={obj}
-        title={"Hoteles"}
-        text={"Lorem ipsum dolor sit amet."}
-      />
-      <Footer/>
+     
     </>
   )
 }
