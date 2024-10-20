@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./../styles/globals.css";
 import { SelectProvider } from "@/context/SelectContext";
+import { RootProvider } from "@/context/RootContext";
 
 
 
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={`w-screen h-screen`}>
-          <SelectProvider>
-            {children}
-          </SelectProvider>
+          <RootProvider>
+            <SelectProvider>
+              {children}
+            </SelectProvider>
+          </RootProvider>
       </body>
     </html>
   );

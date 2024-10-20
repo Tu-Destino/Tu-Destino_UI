@@ -11,19 +11,9 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import Redirect from "./Redirect";
+import { CardImgProps, GalleryProps, Place } from "@/types/types";
 
-type Place = {
-  img: string;
-  name: string;
-};
 
-type CardImgProps = {
-  place: Place;
-};
-
-type GalleryProps = {
-  initialPlaces: Place[];
-};
 const CardImg: FC<CardImgProps> = ({ place }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
@@ -83,7 +73,7 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
                       fuga eos? Voluptates veritatis saepe obcaecati aliquam!
                     </p>
                     <div className="absolute bottom-0 flex items-center justify-center w-full h-[20%] sm:h-auto ">
-                      <Redirect name={selectedPlace.name} />
+                      <Redirect labels={selectedPlace.name} />
                       <Button color="danger" variant="light" onClick={onClose}>
                         Close
                       </Button>
@@ -139,8 +129,8 @@ const Gallery: FC<GalleryProps> = ({ initialPlaces }) => {
   }, [isClient]);
 
   return (
-    <div className="md:w-[90%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
-      <div className="mt-8 grid grid-cols-3 gap-[2px] md:gap-1 h-full w-full md:w-[90%] lg:w-[90%]">
+    <div className="md:w-[80%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
+      <div className="mt-8 grid grid-cols-3 gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[96%]">
         {places.map((place, index) => (
           <CardImg key={index} place={place} />
         ))}

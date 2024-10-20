@@ -1,27 +1,15 @@
-import { ChangeEvent, ReactNode, useEffect, useRef, useState } from "react";
-import Flicking, { FlickingProps } from "@egjs/react-flicking";
-import { Sync } from "@egjs/flicking-plugins"
+import { ChangeEvent, forwardRef, ReactNode, useEffect, useRef, useState } from "react";
+import Flicking from "@egjs/react-flicking";
+import { Sync } from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/flicking-plugins.css";
 import '@egjs/react-flicking/dist/flicking.css';
-import '../../styles/globals.css'
-
-type IconsProps={
-  Component: ReactNode,
-  list: string
-}
-type AutocompleteProps = {
-  suggestions: string[];
-};
-type FilterDrop = {
-  suggestions: string[];
-  select: string[];
-  setStateValue: React.Dispatch<React.SetStateAction<string[]>>
-};
+import '../../styles/globals.css';
+import { useSelectContext } from "@/context/SelectContext";
+import { AutocompleteProps, ButtomPromp, FiltersType, IconsProps, TagsProps } from "@/types/types";
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 
-type TagsProps = {
-  labels: string;
-};
+
 
 export const Tags: React.FC<TagsProps> = ({ labels }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -51,7 +39,7 @@ export const Tags: React.FC<TagsProps> = ({ labels }) => {
   }, [flicking0, flicking1]);
 
   const half = Math.ceil(tags.length / 2);
-  const tags0 = tags.slice(0, half);
+  const tags0 = tags.slice(0,  half);
   const tags1 = tags.slice(half);
   
   const handleClick = (tag: string) => {
@@ -72,16 +60,10 @@ export const Tags: React.FC<TagsProps> = ({ labels }) => {
         bound={true}
         bounce={30}
         plugins={plugins}
-        key={selectedTags.join(',') + "0"}
+        key={ "0"}
       >
         {tags0.map((tag, index) => (
-          <button 
-            key={index} 
-            className={`mr-2 p-2 ${selectedTags.includes(tag) ? 'bg-blue-500 text-white' : 'bg-yellow-300 text-black'}`}
-            onClick={() => handleClick(tag)}
-          >
-            {tag}
-          </button>
+         <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick}/> 
         ))}
       </Flicking>
       <Flicking ref={flicking1}
@@ -89,21 +71,15 @@ export const Tags: React.FC<TagsProps> = ({ labels }) => {
         align="prev"
         bound={true}
         bounce={30}
-        key={selectedTags.join(',') + "1"}
+        key={"1"}
       >
         {tags1.map((tag, index) => (
-          <button 
-            key={index} 
-            className={`mr-2 p-2 ${selectedTags.includes(tag) ? 'bg-blue-500 text-white' : 'bg-yellow-300 text-black'}`}
-            onClick={() => handleClick(tag)}
-          >
-            {tag}
-          </button>
+            <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick}/> 
         ))}
       </Flicking>
     </>
   );
-}
+};
 
 export const ImageUploader: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
@@ -117,13 +93,27 @@ export const ImageUploader: React.FC = () => {
     }
   };
 
-  return (
-    <>
-      <input type="file" accept="image/*" onChange={handleImageChange} className="absolute bg-transparent w-[90%]" />
-      {imageSrc && <img src={imageSrc as string} alt="preview" className=' h-[200px] w-full object-cover' />}
-    </>
+  return  (
+    <label
+      className="custom-file-upload h-full w-full aspect-square flex flex-col items-center justify-center gap-5 cursor-pointer bg-white p-1 rounded-lg shadow-[0px_48px_35px_-48px_rgba(0,0,0,0.1)]"
+      htmlFor="file"
+    >
+      {imageSrc ? (
+        <img src={imageSrc as string} alt="Uploaded" className="w-full h-full object-contain aspect-square rounded-lg" />
+      ) : (
+        <div className="icon flex items-center justify-center">
+          <UploadFileIcon className="h-[80px] text-gray-700" />
+        </div>
+      )}
+      {!imageSrc && (
+        <div className="text flex items-center justify-center">
+          <span className="font-normal text-gray-700">Click to upload image</span>
+        </div>
+      )}
+      <input type="file" id="file" className="hidden" onChange={handleImageChange} />
+    </label>
   );
-}
+};
 
 export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
   const [inputValue, setInputValue] = useState('');
@@ -182,9 +172,9 @@ export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
       )}
     </div>
   );
-}
+};
 
-const Filter: React.FC<FilterDrop> = ({ suggestions, select,setStateValue }) => {
+const Filter: React.FC<FiltersType> = ({ suggestions, select, setStateValue }) => {
 
     const flickingRef = useRef<Flicking>(null);
     const [plugins, setPlugins] = useState<Sync[]>([]);
@@ -204,7 +194,6 @@ const Filter: React.FC<FilterDrop> = ({ suggestions, select,setStateValue }) => 
       }
     }, [flickingRef]);
   
-    
     const handleClick = (tag: string) => {
       setStateValue(prevSelectedTags => {
         if (prevSelectedTags.includes(tag)) {
@@ -223,25 +212,18 @@ const Filter: React.FC<FilterDrop> = ({ suggestions, select,setStateValue }) => 
         bound={true}
         bounce={30}
         plugins={plugins}
-        key={select.join(',')} // Fuerza la actualización del componente
       >
         {suggestions.map((tag, index) => (
-          <button 
-            key={index} 
-            className={`mr-2 p-2 border ${select.includes(tag) ? 'bg-blue-500 text-white' : 'bg-yellow-300 text-black'}`}
-            onClick={() => handleClick(tag)}
-          >
-            {tag}
-          </button>
+          <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick}/>
         ))}
       </Flicking>
     );
-  };
-
+};
 
 export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [filterTags, setFilterTags] = useState<string[]>([]);
+  const {setIsClean}= useSelectContext();
   const toggleBox = () => {
     setIsVisible(!isVisible);
   };
@@ -249,12 +231,11 @@ export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
 
   const handleClean = () =>{
     setFilterTags([])
+    setIsClean(true)
   }
 
 
   const tags: string[] = list.split(',');
-
-
   const third = Math.ceil(tags.length / 3);
   const tags0 = tags.slice(0, third);
   const tags1 = tags.slice(third, third * 2);
@@ -277,8 +258,39 @@ export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
           <div className=" w-full bg-slate-400 h-[10%]"> 
             <button onClick={handleClean}>Limpiar</button> <button> Buscar</button> 
           </div>
+          <div>
+          {filterTags.map((tag, index) => (
+            <span key={index}>{tag}</span>
+        ))}
+          </div>
         </div>
       )}
     </>
   );
 };
+
+export const ButtomTagsPos = forwardRef<HTMLButtonElement, ButtomPromp>(({ tag, handleCLick }, ref) => {
+  const [isClick, setIsClick] = useState(false);
+  const {isClean, setIsClean}= useSelectContext()
+
+  const handleCliking = (tag: string) => {
+    setIsClick(!isClick);
+    handleCLick(tag);
+  };
+  useEffect(()=>{
+    if(isClean){
+      setIsClick(false)
+      setIsClean(false)
+    }
+  }),[isClean];
+
+  return (
+    <button
+      ref={ref}
+      className={`mr-2 p-2 border ${isClick ? 'bg-blue-500 text-white' : 'bg-red-400 text-black'}`}
+      onClick={() => handleCliking(tag)}
+    >
+      {tag}
+    </button>
+  );
+});

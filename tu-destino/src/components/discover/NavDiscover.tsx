@@ -1,4 +1,3 @@
-import React, { useState, ChangeEvent } from "react";
 import { Modal, ModalContent, Button, useDisclosure } from "@nextui-org/react";
 import HomeIcon from "@mui/icons-material/Home";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
@@ -6,14 +5,15 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Drop, ImageUploader, SearchPlaces, Tags } from "./MicroComponents";
 import Link from "next/link";
+import { ElementProps } from "@/types/types";
 
 const etiquetasLugares: string =
   "Parque , Playa , Museo d,  Histórico, Jardín , Zoológico ,  Nacional, Montaña , Cascada , Castillo, plaza, bosque, lago, luz, restaurante, aventura, relax, compras, social, local, callejera, saludable, tarde, nocturna, cafeteria, bar, rio, mirador, biblioteca ,monumento , lujo, deporte , otros, religion, arte, internacional, naturaleza, antiguo, diseño, hospedajes, gastronomia, lugares, actividades ";
 
-function AddPost() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [textInput, setTextInput] = useState("");
 
+export const AddPost: React.FC<ElementProps> =({element})=> {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+ 
   const words = [
     "bogota",
     "medellin",
@@ -23,20 +23,11 @@ function AddPost() {
     "villanueva",
     "villa",
   ];
-
-  const handleResult = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setTextInput(e.target.value.toLowerCase());
-  };
-  const filteredWords = words.filter((word) =>
-    word.toLowerCase().includes(textInput)
-  );
-
   return (
     <>
       <Button onPress={onOpen} variant="light">
         {" "}
-        <PostAddIcon style={{ color: "white" }} />
+        {element}
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="bottom">
         <ModalContent>
@@ -90,7 +81,7 @@ export default function NavDiscover() {
         </div>
 
         <div className="relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
-          <AddPost />
+          <AddPost element={<PostAddIcon style={{ color: "white" }} />} />
         </div>
 
         <div className=" group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
