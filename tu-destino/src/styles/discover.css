@@ -64,3 +64,9 @@
     transform: translate(-30px, -30px);
   }
 }
+.flickChilds .flicking-camera{
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  height: 100%;
+}

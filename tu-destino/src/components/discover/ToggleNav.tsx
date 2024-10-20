@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useLayoutEffect } from 'react';
 import ButtonPanel from './ButtonPanel';
-import NavDiscover from './NavDiscover';
+import NavDiscover, { AddPost } from './NavDiscover';
 import Gallery from "../../components/discover/Gallery";
 import '../../styles/discover.css'
 const obj = [
@@ -74,6 +74,14 @@ const obj = [
   },
 ];
 
+const ButtonModalDesktop: React.FC =()=>{
+
+  return ( 
+    <div className='fixed z-50 bg-green-400 bottom-[1%] right-[2%] rounded-full'>
+      <AddPost element={'Postear'}/>
+    </div>
+)
+};
 
 const ToggleNav: React.FC = () => {
   
@@ -112,6 +120,7 @@ const ToggleNav: React.FC = () => {
         <>
         <ButtonPanel/>
         <Gallery initialPlaces={obj}/>
+        <ButtonModalDesktop/>
         </>
       ) : (
         <>

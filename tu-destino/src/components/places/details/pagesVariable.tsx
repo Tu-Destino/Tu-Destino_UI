@@ -3,6 +3,8 @@
 
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import SliderDetails from './Slider';
+
 
 const VariablePage = () => {
   {
@@ -21,6 +23,7 @@ const VariablePage = () => {
     return (
       <div>
         <h1>{dynamicContent}</h1>
+        
       </div>
     )  
 };
