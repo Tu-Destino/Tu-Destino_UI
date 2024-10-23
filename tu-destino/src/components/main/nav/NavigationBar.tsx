@@ -16,7 +16,7 @@ function NavigationBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <nav className="bg-white w-full h-[74px] flex flex-row border-b border-[#e0e0e0] fixed z-40">
+    <nav className="bg-[#ffffff] w-full h-[59px] flex flex-row border-b border-[#e0e0e0] fixed z-40">
       <div className="md:hidden  w-12 flex justify-center items-center">
         <button onClick={onOpen}>
           <MenuIcon />
