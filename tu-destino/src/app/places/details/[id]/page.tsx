@@ -1,5 +1,7 @@
 "use client";
 
+import Footer from "@/components/Footer";
+import CardInfo from "@/components/places/details/CardInfo";
 import SliderDetails from "@/components/places/details/Slider";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -25,6 +27,8 @@ const PageDetail: React.FC = () => {
     <h1>{decodedId}</h1>
     
     <SliderDetails suggestions={list}/>
+    <CardInfo/>
+    <Footer/>
     </>
   );
 };

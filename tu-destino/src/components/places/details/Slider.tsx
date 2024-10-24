@@ -39,7 +39,7 @@ const SliderDetails: React.FC<AutocompleteProps> = ({ suggestions }) => {
   }, [flicking0, flicking1]);
 
   const handlePrev = () => {
-    if (!isAnimating) {
+    if (!isAnimating && flicking0.current && flicking0.current.index > 0) {
       flicking0.current?.prev();
       flicking1.current?.prev();
     }
@@ -47,7 +47,7 @@ const SliderDetails: React.FC<AutocompleteProps> = ({ suggestions }) => {
 
 
   const handleNext = () => {
-    if (!isAnimating) {
+    if (!isAnimating && flicking0.current && flicking0.current.index < suggestions.length- 1) {
       flicking0.current?.next();
       flicking1.current?.next();
     }
@@ -67,7 +67,7 @@ const SliderDetails: React.FC<AutocompleteProps> = ({ suggestions }) => {
         {suggestions.map((item, index) => (
           <div key={index} className="flicking-panel full has-background-primary">
             <img 
-              className="panel-image" 
+              className="panel-image object-cover" 
               src={item} 
               alt={`Image ${index}`} 
               draggable="false" 
@@ -85,7 +85,7 @@ const SliderDetails: React.FC<AutocompleteProps> = ({ suggestions }) => {
         {suggestions.map((item, index) => (
           <div key={index} className="flicking-panel thumb has-background-primary">
             <img 
-              className="thumb-image" 
+              className="thumb-image object-cover" 
               src={item} 
               alt={`Thumbnail ${index}`} 
               draggable="false" 
