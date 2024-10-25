@@ -9,9 +9,7 @@ function SearchBar() {
   const [sizeWidth, setSizeWidth] = useState(230);
 
   useEffect(() => {
-    const handleScroll = () => {
-      console.log(window.scrollY);
-      
+    const handleScroll = () => {      
       if (window.scrollY > sizeWidth) {
         setIsScrolled(true);
       } else {

@@ -3,7 +3,7 @@ import CardGridMain from "./CardGridMain";
 
 export default function GridMain() {
   return (
-    <section className="bg-black mt-[14rem] w-full flex items-center justify-center">
+    <section className="bg-slate-900 mt-[14rem] py-[4rem] w-full flex items-center justify-center">
       <div className="max-w-[1100px] gap-2 grid grid-cols-12 grid-rows-2 px-8">
         <CardGridMain/>
         <CardGridMain/>
