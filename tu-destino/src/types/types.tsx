@@ -52,3 +52,8 @@ export type ColorWithNickname = {
   color: string;
   nickname: string;
 };
+
+export type LinkUrlProps = {
+  name: string;
+  url: string;
+};

@@ -5,7 +5,7 @@ export default function EyeCatching({ position }: { position: string }) {
   const isPositionOne = position === "1";
 
   return (
-    <div className="bg-slate-900 py-16 flex items-center justify-center">
+    <div className="bg-white py-16 flex items-center justify-center">
       <article className="flex-col  sm:flex-row px-6 sm:px-12 flex justify-center max-w-[1300px]">
         <div
           className={`flex flex-col sm:w-[40%] ${
@@ -14,14 +14,14 @@ export default function EyeCatching({ position }: { position: string }) {
               : "order-2 sm:order-1 pr-4 sm:pr-8 lg:pr-[4rem]"
           } justify-center`}
         >
-          <h2 className="text-3xl text-white mb-3">Enoturismo</h2>
-          <p className="text-slate-300 mb-3">
+          <h2 className="text-3xl text-[#1d1d1f] mb-3">Enoturismo</h2>
+          <p className="text-[#6e6e73] mb-3">
             ¿Le apetece pasear por las viñas, visitar a un viticultor o pasar la
             noche en un viñedo? Suiza ofrece, aparte de vinos de alta calidad,
             una gran variedad de experiencias. Ya sea un amante del vino o un
             sibarita, la región vinícola de Suiza le está esperando.
           </p>
-          <Link href="/places/details/jijijaja" className="text-cyan-700">
+          <Link href="/places/details/jijijaja" className="text-indigo-400">
             Conocer más ☞ ☡ ⍾ ⎄
           </Link>
         </div>

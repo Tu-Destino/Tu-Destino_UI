@@ -97,7 +97,7 @@ function SearchBar() {
             />
             {/* Botón de búsqueda */}
             <button
-              className={`bg-[#ff5757] hover:bg-[#ff8181] rounded-3xl text-white  mr-2 sm:mx-[9px] ${
+              className={`bg-[#ff414d] hover:bg-[#FF5D67] rounded-3xl text-white  mr-2 sm:mx-[9px] ${
                 isScrolled ? "w-8 h-8" : "w-12 h-12"
               }`}
             >

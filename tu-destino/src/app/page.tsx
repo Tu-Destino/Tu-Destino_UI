@@ -1,10 +1,11 @@
 import './../styles/globals.css'
 import Image from "next/image";
-import Footer from '../components/Footer'
-import NavigationBar from "../components/main/nav/NavigationBar";
+import Footer from '../components/common/footer/Footer'
+import NavigationBar from "../components/common/nav/NavigationBar";
 import SearchBar from "../components/main/searchBar/SearchBar";
 import GridMain from '@/components/main/gridMain/GridMain';
 import EyeCatching from '@/components/main/eyeCatching/EyeCatching';
+import FooterTop from '@/components/common/footer/FooterTop';
 
 export default function Home() {
   return (<>
@@ -16,7 +17,8 @@ export default function Home() {
       <EyeCatching key={3} position='1'/>
       <EyeCatching key={4} position='2'/>
       <EyeCatching key={5} position='1'/>
-      <section className='h-[150vh]'></section>
+      <FooterTop/>
+      <Footer/>
 
    </>
   );
