@@ -1,3 +1,4 @@
+
 img{
   image-rendering: optimizeQuality;
   image-rendering: pixelated;
@@ -41,4 +42,18 @@ img{
 .flicking-viewport{
   position: relative;
   bottom: 0;
+}
+
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.img-rotate {
+  animation: rotateIn 1s ease-out;
 }
