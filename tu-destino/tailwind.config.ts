@@ -11,6 +11,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize:{
+        'clamptext':'clamp(1.8rem, 2vw, 2.4rem)',
+        'clamptitle': 'clamp(4rem, 5vw, 8rem)'
+      }
 
     },
   },
