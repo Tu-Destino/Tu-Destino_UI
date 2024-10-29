@@ -6,6 +6,7 @@ const LinkUrl: React.FC<LinkUrlProps> = ({ name, url }) => {
     <li>
       <Link
         href={url}
+        target="blank"
         className="mr-4 hover:underline decoration-dotted md:mr-6 transition"
       >
         {name}
