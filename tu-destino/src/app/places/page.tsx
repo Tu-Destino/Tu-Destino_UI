@@ -1,4 +1,4 @@
-import Footer from "../../components/Footer";
+import Footer from "../../components/common/footer/Footer";
 import Carrusel from "../../components/places/Carrusel";
 import Collage from "../../components/places/Collage";
 
