@@ -1,5 +1,12 @@
-'use client'
-import { createContext, useContext, useState, ReactNode } from 'react';
+"use client";
+import useVerifyPath from "@/helpers/LoadPacth";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 
 type RootContextState = {
   someRootVariable: string;
@@ -8,9 +15,11 @@ type RootContextState = {
 
 const RootContext = createContext<RootContextState | undefined>(undefined);
 
-export const RootProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [someRootVariable, setSomeRootVariable] = useState<string>('');
-
+export const RootProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [someRootVariable, setSomeRootVariable] = useState<string>("");
+  useVerifyPath(); // Llama al hook con el path actual
   return (
     <RootContext.Provider value={{ someRootVariable, setSomeRootVariable }}>
       {children}
@@ -21,7 +30,7 @@ export const RootProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 export const useRootContext = () => {
   const context = useContext(RootContext);
   if (context === undefined) {
-    throw new Error('useRootContext must be used within a RootProvider');
+    throw new Error("useRootContext must be used within a RootProvider");
   }
   return context;
 };

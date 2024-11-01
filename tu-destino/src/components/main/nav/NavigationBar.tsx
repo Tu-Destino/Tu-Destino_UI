@@ -5,12 +5,13 @@ import {
   ModalBody,
   useDisclosure,
 } from "@nextui-org/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Languages from "./Languages";
 import Login from "./Login";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import { poppins } from "@/styles/fonts";
+import verifyPacth from "@/helpers/LoadPacth";
 
 function NavigationBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
