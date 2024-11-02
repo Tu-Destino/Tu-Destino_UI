@@ -1,8 +1,8 @@
 
-import {  FiltersType } from "@/types/types";
+import {  AutocompleteProps, FiltersType } from "@/types/types";
 import { Sync } from "@egjs/flicking-plugins";
 import Flicking from "@egjs/react-flicking";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ButtomFilter from "./ButtonFilter";
 
 const etiquetasLugares: string =
@@ -99,13 +99,13 @@ const Filters: React.FC<FiltersType> = ({ suggestions, select, setStateValue }) 
     );
 };
 
-function ButtonPanel() {
+const ButtonPanel: React.FC<AutocompleteProps>=({suggestions})=> {
   const [tags,setTags] = useState<string[]>([]);
-  const listTags = etiquetasLugares.split(',');
+
   return(
     <div className="md:w-[20%] lg:w-[20%] h-full bg-[#1E1E1E]">
       <div className="mt-[5rem]  w-full gap-1 h-[80%] flex justify-center overflow-hidden" >
-        <Filters  suggestions={listTags} select={tags} setStateValue={setTags}/>
+        <Filters  suggestions={suggestions} select={tags} setStateValue={setTags}/>
       </div>
     </div>
   )

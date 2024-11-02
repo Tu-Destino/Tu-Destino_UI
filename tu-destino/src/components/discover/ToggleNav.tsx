@@ -19,7 +19,7 @@ const ButtonModalDesktop: React.FC =()=>{
 const ToggleNav: React.FC = () => {
   
     const [showComponent, setShowComponent] = useState<boolean | null>(null);
-    const { postDiscover} = useData();
+    const { tags, postDiscover} = useData();
   useLayoutEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 767) {
@@ -51,7 +51,7 @@ const ToggleNav: React.FC = () => {
     <>
       {showComponent ? (
         <>
-        <ButtonPanel/>
+        <ButtonPanel suggestions={tags}/>
         <Gallery initialPlaces={postDiscover}/>
         <ButtonModalDesktop/>
         </>
