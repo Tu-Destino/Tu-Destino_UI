@@ -26,7 +26,6 @@ export const RootProvider: React.FC<{ children: ReactNode }> = ({
     </RootContext.Provider>
   );
 };
-
 export const useRootContext = () => {
   const context = useContext(RootContext);
   if (context === undefined) {

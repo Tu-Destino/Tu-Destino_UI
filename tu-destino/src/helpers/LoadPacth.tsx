@@ -9,7 +9,7 @@ const useVerifyPath = () => {
   const searchParams = useSearchParams();
   console.log(path, "------", searchParams);
   useEffect(() => {
-    loadVerify();
+    loadVerify(path);
   }, [path, searchParams]);
 };
 

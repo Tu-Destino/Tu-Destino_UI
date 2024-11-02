@@ -26,9 +26,10 @@ export type ButtomPromp={
   handleCLick:(tag : string) => void;
 };
 
-export type Place = {
-  img: string;
-  name: string;
+export type Post = {
+  urlImg: string;
+  title: string;
+  description:string;
 };
 
 export type Details={
@@ -37,11 +38,11 @@ export type Details={
   info: string;
 };
 export type CardImgProps = {
-  place: Place;
+  place: Post;
 };
 
 export type GalleryProps = {
-  initialPlaces: Place[];
+  initialPlaces: Post[];
 };
 
 export type IconWithNickname = {

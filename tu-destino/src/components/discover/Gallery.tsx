@@ -1,23 +1,21 @@
 "use client";
 
 import { useState, useEffect, FC } from "react";
+import useData from "@/helpers/Zustand/DataLoad";
 import {
   Modal,
   ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Button,
   useDisclosure,
 } from "@nextui-org/react";
 import Redirect from "./Redirect";
-import { CardImgProps, GalleryProps, Place } from "@/types/types";
+import { CardImgProps, GalleryProps, Post } from "@/types/types";
 
 
 const CardImg: FC<CardImgProps> = ({ place }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
-
+  const [selectedPlace, setSelectedPlace] = useState<Post | null>(null);
+ 
   const handleClick = () => {
     setSelectedPlace(place);
     onOpen();
@@ -28,8 +26,8 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
       <img
         className="w-full  h-auto aspect-square cursor-pointer object-cover"
         onClick={handleClick}
-        src={place.img}
-        alt={`imagen de ${place.name}`}
+        src={place.urlImg}
+        alt={`imagen de ${place.title}`}
       />
       {selectedPlace && (
         <Modal
@@ -55,25 +53,19 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
                   <div className="w-full sm:w-[70%]  h-[300px] sm:h-full relative ">
                     <img
                       className="h-full w-full object-cover"
-                      src={place.img}
-                      alt={`imagen del ${place.name}`}
+                      src={place.urlImg}
+                      alt={`imagen del ${place.title}`}
                     />
                   </div>
                   <div className=" w-full sm:w-[30%] h-full relative flex  flex-col justify-center">
                     <h1 className="p-4 absolute w-[85%] top-0">
-                      {place.name} 
+                      {place.title} 
                     </h1>
                     <p className="p-4 relative h-[50%] sm:h-[60%] overflow-y-scroll ">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Dignissimos, excepturi, reiciendis similique veniam
-                      accusantium ratione libero repellat facilis illo sapiente
-                      nisi saepe ad quas natus sunt dicta voluptates ipsum
-                      maxime architecto blanditiis sit? Praesentium repellendus
-                      deleniti placeat ipsum quae distinctio maxime hic totam
-                      fuga eos? Voluptates veritatis saepe obcaecati aliquam!
+                      {place.description}
                     </p>
                     <div className="absolute bottom-0 flex items-center justify-center w-full h-[20%] sm:h-auto ">
-                      <Redirect labels={selectedPlace.name} />
+                      <Redirect labels={selectedPlace.title} />
                       <Button color="danger" variant="light" onClick={onClose}>
                         Close
                       </Button>
@@ -90,7 +82,7 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
 };
 
 const Gallery: FC<GalleryProps> = ({ initialPlaces }) => {
-  const [places, setPlaces] = useState<Place[]>(initialPlaces);
+  const [places, setPlaces] = useState<Post[]>(initialPlaces);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
