@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-export type ElementProps = {
+export type ElementProps ={
   element: ReactNode;
-};
+}
 
-export type IconsProps = {
+export type IconsProps={
   Component: ReactNode;
   list: string;
 };
@@ -21,9 +21,9 @@ export type TagsProps = {
   labels: string;
 };
 
-export type ButtomPromp = {
+export type ButtomPromp={
   tag: string;
-  handleCLick: (tag: string) => void;
+  handleCLick:(tag : string) => void;
 };
 
 export type Post = {
@@ -32,9 +32,9 @@ export type Post = {
   description:string;
 };
 
-export type Details = {
-  img: string[];
-  title: string;
+export type Details={
+  img:string[];
+  title:string;
   info: string;
 };
 export type CardImgProps = {
@@ -57,12 +57,4 @@ export type ColorWithNickname = {
 export type LinkUrlProps = {
   name: string;
   url: string;
-};
-
-export type PlaceProps = {
-  title: string;
-  description: string;
-  link: string;
-  img: string;
-  altImg: string;
 };

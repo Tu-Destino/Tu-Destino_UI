@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, ChangeEvent } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { bebas_Neue, inter, poppins } from "@/styles/fonts";
+import { bebas_Neue, poppins } from "@/styles/fonts";
 
 function SearchBar() {
   const [textInput, setTextInput] = useState("");
@@ -108,7 +108,7 @@ function SearchBar() {
           {/* Selector de resultados que aparece debajo del input */}
           {textInput && (
             <div
-              className={` z-40 max-h-48 min-h-[${
+              className={`  max-h-48 min-h-[${
                 filteredWords.length * 3.5
               }rem] bg-white w-3/4 mt-2 rounded-lg shadow-lg  overflow-y-auto ${
                 isScrolled ? "fixed top-[66px] w-[26rem]" : "absolute top-16"
@@ -137,12 +137,12 @@ function SearchBar() {
       </section>
       <section className="flex items-center justify-center flex-col">
         <h2
-          className={` mt-[6.5rem] ${poppins.className} text-3xl  text-[#1d1d1f]`}
+          className={` mt-[6.5rem] ${poppins.className} text-3xl font-semibold text-[#1d1d1f]`}
         >
           ¿No sabes a dónde ir?
         </h2>
         <p
-          className={` mt-[1rem] ${poppins.className} text-xl text-[#8a8989]`}
+          className={` mt-[1rem] ${poppins.className} text-xl font-semibold text-[#8a8989]`}
         >
           Déjate sorprender y explora lo inesperado
         </p>
