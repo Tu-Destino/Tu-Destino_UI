@@ -1,12 +1,13 @@
+import { Post } from "@/types/types";
 import { create } from "zustand";
 
 interface DataState {
   places: object[];
-  postDiscover: object[];
+  postDiscover: Post[];
   optionSearch: string[];
   tags: string[];
   setPlaces: (places: object[]) => void;
-  setPostDiscover: (postDiscover: object[]) => void;
+  setPostDiscover: (postDiscover: Post[]) => void;
   setOptionSearch: (optionSearch: string[]) => void;
   setTags: (tags: string[]) => void;
 }

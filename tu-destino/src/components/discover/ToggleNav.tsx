@@ -4,75 +4,8 @@ import ButtonPanel from './ButtonPanel';
 import NavDiscover, { AddPost } from './NavDiscover';
 import Gallery from "../../components/discover/Gallery";
 import '../../styles/discover.css'
-const obj = [
-  {
-    name: "Algun parque de Medellin",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  },
-  {
-    name: "Nose como se llama este...",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  },
-  {
-    name: "Museo el castillo",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  },
-  {
-    name: "Logo Perron de Tu Destino",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-  },
+import useData from '@/helpers/Zustand/DataLoad';
 
-  {
-    name: "Logo Perron de Tu Destino",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-  },
-
-  {
-    name: "Logo Perron de Tu Destino",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-  },
-
-  {
-    name: "Logo Perron de Tu Destino",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-  },
-  {
-    name: "Algun parque de Medellin",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  },
-  {
-    name: "Nose como se llama este...",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  },
-  {
-    name: "Museo el castillo",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  },
-  {
-    name: "Algun parque de Medellin",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  },
-  {
-    name: "Nose como se llama este...",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  },
-  {
-    name: "Museo el castillo",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  },
-  {
-    name: "Algun parque de Medellin",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  },
-  {
-    name: "Nose como se llama este...",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  },
-  {
-    name: "Museo el castillo",
-    img: "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  },
-];
 
 const ButtonModalDesktop: React.FC =()=>{
 
@@ -86,7 +19,7 @@ const ButtonModalDesktop: React.FC =()=>{
 const ToggleNav: React.FC = () => {
   
     const [showComponent, setShowComponent] = useState<boolean | null>(null);
-
+    const { postDiscover} = useData();
   useLayoutEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 767) {
@@ -102,7 +35,7 @@ const ToggleNav: React.FC = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  if(showComponent ==null){
+  if(postDiscover.length===0){
     return(<>
       <div className="loader">
         <div></div> 
@@ -119,13 +52,13 @@ const ToggleNav: React.FC = () => {
       {showComponent ? (
         <>
         <ButtonPanel/>
-        <Gallery initialPlaces={obj}/>
+        <Gallery initialPlaces={postDiscover}/>
         <ButtonModalDesktop/>
         </>
       ) : (
         <>
         <NavDiscover/>
-        <Gallery initialPlaces={obj}/>
+        <Gallery initialPlaces={postDiscover}/>
         </>
       )}
     </>
