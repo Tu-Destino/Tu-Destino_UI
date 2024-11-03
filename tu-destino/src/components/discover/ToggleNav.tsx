@@ -8,10 +8,10 @@ import useData from '@/helpers/Zustand/DataLoad';
 
 
 const ButtonModalDesktop: React.FC =()=>{
-
+const {tags,optionSearch} =useData()
   return ( 
     <div className='fixed z-50 bg-green-400 bottom-[1%] right-[2%] rounded-full'>
-      <AddPost element={'Postear'}/>
+      <AddPost element={'Postear'} list={tags} titles={optionSearch}/>
     </div>
 )
 };
@@ -19,7 +19,7 @@ const ButtonModalDesktop: React.FC =()=>{
 const ToggleNav: React.FC = () => {
   
     const [showComponent, setShowComponent] = useState<boolean | null>(null);
-    const { tags, postDiscover} = useData();
+    const { tags, postDiscover,optionSearch} = useData();
   useLayoutEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 767) {
@@ -57,7 +57,7 @@ const ToggleNav: React.FC = () => {
         </>
       ) : (
         <>
-        <NavDiscover/>
+        <NavDiscover list={tags} titles={optionSearch}/>
         <Gallery initialPlaces={postDiscover}/>
         </>
       )}

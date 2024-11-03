@@ -1,3 +1,5 @@
+import { NewPost, Post } from "@/types/types";
+
 const API_BASE_URL = "https://bl-monolith-td.onrender.com/TD/api/v1"; // Reemplaza con tu URL de la API
 
 // Función genérica para obtener todos los datos
@@ -62,3 +64,52 @@ export const remove = async (endpoint: string, id: string | number) => {
   }
   return response.json();
 };
+
+export const createNewPost= async(post: NewPost)=>{
+
+  const newPost ={
+    "title": post.title,
+    "description": post.description,
+    "tags": post.tags,
+    "urlImg":await addImg(post.urlImg) ,
+    "place_id": await getById('/place/findTitle',post.title),
+    "user_id":"0d215f49-a3f4-4165-bf52-b42649bc85c3"
+  }
+
+  try{
+    console.log(newPost);
+    
+   // const result = await create('postDiscover', newPost,)
+  }
+  catch(error:any){
+      alert(error.message)
+  }
+}
+
+export async function addImg(file: string | ArrayBuffer|null): Promise<string> {
+  let url = "";
+  const formData = new FormData();
+
+  if (typeof file === 'string' || file instanceof ArrayBuffer) {
+    formData.append("file", new Blob([file], { type: 'image/jpeg' })); // Ajusta el tipo según la imagen que tengas
+    formData.append("upload_preset", "dnrb6puh"); // Reemplaza con tu propio upload preset
+
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dhtmy6izv/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(`Error al subir la imagen: ${data.error.message}`);
+    }
+
+    const { secure_url } = data;
+    url = secure_url;
+  }
+
+  return url;
+}
