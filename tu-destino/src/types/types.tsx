@@ -2,12 +2,18 @@ import { ReactNode } from "react";
 
 export type ElementProps = {
   element: ReactNode;
+  list: string[];
+  titles: string[];
 };
 
 export type IconsProps = {
   Component: ReactNode;
-  list: string;
+  list: string[];
 };
+export type AddPostProps={
+  list:string[];
+  titles:string[];
+}
 export type AutocompleteProps = {
   suggestions: string[];
 };
@@ -31,7 +37,12 @@ export type Post = {
   title: string;
   description:string;
 };
-
+export type NewPost ={
+  "title": string,
+  "description": string,
+  "tags": string,
+  "urlImg": string |ArrayBuffer | null,
+}
 export type Details = {
   img: string[];
   title: string;

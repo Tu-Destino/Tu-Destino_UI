@@ -3,26 +3,30 @@ import HomeIcon from "@mui/icons-material/Home";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Drop, ImageUploader, SearchPlaces, Tags } from "./MicroComponents";
+import { Drop, FrameDescription, ImageUploader, SearchPlaces, Tags } from "./MicroComponents";
 import Link from "next/link";
-import { ElementProps } from "@/types/types";
+import { AddPostProps, AutocompleteProps, ElementProps } from "@/types/types";
+import { useSelectContext } from "@/context/SelectContext";
+import { createNewPost } from "@/helpers/FetchData";
 
-const etiquetasLugares: string =
-  "Parque , Playa , Museo d,  Histórico, Jardín , Zoológico ,  Nacional, Montaña , Cascada , Castillo, plaza, bosque, lago, luz, restaurante, aventura, relax, compras, social, local, callejera, saludable, tarde, nocturna, cafeteria, bar, rio, mirador, biblioteca ,monumento , lujo, deporte , otros, religion, arte, internacional, naturaleza, antiguo, diseño, hospedajes, gastronomia, lugares, actividades ";
-
-
-export const AddPost: React.FC<ElementProps> =({element})=> {
+export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const {newImagen,newTitle,newDescription,newTags} =useSelectContext()
+  const newPost= async()=>{
+    const post={
+      "title": newTitle,
+      "description": newDescription,
+      "tags": newTags,
+      "urlImg": newImagen,
+    }
+    console.log("subida");
+    
+   const confirm= createNewPost(post);
+    console.log(await confirm);
+   
+    onclose;
+  } 
  
-  const words = [
-    "bogota",
-    "medellin",
-    "cali",
-    "bucaramanga",
-    "villavicencio",
-    "villanueva",
-    "villa",
-  ];
   return (
     <>
       <Button onPress={onOpen} variant="light">
@@ -38,20 +42,14 @@ export const AddPost: React.FC<ElementProps> =({element})=> {
                   <ImageUploader />
                 </div>
                 <div className=" w-full  h-[60%] bg-slate-300  p-1 flex  relative flex-col justify-center items-center gap-2 ">
-                  <SearchPlaces suggestions={words} />
-
-                  <textarea
-                    rows={5}
-                    cols={10}
-                    placeholder="Escribe una descripcion del lugar"
-                    className="p-4  w-[95%]  placeholder:text-black border border-black rounded-md"
-                  ></textarea>
+                  <SearchPlaces suggestions={titles} />
+                <FrameDescription/>
                   <div className="w-[95%] h-auto  ">
-                    <Tags labels={etiquetasLugares} />
+                    <Tags suggestions={list} />
                   </div>
                 </div>
                 <div className="absolute bottom-0 flex items-center justify-center w-full h-[10%] sm:h-auto ">
-                  <Button color="primary" variant="light" onClick={onClose}>
+                  <Button color="primary" variant="light" onClick={newPost}>
                     Crear
                   </Button>
                   <Button color="danger" variant="light" onClick={onClose}>
@@ -67,7 +65,7 @@ export const AddPost: React.FC<ElementProps> =({element})=> {
   );
 }
 
-export default function NavDiscover() {
+ const NavDiscover : React.FC<AddPostProps>=({list, titles})=> {
   return (
     <nav className="fixed bottom-0 w-full">
       <div className="flex justify-around gap-4 items-center px-4 py-1 bg-black ring-1 ring-white w-full">
@@ -81,11 +79,11 @@ export default function NavDiscover() {
         </div>
 
         <div className="relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
-          <AddPost element={<PostAddIcon style={{ color: "white" }} />} />
+          <AddPost element={<PostAddIcon style={{ color: "white" }}  />} list={list} titles={titles} />
         </div>
 
         <div className=" group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
-          <Drop Component={<FilterAltIcon style={{ color: "white" }}/>} list={etiquetasLugares} />
+          <Drop Component={<FilterAltIcon style={{ color: "white" }}/>} list={list} />
         </div>
 
         <div className="relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
@@ -98,3 +96,5 @@ export default function NavDiscover() {
     </nav>
   );
 }
+
+export default NavDiscover;

@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, ReactNode, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, forwardRef, ReactNode, useEffect, useRef, useState } from "react";
 import Flicking from "@egjs/react-flicking";
 import { Sync } from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/flicking-plugins.css";
@@ -11,14 +11,13 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 
 
-export const Tags: React.FC<TagsProps> = ({ labels }) => {
+export const Tags: React.FC<AutocompleteProps> = ({ suggestions }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const flicking0 = useRef<Flicking>(null);
   const flicking1 = useRef<Flicking>(null);
   const [plugins, setPlugins] = useState([new Sync({ type: 'camera', synchronizedFlickingOptions: [] })]);
-  
-  const tags: string[] = labels.split(',');
-
+  const {setNewTags}= useSelectContext();
+  const [result ,setResult] = useState<object>(new Object);
   useEffect(() => {
     if (flicking0.current && flicking1.current ) {
       const syncPlugin = new Sync({
@@ -38,20 +37,28 @@ export const Tags: React.FC<TagsProps> = ({ labels }) => {
     }
   }, [flicking0, flicking1]);
 
-  const half = Math.ceil(tags.length / 2);
-  const tags0 = tags.slice(0,  half);
-  const tags1 = tags.slice(half);
+  const half = Math.ceil(suggestions.length / 2);
+  const tags0 = suggestions.slice(0,  half);
+  const tags1 = suggestions.slice(half);
   
   const handleClick = (tag: string) => {
     setSelectedTags(prevSelectedTags => {
+      let updatedSelectedTags;
+  
       if (prevSelectedTags.includes(tag)) {
-        return prevSelectedTags.filter(selectedTag => selectedTag !== tag);
+        updatedSelectedTags = prevSelectedTags.filter(selectedTag => selectedTag !== tag);
       } else {
-        return [...prevSelectedTags, tag];
+        updatedSelectedTags = [...prevSelectedTags, tag];
       }
-    });
-  }
+        
 
+  
+      return updatedSelectedTags;
+    });
+  };
+  useEffect(()=>{
+    setNewTags(selectedTags.join(','));
+  },[selectedTags])
   return (
     <>
       <Flicking ref={flicking0}
@@ -83,12 +90,12 @@ export const Tags: React.FC<TagsProps> = ({ labels }) => {
 
 export const ImageUploader: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
-
+  const {setNewImagen}= useSelectContext();
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = () => setImageSrc(reader.result);
+      reader.onload = () => {setImageSrc(reader.result); setNewImagen(reader.result)};
       reader.readAsDataURL(file);
     }
   };
@@ -119,7 +126,7 @@ export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
   const [inputValue, setInputValue] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-
+  const {setNewTitle} = useSelectContext()
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
@@ -138,6 +145,7 @@ export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
 
   const handleSuggestionClick = (suggestion: string) => {
     setInputValue(suggestion);
+    setNewTitle(suggestion)
     setFilteredSuggestions([]);
     setShowSuggestions(false); // Cierra la lista de sugerencias
   };
@@ -235,11 +243,11 @@ export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
   }
 
 
-  const tags: string[] = list.split(',');
-  const third = Math.ceil(tags.length / 3);
-  const tags0 = tags.slice(0, third);
-  const tags1 = tags.slice(third, third * 2);
-  const tags2 = tags.slice(third * 2);
+  
+  const third = Math.ceil(list.length / 3);
+  const tags0 = list.slice(0, third);
+  const tags1 = list.slice(third, third * 2);
+  const tags2 = list.slice(third * 2);
 
   return (
     <>
@@ -294,3 +302,18 @@ export const ButtomTagsPos = forwardRef<HTMLButtonElement, ButtomPromp>(({ tag, 
     </button>
   );
 });
+export const FrameDescription : React.FC = ()=>{
+  const {setNewDescription} = useSelectContext()
+    const handleChange=(e:React.ChangeEvent<HTMLTextAreaElement>)=>{
+      setNewDescription(e.target.value)
+    }
+  return (
+    <textarea
+    rows={5}
+    cols={10}
+    placeholder="Escribe una descripcion del lugar"
+    className="p-4  w-[95%]  placeholder:text-black border border-black rounded-md"
+    onChange={handleChange}
+  ></textarea>
+  )
+}
