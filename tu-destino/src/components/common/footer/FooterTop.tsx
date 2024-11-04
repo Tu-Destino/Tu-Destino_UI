@@ -12,7 +12,7 @@ export default function FooterTop() {
   };
 
   return (
-    <section className="relative bg-[#ff414d] pt-20 md:pt-32 pb-0 grid gap-md">
+    <section className="relative bg-[#ff414d] mt-20 pt-20 md:pt-32 pb-0 grid gap-md">
       <div className="mx-auto md:max-w-[90rem] px-5">
         <div className="text-center">
           <h2 className="text-[3rem] text-balance md:text-[7rem] md:max-w-[42rem] mx-auto font-serif text-center leading-none tracking-tight text-[#fffdf1] mb-8 md:mb-16">Únete y encuentra Tu Destino</h2>

@@ -20,7 +20,7 @@ const Footer = () => {
     <footer className="p-4 md:p-8 lg:p-10 relative bg-[#fffdf1]">
       <div className="mx-auto max-w-full text-center flex flex-col md:flex-row gap-2 justify-between items-center ">
         <div className="flex flex-col md:flex-row gap-2 items-center md:justify-start">
-          <Link href="" className="inline-block ">
+          <Link href="#" className="inline-block ">
             <img src="/logoOrange.png" alt="Tu Destino" className="h-8" />
           </Link>
           <p className="text-stop-red sm:text-center text-[#ff414d]">
