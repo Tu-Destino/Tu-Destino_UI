@@ -17,6 +17,7 @@ export const Tags: React.FC<AutocompleteProps> = ({ suggestions }) => {
   const flicking1 = useRef<Flicking>(null);
   const [plugins, setPlugins] = useState([new Sync({ type: 'camera', synchronizedFlickingOptions: [] })]);
   const {setNewTags}= useSelectContext();
+  const [result ,setResult] = useState<object>(new Object);
   useEffect(() => {
     if (flicking0.current && flicking1.current ) {
       const syncPlugin = new Sync({
@@ -49,14 +50,15 @@ export const Tags: React.FC<AutocompleteProps> = ({ suggestions }) => {
       } else {
         updatedSelectedTags = [...prevSelectedTags, tag];
       }
-  
-      // Aquí también actualizamos el otro set
-      setNewTags(updatedSelectedTags.join(','));
+        
+
   
       return updatedSelectedTags;
     });
   };
-  
+  useEffect(()=>{
+    setNewTags(selectedTags.join(','));
+  },[selectedTags])
   return (
     <>
       <Flicking ref={flicking0}

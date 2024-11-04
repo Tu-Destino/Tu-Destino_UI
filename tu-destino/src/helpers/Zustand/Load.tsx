@@ -4,7 +4,7 @@ import useData from "./DataLoad";
 const loadOptionSearch = async () => {
   const state = useData.getState();
   if (state.optionSearch.length === 0) {
-    const optionSearch = await getAll("/place/listTitle");
+    const optionSearch = await getAll("/place/getListTitle");
     state.setOptionSearch(optionSearch);
     console.log("Api");
     console.log(optionSearch);

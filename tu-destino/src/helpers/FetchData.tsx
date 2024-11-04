@@ -72,17 +72,17 @@ export const createNewPost= async(post: NewPost)=>{
     "description": post.description,
     "tags": post.tags,
     "urlImg":await addImg(post.urlImg) ,
-    "place_id": await getById('/place/findTitle',post.title),
+    "place_id": await getById('place/getIdByTitle',post.title),
     "user_id":"0d215f49-a3f4-4165-bf52-b42649bc85c3"
   }
 
   try{
     console.log(newPost);
-    
-   // const result = await create('postDiscover', newPost,)
+    return create('postDiscover', newPost,)
+
   }
   catch(error:any){
-      alert(error.message)
+   return error.message
   }
 }
 

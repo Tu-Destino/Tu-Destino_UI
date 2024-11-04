@@ -12,14 +12,18 @@ import { createNewPost } from "@/helpers/FetchData";
 export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const {newImagen,newTitle,newDescription,newTags} =useSelectContext()
-  const newPost=()=>{
+  const newPost= async()=>{
     const post={
       "title": newTitle,
       "description": newDescription,
       "tags": newTags,
       "urlImg": newImagen,
     }
+    console.log("subida");
+    
    const confirm= createNewPost(post);
+    console.log(await confirm);
+   
     onclose;
   } 
  
@@ -45,7 +49,7 @@ export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
                   </div>
                 </div>
                 <div className="absolute bottom-0 flex items-center justify-center w-full h-[10%] sm:h-auto ">
-                  <Button color="primary" variant="light" onClick={onClose}>
+                  <Button color="primary" variant="light" onClick={newPost}>
                     Crear
                   </Button>
                   <Button color="danger" variant="light" onClick={onClose}>
