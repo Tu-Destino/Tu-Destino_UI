@@ -7,6 +7,8 @@ import '../../styles/globals.css';
 import { useSelectContext } from "@/context/SelectContext";
 import { AutocompleteProps, ButtomPromp, FiltersType, IconsProps, TagsProps } from "@/types/types";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
+import useData from "@/helpers/Zustand/DataLoad";
+import { filterTags } from "@/helpers/FetchData";
 
 
 
@@ -230,20 +232,24 @@ const Filter: React.FC<FiltersType> = ({ suggestions, select, setStateValue }) =
 
 export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [filterTags, setFilterTags] = useState<string[]>([]);
+  const [filteredTags, setFilterTags] = useState<string[]>([]);
   const {setIsClean}= useSelectContext();
+  const {setPostDiscover}=useData();
   const toggleBox = () => {
     setIsVisible(!isVisible);
   };
 
 
-  const handleClean = () =>{
+  const handleClean = async () =>{
     setFilterTags([])
+    setPostDiscover(await filterTags(""))
     setIsClean(true)
   }
+  const handleClick= async()=>{
+    const filter = await filterTags(filteredTags.join(','));     
+    setPostDiscover(await filter)
+  }
 
-
-  
   const third = Math.ceil(list.length / 3);
   const tags0 = list.slice(0, third);
   const tags1 = list.slice(third, third * 2);
@@ -259,15 +265,16 @@ export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
       </button>
       {isVisible && (
         <div className="drop-box absolute bottom-[4.2rem] h-[18rem] w-full left-0 bg-white border border-gray-300 p-4 shadow-lg overflow-y-scroll">
-          <Filter suggestions={tags0} select={filterTags} setStateValue={setFilterTags}/>
-          <Filter suggestions={tags1} select={filterTags} setStateValue={setFilterTags}/>
-          <Filter suggestions={tags2} select={filterTags} setStateValue={setFilterTags}/>
+          <Filter suggestions={tags0} select={filteredTags} setStateValue={setFilterTags}/>
+          <Filter suggestions={tags1} select={filteredTags} setStateValue={setFilterTags}/>
+          <Filter suggestions={tags2} select={filteredTags} setStateValue={setFilterTags}/>
         
           <div className=" w-full bg-slate-400 h-[10%]"> 
-            <button onClick={handleClean}>Limpiar</button> <button> Buscar</button> 
+            <button onClick={handleClean}>Limpiar</button>
+             <button onClick={handleClick}> Buscar</button> 
           </div>
           <div>
-          {filterTags.map((tag, index) => (
+          {filteredTags.map((tag, index) => (
             <span key={index}>{tag}</span>
         ))}
           </div>

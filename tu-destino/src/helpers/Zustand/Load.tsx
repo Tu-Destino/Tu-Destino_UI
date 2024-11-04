@@ -31,7 +31,7 @@ const loadPlaces = async () => {
   }
 };
 
-const loadPostDiscover = async () => {
+export const loadPostDiscover = async () => {
   const state = useData.getState();
   if (state.postDiscover.length === 0) {
     const postDiscover = await getAll("/postDiscover");
