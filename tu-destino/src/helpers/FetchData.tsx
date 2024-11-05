@@ -65,6 +65,31 @@ export const remove = async (endpoint: string, id: string | number) => {
   return response.json();
 };
 
+export const getPostByTags = async (endpoint: string, body?: any) => {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    method: 'POST', // Cambiamos a POST ya que estamos enviando un body
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error al obtener los datos de ${endpoint}`);
+  }
+
+  return response.json();
+};
+
+export const filterTags = async (tags : string) =>{
+  const body={
+    array: tags
+  }
+
+  return await getPostByTags("/postDiscover/tags", body)
+
+}
+
 export const createNewPost= async(post: NewPost)=>{
 
   const newPost ={

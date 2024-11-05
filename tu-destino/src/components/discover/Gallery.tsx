@@ -20,6 +20,7 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
     setSelectedPlace(place);
     onOpen();
   };
+ 
 
   return (
     <>
@@ -84,6 +85,11 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
 const Gallery: FC<GalleryProps> = ({ initialPlaces }) => {
   const [places, setPlaces] = useState<Post[]>(initialPlaces);
   const [isClient, setIsClient] = useState(false);
+  const {postDiscover} =useData();
+  useEffect(()=>{
+    setPlaces(postDiscover)
+    
+  },[postDiscover])
 
   useEffect(() => {
     setIsClient(true); // Solo se ejecuta en el cliente

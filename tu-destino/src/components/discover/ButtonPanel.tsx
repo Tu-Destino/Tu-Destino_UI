@@ -4,10 +4,8 @@ import { Sync } from "@egjs/flicking-plugins";
 import Flicking from "@egjs/react-flicking";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ButtomFilter from "./ButtonFilter";
-
-const etiquetasLugares: string =
-  "Parque , Playa , Home ,  Histórico, Jardín , Zoológico ,  Nacional, Montaña , Cascada , Castillo, plaza, bosque, lago, luz, restaurante, aventura, relax, compras, social, local, callejera, saludable, tarde, nocturna, cafeteria, bar, rio, mirador, biblioteca ,monumento , lujo, deporte , otros, religion, arte, internacional, naturaleza, antiguo, diseño, hospedajes, gastronomia, lugares, actividades";
-
+import { filterTags } from "@/helpers/FetchData";
+import useData from "@/helpers/Zustand/DataLoad";
 
 const Filters: React.FC<FiltersType> = ({ suggestions, select, setStateValue }) => {
   const flickingRef = useRef<Flicking>(null);
@@ -101,10 +99,12 @@ const Filters: React.FC<FiltersType> = ({ suggestions, select, setStateValue }) 
 
 const ButtonPanel: React.FC<AutocompleteProps>=({suggestions})=> {
   const [tags,setTags] = useState<string[]>([]);
-  const handleClick=()=>{
-    console.log(tags.join(','));
-    
+  const {setPostDiscover}=useData();
+  const handleClick= async()=>{
+    const filter = await filterTags(tags.join(','))     
+    setPostDiscover(await filter)
   }
+
   return(
     <div className="md:w-[20%] lg:w-[20%] h-full bg-[#1E1E1E]">
       <div className="mt-[5rem]  w-full gap-1 h-[80%] flex  justify-center overflow-hidden" >
