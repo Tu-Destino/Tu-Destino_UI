@@ -3,30 +3,42 @@ import HomeIcon from "@mui/icons-material/Home";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Drop, FrameDescription, ImageUploader, SearchPlaces, Tags } from "./MicroComponents";
+import {
+  Drop,
+  FrameDescription,
+  ImageUploader,
+  SearchPlaces,
+  Tags,
+} from "./MicroComponents";
 import Link from "next/link";
 import { AddPostProps, AutocompleteProps, ElementProps } from "@/types/types";
 import { useSelectContext } from "@/context/SelectContext";
 import { createNewPost } from "@/helpers/FetchData";
+import {  loadVerify } from "@/helpers/Zustand/Load";
 
-export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
+export const AddPost: React.FC<ElementProps> = ({ element, list, titles }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const {newImagen,newTitle,newDescription,newTags} =useSelectContext()
-  const newPost= async()=>{
-    const post={
-      "title": newTitle,
-      "description": newDescription,
-      "tags": newTags,
-      "urlImg": newImagen,
-    }
+  const { newImagen, newTitle, newDescription, newTags } = useSelectContext();
+  const newPost = async () => {
+    const post = {
+      title: newTitle,
+      description: newDescription,
+      tags: newTags,
+      urlImg: newImagen,
+    };
     console.log("subida");
-    
-   const confirm= createNewPost(post);
-    console.log(await confirm);
-   
+
+    const confirm = await createNewPost(post);
+
+    //wconsole.log(await confirm);
+    console.log('cierre modal');
+
     onclose;
-  } 
- 
+
+   
+    
+  };
+
   return (
     <>
       <Button onPress={onOpen} variant="light">
@@ -43,7 +55,7 @@ export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
                 </div>
                 <div className=" w-full  h-[60%] bg-slate-300  p-1 flex  relative flex-col justify-center items-center gap-2 ">
                   <SearchPlaces suggestions={titles} />
-                <FrameDescription/>
+                  <FrameDescription />
                   <div className="w-[95%] h-auto  ">
                     <Tags suggestions={list} />
                   </div>
@@ -63,9 +75,9 @@ export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
       </Modal>
     </>
   );
-}
+};
 
- const NavDiscover : React.FC<AddPostProps>=({list, titles})=> {
+const NavDiscover: React.FC<AddPostProps> = ({ list, titles }) => {
   return (
     <nav className="fixed bottom-0 w-full">
       <div className="flex justify-around gap-4 items-center px-4 py-1 bg-black ring-1 ring-white w-full">
@@ -79,11 +91,18 @@ export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
         </div>
 
         <div className="relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
-          <AddPost element={<PostAddIcon style={{ color: "white" }}  />} list={list} titles={titles} />
+          <AddPost
+            element={<PostAddIcon style={{ color: "white" }} />}
+            list={list}
+            titles={titles}
+          />
         </div>
 
         <div className=" group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
-          <Drop Component={<FilterAltIcon style={{ color: "white" }}/>} list={list} />
+          <Drop
+            Component={<FilterAltIcon style={{ color: "white" }} />}
+            list={list}
+          />
         </div>
 
         <div className="relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
@@ -95,6 +114,6 @@ export const AddPost: React.FC<ElementProps> =({element, list, titles})=> {
       </div>
     </nav>
   );
-}
+};
 
 export default NavDiscover;

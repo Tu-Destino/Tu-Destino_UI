@@ -11,7 +11,7 @@ import Login from "./Login";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import { poppins } from "@/styles/fonts";
-import verifyPacth from "@/helpers/LoadPacth";
+import verifyPacth from "@/helpers/LoadPath";
 
 function NavigationBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

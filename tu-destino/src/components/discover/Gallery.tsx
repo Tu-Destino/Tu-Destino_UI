@@ -1,26 +1,19 @@
 "use client";
 
-import { useState, useEffect, FC } from "react";
-import useData from "@/helpers/Zustand/DataLoad";
-import {
-  Modal,
-  ModalContent,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
+import { useState, FC } from "react";
+import { Modal, ModalContent, Button, useDisclosure } from "@nextui-org/react";
 import Redirect from "./Redirect";
 import { CardImgProps, GalleryProps, Post } from "@/types/types";
-
+import logicGallery from "@/hooks/discover/logicGallery";
 
 const CardImg: FC<CardImgProps> = ({ place }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedPlace, setSelectedPlace] = useState<Post | null>(null);
- 
+
   const handleClick = () => {
     setSelectedPlace(place);
     onOpen();
   };
- 
 
   return (
     <>
@@ -60,7 +53,7 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
                   </div>
                   <div className=" w-full sm:w-[30%] h-full relative flex  flex-col justify-center">
                     <h1 className="p-4 absolute w-[85%] top-0">
-                      {place.title} 
+                      {place.title}
                     </h1>
                     <p className="p-4 relative h-[50%] sm:h-[60%] overflow-y-scroll ">
                       {place.description}
@@ -83,52 +76,10 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
 };
 
 const Gallery: FC<GalleryProps> = ({ initialPlaces }) => {
-  const [places, setPlaces] = useState<Post[]>(initialPlaces);
-  const [isClient, setIsClient] = useState(false);
-  const {postDiscover} =useData();
-  useEffect(()=>{
-    setPlaces(postDiscover)
-    
-  },[postDiscover])
-
-  useEffect(() => {
-    setIsClient(true); // Solo se ejecuta en el cliente
-  }, []);
-
-  const loadMorePlaces = () => {
-    if (isClient) {
-      setPlaces((prev) => [...prev, ...prev]);
-    }
-  };
-
-  useEffect(() => {
-    if (!isClient) return;
-    const container = document.querySelector(".gallery-container");
-
-    const handleScroll = () => {
-      if (
-        container &&
-        container.scrollTop + container.clientHeight >= container.scrollHeight * 0.95
-      ) {
-        loadMorePlaces();
-      }
-    };
-    
-
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [isClient]);
-
+  const { places } = logicGallery(initialPlaces);
   return (
     <div className="md:w-[80%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
-      <div className="mt-8 grid grid-cols-3 gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[96%]">
+      <div className="mt-8 grid grid-cols-3 grid-rows-subgrid gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[92%]">
         {places.map((place, index) => (
           <CardImg key={index} place={place} />
         ))}

@@ -1,5 +1,5 @@
 
-import verifyPacth from "@/helpers/LoadPacth";
+import verifyPacth from "@/helpers/LoadPath";
 
 
 verifyPacth;

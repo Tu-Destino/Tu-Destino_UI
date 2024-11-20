@@ -1,10 +1,11 @@
 'use client'
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import ButtonPanel from './ButtonPanel';
 import NavDiscover, { AddPost } from './NavDiscover';
 import Gallery from "../../components/discover/Gallery";
 import '../../styles/discover.css'
 import useData from '@/helpers/Zustand/DataLoad';
+import logicToggleNav from '@/hooks/discover/logicToggleNav';
 
 
 const ButtonModalDesktop: React.FC =()=>{
@@ -17,25 +18,8 @@ const {tags,optionSearch} =useData()
 };
 
 const ToggleNav: React.FC = () => {
-  
-    const [showComponent, setShowComponent] = useState<boolean | null>(null);
-    const { tags, postDiscover,optionSearch} = useData();
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 767) {
-        setShowComponent(true);
-      } else {
-        setShowComponent(false);
-      }
-    };
- 
-    window.addEventListener('resize', handleResize);
-    setTimeout(handleResize, 1300);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-  if(postDiscover.length===0){
+  const {isLoading,postDiscover,tags,showComponent,optionSearch} = logicToggleNav();
+  if(isLoading){
     return(<>
       <div className="loader">
         <div></div> 
