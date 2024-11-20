@@ -1,11 +1,10 @@
 "use client";
-import useVerifyPath from "@/helpers/LoadPacth";
+import useVerifyPath from "@/helpers/LoadPath";
 import {
   createContext,
   useContext,
   useState,
   ReactNode,
-  useEffect,
 } from "react";
 
 type RootContextState = {

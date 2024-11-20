@@ -1,81 +1,45 @@
-import React, { ChangeEvent, forwardRef, ReactNode, useEffect, useRef, useState } from "react";
+import React, { forwardRef } from "react";
 import Flicking from "@egjs/react-flicking";
-import { Sync } from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/flicking-plugins.css";
-import '@egjs/react-flicking/dist/flicking.css';
-import '../../styles/globals.css';
+import "@egjs/react-flicking/dist/flicking.css";
+import "../../styles/globals.css";
 import { useSelectContext } from "@/context/SelectContext";
-import { AutocompleteProps, ButtomPromp, FiltersType, IconsProps, TagsProps } from "@/types/types";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-import useData from "@/helpers/Zustand/DataLoad";
-import { filterTags } from "@/helpers/FetchData";
-
-
-
+import {
+  AutocompleteProps,
+  ButtomPromp,
+  FiltersType,
+  IconsProps,
+} from "@/types/types";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+import {
+  LogicButtonTagsPost,
+  LogicDrop,
+  LogicFilterResponsive,
+  LogicImagenUploader,
+  LogicSearchPlaces,
+  LogicTags,
+} from "@/hooks/discover/logicMicroComponents";
 
 export const Tags: React.FC<AutocompleteProps> = ({ suggestions }) => {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const flicking0 = useRef<Flicking>(null);
-  const flicking1 = useRef<Flicking>(null);
-  const [plugins, setPlugins] = useState([new Sync({ type: 'camera', synchronizedFlickingOptions: [] })]);
-  const {setNewTags}= useSelectContext();
-  const [result ,setResult] = useState<object>(new Object);
-  useEffect(() => {
-    if (flicking0.current && flicking1.current ) {
-      const syncPlugin = new Sync({
-        type: "camera",
-        synchronizedFlickingOptions: [
-          {
-            flicking: flicking0.current,
-            isClickable: false
-          },
-          {
-            flicking: flicking1.current,
-            isClickable: false
-          }
-        ]
-      });
-      setPlugins([syncPlugin]);
-    }
-  }, [flicking0, flicking1]);
-
-  const half = Math.ceil(suggestions.length / 2);
-  const tags0 = suggestions.slice(0,  half);
-  const tags1 = suggestions.slice(half);
-  
-  const handleClick = (tag: string) => {
-    setSelectedTags(prevSelectedTags => {
-      let updatedSelectedTags;
-  
-      if (prevSelectedTags.includes(tag)) {
-        updatedSelectedTags = prevSelectedTags.filter(selectedTag => selectedTag !== tag);
-      } else {
-        updatedSelectedTags = [...prevSelectedTags, tag];
-      }
-        
-
-  
-      return updatedSelectedTags;
-    });
-  };
-  useEffect(()=>{
-    setNewTags(selectedTags.join(','));
-  },[selectedTags])
+  const { flicking0, flicking1, plugins, tags0, tags1, handleClick } =
+    LogicTags(suggestions);
   return (
     <>
-      <Flicking ref={flicking0}
+      <Flicking
+        ref={flicking0}
         className="mb-4 w-auto"
         align="prev"
         bound={true}
         bounce={30}
         plugins={plugins}
-        key={ "0"}
+        key={"0"}
       >
         {tags0.map((tag, index) => (
-         <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick}/> 
+          <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick} />
         ))}
       </Flicking>
-      <Flicking ref={flicking1}
+      <Flicking
+        ref={flicking1}
         className="mb-4 w-auto"
         align="prev"
         bound={true}
@@ -83,7 +47,7 @@ export const Tags: React.FC<AutocompleteProps> = ({ suggestions }) => {
         key={"1"}
       >
         {tags1.map((tag, index) => (
-            <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick}/> 
+          <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick} />
         ))}
       </Flicking>
     </>
@@ -91,24 +55,18 @@ export const Tags: React.FC<AutocompleteProps> = ({ suggestions }) => {
 };
 
 export const ImageUploader: React.FC = () => {
-  const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
-  const {setNewImagen}= useSelectContext();
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {setImageSrc(reader.result); setNewImagen(reader.result)};
-      reader.readAsDataURL(file);
-    }
-  };
-
-  return  (
+  const { imageSrc, handleImageChange } = LogicImagenUploader();
+  return (
     <label
       className="custom-file-upload h-full w-full aspect-square flex flex-col items-center justify-center gap-5 cursor-pointer bg-white p-1 rounded-lg shadow-[0px_48px_35px_-48px_rgba(0,0,0,0.1)]"
       htmlFor="file"
     >
       {imageSrc ? (
-        <img src={imageSrc as string} alt="Uploaded" className="w-full h-full object-contain aspect-square rounded-lg" />
+        <img
+          src={imageSrc as string}
+          alt="Uploaded"
+          className="w-full h-full object-contain aspect-square rounded-lg"
+        />
       ) : (
         <div className="icon flex items-center justify-center">
           <UploadFileIcon className="h-[80px] text-gray-700" />
@@ -116,41 +74,29 @@ export const ImageUploader: React.FC = () => {
       )}
       {!imageSrc && (
         <div className="text flex items-center justify-center">
-          <span className="font-normal text-gray-700">Click to upload image</span>
+          <span className="font-normal text-gray-700">
+            Click to upload image
+          </span>
         </div>
       )}
-      <input type="file" id="file" className="hidden" onChange={handleImageChange} />
+      <input
+        type="file"
+        id="file"
+        className="hidden"
+        onChange={handleImageChange}
+      />
     </label>
   );
 };
 
 export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
-  const [inputValue, setInputValue] = useState('');
-  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const {setNewTitle} = useSelectContext()
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setInputValue(value);
-
-    if (value.length > 0) {
-      const filtered = suggestions.filter(suggestion =>
-        suggestion.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredSuggestions(filtered);
-      setShowSuggestions(true);
-    } else {
-      setFilteredSuggestions([]);
-      setShowSuggestions(false);
-    }
-  };
-
-  const handleSuggestionClick = (suggestion: string) => {
-    setInputValue(suggestion);
-    setNewTitle(suggestion)
-    setFilteredSuggestions([]);
-    setShowSuggestions(false); // Cierra la lista de sugerencias
-  };
+  const {
+    inputValue,
+    handleChange,
+    handleSuggestionClick,
+    filteredSuggestions,
+    showSuggestions,
+  } = LogicSearchPlaces(suggestions);
 
   return (
     <div className="relative">
@@ -162,7 +108,7 @@ export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
         placeholder="Escribe algo..."
       />
       {showSuggestions && (
-        <ul className="absolute border border-t-0 bg-white w-full max-h-40 overflow-y-auto z-20" >
+        <ul className="absolute border border-t-0 bg-white w-full max-h-40 overflow-y-auto z-20">
           {filteredSuggestions.length > 0 ? (
             filteredSuggestions.map((suggestion, index) => (
               <li
@@ -184,99 +130,69 @@ export const SearchPlaces: React.FC<AutocompleteProps> = ({ suggestions }) => {
   );
 };
 
-const Filter: React.FC<FiltersType> = ({ suggestions, select, setStateValue }) => {
+const Filter: React.FC<FiltersType> = ({ suggestions, setStateValue }) => {
+  const { flickingRef, plugins, handleClick } =
+    LogicFilterResponsive(setStateValue);
 
-    const flickingRef = useRef<Flicking>(null);
-    const [plugins, setPlugins] = useState<Sync[]>([]);
-
-    useEffect(() => {
-      if (flickingRef.current) {
-        const syncPlugin = new Sync({
-          type: "index",
-          synchronizedFlickingOptions: [
-            {
-              flicking: flickingRef.current,
-              isClickable: false
-            }
-          ]
-        });
-        setPlugins([syncPlugin]);
-      }
-    }, [flickingRef]);
-  
-    const handleClick = (tag: string) => {
-      setStateValue(prevSelectedTags => {
-        if (prevSelectedTags.includes(tag)) {
-          return prevSelectedTags.filter(select => select !== tag);
-        } else {
-          return [...prevSelectedTags, tag];
-        }
-      });
-    };  
-
-  
-    return (
-      <Flicking ref={flickingRef}
-        className="mb-4"
-        align="prev"
-        bound={true}
-        bounce={30}
-        plugins={plugins}
-      >
-        {suggestions.map((tag, index) => (
-          <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick}/>
-        ))}
-      </Flicking>
-    );
+  return (
+    <Flicking
+      ref={flickingRef}
+      className="mb-4"
+      align="prev"
+      bound={true}
+      bounce={30}
+      plugins={plugins}
+    >
+      {suggestions.map((tag, index) => (
+        <ButtomTagsPos key={index} tag={tag} handleCLick={handleClick} />
+      ))}
+    </Flicking>
+  );
 };
 
 export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [filteredTags, setFilterTags] = useState<string[]>([]);
-  const {setIsClean}= useSelectContext();
-  const {setPostDiscover}=useData();
-  const toggleBox = () => {
-    setIsVisible(!isVisible);
-  };
-
-
-  const handleClean = async () =>{
-    setFilterTags([])
-    setPostDiscover(await filterTags(""))
-    setIsClean(true)
-  }
-  const handleClick= async()=>{
-    const filter = await filterTags(filteredTags.join(','));     
-    setPostDiscover(await filter)
-  }
-
-  const third = Math.ceil(list.length / 3);
-  const tags0 = list.slice(0, third);
-  const tags1 = list.slice(third, third * 2);
-  const tags2 = list.slice(third * 2);
-
+  const {
+    toggleBox,
+    tags0,
+    tags1,
+    tags2,
+    isVisible,
+    filteredTags,
+    handleClean,
+    handleClick,
+    setFilterTags,
+  } = LogicDrop(list);
   return (
     <>
-      <button
-        onClick={toggleBox}
-        className="px-4 py-2 text-white"
-      >
+      <button onClick={toggleBox} className="px-4 py-2 text-white">
         {Component}
       </button>
       {isVisible && (
         <div className="drop-box absolute bottom-[4.2rem] h-[18rem] w-full left-0 bg-white border border-gray-300 p-4 shadow-lg overflow-y-scroll">
-          <Filter suggestions={tags0} select={filteredTags} setStateValue={setFilterTags}/>
-          <Filter suggestions={tags1} select={filteredTags} setStateValue={setFilterTags}/>
-          <Filter suggestions={tags2} select={filteredTags} setStateValue={setFilterTags}/>
-        
-          <div className=" w-full bg-slate-400 h-[10%]"> 
+          <Filter
+            suggestions={tags0}
+            select={filteredTags}
+            setStateValue={setFilterTags}
+          />
+          <Filter
+            suggestions={tags1}
+            select={filteredTags}
+            setStateValue={setFilterTags}
+          />
+          <Filter
+            suggestions={tags2}
+            select={filteredTags}
+            setStateValue={setFilterTags}
+          />
+
+          <div className=" w-full bg-slate-400 h-[10%]">
             <button onClick={handleClean}>Limpiar</button>
-             <button onClick={handleClick}> Buscar</button> 
+            <button onClick={handleClick}> Buscar</button>
           </div>
           <div>
-          {filteredTags.map((tag, index) => (
-            <span key={index}>{tag}</span>
-        ))}
+            {filteredTags.map((tag, index) => (
+              <span key={index}>{tag}</span>
+            ))}
           </div>
         </div>
       )}
@@ -284,43 +200,35 @@ export const Drop: React.FC<IconsProps> = ({ Component, list }) => {
   );
 };
 
-export const ButtomTagsPos = forwardRef<HTMLButtonElement, ButtomPromp>(({ tag, handleCLick }, ref) => {
-  const [isClick, setIsClick] = useState(false);
-  const {isClean, setIsClean}= useSelectContext()
+export const ButtomTagsPos = forwardRef<HTMLButtonElement, ButtomPromp>(
+  ({ tag, handleCLick }, ref) => {
+    const { isClick, handleCliking } = LogicButtonTagsPost(handleCLick);
 
-  const handleCliking = (tag: string) => {
-    setIsClick(!isClick);
-    handleCLick(tag);
+    return (
+      <button
+        ref={ref}
+        className={`mr-2 p-2 border ${
+          isClick ? "bg-blue-500 text-white" : "bg-red-400 text-black"
+        }`}
+        onClick={() => handleCliking(tag)}
+      >
+        {tag}
+      </button>
+    );
+  }
+);
+export const FrameDescription: React.FC = () => {
+  const { setNewDescription } = useSelectContext();
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNewDescription(e.target.value);
   };
-  useEffect(()=>{
-    if(isClean){
-      setIsClick(false)
-      setIsClean(false)
-    }
-  }),[isClean];
-
-  return (
-    <button
-      ref={ref}
-      className={`mr-2 p-2 border ${isClick ? 'bg-blue-500 text-white' : 'bg-red-400 text-black'}`}
-      onClick={() => handleCliking(tag)}
-    >
-      {tag}
-    </button>
-  );
-});
-export const FrameDescription : React.FC = ()=>{
-  const {setNewDescription} = useSelectContext()
-    const handleChange=(e:React.ChangeEvent<HTMLTextAreaElement>)=>{
-      setNewDescription(e.target.value)
-    }
   return (
     <textarea
-    rows={5}
-    cols={10}
-    placeholder="Escribe una descripcion del lugar"
-    className="p-4  w-[95%]  placeholder:text-black border border-black rounded-md"
-    onChange={handleChange}
-  ></textarea>
-  )
-}
+      rows={5}
+      cols={10}
+      placeholder="Escribe una descripcion del lugar"
+      className="p-4  w-[95%]  placeholder:text-black border border-black rounded-md"
+      onChange={handleChange}
+    ></textarea>
+  );
+};
