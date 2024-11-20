@@ -1,9 +1,16 @@
 import { ReactNode } from "react";
 
+export function identity<T>(value:T){
+  return value
+}
+
 export type ElementProps = {
   element: ReactNode;
   list: string[];
   titles: string[];
+};
+export type StringProp = {
+  element: string;
 };
 
 export type IconsProps = {
@@ -76,4 +83,21 @@ export type PlaceProps = {
   link: string;
   img: string;
   altImg: string;
+};
+
+export type PlaceDataProps = {
+  id: number;
+  enum_type: string; // Puedes agregar otros valores posibles aquí si los hay
+  title: string;
+  details: string;
+  price: string;//3
+  schedule: string;//2
+  address: string;// 1
+  link_address: string;
+  vr: string;
+  web: string;//6
+  phone: string;//5
+  rate: number;// 4
+  information: string;
+  btn_url: string;
 };
