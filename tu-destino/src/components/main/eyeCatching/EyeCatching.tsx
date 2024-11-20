@@ -8,9 +8,10 @@ export default function EyeCatching({
 }: {
   place: PlaceProps;
   position: string;
+  
 }) {
   const isPositionOne = position === "1";
-
+  
   return (
     <div className="bg-white py-16 flex items-center justify-center">
       <article className="flex-col  sm:flex-row px-6 sm:px-12 flex justify-center max-w-[1300px]">

@@ -2,8 +2,10 @@ import { Card, CardHeader, Image } from "@nextui-org/react";
 import Link from "next/link";
 import { PlaceProps } from "@/types/types";
 
+// 
 
 export default function CardGridMain({span='4', place}: {place: PlaceProps, span?: string}) {
+
 
   return (
     <Link target="_blank" className={`col-span-12 md:col-span-${span}`} href={place.link}>

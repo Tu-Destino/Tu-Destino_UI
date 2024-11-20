@@ -1,9 +1,4 @@
 
-img{
-  image-rendering: optimizeQuality;
-  image-rendering: pixelated;
-}
-
 
 .has-background-primary {
   background-color: #f0f0f0; 

@@ -14,7 +14,8 @@ import { poppins } from "@/styles/fonts";
 import verifyPacth from "@/helpers/LoadPath";
 
 function NavigationBar() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure(); 
+
 
   return (
     <nav className="bg-[#ffffff] w-full h-[59px] flex flex-row border-b border-[#e0e0e0] fixed z-40">
@@ -44,7 +45,7 @@ function NavigationBar() {
         </Modal>
       </div>
       <div className=" w-[3rem] md:w-[22%] lg:w-[35%]  h-full flex items-center ">
-        <Link href="#">
+        <Link href="/">
           <img
             src="/logoYourDestiny.png"
             alt="Logo Tu Destino"
