@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/places/details/[slug].tsx", "src/helpers/useFetch.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/places/details/[slug].tsx", "src/helpers/useFetch.tsx", "src/redux/eje.js"],
   "exclude": ["node_modules"]
 }
