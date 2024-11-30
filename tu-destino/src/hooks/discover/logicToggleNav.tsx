@@ -2,7 +2,7 @@
 import useData from "@/helpers/Zustand/DataLoad";
 import { useEffect, useLayoutEffect, useState } from "react";
 
-function logicToggleNav() {
+function useLogicToggleNav() {
 
   const [showComponent, setShowComponent] = useState<boolean | null>(null);
   const { tags, postDiscover,optionSearch} = useData();
@@ -39,4 +39,4 @@ useEffect(()=>{
   }
 }
 
-export default logicToggleNav
+export default useLogicToggleNav

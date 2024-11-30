@@ -16,11 +16,11 @@ const ButtomFilter = forwardRef<HTMLButtonElement, ButtomPromp>(
         }`}
         onClick={() => handleCliking(tag)}
       >
-        <span className="ConteinerIcons">{FilteredIcons }</span>
+        <span key={tag} className="ConteinerIcons">{FilteredIcons }</span>
         <h3 className="w-full text-center ">{tag.trim()}</h3>
       </button>
     );
   }
 );
-
+ButtomFilter.displayName = "ButtomFilter";
 export default ButtomFilter;

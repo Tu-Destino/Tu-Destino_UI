@@ -1,5 +1,4 @@
 "use client"
-import type { Metadata } from "next";
 import "./../styles/globals.css";
 import { SelectProvider } from "@/context/SelectContext";
 import { RootProvider } from "@/context/RootContext";

@@ -3,7 +3,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../styles/carrusel.css";
-import {useState } from "react";
 import { Card } from "@nextui-org/react";
 import { CardContent } from "@mui/material";
 import Image from "next/image";
@@ -17,10 +16,10 @@ interface ImgCardProps {
 }
 
 const ImgCard: React.FC<ImgCardProps> = ({ url, name }) => {
-  const [nameSearch, setNameSearch] = useState(name);
+  /*const [nameSearch, setNameSearch] = useState(name);
   const searchPlace = () => {
     console.log(nameSearch);
-  };
+  };*/
 
   return (
     <div className="group rounded-lg relative inline-block">
@@ -34,7 +33,7 @@ const ImgCard: React.FC<ImgCardProps> = ({ url, name }) => {
         />
       </div>
       <button
-        onClick={searchPlace}
+        /* onClick={searchPlace}*/
         className="w-[15rem] absolute inset-0 rounded-lg bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
       >
         <p className="text-white text-lg font-bold text-center px-4">{name}</p>
@@ -110,12 +109,14 @@ const SkeletonLoader: React.FC = () => {
   );
 };
 
-
-const OrganizeCarrusel: React.FC<{ title: string; text: string }> = ({ title, text }) => {
-  const {listType,loading} =useLogicInfoPlaces(title);
-      if (loading) { 
-        return <SkeletonLoader />;
-       }
-        return <Carruseln places={listType} title={title} text={text} />;
+const OrganizeCarrusel: React.FC<{ title: string; text: string }> = ({
+  title,
+  text,
+}) => {
+  const { listType, loading } = useLogicInfoPlaces(title);
+  if (loading) {
+    return <SkeletonLoader />;
+  }
+  return <Carruseln places={listType} title={title} text={text} />;
 };
 export default OrganizeCarrusel;

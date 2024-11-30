@@ -217,6 +217,8 @@ export const ButtomTagsPos = forwardRef<HTMLButtonElement, ButtomPromp>(
     );
   }
 );
+ButtomTagsPos.displayName="ButtomTagsPos";
+
 export const FrameDescription: React.FC = () => {
   const { setNewDescription } = useSelectContext();
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

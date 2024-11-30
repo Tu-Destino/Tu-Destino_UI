@@ -1,12 +1,9 @@
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import getListTitle from '@/redux/listTitles/thunks';
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import getListTitle from "@/redux/listTitles/thunks";
+import { ChangeEvent, useEffect, useState } from "react";
 
 export const useSearchBar = () => {
-
-  const { listTitle = [], isLoading: isLoadingList } = useAppSelector(
-    (state) => state.listTitles
-  );
+  const { listTitle = [] } = useAppSelector((state) => state.listTitles);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,7 +15,6 @@ export const useSearchBar = () => {
   const [sizeWidth, setSizeWidth] = useState(230);
 
   useEffect(() => {
-
     const handleScroll = () => {
       if (window.scrollY > sizeWidth) {
         setIsScrolled(true);
@@ -27,7 +23,6 @@ export const useSearchBar = () => {
       }
       //console.log(window.scrollY);
     };
-    
 
     const handleResize = (): void => {
       if (window.innerWidth < 495) {
@@ -77,6 +72,6 @@ export const useSearchBar = () => {
     textInput,
     handleSearch,
     filteredWords,
-    setTextInput
-  }
-}
+    setTextInput,
+  };
+};

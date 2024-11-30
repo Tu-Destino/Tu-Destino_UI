@@ -3,7 +3,7 @@ import useData from "@/helpers/Zustand/DataLoad";
 import { Post } from "@/types/types";
 import { useEffect, useState } from "react";
 
-function logicGallery(initialPlaces: Post[]) {
+function useLogicGallery(initialPlaces: Post[]) {
  
   const [places, setPlaces] = useState<Post[]>(initialPlaces);
   const [isClient, setIsClient] = useState(false);
@@ -54,4 +54,4 @@ function logicGallery(initialPlaces: Post[]) {
   };
 }
 
-export default logicGallery;
+export default useLogicGallery;

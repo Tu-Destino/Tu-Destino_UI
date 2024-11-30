@@ -1,45 +1,29 @@
 import { ReactNode } from "react";
 
-export function identity<T>(value:T){
-  return value
-};
+export function identity<T>(value: T) {
+  return value;
+}
 
 type ConcatenatePrefix<T, Prefix extends string> = {
   [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
 };
 
+export type ElementProps<Prefix extends string> = ConcatenatePrefix<
+  {
+    element: React.ReactNode;
+    list: string[];
+    titles: string[];
+  },
+  Prefix
+>;
 
-export type ElementProps<Prefix extends string> = ConcatenatePrefix<{
-  element: React.ReactNode;
-  list: string[];
-  titles: string[];
-}, Prefix>;
-
-
-type ReplaceKeys<T, Prefix extends string> = {
-  [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
-};
-
-type ReplaceKeys<T, Prefix extends string> = {
-  [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
-};
-
-type Prop = {
-  element: string;
-};
-
-type ReplacedProps<Prefix extends string> = ReplaceKeys<Prop, Prefix>;
-
-type t ={
-  e:ReplacedProps<'test'>
-};
 export type IconsProps = {
   Component: ReactNode;
   list: string[];
 };
-export type AddPostProps={
-  list:string[];
-  titles:string[];
+export type AddPostProps = {
+  list: string[];
+  titles: string[];
 };
 export type AutocompleteProps = {
   suggestions: string[];
@@ -62,14 +46,14 @@ export type ButtomPromp = {
 export type Post = {
   urlImg: string;
   title: string;
-  description:string;
+  description: string;
 };
-export type NewPost ={
-  "title": string,
-  "description": string,
-  "tags": string,
-  "urlImg": string |ArrayBuffer | null,
-}
+export type NewPost = {
+  title: string;
+  description: string;
+  tags: string;
+  urlImg: string | ArrayBuffer | null;
+};
 export type Details = {
   img: string[];
   title: string;
@@ -104,15 +88,15 @@ export type PlaceProps = {
   img: string;
   altImg: string;
 };
-export type Place ={
-  name:string,
-  img:string,
-  type:string,
-}
+export type Place = {
+  name: string;
+  img: string;
+  type: string;
+};
 
 export type PlaceDataProps = {
   id: number;
-  enum_type: string; 
+  enum_type: string;
   title: string;
   details: string;
   price: string;

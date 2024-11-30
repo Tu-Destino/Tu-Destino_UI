@@ -5,13 +5,13 @@ import {
   ModalBody,
   useDisclosure,
 } from "@nextui-org/react";
-import React, { useEffect } from "react";
+import React from "react";
 import Languages from "./Languages";
 import Login from "./Login";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import { poppins } from "@/styles/fonts";
-import verifyPacth from "@/helpers/LoadPath";
+
 
 function NavigationBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure(); 
@@ -29,7 +29,7 @@ function NavigationBar() {
           onOpenChange={onOpenChange}
         >
           <ModalContent >
-            {(onClose) => (
+            {() => (
               <>
                 <ModalBody className=" mt-8 mb-4 flex justify-center items-center">
                   <Link className={`hover:bg-slate-100 w-full text-center p-3 rounded-xl ${poppins.className} font-normal`} href="/places">

@@ -1,4 +1,4 @@
-import { NewPost, Post } from "@/types/types";
+import { NewPost } from "@/types/types";
 
 const API_BASE_URL = "http://49.13.164.207:8080/TD/api/v1"; // Reemplaza con tu URL de la API
 

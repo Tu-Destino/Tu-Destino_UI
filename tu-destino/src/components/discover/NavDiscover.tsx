@@ -11,12 +11,15 @@ import {
   Tags,
 } from "./MicroComponents";
 import Link from "next/link";
-import { AddPostProps, AutocompleteProps, ElementProps } from "@/types/types";
+import { AddPostProps, ElementProps } from "@/types/types";
 import { useSelectContext } from "@/context/SelectContext";
 import { createNewPost } from "@/helpers/FetchData";
-import {  loadVerify } from "@/helpers/Zustand/Load";
 
-export const AddPost: React.FC<ElementProps<'place'>> = ({ placeElement, placeList, placeTitles }) => {
+export const AddPost: React.FC<ElementProps<"place">> = ({
+  placeElement,
+  placeList,
+  placeTitles,
+}) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { newImagen, newTitle, newDescription, newTags } = useSelectContext();
   const newPost = async () => {
@@ -26,17 +29,10 @@ export const AddPost: React.FC<ElementProps<'place'>> = ({ placeElement, placeLi
       tags: newTags,
       urlImg: newImagen,
     };
-    console.log("subida");
 
-    const confirm = await createNewPost(post);
+    await createNewPost(post);
 
     //wconsole.log(await confirm);
-    console.log('cierre modal');
-
-    onclose;
-
-   
-    
   };
 
   return (
