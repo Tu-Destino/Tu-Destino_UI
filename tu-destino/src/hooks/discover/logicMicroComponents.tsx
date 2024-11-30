@@ -1,4 +1,3 @@
-
 import { useSelectContext } from "@/context/SelectContext";
 import { filterTags } from "@/helpers/FetchData";
 import useData from "@/helpers/Zustand/DataLoad";
@@ -198,7 +197,7 @@ export function LogicDrop(list: string[]) {
   };
 }
 
-export function LogicButtonTagsPost( handleCLick: (tag: string) => void) {
+export function LogicButtonTagsPost(handleCLick: (tag: string) => void) {
   const [isClick, setIsClick] = useState(false);
   const { isClean, setIsClean } = useSelectContext();
 
@@ -211,11 +210,10 @@ export function LogicButtonTagsPost( handleCLick: (tag: string) => void) {
       setIsClick(false);
       setIsClean(false);
     }
-  }),
-    [isClean];
-    
-    return{
-      isClick,
-      handleCliking
-    }
+  }, [isClean]);
+
+  return {
+    isClick,
+    handleCliking,
+  };
 }

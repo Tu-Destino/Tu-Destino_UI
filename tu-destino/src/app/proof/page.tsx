@@ -1,11 +1,11 @@
 "use client";
 import { useGetPlaceQuery } from "@/redux/apis/placeApi";
-import { useGetTodoQuery, useGetTodosQuery } from "@/redux/apis/todosApi";
+
 
 // import { useGetTodosQuery, useGetTodoQuery } from "@/redux/apis/todosApi";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
-export default function proof() {
+export default function Proof() {
 
   const [todoId, setTodoId] = useState("Parque Berrío")
   const {data =[],isLoading: isLoadingTodos} = useGetPlaceQuery(todoId)

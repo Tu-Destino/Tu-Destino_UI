@@ -1,7 +1,7 @@
 
 import { useSelectContext } from "@/context/SelectContext";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { colors, icons } from "./relactiveIcons";
 
 
@@ -21,8 +21,7 @@ export function LogicButtonFilter(
       setIsClick(false);
       setIsClean(false);
     }
-  }),
-    [isClean];
+  },[isClean]);
 
   const getColorByTag = (tag: string): string | undefined => {
     const item = colors.find(
@@ -38,7 +37,7 @@ export function LogicButtonFilter(
       (icon) =>
         icon.nickname.trim().toLowerCase() == filter.trim().toLowerCase()
     );
-    return item ? [item.icon] : [<AcUnitIcon />]; // Icono de respaldo
+    return item ? [item.icon] : [<AcUnitIcon  key={filter}/>]; // Icono de respaldo
   };
   const FilteredIcons = getFilteredIcons(tag);
 

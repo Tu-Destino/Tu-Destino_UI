@@ -1,5 +1,5 @@
 import './../styles/globals.css'
-import Image from "next/image";
+
 import Footer from '../components/common/footer/Footer'
 import NavigationBar from "../components/common/nav/NavigationBar";
 import SearchBar from "../components/main/searchBar/SearchBar";

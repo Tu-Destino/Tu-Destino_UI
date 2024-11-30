@@ -1,15 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useState, FC } from "react";
+
 
 export default function FooterTop() {
-  const [email, setEmail] = useState("");
+ 
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+ // const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    // Lógica para manejar la suscripción con el correo electrónico
-    console.log(email);
-  };
+    
+  //};
 
   return (
     <section className="relative bg-[#ff414d] mt-20 pt-20 md:pt-32 pb-0 grid gap-md">

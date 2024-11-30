@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+/*import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 export interface CounterState {
@@ -32,3 +32,4 @@ export const { startLoadingPokemons, setPokemons } = pokemonSlice.actions;
 export const selectPokemons = (state: RootState) => state.pokemons.pokemons
 export default pokemonSlice.reducer;
 
+*/

@@ -1,6 +1,6 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
-import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
+import {Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react";
 
 function Login() {
   return (

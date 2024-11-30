@@ -3,19 +3,23 @@ import Flicking from "@egjs/react-flicking";
 import { Sync } from "@egjs/flicking-plugins";
 import "@egjs/react-flicking/dist/flicking.css";
 //import "@egjs/flicking-plugins/dist/sync.css";
-import { AutocompleteProps, Details } from "@/types/types";
-import "../../../styles/details.css";
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { useParams } from "next/navigation";
-import { inter, poppins } from "@/styles/fonts";
 
-function SliderDetails({imgList, title }:{imgList:string[],title:string}) {
+import "../../../styles/details.css";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { inter } from "@/styles/fonts";
+
+function SliderDetails({
+  imgList,
+  title,
+}: {
+  imgList: string[];
+  title: string;
+}) {
   const flicking0 = useRef<Flicking>(null);
   const flicking1 = useRef<Flicking>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [plugins, setPlugins] = useState<Sync[]>([]);
-  
 
   useEffect(() => {
     if (flicking0.current && flicking1.current) {
@@ -71,7 +75,7 @@ function SliderDetails({imgList, title }:{imgList:string[],title:string}) {
           <h1
             className={`pl-[13px] sm:pl-[57px] mr-4 text-start text-xl sm:text-2xl md:text-3xl text-[#1d1d1f] ${inter.className}`}
           >
-          {title}
+            {title}
           </h1>
         </div>
         <div className="w-full max-w-[1300px] h-auto relative px-3 sm:px-14 ">
@@ -127,15 +131,12 @@ function SliderDetails({imgList, title }:{imgList:string[],title:string}) {
             onClick={handleNext}
             className="hidden sm:block absolute right-[4px] top-1/2 transform -translate-y-1/2 h-[516px]"
           >
-            <KeyboardArrowRightIcon  className="size-9 hover:bg-[#e3e3e7] bg-[#dedee2] m-1 rounded-full" />
+            <KeyboardArrowRightIcon className="size-9 hover:bg-[#e3e3e7] bg-[#dedee2] m-1 rounded-full" />
           </button>
         </div>
       </section>
     </div>
   );
-};
+}
 
 export default SliderDetails;
-
-
-
