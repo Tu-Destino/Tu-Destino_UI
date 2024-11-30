@@ -76,6 +76,7 @@ const ButtonPanel: React.FC<AutocompleteProps> = ({ suggestions }) => {
           limpiar
         </button>
       </div>
+      <div className="bg-[#282828] text-[#616c7b] bg-[#f2f2f2] bg-blue-300 bg-green-400 bg-purple-300 bg-gray-400 bg-yellow-300 bg-red-300 bg-orange-300 bg-yellow-500 bg-blue-500 bg-pink-300 bg-green-500 bg-indigo-300 bg-teal-300 bg-blue-700 bg-[#9f7d50] bg-green-700 bg-green-300 bg-gray-500"></div>
     </div>
   );
 };

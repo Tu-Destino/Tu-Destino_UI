@@ -3,8 +3,7 @@ import { useSelectContext } from "@/context/SelectContext";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { colors, icons } from "./relactiveIcons";
-import { Sync } from "@egjs/flicking-plugins";
-import Flicking from "@egjs/react-flicking";
+
 
 export function LogicButtonFilter(
   tag: string,

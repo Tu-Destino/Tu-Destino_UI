@@ -12,7 +12,7 @@ const ButtonModalDesktop: React.FC =()=>{
 const {tags,optionSearch} =useData()
   return ( 
     <div className='fixed z-50 bg-green-400 bottom-[1%] right-[2%] rounded-full'>
-      <AddPost element={'Postear'} list={tags} titles={optionSearch}/>
+      <AddPost placeElement={'Postear'} placeList={tags} placeTitles={optionSearch}/>
     </div>
 )
 };
