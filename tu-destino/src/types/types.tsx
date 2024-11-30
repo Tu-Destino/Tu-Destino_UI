@@ -20,6 +20,10 @@ type ReplaceKeys<T, Prefix extends string> = {
   [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
 };
 
+type ReplaceKeys<T, Prefix extends string> = {
+  [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
+};
+
 type Prop = {
   element: string;
 };

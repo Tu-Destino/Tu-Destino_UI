@@ -5,72 +5,53 @@ import NavigationBar from "@/components/common/nav/NavigationBar";
 import CardInfo from "@/components/places/details/info/CardInfo";
 import Explore from "@/components/places/details/Explore";
 import SliderDetails from "@/components/places/details/Slider";
-import React, { useEffect, useState } from "react";
-import { getById } from "@/helpers/FetchData";
 import { useParams } from "next/navigation";
-import { PlaceDataProps } from "@/types/types";
-const list = [
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/naturaleza/Botanico/jjjrls8pkaskjz4stuvd.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/cultura/Palacio%20Rafael%20Uribe%20Cultura/hpi6dcccsvmnbpp2pzce.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/Lugares/historia/MuseoCastillo/op4ahaps1idu5uvptbwg.jpg",
-  "https://res.cloudinary.com/dhtmy6izv/image/upload/f_png/Multimedia/den1krumk48nfabnwiir.jpg",
-];
+import { useGetImagesQuery, useGetPlaceQuery } from "@/redux/apis/placeApi";
 
 const PageDetail: React.FC = () => {
-  
+  const { id } = useParams();
 
-  
-  const params = useParams();
-  const { id } = params;
+  // Decodificar el ID antes de pasarlo a la consulta
+  const decodedId = Array.isArray(id)
+    ? decodeURIComponent(id[0])
+    : decodeURIComponent(id);
 
-  const [decodedId, setDecodedId] = useState<string>("");
-  const [data, setData] = useState<PlaceDataProps>();
+  // Consultar datos con RTK Query
+  const {
+    data: placeData,
+    isLoading: isLoadingPlace,
+    isError: isErrorPlace,
+  } = useGetPlaceQuery(decodedId);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (id) {
-        try {          
-          const decodedIdValue = Array.isArray(id)
-            ? decodeURIComponent(id[0])
-            : decodeURIComponent(id);
-          setDecodedId(decodedIdValue);
-          
+  const {
+    data: imageList,
+    isLoading: isLoadingImages,
+    isError: isErrorImages,
+  } = useGetImagesQuery(decodedId);
 
-          const responseData = await getById("place/findTitle", decodedIdValue);
-          setData(await responseData);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      }
-    };
-    fetchData();
-    console.log('l');
-    
-  }, [id]);
+  if (isLoadingPlace || isLoadingImages) {
+    return <div>Cargando...</div>;
+  }
 
-  console.log(data);
-  
+  if (isErrorPlace || isErrorImages) {
+    return (
+      <div>
+        <h1>Error al cargar los datos</h1>
+        <p>Por favor, verifica tu conexión o intenta nuevamente más tarde.</p>
+      </div>
+    );
+  }
 
   return (
     <>
       <NavigationBar />
-      <SliderDetails  imgList={list} title={data?.title? data.title:"nocas"} />
-      <CardInfo /> 
+      <SliderDetails
+        imgList={imageList?.map((img) => img) || []}
+        title={placeData?.title || "Título no disponible"}
+      />
+      <CardInfo data={placeData} decodedId={decodedId}/>
       <Explore />
       <Footer />
-
     </>
   );
 };

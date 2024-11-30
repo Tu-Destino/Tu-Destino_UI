@@ -1,4 +1,3 @@
-import { useFetch } from "@/helpers/useFetch";
 import { LinkUrlProps } from "@/types/types";
 import Link from "next/link";
 

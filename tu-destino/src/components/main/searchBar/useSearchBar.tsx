@@ -1,14 +1,24 @@
-import useData from '@/helpers/Zustand/DataLoad';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import getListTitle from '@/redux/listTitles/thunks';
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
 export const useSearchBar = () => {
 
+  const { listTitle = [], isLoading: isLoadingList } = useAppSelector(
+    (state) => state.listTitles
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getListTitle());
+  }, []);
+
   const [textInput, setTextInput] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [sizeWidth, setSizeWidth] = useState(230);
-  const { optionSearch } = useData();
 
   useEffect(() => {
+
     const handleScroll = () => {
       if (window.scrollY > sizeWidth) {
         setIsScrolled(true);
@@ -54,7 +64,7 @@ export const useSearchBar = () => {
     };
   }, [isScrolled, sizeWidth]);
 
-  const filteredWords = optionSearch.filter((word) =>
+  const filteredWords = listTitle.filter((word) =>
     word.toLowerCase().includes(textInput)
   );
   // Manejador de cambio de texto en el input
