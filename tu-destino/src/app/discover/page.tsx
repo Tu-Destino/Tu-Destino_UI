@@ -1,5 +1,4 @@
 import ToggleNav from "@/components/discover/ToggleNav";
-import ButtonPanel from "../../components/discover/ButtonPanel";
 
 export default function page() {
   return (

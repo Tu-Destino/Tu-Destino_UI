@@ -1,105 +1,67 @@
-'use client'
-import { useState } from "react";
+"use client";
 
-type ImageWithTextProps = {
-  src: string;
-  text: string;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-};
+import Image from "next/image";
+import { places } from "./pla";
 
-const ImageWithText = ({ src, text, onMouseEnter, onMouseLeave }: ImageWithTextProps) => {
-  const [namePlace, setnamePlace] = useState<string>(text);
-  const searchPlace = () => {
-    console.log(namePlace);
-  };
+interface ImageProps {
+  name: string;
+  description: string;
+  images: string[];
+}
+
+interface ImageCollageProps {
+  images: ImageProps[];
+}
+
+const ImageCollage: React.FC<ImageCollageProps> = ({ images }) => {
   return (
-    <div
-      onClick={searchPlace}
-      className="cursor-pointer relative w-full h-full border-8 border-white transition-transform duration-300 transform hover:scale-105"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      <img
-        src={src}
-        alt=""
-        className="w-full h-full object-cover rounded-[.7rem] rounded-r-[.7rem] "
-      />
-      <div className="absolute bottom-0 left-0 right-0 w-2/4  rounded-bl-[.7rem] border-[1px] border-white bg-black bg-opacity-80 text-white p-2  text-[0.7rem] md:text-[0.9rem] ">
-        <h2 className="text-center text-wrap">{text}</h2>
-      </div>
-    </div>
-  );
-};
-
-type CollageColumnProps = {
-  images: { img: string; name: string }[];
-  handleMouseEnter: (index: number) => void;
-  handleMouseLeave: () => void;
-};
-const CollageColumn = ({ images, handleMouseEnter, handleMouseLeave }: CollageColumnProps) => {
-  return (
-    <div className="w-full md:w-2/4 h-full flex flex-col">
-      <div className="flex w-full h-[140px] md:h-2/4 relative">
-        <ImageWithText
-          src={images[0].img}
-          text={images[0].name}
-          onMouseEnter={() => handleMouseEnter(0)}
-          onMouseLeave={handleMouseLeave}
+    <div className="grid grid-cols-2 sm:grid-cols-4 grid-rows-4 sm:grid-rows-2 gap-4 h-[470px] md:mb-12">
+      <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-lg">
+        <Image
+          src={images[2].images[1]}
+          alt={images[0].name}
+          className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+          width={1000}
+          height={1000}
         />
-        <ImageWithText
-          src={images[1].img}
-          text={images[1].name}
-          onMouseEnter={() => handleMouseEnter(1)}
-          onMouseLeave={handleMouseLeave}
-        />
-      </div>
-      <div className="relative w-full h-[11rem] md:h-2/4 ">
-        <ImageWithText
-          src={images[2].img}
-          text={images[2].name}
-          onMouseEnter={() => handleMouseEnter(2)}
-          onMouseLeave={handleMouseLeave}
-        />
-      </div>
-    </div>
-  );
-};
-
-type CollageProps = {
-  info: { img: string; name: string }[];
-};
-
-const Collage = ({ info }: CollageProps) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-  };
-  return (
-    <section className="w-full md:h-[30rem] lg:h-[38rem] flex flex-col justify-center items-center">
-      <h1 className="h-[6%] w-[95%]"> Descubre estos Lugares</h1>
-      <div className="w-full md:w-[99%] lg:w-[98%] h-4/5 lg:h-[96%] border-8 border-white flex flex-col md:flex-row">
-        <CollageColumn
-          images={info.slice(0, 3)}
-          handleMouseEnter={handleMouseEnter}
-          handleMouseLeave={handleMouseLeave}
-        />
-        <div className="relative w-full md:w-2/4 h-full ">
-          <ImageWithText
-            src={info[3].img}
-            text={info[3].name}
-            onMouseEnter={() => handleMouseEnter(3)}
-            onMouseLeave={handleMouseLeave}
-          />
+        <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <p className="text-white text-2xl font-bold text-center px-4">
+            {images[0].description}
+          </p>
         </div>
       </div>
-    </section>
+      {images.slice(0, 4).map((place, index) => (
+        <div key={index} className="relative group overflow-hidden rounded-lg ">
+          <Image
+            src={place.images[0]}
+            alt={place.name}
+            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+            width={500}
+            height={500}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <p className="text-white text-lg font-semibold text-center px-4">
+              {place.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 
-export default Collage;
+export default function Collage() {
+  return (
+    <div className="container mx-auto px-4 py-12 max-w-6xl ">
+      <div className="md:mx-8  lg:mx-12 mt-6">
+        <h1 className="text-4xl font-bold mb-4 text-center">
+          Explore Amazing Places
+        </h1>
+        <p className="text-xl text-center mb-12 text-gray-600">
+          Discover breathtaking landscapes from around the world
+        </p>
+        <ImageCollage images={places} />
+      </div>
+    </div>
+  );
+}

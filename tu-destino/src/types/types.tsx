@@ -2,17 +2,33 @@ import { ReactNode } from "react";
 
 export function identity<T>(value:T){
   return value
-}
+};
 
-export type ElementProps = {
-  element: ReactNode;
+type ConcatenatePrefix<T, Prefix extends string> = {
+  [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
+};
+
+
+export type ElementProps<Prefix extends string> = ConcatenatePrefix<{
+  element: React.ReactNode;
   list: string[];
   titles: string[];
+}, Prefix>;
+
+
+type ReplaceKeys<T, Prefix extends string> = {
+  [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
 };
-export type StringProp = {
+
+type Prop = {
   element: string;
 };
 
+type ReplacedProps<Prefix extends string> = ReplaceKeys<Prop, Prefix>;
+
+type t ={
+  e:ReplacedProps<'test'>
+};
 export type IconsProps = {
   Component: ReactNode;
   list: string[];
@@ -20,7 +36,7 @@ export type IconsProps = {
 export type AddPostProps={
   list:string[];
   titles:string[];
-}
+};
 export type AutocompleteProps = {
   suggestions: string[];
 };
@@ -84,20 +100,25 @@ export type PlaceProps = {
   img: string;
   altImg: string;
 };
+export type Place ={
+  name:string,
+  img:string,
+  type:string,
+}
 
 export type PlaceDataProps = {
   id: number;
-  enum_type: string; // Puedes agregar otros valores posibles aquí si los hay
+  enum_type: string; 
   title: string;
   details: string;
-  price: string;//3
-  schedule: string;//2
-  address: string;// 1
+  price: string;
+  schedule: string;
+  address: string;
   link_address: string;
   vr: string;
-  web: string;//6
-  phone: string;//5
-  rate: number;// 4
+  web: string;
+  phone: string;
+  rate: number;
   information: string;
   btn_url: string;
 };

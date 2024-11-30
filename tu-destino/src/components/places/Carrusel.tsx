@@ -1,9 +1,15 @@
-'use client';
-import Slider from "react-slick";
+"use client";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../styles/carrusel.css";
-import { useState } from "react";
+import {useState } from "react";
+import { Card } from "@nextui-org/react";
+import { CardContent } from "@mui/material";
+import Image from "next/image";
+import React, { useRef } from "react";
+import { Place } from "@/types/types";
+import { useLogicInfoPlaces } from "@/hooks/places/logicPlaces";
 
 interface ImgCardProps {
   url: string;
@@ -17,161 +23,99 @@ const ImgCard: React.FC<ImgCardProps> = ({ url, name }) => {
   };
 
   return (
-    <div className="card__content rounded-sm aspect-square relative">
-      <img
-        src={url}
-        alt={`imagen de ${name}`}
-        className="aspect-square w-full object-cover card__background rounded-md"
-      />
+    <div className="group rounded-lg relative inline-block">
+      <div className="overflow-hidden relative rounded-lg">
+        <Image
+          className="max-w-none object-cover w-[15rem] h-[20rem] transition-transform duration-300 group-hover:scale-110 rounded-lg"
+          src={url}
+          alt={`Imagen de ${name}`}
+          width={300}
+          height={300}
+        />
+      </div>
+      <button
+        onClick={searchPlace}
+        className="w-[15rem] absolute inset-0 rounded-lg bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+      >
+        <p className="text-white text-lg font-bold text-center px-4">{name}</p>
+      </button>
     </div>
   );
 };
 
-interface ArrowProps {
-  className?: string;
-  style?: React.CSSProperties;
-  onClick?: () => void;
-}
-
-const ArrowRight: React.FC<ArrowProps> = ({ className, style, onClick }) => (
-  <div
-    className={className}
-    style={{
-      ...style,
-      background: "black",
-      height: "2rem",
-      width: "1.5rem",
-      display: "flex",
-      alignItems: "center",
-      borderRadius: "2rem",
-      justifyContent: "center",
-      position: 'absolute',
-      top: '-4%',
-      right: '1rem',
-      transform: 'translateY(-50%)',
-      zIndex: 10
-    }}
-    onClick={onClick}
-  />
-);
-
-const ArrowLeft: React.FC<ArrowProps> = ({ className, style, onClick }) => (
-  <div
-    className={className}
-    style={{
-      ...style,
-      background: "red",
-      height: "2rem",
-      width: "1.5rem",
-      display: "flex",
-      alignItems: "center",
-      borderRadius: "2rem",
-      justifyContent: "center",
-      position: 'absolute',
-      top: '-4%',
-      right: '48px',
-      transform: 'translateY(-50%)',
-      zIndex: 10
-    }}
-    onClick={onClick}
-  />
-);
-const ArrowDisamble: React.FC<ArrowProps> = ({ className, style, onClick }) => (
-  <div
-    className={className}
-    style={{
-      ...style,
-      background: "red",
-      height: "2rem",
-      width: "1.5rem",
-      display: "none",
-      alignItems: "center",
-      borderRadius: "2rem",
-      justifyContent: "center",
-      position: 'absolute',
-      top: '-4%',
-      right: '48px',
-      transform: 'translateY(-50%)',
-      zIndex: 10
-    }}
-    onClick={onClick}
-  />
-);
-
 interface CarruselProps {
-  places: { img: string; name: string }[];
+  places: Place[];
   title: string;
   text: string;
 }
 
-const Carrusel: React.FC<CarruselProps> = ({ places, title, text }) => {
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    speed: 300,
-    slidesToShow: 1,
-    nextArrow: <ArrowDisamble />,
-    prevArrow: <ArrowDisamble />,
-    responsive: [
-      {
-        breakpoint: 1900,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: false,
-          nextArrow: <ArrowRight />,
-          prevArrow: <ArrowLeft />,
-        },
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 680,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-          nextArrow: <ArrowDisamble />,
-          prevArrow: <ArrowDisamble />,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 3,
-          nextArrow: <ArrowDisamble />,
-          prevArrow: <ArrowDisamble />,
-        },
-      },
-    ],
+const Carruseln: React.FC<CarruselProps> = ({ places, title, text }) => {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -257, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 257, behavior: "smooth" });
+    }
   };
 
   return (
-    <section className="w-full flex items-center justify-center flex-col relative">
-      <div className="w-full px-8 h-auto relative">
-        <h1>{title}</h1>
-        <h3>{text}</h3>
-      </div>
-      <div className="w-[90%] relative">
-        <Slider {...settings}>
-          {places.map((imagen, index) => (
-            <ImgCard key={index} url={imagen.img} name={imagen.name} />
-          ))}
-        </Slider>
-      </div>
+    <section className="w-full mt-12 flex flex-col items-center justify-center">
+      <Card className="overflow-hidden w-full sm:w-[87%] md:w-[79%]">
+        <CardContent className="p-6 container">
+          <h2 className="text-2xl px-2 font-semibold mb-4">{title}</h2>
+          <p className="text-xl font-semibold mb-5 px-4">{text}</p>
+          <div className="relative w-full">
+            <div
+              ref={carouselRef}
+              className="w-full px-4 overflow-x-auto whitespace-nowrap scrollbar-hide"
+            >
+              <div className="flex space-x-4">
+                {places.map((place, index) => (
+                  <ImgCard key={index} url={place.img} name={place.name} />
+                ))}
+              </div>
+            </div>
+            <button
+              onClick={scrollLeft}
+              className="absolute right-[36px] top-[-12%] z-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-full"
+            >
+              ◀️
+            </button>
+            <button
+              onClick={scrollRight}
+              className="absolute right-[4px] top-[-12%] z-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-full"
+            >
+              ▶️
+            </button>
+          </div>
+        </CardContent>
+      </Card>
     </section>
   );
 };
 
-export default Carrusel;
+const SkeletonLoader: React.FC = () => {
+  return (
+    <div className="animate-pulse space-y-4">
+      <div className="h-4 bg-gray-400 rounded w-3/4"></div>
+      <div className="h-4 bg-gray-400 rounded w-1/2"></div>
+      <div className="h-48 bg-gray-400 rounded"></div>
+    </div>
+  );
+};
+
+
+const OrganizeCarrusel: React.FC<{ title: string; text: string }> = ({ title, text }) => {
+  const {listType,loading} =useLogicInfoPlaces(title);
+      if (loading) { 
+        return <SkeletonLoader />;
+       }
+        return <Carruseln places={listType} title={title} text={text} />;
+};
+export default OrganizeCarrusel;

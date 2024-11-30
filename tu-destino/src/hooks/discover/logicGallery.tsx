@@ -1,5 +1,4 @@
 
-import Gallery from "@/components/discover/Gallery";
 import useData from "@/helpers/Zustand/DataLoad";
 import { Post } from "@/types/types";
 import { useEffect, useState } from "react";

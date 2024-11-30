@@ -16,7 +16,7 @@ import { useSelectContext } from "@/context/SelectContext";
 import { createNewPost } from "@/helpers/FetchData";
 import {  loadVerify } from "@/helpers/Zustand/Load";
 
-export const AddPost: React.FC<ElementProps> = ({ element, list, titles }) => {
+export const AddPost: React.FC<ElementProps<'place'>> = ({ placeElement, placeList, placeTitles }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { newImagen, newTitle, newDescription, newTags } = useSelectContext();
   const newPost = async () => {
@@ -43,7 +43,7 @@ export const AddPost: React.FC<ElementProps> = ({ element, list, titles }) => {
     <>
       <Button onPress={onOpen} variant="light">
         {" "}
-        {element}
+        {placeElement}
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="bottom">
         <ModalContent>
@@ -54,10 +54,10 @@ export const AddPost: React.FC<ElementProps> = ({ element, list, titles }) => {
                   <ImageUploader />
                 </div>
                 <div className=" w-full  h-[60%] bg-slate-300  p-1 flex  relative flex-col justify-center items-center gap-2 ">
-                  <SearchPlaces suggestions={titles} />
+                  <SearchPlaces suggestions={placeTitles} />
                   <FrameDescription />
                   <div className="w-[95%] h-auto  ">
-                    <Tags suggestions={list} />
+                    <Tags suggestions={placeList} />
                   </div>
                 </div>
                 <div className="absolute bottom-0 flex items-center justify-center w-full h-[10%] sm:h-auto ">
@@ -92,9 +92,9 @@ const NavDiscover: React.FC<AddPostProps> = ({ list, titles }) => {
 
         <div className="relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
           <AddPost
-            element={<PostAddIcon style={{ color: "white" }} />}
-            list={list}
-            titles={titles}
+            placeElement={<PostAddIcon style={{ color: "white" }} />}
+            placeList={list}
+            placeTitles={titles}
           />
         </div>
 
