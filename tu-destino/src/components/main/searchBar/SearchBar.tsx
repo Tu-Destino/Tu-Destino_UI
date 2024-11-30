@@ -4,11 +4,13 @@ import { poppins } from "@/styles/fonts";
 import ButtonFlower from "./ButtonFlower";
 import Link from "next/link";
 import { useSearchBar } from "./useSearchBar";
+import { useEffect, useState } from "react";
+// import getPLace from "@/redux/places/thunks";
 
 function SearchBar() {
-
   const { isScrolled, textInput, handleSearch, filteredWords, setTextInput } =
     useSearchBar();
+  const [titlePage, setTitlePage] = useState<string>("");
 
   // Filtra los lugares según el texto ingresado
 
@@ -58,9 +60,12 @@ function SearchBar() {
               >
                 {filteredWords.length > 0 ? (
                   filteredWords.map((word, index) => (
-                    <Link href={`/places/details/${word}`} target="_blank">
+                    <Link
+                      key={word}
+                      href={`/places/details/${word}`}
+                      target="_blank"
+                    >
                       <div
-                        key={index}
                         className="px-4 py-2 cursor-pointer hover:bg-indigo-100 text-gray-700"
                         onClick={() => {
                           setTextInput(""); // Establece el valor seleccionado en el input
