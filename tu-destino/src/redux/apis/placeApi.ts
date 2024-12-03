@@ -32,9 +32,12 @@ export const placeApi= createApi({
     }),
     getImages: builder.query<string[],string>({
       query: (title) => `/postDiscover/getUrlImg/${title}`
+    }),
+    getAllPlaces: builder.query<Place[], void>({
+      query: () => '/place'
     })
   })
 
 })
 
-export const {useGetPlaceQuery, useGetImagesQuery} = placeApi
+export const {useGetPlaceQuery, useGetImagesQuery, useGetAllPlacesQuery}  = placeApi

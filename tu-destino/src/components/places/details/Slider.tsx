@@ -8,6 +8,7 @@ import "../../../styles/details.css";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { inter } from "@/styles/fonts";
+import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 
 function SliderDetails({
   imgList,
@@ -71,12 +72,21 @@ function SliderDetails({
   return (
     <div>
       <section className="w-full h-auto flex flex-col justify-center relative items-center mb-16">
-        <div className=" h-[7.5rem] sm:h-[11.5rem] max-w-[1300px] pt-[59px] w-full content-end mb-3">
+        <div className=" h-[7.5rem] sm:h-[11.5rem] max-w-[1300px] pt-[59px] flex items-end justify-between w-full mb-3">
           <h1
             className={`pl-[13px] sm:pl-[57px] mr-4 text-start text-xl sm:text-2xl md:text-3xl text-[#1d1d1f] ${inter.className}`}
           >
             {title}
           </h1>
+          <div
+            className={`  mr-14 text-start text-xl sm:text-2xl md:text-3xl text-[#1d1d1f] ${inter.className}`}
+          >
+            <Breadcrumbs size="lg">
+              <BreadcrumbItem href="/">Home</BreadcrumbItem>
+              <BreadcrumbItem href="/places">Places</BreadcrumbItem>
+              <BreadcrumbItem>{title}</BreadcrumbItem>
+            </Breadcrumbs>
+          </div>
         </div>
         <div className="w-full max-w-[1300px] h-auto relative px-3 sm:px-14 ">
           <Flicking

@@ -7,6 +7,7 @@ import Explore from "@/components/places/details/Explore";
 import SliderDetails from "@/components/places/details/Slider";
 import { useParams } from "next/navigation";
 import { useGetImagesQuery, useGetPlaceQuery } from "@/redux/apis/placeApi";
+import SkeletonDetails from "@/components/skeletons/SkeletonDetails";
 
 const PageDetail: React.FC = () => {
   const { id } = useParams();
@@ -30,7 +31,12 @@ const PageDetail: React.FC = () => {
   } = useGetImagesQuery(decodedId);
 
   if (isLoadingPlace || isLoadingImages) {
-    return <div>Cargando...</div>;
+    return (
+      <>
+      <NavigationBar />
+      <SkeletonDetails/>
+      </>
+    );
   }
 
   if (isErrorPlace || isErrorImages) {
@@ -49,7 +55,7 @@ const PageDetail: React.FC = () => {
         imgList={imageList?.map((img) => img) || []}
         title={placeData?.title || "Título no disponible"}
       />
-      <CardInfo data={placeData} decodedId={decodedId}/>
+      <CardInfo data={placeData} decodedId={decodedId} />
       <Explore />
       <Footer />
     </>
