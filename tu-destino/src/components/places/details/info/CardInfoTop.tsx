@@ -9,6 +9,7 @@ import {
   Web,
   SvgIconComponent,
 } from "@mui/icons-material";
+import { Link } from "@nextui-org/react";
 import React from "react";
 
 export default function CardInfoTop({ decodedId }: { decodedId: string }) {
@@ -23,10 +24,19 @@ export default function CardInfoTop({ decodedId }: { decodedId: string }) {
             title="Ubicación"
             text={placeData?.address}
           />
-          <Card Icon={Schedule} title="Horario" text={placeData?.schedule}/>
-          <Card Icon={AttachMoney} title="Precio" text={placeData?.price}/>
-          <Card Icon={LocalPhoneRounded} title="Teléfono" text={placeData?.phone}/>
-          <Card Icon={Web} title="Sitio web" text={placeData?.web} />
+          <Card Icon={Schedule} title="Horario" text={placeData?.schedule} />
+          <Card Icon={AttachMoney} title="Precio" text={placeData?.price} />
+          <Card
+            Icon={LocalPhoneRounded}
+            title="Teléfono"
+            text={placeData?.phone}
+          />
+          <Card
+            Icon={Web}
+            title="Sitio web"
+            text={placeData?.web}
+            link={true}
+          />
         </section>
       </div>
     </div>
@@ -38,9 +48,10 @@ interface CardProps {
   Icon: SvgIconComponent; // El tipo correcto para pasar un componente como prop
   title: string;
   text?: string;
+  link?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ Icon, title, text }) => {
+const Card: React.FC<CardProps> = ({ Icon, title, text, link }) => {
   return (
     <div className="col-span-1 h-24 lg:h-28 border-r pb-1 border-[#DDDDDD] flex justify-center">
       <div className=" h-full w-4/5 max-w-[125px] flex justify-between flex-col">
@@ -51,7 +62,13 @@ const Card: React.FC<CardProps> = ({ Icon, title, text }) => {
           <p
             className={`max-h-11 text-black ${poppins.className} overflow-scroll`}
           >
-            {text}
+            {text? (link ? (
+              <Link showAnchorIcon target="_value" href={text} color="foreground">
+                Ir 
+              </Link>
+            ) : (
+              text
+            )): "No disponible"}
           </p>
         </div>
         <div className="">
