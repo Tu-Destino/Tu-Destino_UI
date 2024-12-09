@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
+import React from "react";
+
 import CardInfoTop from "./CardInfoTop";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { Place, useGetPlaceQuery } from "@/redux/apis/placeApi";
+import { Place } from "@/redux/apis/placeApi";
 const CardInfo = ({ data, decodedId }: { data?: Place; decodedId: string }) => {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 

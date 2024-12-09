@@ -1,16 +1,13 @@
-import { AutocompleteProps, FiltersType, Post } from "@/types/types";
+import { AutocompleteProps, FiltersType } from "@/types/types";
 import React, { useEffect, useState } from "react";
 import ButtomFilter from "./ButtonFilter";
-import { filterTags } from "@/helpers/FetchData";
-import useData from "@/helpers/Zustand/DataLoad";
 import { LogicFilter } from "@/hooks/discover/logicFilter";
 import { LogicDrop } from "@/hooks/discover/logicMicroComponents";
 import Link from "next/link";
 import { useGetPostsByTagsMutation } from "@/redux/apis/postApi";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { cleanPostShowDiscover, setPostShowDiscover } from "@/redux/postsShowDiscover/postsShowDiscoverSlice";
-import { X } from "@mui/icons-material";
-import { useSelectContext } from "@/context/SelectContext";
+import { useAppDispatch } from "@/hooks/redux";
+import {  setPostShowDiscover } from "@/redux/postsShowDiscover/postsShowDiscoverSlice";
+
 
 const LogoDiscover: React.FC = () => {
   return (
@@ -69,9 +66,7 @@ const ButtonPanel: React.FC<AutocompleteProps> = ({ suggestions }) => {
   const [tags, setTags] = useState<string[]>([]);
   const { handleClean } = LogicDrop([]);
 
-  const { setIsClean} = useSelectContext()
-
-  const [getPostsByTags, { data: postFilterData, isLoading, error }] =
+  const [getPostsByTags, { data: postFilterData,  }] =
     useGetPostsByTagsMutation();
 
   const dispatch = useAppDispatch();

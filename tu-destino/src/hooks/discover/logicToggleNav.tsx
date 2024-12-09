@@ -4,7 +4,7 @@ import getListTitle from "@/redux/listTitles/thunks";
 import { useGetAllPostsQuery } from "@/redux/apis/postApi";
 import { useGetAllTagsQuery } from "@/redux/apis/tagsApi";
 
-function useLogicToggleNav() {
+function LogicToggleNav() {
   const [showComponent, setShowComponent] = useState<boolean | null>(null);
 
   const { listTitle = [] } = useAppSelector((state) => state.listTitles);
@@ -56,4 +56,4 @@ function useLogicToggleNav() {
   };
 }
 
-export default useLogicToggleNav;
+export default LogicToggleNav;

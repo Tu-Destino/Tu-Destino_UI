@@ -13,7 +13,7 @@ import {
 import Link from "next/link";
 import { AddPostProps, ElementProps } from "@/types/types";
 import { useSelectContext } from "@/context/SelectContext";
-import { addImg, createNewPost } from "@/helpers/FetchData";
+import { addImg } from "@/helpers/FetchData";
 import { useCreatePostMutation } from "@/redux/apis/postApi";
 
 export const AddPost: React.FC<ElementProps<"place">> = ({
@@ -25,7 +25,7 @@ export const AddPost: React.FC<ElementProps<"place">> = ({
   const { newImagen, newTitle, newDescription, newTags } = useSelectContext();
   const [
     createPost,
-    { data: dataPost, isLoading: isLoadingPost, error: errorPost },
+    { },
   ] = useCreatePostMutation();
   const newPost = async () => {
     const post = {
