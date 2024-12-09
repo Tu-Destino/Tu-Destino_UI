@@ -13,8 +13,10 @@ import {
 import Link from "next/link";
 import { AddPostProps, ElementProps } from "@/types/types";
 import { useSelectContext } from "@/context/SelectContext";
-import { addImg } from "@/helpers/FetchData";
+
 import { useCreatePostMutation } from "@/redux/apis/postApi";
+import { useGetPlaceIdByTitleQuery } from "@/redux/apis/placeApi";
+import { addImg } from "@/hooks/Cloudinary";
 
 export const AddPost: React.FC<ElementProps<"place">> = ({
   placeElement,
@@ -25,21 +27,26 @@ export const AddPost: React.FC<ElementProps<"place">> = ({
   const { newImagen, newTitle, newDescription, newTags } = useSelectContext();
   const [
     createPost,
-    { },
+    {},
   ] = useCreatePostMutation();
+  const {
+    data = null
+  } = useGetPlaceIdByTitleQuery(newTitle, { skip: !newTitle });
+
   const newPost = async () => {
+    if (!data) {
+      console.log("(Post Creation) Failed to get location id");
+      return;
+    }
     const post = {
       title: newTitle,
       description: newDescription,
       tags: newTags,
       urlImg: await addImg(newImagen),
       user_id: "144d523f-c71c-480d-97c3-c073ecbcb45c",
-      place_id: 1,
+      place_id: data,
     };
-    console.log(post.urlImg);
-    
     createPost(post);
-    //wconsole.log(await confirm);
   };
 
   return (
