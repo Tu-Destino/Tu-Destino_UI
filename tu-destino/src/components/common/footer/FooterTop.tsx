@@ -6,7 +6,7 @@ export default function FooterTop() {
  
 
  // const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
+    // event.preventDefault();
     
   //};
 

@@ -1,5 +1,4 @@
 "use client";
-import useVerifyPath from "@/helpers/LoadPath";
 import {
   createContext,
   useContext,
@@ -18,7 +17,6 @@ export const RootProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [someRootVariable, setSomeRootVariable] = useState<string>("");
-  useVerifyPath(); // Llama al hook con el path actual
   return (
     <RootContext.Provider value={{ someRootVariable, setSomeRootVariable }}>
       {children}
