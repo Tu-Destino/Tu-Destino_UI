@@ -1,16 +1,20 @@
 
-import useData from "@/helpers/Zustand/DataLoad";
+import { useGetAllPostsQuery } from "@/redux/apis/postApi";
 import { Post } from "@/types/types";
 import { useEffect, useState } from "react";
 
 function useLogicGallery(initialPlaces: Post[]) {
  
   const [places, setPlaces] = useState<Post[]>(initialPlaces);
-  const [isClient, setIsClient] = useState(false);
-  const { postDiscover } = useData();
+  const [isClient, setIsClient] = useState(false)
+
+  const {
+    data: postData= [],
+  } = useGetAllPostsQuery();
+  
   useEffect(() => {
-    setPlaces(postDiscover);
-  }, [postDiscover]);
+    setPlaces(postData);
+  }, [postData]);
 
   useEffect(() => {
     setIsClient(true); 

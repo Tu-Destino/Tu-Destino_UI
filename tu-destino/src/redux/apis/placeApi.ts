@@ -6,7 +6,7 @@ export interface Place {
   details: string,
   enum_type: string,
   information: string,
-  link_address: string,
+  coordinates: string,
   phone: string,
   price: string,
   rate: number,

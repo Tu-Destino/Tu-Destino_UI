@@ -1,42 +1,59 @@
-
-import useData from "@/helpers/Zustand/DataLoad";
 import { useEffect, useLayoutEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../redux";
+import getListTitle from "@/redux/listTitles/thunks";
+import { useGetAllPostsQuery } from "@/redux/apis/postApi";
+import { useGetAllTagsQuery } from "@/redux/apis/tagsApi";
 
 function useLogicToggleNav() {
-
   const [showComponent, setShowComponent] = useState<boolean | null>(null);
-  const { tags, postDiscover,optionSearch} = useData();
-  const [isLoading,setIsLoading] = useState<boolean>(true);
-useLayoutEffect(() => {
-  const handleResize = () => {
-    if (window.innerWidth > 767) {
-      setShowComponent(true);
-    } else {
-      setShowComponent(false);
-    }
-  };
 
-  window.addEventListener('resize', handleResize);
-  setTimeout(handleResize, 1300);
-  return () => {
-    window.removeEventListener('resize', handleResize);
-  };
-}, []);
-useEffect(()=>{
-  setTimeout(()=>{
-    if(postDiscover.length !=0){
-      setIsLoading(false);
-    }
-  },1300)
-},[postDiscover])
+  const { listTitle = [] } = useAppSelector((state) => state.listTitles);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getListTitle());
+  }, []);
+
+  const {
+    data: postData = [],
+    isLoading: isLoadingPosts,
+    isError: isErrorPosts,
+  } = useGetAllPostsQuery();
+
+  const {
+    data: tagsData = [],
+    isLoading: isLoadingTags,
+    isError: isErrorTags,
+  } = useGetAllTagsQuery();
+
+
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 767) {
+        setShowComponent(true);
+      } else {
+        setShowComponent(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [showComponent]);
+
 
   return {
-    isLoading,
     showComponent,
-    tags,
-    postDiscover,
-    optionSearch
-  }
+    tagsData,
+    postData,
+    listTitle,
+    isLoadingPosts,
+    isLoadingTags,
+    isErrorPosts,
+    isErrorTags
+  };
 }
 
-export default useLogicToggleNav
+export default useLogicToggleNav;

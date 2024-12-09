@@ -13,7 +13,8 @@ import {
 import Link from "next/link";
 import { AddPostProps, ElementProps } from "@/types/types";
 import { useSelectContext } from "@/context/SelectContext";
-import { createNewPost } from "@/helpers/FetchData";
+import { addImg, createNewPost } from "@/helpers/FetchData";
+import { useCreatePostMutation } from "@/redux/apis/postApi";
 
 export const AddPost: React.FC<ElementProps<"place">> = ({
   placeElement,
@@ -22,16 +23,22 @@ export const AddPost: React.FC<ElementProps<"place">> = ({
 }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { newImagen, newTitle, newDescription, newTags } = useSelectContext();
+  const [
+    createPost,
+    { data: dataPost, isLoading: isLoadingPost, error: errorPost },
+  ] = useCreatePostMutation();
   const newPost = async () => {
     const post = {
       title: newTitle,
       description: newDescription,
       tags: newTags,
-      urlImg: newImagen,
+      urlImg: await addImg(newImagen),
+      user_id: "144d523f-c71c-480d-97c3-c073ecbcb45c",
+      place_id: 1,
     };
-
-    await createNewPost(post);
-
+    console.log(post.urlImg);
+    
+    createPost(post);
     //wconsole.log(await confirm);
   };
 

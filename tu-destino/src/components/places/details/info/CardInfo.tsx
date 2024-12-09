@@ -34,7 +34,7 @@ const CardInfo = ({ data, decodedId }: { data?: Place; decodedId: string }) => {
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${data?.address}`}
+              src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${data?.title}/${data?.coordinates}`}
               className="w-full"
             ></iframe>
           </div>

@@ -3,17 +3,20 @@ import counterReducer from "./counter/counterSlice";
 import listTitlesReducer from "./listTitles/listTitlesSlice";
 import { todoApi } from "./apis/todosApi";
 import { placeApi } from "./apis/placeApi";
-import { AllTagsApi } from "./apis/AllTagsApi";
 import { postApi } from "./apis/postApi";
+import { tagsApi } from "./apis/tagsApi";
+import postShowDiscoverReducer  from "./postsShowDiscover/postsShowDiscoverSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     listTitles: listTitlesReducer,
+    postShowDiscover: postShowDiscoverReducer,
+
     //place: placeReducer,
     [todoApi.reducerPath]: todoApi.reducer,
     [placeApi.reducerPath]: placeApi.reducer,
-    [AllTagsApi.reducerPath]: AllTagsApi.reducer,
+    [tagsApi.reducerPath]: tagsApi.reducer,
     [postApi.reducerPath]: postApi.reducer
 
   },
@@ -21,7 +24,7 @@ export const store = configureStore({
     getDefaultMiddleware()
       .concat(todoApi.middleware)
       .concat(placeApi.middleware)
-      .concat(AllTagsApi.middleware)
+      .concat(tagsApi.middleware)
       .concat(postApi.middleware)
 });
 

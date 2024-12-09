@@ -1,9 +1,12 @@
 import { useSelectContext } from "@/context/SelectContext";
 import { filterTags } from "@/helpers/FetchData";
 import useData from "@/helpers/Zustand/DataLoad";
+import { useGetPostsByTagsMutation } from "@/redux/apis/postApi";
 import { Sync } from "@egjs/flicking-plugins";
 import Flicking from "@egjs/react-flicking";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useAppDispatch } from "../redux";
+import { cleanPostShowDiscover, setPostShowDiscover } from "@/redux/postsShowDiscover/postsShowDiscoverSlice";
 
 export function LogicTags(suggestions: string[]) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -164,20 +167,27 @@ export function LogicDrop(list: string[]) {
   const [isVisible, setIsVisible] = useState(false);
   const [filteredTags, setFilterTags] = useState<string[]>([]);
   const { setIsClean } = useSelectContext();
-  const { setPostDiscover } = useData();
   const toggleBox = () => {
     setIsVisible(!isVisible);
   };
 
+  const [getPostsByTags, { data: postFilterData, isLoading, error }] =
+    useGetPostsByTagsMutation();
+  const dispatch = useAppDispatch();
+
   const handleClean = async () => {
+    dispatch(cleanPostShowDiscover());
     setFilterTags([]);
-    setPostDiscover(await filterTags(""));
     setIsClean(true);
   };
   const handleClick = async () => {
-    const filter = await filterTags(filteredTags.join(","));
-    setPostDiscover(await filter);
+    getPostsByTags({ array: filteredTags.join(",") });
   };
+  useEffect(() => {
+    if (postFilterData) {
+      dispatch(setPostShowDiscover({ posts: postFilterData }));
+    }
+  }, [postFilterData]);
 
   const third = Math.ceil(list.length / 3);
   const tags0 = list.slice(0, third);
