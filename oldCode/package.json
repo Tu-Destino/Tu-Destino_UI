@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@cloudinary/url-gen": "^1.19.0",
-    "cloudinary": "^2.2.0",
-    "jsonwebtoken": "^9.0.2"
-  }
-}
