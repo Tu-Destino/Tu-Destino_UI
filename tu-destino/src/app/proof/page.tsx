@@ -1,8 +1,6 @@
 "use client";
-import { useGetPlaceQuery } from "@/redux/apis/placeApi";
 import {
   useCreatePostMutation,
-  useGetAllPostsQuery,
   useGetPostsByTagsMutation,
 } from "@/redux/apis/postApi";
 
@@ -10,13 +8,13 @@ import {
 import { useEffect, useState } from "react";
 
 export default function Proof() {
-  const [tags, setTags] = useState("Historia"); // Estado para los tags
-  const [getPostsByTags, { data, isLoading, error }] =
+  const [tags] = useState("Historia"); // Estado para los tags
+  const [getPostsByTags, {  }] =
     useGetPostsByTagsMutation();
 
   const [
     createPost,
-    { data: dataPost, isLoading: isLoadingPost, error: errorPost },
+    {},
   ] = useCreatePostMutation();
 
   useEffect(() => {

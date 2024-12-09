@@ -1,7 +1,7 @@
 "use client"
 import ToggleNav from "@/components/discover/ToggleNav";
 import SkeletonDetails from "@/components/skeletons/SkeletonDetails";
-import useLogicToggleNav from "@/hooks/discover/logicToggleNav";
+import LogicToggleNav from "@/hooks/discover/logicToggleNav";
 
 export default function page() {
   const {
@@ -9,7 +9,7 @@ export default function page() {
     isLoadingTags,
     isErrorPosts,
     isErrorTags,
-  } = useLogicToggleNav();
+  } = LogicToggleNav();
 
   if (isErrorPosts || isErrorTags) {
     return (

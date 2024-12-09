@@ -6,7 +6,6 @@ import SearchBar from "../components/main/searchBar/SearchBar";
 import GridMain from "@/components/main/gridMain/GridMain";
 import EyeCatching from "@/components/main/eyeCatching/EyeCatching";
 import FooterTop from "@/components/common/footer/FooterTop";
-import Head from "next/head";
 
 export default function Home() {
   const place = {

@@ -1,6 +1,4 @@
 import { useSelectContext } from "@/context/SelectContext";
-import { filterTags } from "@/helpers/FetchData";
-import useData from "@/helpers/Zustand/DataLoad";
 import { useGetPostsByTagsMutation } from "@/redux/apis/postApi";
 import { Sync } from "@egjs/flicking-plugins";
 import Flicking from "@egjs/react-flicking";
@@ -171,7 +169,7 @@ export function LogicDrop(list: string[]) {
     setIsVisible(!isVisible);
   };
 
-  const [getPostsByTags, { data: postFilterData, isLoading, error }] =
+  const [getPostsByTags, { data: postFilterData }] =
     useGetPostsByTagsMutation();
   const dispatch = useAppDispatch();
 
