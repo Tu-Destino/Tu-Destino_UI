@@ -19,8 +19,7 @@
 
 .thumb-image {
   width: 100%;
-  height: full;
-  object-fit: cover;
+  height: 100%;
 
 }
 
