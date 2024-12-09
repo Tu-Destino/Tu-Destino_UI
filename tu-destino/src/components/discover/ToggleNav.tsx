@@ -1,52 +1,42 @@
-"use client";
 import ButtonPanel from "./ButtonPanel";
 import NavDiscover, { AddPost } from "./NavDiscover";
 import Gallery from "../../components/discover/Gallery";
-import "../../styles/discover.css";
-import useData from "@/helpers/Zustand/DataLoad";
 import logicToggleNav from "@/hooks/discover/logicToggleNav";
 
-const ButtonModalDesktop: React.FC = () => {
-  const { tags, optionSearch } = useData();
+function ButtonModalDesktop({
+  tags,
+  titles,
+}: {
+  tags: string[];
+  titles: string[];
+}) {
   return (
     <div className="fixed z-50 bg-green-400 bottom-[1%] right-[2%] rounded-full">
-      <AddPost
-        placeElement={"Postear"}
-        placeList={tags}
-        placeTitles={optionSearch}
-      />
+      <AddPost placeElement={"Postear"} placeList={tags} placeTitles={titles} />
     </div>
   );
-};
+}
 
 const ToggleNav: React.FC = () => {
-  const { isLoading, postDiscover, tags, showComponent, optionSearch } =
-    logicToggleNav();
-  if (isLoading) {
-    return (
-      <>
-        <div className="loader">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </>
-    );
-  }
+  const {
+    postData,
+    tagsData,
+    showComponent,
+    listTitle
+  } = logicToggleNav();
 
   return (
     <>
       {showComponent ? (
         <>
-          <ButtonPanel suggestions={tags} />
-          <Gallery initialPlaces={postDiscover} />
-          <ButtonModalDesktop />
+          <ButtonPanel suggestions={tagsData} />
+          <Gallery initialPlaces={postData} />
+          <ButtonModalDesktop tags={tagsData} titles={listTitle} />
         </>
       ) : (
         <>
-          <NavDiscover list={tags} titles={optionSearch} />
-          <Gallery initialPlaces={postDiscover} />
+          <NavDiscover list={tagsData} titles={listTitle} />
+          <Gallery initialPlaces={postData} />
         </>
       )}
     </>

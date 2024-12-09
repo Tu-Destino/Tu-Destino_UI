@@ -21,25 +21,25 @@ import HistoryIcon from '@mui/icons-material/TravelExplore';
 import MosqueIcon from '@mui/icons-material/Mosque';
 
 export const icons: IconWithNickname[] = [
-  { icon: <CultureIcon />, nickname: 'cultura' },
-  { icon: <HistoryIcon />, nickname: 'historia' },
-  { icon: <ArtIcon />, nickname: 'arte' },
-  { icon: <MosqueIcon />, nickname: 'monumento' },
-  { icon: <AntiqueIcon />, nickname: 'antiguo' },
-  { icon: <PlacesIcon />, nickname: 'lugares' },
-  { icon: <DesignIcon />, nickname: 'diseño arquitectónico' },
-  { icon: <GastronomyIcon />, nickname: 'gastronomía' },
-  { icon: <RestaurantIcon />, nickname: 'restaurante' },
-  { icon: <ActivitiesIcon />, nickname: 'actividades' },
-  { icon: <MuseumIcon />, nickname: 'museo' },
-  { icon: <ParkIcon />, nickname: 'parque' },
-  { icon: <NatureIcon />, nickname: 'naturaleza' },
-  { icon: <LodgingIcon />, nickname: 'hospedajes' },
-  { icon: <LuxuryIcon />, nickname: 'lujo' },
-  { icon: <ViewpointIcon />, nickname: 'mirador' },
-  { icon: <MountainIcon />, nickname: 'montaña' },
-  { icon: <ForestIcon />, nickname: 'bosque' },
-  { icon: <GardenIcon />, nickname: 'jardín' }
+  { icon: <CultureIcon key="CultureIcon" />, nickname: 'cultura' },
+  { icon: <HistoryIcon key="HistoryIcon" />, nickname: 'historia' },
+  { icon: <ArtIcon key="ArtIcon" />, nickname: 'arte' },
+  { icon: <MosqueIcon key="MosqueIcon" />, nickname: 'monumento' },
+  { icon: <AntiqueIcon key="AntiqueIcon" />, nickname: 'antiguo' },
+  { icon: <PlacesIcon key="PlacesIcon" />, nickname: 'lugares' },
+  { icon: <DesignIcon key="DesignIcon" />, nickname: 'diseño arquitectónico' },
+  { icon: <GastronomyIcon key="GastronomyIcon" />, nickname: 'gastronomía' },
+  { icon: <RestaurantIcon key="RestaurantIcon" />, nickname: 'restaurante' },
+  { icon: <ActivitiesIcon key="ActivitiesIcon" />, nickname: 'actividades' },
+  { icon: <MuseumIcon key="MuseumIcon" />, nickname: 'museo' },
+  { icon: <ParkIcon key="ParkIcon" />, nickname: 'parque' },
+  { icon: <NatureIcon key="NatureIcon" />, nickname: 'naturaleza' },
+  { icon: <LodgingIcon key="LodgingIcon" />, nickname: 'hospedajes' },
+  { icon: <LuxuryIcon key="LuxuryIcon" />, nickname: 'lujo' },
+  { icon: <ViewpointIcon key="ViewpointIcon" />, nickname: 'mirador' },
+  { icon: <MountainIcon key="MountainIcon" />, nickname: 'montaña' },
+  { icon: <ForestIcon key="ForestIcon" />, nickname: 'bosque' },
+  { icon: <GardenIcon key="GardenIcon" />, nickname: 'jardín' }
 ];
 
 export const colors: ColorWithNickname[] = [

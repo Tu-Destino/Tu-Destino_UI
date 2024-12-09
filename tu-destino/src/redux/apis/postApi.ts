@@ -12,9 +12,9 @@ interface Post {
 interface createPost {
   title: string;
   description: string;
-  place_id: number,
+  place_id: number;
   tags: string;
-  urlImg: string;
+  urlImg: string | ArrayBuffer | null;
   user_id: string
 }
 

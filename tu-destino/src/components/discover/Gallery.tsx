@@ -5,6 +5,7 @@ import { Modal, ModalContent, Button, useDisclosure } from "@nextui-org/react";
 import Redirect from "./Redirect";
 import { CardImgProps, GalleryProps, Post } from "@/types/types";
 import logicGallery from "@/hooks/discover/logicGallery";
+import { useAppSelector } from "@/hooks/redux";
 
 const CardImg: FC<CardImgProps> = ({ place }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -77,6 +78,23 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
 
 const Gallery: FC<GalleryProps> = ({ initialPlaces }) => {
   const { places } = logicGallery(initialPlaces);
+  const { posts } = useAppSelector((state) => state.postShowDiscover);
+  
+
+  if(posts.length != 0){
+    return(
+      <div className="md:w-[80%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
+      <div className="mt-8 grid grid-cols-3 grid-rows-subgrid gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[92%]">
+        {posts.map((place, index) => (
+          <CardImg key={index} place={place} />
+        ))}
+      </div>
+    </div>
+    )
+  }
+
+
+  
   return (
     <div className="md:w-[80%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
       <div className="mt-8 grid grid-cols-3 grid-rows-subgrid gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[92%]">
