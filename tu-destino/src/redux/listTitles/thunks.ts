@@ -1,7 +1,7 @@
 import { AppDispatch } from "../store";
 import { setListTitle, startLoadingList } from "./listTitlesSlice";
 
-const urlBase = "http://49.13.164.207:8080/TD/api/v1"
+const urlBase = "https://tudestinoresourse.coalmd.com/TD/api/v1"
 
 export const getListTitle = () => {
   return async (dispatch: AppDispatch) => {
