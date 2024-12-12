@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./counter/counterSlice";
 import listTitlesReducer from "./listTitles/listTitlesSlice";
-import { todoApi } from "./apis/todosApi";
 import { placeApi } from "./apis/placeApi";
 import { postApi } from "./apis/postApi";
 import { tagsApi } from "./apis/tagsApi";
@@ -14,7 +13,6 @@ export const store = configureStore({
     postShowDiscover: postShowDiscoverReducer,
 
     //place: placeReducer,
-    [todoApi.reducerPath]: todoApi.reducer,
     [placeApi.reducerPath]: placeApi.reducer,
     [tagsApi.reducerPath]: tagsApi.reducer,
     [postApi.reducerPath]: postApi.reducer
@@ -22,7 +20,6 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat(todoApi.middleware)
       .concat(placeApi.middleware)
       .concat(tagsApi.middleware)
       .concat(postApi.middleware)
