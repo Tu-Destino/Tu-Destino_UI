@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@egjs/flicking": "^4.11.4",
@@ -21,6 +22,7 @@
     "@reduxjs/toolkit": "^2.3.0",
     "cloudinary": "^2.5.1",
     "next": "14.2.14",
+    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^9.1.2",
