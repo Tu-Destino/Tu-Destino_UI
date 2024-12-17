@@ -1,7 +1,8 @@
 import { AppDispatch } from "../store";
 import { setListTitle, startLoadingList } from "./listTitlesSlice";
 
-const urlBase = "https://tudestinoresourse.coalmd.com/TD/api/v1"
+// const urlBase = "https://tudestinoresourse.coalmd.com/TD/api/v1"
+const urlBase = 'https://bl-monolith-td.onrender.com/TD/api/v1'
 
 export const getListTitle = () => {
   return async (dispatch: AppDispatch) => {

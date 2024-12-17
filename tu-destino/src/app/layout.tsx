@@ -13,6 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logoSmall.png" />
+      </head>
       <body className={`w-screen h-screen`}>
         <Provider store={store}>
           <RootProvider>

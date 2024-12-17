@@ -26,7 +26,8 @@ interface tagsBody {
 export const postApi = createApi({
   reducerPath: "posts",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://tudestinoresourse.coalmd.com/TD/api/v1",
+    // baseUrl: 'https://tudestinoresourse.coalmd.com/TD/api/v1'
+    baseUrl: 'https://bl-monolith-td.onrender.com/TD/api/v1'
   }),
 
   endpoints: (builder) => ({
