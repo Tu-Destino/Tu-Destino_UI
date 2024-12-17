@@ -10,7 +10,7 @@ const nextConfig = {
           },
         ],
         
-          domains: ['images.unsplash.com'],
+          domains: ['images.unsplash.com','images.remotePatterns'],
         
       },
 };
