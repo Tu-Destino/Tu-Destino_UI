@@ -21,8 +21,7 @@ export interface Place {
 export const placeApi= createApi({
   reducerPath: 'places',
   baseQuery: fetchBaseQuery({
-    // baseUrl: 'https://tudestinoresourse.coalmd.com/TD/api/v1'
-    baseUrl: 'https://bl-monolith-td.onrender.com/TD/api/v1'
+     baseUrl: 'https://tudestinoresourse.coalmd.com/TD/api/v1'
   }), 
   
   endpoints: (builder)=>({
