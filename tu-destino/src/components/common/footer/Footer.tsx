@@ -33,10 +33,10 @@ const Footer = () => {
             name="About"
             url="https://www.instagram.com/tudestino_project/"
           />
-          <LinkUrl name="Security" url="#" />
-          <LinkUrl name="Privacy" url="#" />
-          <LinkUrl name="Terms" url="#" />
-          <LinkUrl name="Contact" url="/proof" />
+          <LinkUrl name="Security" url="https://www.instagram.com/tudestino_project/" />
+          <LinkUrl name="Privacy" url="https://www.instagram.com/tudestino_project/" />
+          <LinkUrl name="Terms" url="https://www.instagram.com/tudestino_project/" />
+          <LinkUrl name="Contact" url="https://www.instagram.com/tudestino_project/" />
         </ul>
       </div>
     </footer>
