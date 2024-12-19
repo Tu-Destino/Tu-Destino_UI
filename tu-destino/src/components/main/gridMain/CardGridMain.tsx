@@ -12,7 +12,7 @@ export default function CardGridMain({span='4', place}: {place: PlaceProps, span
       <Card className="h-[320px] overflow-hidden rounded-2xl transform transition-transform duration-400 hover:scale-[99%]">
         <CardHeader className="absolute z-10 bottom-1 flex-col items-start">
           <p className="md:col-span-4 text-tiny text-white/60 uppercase font-bold">
-            What to watch 
+            Conocer
           </p>
           <h4 className="md:col-span-5 text-white font-medium text-large">
             {place.title}

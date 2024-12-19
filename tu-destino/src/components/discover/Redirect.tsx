@@ -2,15 +2,17 @@
 import { FC } from "react";
 import Link from "next/link";
 import { TagsProps } from "@/types/types";
+import { Button } from "@nextui-org/react";
 
 const Redirect: FC<TagsProps> = ({ labels }) => {
   return (
-    <Link
-      target="_blank"
-      href={`/places/details/${labels}`}
-      color="primary"
-    >
-      Detalles
+    <Link href={`/places/details/${labels}`}>
+      <Button
+        color="primary"
+        variant="light"
+      >
+        Detalles
+      </Button>
     </Link>
   );
 };

@@ -12,7 +12,7 @@ const ButtomFilter = forwardRef<HTMLButtonElement, ButtomPromp>(
     return (
       <button
         ref={ref}
-        className={`autoBlur flex flex-col items-center justify-center aspect-square  border border-[#4C5053] rounded-[22px] ${
+        className={`flex flex-col items-center justify-center aspect-square  border border-[#4C5053] rounded-[22px] ${
           isClick ? color : "bg-[#282828] text-[#616c7b]"
         }`}
         onClick={() => handleCliking(tag)}

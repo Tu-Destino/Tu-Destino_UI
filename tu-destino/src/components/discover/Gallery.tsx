@@ -6,6 +6,7 @@ import Redirect from "./Redirect";
 import { CardImgProps, GalleryProps, Post } from "@/types/types";
 import logicGallery from "@/hooks/discover/logicGallery";
 import { useAppSelector } from "@/hooks/redux";
+import { Tooltip } from "@mui/material";
 
 const CardImg: FC<CardImgProps> = ({ place }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -41,27 +42,49 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
           isOpen={isOpen}
           onOpenChange={onOpenChange}
         >
-          <ModalContent>
+          <ModalContent className="m-0 w-[320px] sm:w-full h-full max-h-[800px] min-h-[610px] sm:h-[30rem] ">
             {(onClose) => (
               <>
-                <section className="flex  w-full flex-col sm:flex-row  h-[35rem] sm:h-[30rem]">
-                  <div className="w-full sm:w-[70%]  h-[300px] sm:h-full relative ">
+                <section className="flex  w-full flex-col  sm:flex-row  sm:h-full">
+                  <div className="w-full sm:w-[70%] h-[380px] sm:h-full relative ">
                     <img
                       className="h-full w-full object-cover"
                       src={place.urlImg}
                       alt={`imagen del ${place.title}`}
                     />
                   </div>
-                  <div className=" w-full sm:w-[30%] h-full relative flex  flex-col justify-center">
-                    <h1 className="p-4 absolute w-[85%] top-0">
-                      {place.title}
-                    </h1>
-                    <p className="p-4 relative h-[50%] sm:h-[60%] overflow-y-scroll ">
+                  <div className=" w-full sm:w-[30%] h-[420px] flex-grow sm:h-full flex  flex-col justify-between">
+                    <Tooltip
+                      title={place.title}
+                      enterDelay={3000}
+                      disableInteractive
+                      slotProps={{
+                        popper: {
+                          modifiers: [
+                            {
+                              name: "offset",
+                              options: {
+                                offset: [35, -38],
+                              },
+                            },
+                          ],
+                        },
+                      }}
+                    >
+                      <h1 className="max-h-20 overflow-hidden whitespace-nowrap text-ellipsis p-4 sm:pr-9 border-b-1">
+                        {place.title}
+                      </h1>
+                    </Tooltip>
+                    <p className="p-4 sm:h-[80%] overflow-y-scroll ">
                       {place.description}
                     </p>
-                    <div className="absolute bottom-0 flex items-center justify-center w-full h-[20%] sm:h-auto ">
+                    <div className="flex items-center justify-evenly w-full h-[60px] sm:h-[10%] ">
                       <Redirect labels={selectedPlace.title} />
-                      <Button color="danger" variant="light" onClick={onClose}>
+                      <Button
+                        className="text-gray-500"
+                        variant="light"
+                        onClick={onClose}
+                      >
                         Close
                       </Button>
                     </div>
@@ -79,22 +102,19 @@ const CardImg: FC<CardImgProps> = ({ place }) => {
 const Gallery: FC<GalleryProps> = ({ initialPlaces }) => {
   const { places } = logicGallery(initialPlaces);
   const { posts } = useAppSelector((state) => state.postShowDiscover);
-  
 
-  if(posts.length != 0){
-    return(
+  if (posts.length != 0) {
+    return (
       <div className="md:w-[80%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
-      <div className="mt-8 grid grid-cols-3 grid-rows-subgrid gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[92%]">
-        {posts.map((place, index) => (
-          <CardImg key={index} place={place} />
-        ))}
+        <div className="mt-8 grid grid-cols-3 grid-rows-subgrid gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[92%]">
+          {posts.map((place, index) => (
+            <CardImg key={index} place={place} />
+          ))}
+        </div>
       </div>
-    </div>
-    )
+    );
   }
 
-
-  
   return (
     <div className="md:w-[80%] lg:w-[80%] h-full  flex items-center justify-center overflow-scroll gallery-container">
       <div className="mt-8 grid grid-cols-3 grid-rows-subgrid gap-[2px] md:gap-1 h-full w-full md:w-[100%] lg:w-[92%]">
