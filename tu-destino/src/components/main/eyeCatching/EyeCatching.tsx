@@ -25,7 +25,7 @@ export default function EyeCatching({
           <h2 className="text-3xl text-[#1d1d1f] mb-3">{place.title}</h2>
           <p className="text-[#6e6e73] mb-3">{place.description}</p>
           <Link target="_blank" href={`/places/details/${place.title}`} className="text-indigo-400">
-            Conocer más ☞ ☡ ⍾ ⎄
+            Conocer más →
           </Link>
         </div>
 

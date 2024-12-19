@@ -48,12 +48,12 @@ function NavigationBar() {
         <Link href="/">
           <img
             src="/logoYourDestiny.png"
-            alt="Logo Tu Destino"
+            alt="Tu Destino"
             className="hidden md:flex ml-12  w-28 "
           />
           <img
             src="/logoSmall.png"
-            alt="Logo Tu Destino"
+            alt="Tu Destino"
             className="md:hidden  w-12 "
           />
         </Link>
