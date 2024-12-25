@@ -13,7 +13,8 @@ export default function PlacesPage() {
       <OrganizeCarrusel title="Historia" text="Explora sitios históricos y sumérgete en el pasado que ha dado forma a nuestro presente."/>
       <Collage/>
       <OrganizeCarrusel title="Naturaleza" text="Sumérgete en la belleza natural de nuestro mundo, desde majestuosos parques hasta tranquilos jardines."/>
-      <OrganizeCarrusel title="Restaurante" text="Descubre restaurantes que deleitan tu paladar con sabores exquisitos y experiencias únicas."/>
+      <OrganizeCarrusel title="Gastronomia" text="Descubre restaurantes que deleitan tu paladar con sabores exquisitos y experiencias únicas."/>
+      <div className="w-full h-16"></div>
       <Footer />
     </>
   );

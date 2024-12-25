@@ -52,13 +52,13 @@ const ImageCollage: React.FC<ImageCollageProps> = ({ images }) => {
 
 export default function Collage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-6xl ">
+    <div className="container mx-auto px-4 pb-12 pt-[9rem] max-w-6xl ">
       <div className="md:mx-8  lg:mx-12 mt-6">
         <h1 className="text-4xl font-bold mb-4 text-center">
-          Explore Amazing Places
+          Destinos fascinantes que te sorprenderán
         </h1>
-        <p className="text-xl text-center mb-12 text-gray-600">
-          Discover breathtaking landscapes from around the world
+        <p className="text-xl text-center mb-16 text-gray-600">
+          Descubre paisajes espectaculares en cada rincón de Medellín
         </p>
         <ImageCollage images={places} />
       </div>

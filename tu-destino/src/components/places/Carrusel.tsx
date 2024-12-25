@@ -64,8 +64,8 @@ const Carruseln: React.FC<CarruselProps> = ({ places, title, text }) => {
   };
 
   return (
-    <section className="w-full mt-12 flex flex-col items-center justify-center">
-      <Card className="overflow-hidden w-full sm:w-[87%] md:w-[79%]">
+    <section className=" w-full mt-12 flex flex-col items-center justify-center">
+      <Card className="max-w-[1300px] overflow-hidden w-full sm:w-[87%] md:w-[79%]">
         <CardContent className="p-6 container">
           <h2 className="text-2xl px-2 font-semibold mb-4">{title}</h2>
           <p className="text-xl font-semibold mb-5 px-4">{text}</p>
