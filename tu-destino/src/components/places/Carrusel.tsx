@@ -9,6 +9,8 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import { Place } from "@/types/types";
 import { useLogicInfoPlaces } from "@/hooks/places/logicPlaces";
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 interface ImgCardProps {
   url: string;
@@ -82,15 +84,15 @@ const Carruseln: React.FC<CarruselProps> = ({ places, title, text }) => {
             </div>
             <button
               onClick={scrollLeft}
-              className="absolute right-[36px] top-[-12%] z-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-full"
+              className="absolute right-[36px] top-[-12%] z-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-full mr-2"
             >
-              ◀️
+              <KeyboardArrowLeftIcon/> 
             </button>
             <button
               onClick={scrollRight}
               className="absolute right-[4px] top-[-12%] z-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-full"
             >
-              ▶️
+              <KeyboardArrowRightIcon/>
             </button>
           </div>
         </CardContent>
