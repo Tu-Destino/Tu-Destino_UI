@@ -1,9 +1,10 @@
-import { Modal, ModalContent, Button, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, Button } from "@nextui-org/react";
 import HomeIcon from "@mui/icons-material/Home";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
+  AlertPost,
   Drop,
   FrameDescription,
   ImageUploader,
@@ -12,43 +13,14 @@ import {
 } from "./MicroComponents";
 import Link from "next/link";
 import { AddPostProps, ElementProps } from "@/types/types";
-import { useSelectContext } from "@/context/SelectContext";
-
-import { useCreatePostMutation } from "@/redux/apis/postApi";
-import { useGetPlaceIdByTitleQuery } from "@/redux/apis/placeApi";
-import { addImg } from "@/hooks/Cloudinary";
+import useLogicPost from "@/hooks/discover/logicPost";
 
 export const AddPost: React.FC<ElementProps<"place">> = ({
   placeElement,
   placeList,
   placeTitles,
 }) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { newImagen, newTitle, newDescription, newTags } = useSelectContext();
-  const [
-    createPost,
-    {},
-  ] = useCreatePostMutation();
-  const {
-    data = null
-  } = useGetPlaceIdByTitleQuery(newTitle, { skip: !newTitle });
-
-  const newPost = async () => {
-    if (!data) {
-      console.log("(Post Creation) Failed to get location id");
-      return;
-    }
-    const post = {
-      title: newTitle,
-      description: newDescription,
-      tags: newTags,
-      urlImg: await addImg(newImagen),
-      user_id: "144d523f-c71c-480d-97c3-c073ecbcb45c",
-      place_id: data,
-    };
-    createPost(post);
-  };
-
+  const {onOpen,onOpenChange,isOpen, newPost,message, isPost,closeAlert}= useLogicPost();
   return (
     <>
       <Button onPress={onOpen} variant="light">
@@ -74,15 +46,32 @@ export const AddPost: React.FC<ElementProps<"place">> = ({
                   <Button color="primary" variant="light" onClick={newPost}>
                     Crear
                   </Button>
-                  <Button color="danger" variant="light" onClick={onClose}>
+                  <Button  color="danger" variant="light" onClick={onClose}>
                     Close
                   </Button>
                 </div>
               </section>
+              {isPost && (
+                  <AlertPost 
+                    labels={message} 
+                    handleClick={() => {
+                      if (message =="Se a creado correctamente") {
+                         closeAlert();
+                         onClose();
+                      }else{
+                        closeAlert();
+                      }
+                     
+                    }}
+                  />
+                )}
+
             </>
           )}
+        
         </ModalContent>
       </Modal>
+      
     </>
   );
 };

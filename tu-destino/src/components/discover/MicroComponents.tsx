@@ -5,10 +5,12 @@ import "@egjs/react-flicking/dist/flicking.css";
 import "../../styles/globals.css";
 import { useSelectContext } from "@/context/SelectContext";
 import {
+  AlertPostProps,
   AutocompleteProps,
   ButtomPromp,
   FiltersType,
   IconsProps,
+  TagsProps,
 } from "@/types/types";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import {
@@ -222,7 +224,12 @@ ButtomTagsPos.displayName="ButtomTagsPos";
 export const FrameDescription: React.FC = () => {
   const { setNewDescription } = useSelectContext();
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setNewDescription(e.target.value);
+    if (e.target.value == ''){
+      setNewDescription("string")
+    }else{
+      setNewDescription(e.target.value);
+    }
+    
   };
   return (
     <textarea
@@ -233,4 +240,19 @@ export const FrameDescription: React.FC = () => {
       onChange={handleChange}
     ></textarea>
   );
+};
+
+export const AlertPost: React.FC<AlertPostProps> = ({labels,handleClick} )=>{
+
+  
+  return(
+    <>
+    <section className="fixed z-[10000] top-0 left-0  w-full h-full flex justify-center items-center">
+      <div className="flex flex-col justify-center items-center h-1/3 w-1/3 bg-white p-4 shadow-lg rounded-lg">
+        <h1 className="text-center mb-4 text-xl">{labels}</h1>
+        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleClick}>Cerrar</button>
+      </div>
+    </section>
+    </>
+  )
 };

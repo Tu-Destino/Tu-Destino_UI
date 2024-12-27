@@ -59,6 +59,18 @@ export type Details = {
   title: string;
   info: string;
 };
+export interface CreatePost {
+  title: string;
+  description: string;
+  place_id: number;
+  tags: string;
+  urlImg: string | ArrayBuffer | null;
+  user_id: string
+}
+
+export interface AlertPostProps extends TagsProps { 
+  handleClick: () => void;
+}
 export type CardImgProps = {
   place: Post;
 };

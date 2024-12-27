@@ -1,3 +1,4 @@
+import { CreatePost } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
@@ -9,14 +10,6 @@ interface Post {
   urlImg: string;
 }
 
-interface createPost {
-  title: string;
-  description: string;
-  place_id: number;
-  tags: string;
-  urlImg: string | ArrayBuffer | null;
-  user_id: string
-}
 
 
 interface tagsBody {
@@ -40,7 +33,7 @@ export const postApi = createApi({
         body: body 
       })
     }),
-    createPost: builder.mutation<Post[], createPost>({
+    createPost: builder.mutation<Post[], CreatePost>({
       query: (body) => ({
         url: "/postDiscover",
         method: "POST",
