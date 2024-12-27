@@ -4,9 +4,9 @@ import { useCreatePostMutation } from "@/redux/apis/postApi";
 import { useDisclosure } from "@nextui-org/modal";
 import { useSelectContext } from "@/context/SelectContext";
 import { CreatePost } from "@/types/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function isString(value: any): value is string { 
+function isString(value: unknown): value is string { 
   return typeof value === 'string';
 }
 

@@ -10,7 +10,6 @@ import {
   ButtomPromp,
   FiltersType,
   IconsProps,
-  TagsProps,
 } from "@/types/types";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import {
