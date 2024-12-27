@@ -62,7 +62,7 @@ export type Details = {
 export interface CreatePost {
   title: string;
   description: string;
-  place_id: number;
+  place_id: number | null;
   tags: string;
   urlImg: string | ArrayBuffer | null;
   user_id: string

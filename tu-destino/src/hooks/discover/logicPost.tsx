@@ -52,7 +52,7 @@ function isString(value: unknown): value is string {
   const newPost = async ( ) => {
     if (!data) {
       console.log("(Post Creation) Failed to get location id");
-      return;
+     
     }
     const imagen= await veryfiImg();
     const post = {

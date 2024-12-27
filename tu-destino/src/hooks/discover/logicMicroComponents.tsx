@@ -92,14 +92,31 @@ export function LogicSearchPlaces(suggestions: string[]) {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const { setNewTitle } = useSelectContext();
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
 
     if (value.length > 0) {
-      const filtered = suggestions.filter((suggestion) =>
-        suggestion.toLowerCase().includes(value.toLowerCase())
-      );
+      const firstChar = value[0].toLowerCase();
+
+      const filtered = suggestions
+        .filter((suggestion) =>
+          suggestion.toLowerCase().includes(value.toLowerCase())
+        )
+        .sort((a, b) => {
+          const aStartsWith = a.toLowerCase().startsWith(firstChar);
+          const bStartsWith = b.toLowerCase().startsWith(firstChar);
+
+          if (aStartsWith && !bStartsWith) {
+            return -1;
+          }
+          if (!aStartsWith && bStartsWith) {
+            return 1;
+          }
+          return a.localeCompare(b);
+        });
+
       setFilteredSuggestions(filtered);
       setShowSuggestions(true);
     } else {
