@@ -9,8 +9,9 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import { Place } from "@/types/types";
 import { useLogicInfoPlaces } from "@/hooks/places/logicPlaces";
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Link from "next/link";
 
 interface ImgCardProps {
   url: string;
@@ -24,23 +25,27 @@ const ImgCard: React.FC<ImgCardProps> = ({ url, name }) => {
   };*/
 
   return (
-    <div className="group rounded-lg relative inline-block">
-      <div className="overflow-hidden relative rounded-lg">
-        <Image
-          className="max-w-none object-cover w-[15rem] h-[20rem] transition-transform duration-300 group-hover:scale-110 rounded-lg"
-          src={url}
-          alt={`Imagen de ${name}`}
-          width={300}
-          height={300}
-        />
+    <Link href={"/places/details/"+name}>
+      <div className="group rounded-lg relative inline-block">
+        <div className="overflow-hidden relative rounded-lg">
+          <Image
+            className="max-w-none object-cover w-[15rem] h-[20rem] transition-transform duration-300 group-hover:scale-110 rounded-lg"
+            src={url}
+            alt={`Imagen de ${name}`}
+            width={300}
+            height={300}
+          />
+        </div>
+        <button
+          /* onClick={searchPlace}*/
+          className="w-full absolute inset-0 rounded-lg bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+        >
+          <p className=" text-wrap text-white text-sm font-bold text-center px-4 mx-3">
+            {name}
+          </p>
+        </button>
       </div>
-      <button
-        /* onClick={searchPlace}*/
-        className="w-[15rem] absolute inset-0 rounded-lg bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-      >
-        <p className="text-white text-lg font-bold text-center px-4">{name}</p>
-      </button>
-    </div>
+    </Link>
   );
 };
 
@@ -70,7 +75,7 @@ const Carruseln: React.FC<CarruselProps> = ({ places, title, text }) => {
       <Card className="max-w-[1300px] overflow-hidden w-full sm:w-[87%] md:w-[79%]">
         <CardContent className="p-6 container">
           <h2 className="text-2xl px-2 font-semibold mb-4">{title}</h2>
-          <p className="text-xl font-semibold mb-5 px-4">{text}</p>
+          <p className="text-xl font-medium text-zinc-500 mb-10 sm:mb-5 px-4 sm:pr-[5.5rem]">{text}</p>
           <div className="relative w-full">
             <div
               ref={carouselRef}
@@ -86,13 +91,13 @@ const Carruseln: React.FC<CarruselProps> = ({ places, title, text }) => {
               onClick={scrollLeft}
               className="absolute right-[36px] top-[-12%] z-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-full mr-2"
             >
-              <KeyboardArrowLeftIcon/> 
+              <KeyboardArrowLeftIcon />
             </button>
             <button
               onClick={scrollRight}
               className="absolute right-[4px] top-[-12%] z-10 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-1 rounded-full"
             >
-              <KeyboardArrowRightIcon/>
+              <KeyboardArrowRightIcon />
             </button>
           </div>
         </CardContent>

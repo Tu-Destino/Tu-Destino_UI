@@ -1,10 +1,9 @@
-"use client"
+"use client";
 import "./../styles/globals.css";
 import { SelectProvider } from "@/context/SelectContext";
 import { RootProvider } from "@/context/RootContext";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
-
 
 export default function RootLayout({
   children,
@@ -14,6 +13,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>Tu Destino: Encuentra lugares increíbles para explorar</title>
+        <meta
+          name="description"
+          content="Explora los mejores destinos turísticos con Tu destino"
+        />
         <link rel="icon" href="/logoSmall.png" />
       </head>
       <body className={`w-screen h-screen`}>

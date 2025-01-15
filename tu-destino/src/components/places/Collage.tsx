@@ -14,6 +14,32 @@ interface ImageCollageProps {
 }
 
 const ImageCollage: React.FC<ImageCollageProps> = ({ images }) => {
+  // const places = useState<Post[]>();
+
+  // const {
+  //   data: postData = [],
+  //   isLoading: isLoadingPosts,
+  //   isError: isErrorPosts,
+  // } = useGetAllPostsQuery();
+
+  // useEffect(()=>{
+  //   if(postData){
+  //     console.log(postData);
+      
+  //   }
+
+  // },[postData])
+
+  // //const shuffled = [...list].sort(() => Math.random() - 0.5);
+  // //// Retornar los primeros 'count' elementos
+  // //return shuffled.slice(0, count);
+
+  // if (places == null) {
+  //   return (
+  //     <div className="grid grid-cols-2 sm:grid-cols-4 grid-rows-4 sm:grid-rows-2 gap-4 h-[470px] md:mb-12"></div>
+  //   );
+  // }
+
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 grid-rows-4 sm:grid-rows-2 gap-4 h-[470px] md:mb-12">
       <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-lg">
@@ -50,16 +76,18 @@ const ImageCollage: React.FC<ImageCollageProps> = ({ images }) => {
   );
 };
 
-export default function Collage() {
+export default function Collage({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
   return (
     <div className="container mx-auto px-4 pb-12 pt-[9rem] max-w-6xl ">
       <div className="md:mx-8  lg:mx-12 mt-6">
-        <h1 className="text-4xl font-bold mb-4 text-center">
-          Destinos fascinantes que te sorprenderán
-        </h1>
-        <p className="text-xl text-center mb-16 text-gray-600">
-          Descubre paisajes espectaculares en cada rincón de Medellín
-        </p>
+        <h1 className="text-4xl font-bold mb-4 text-center">{title}</h1>
+        <p className="text-xl text-center mb-16 text-gray-600">{description}</p>
         <ImageCollage images={places} />
       </div>
     </div>
