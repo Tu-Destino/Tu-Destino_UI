@@ -6,7 +6,6 @@ import SearchBar from "../components/main/searchBar/SearchBar";
 import GridMain from "@/components/main/gridMain/GridMain";
 import EyeCatching from "@/components/main/eyeCatching/EyeCatching";
 import FooterTop from "@/components/common/footer/FooterTop";
-import type { Metadata } from 'next'
 
 
 
@@ -71,7 +70,3 @@ export default function Home() {
 }
 
  
-export const metadata: Metadata = {
-  title: 'Tu Destino | Encuentra lugares increíbles para explorar',
-  description: 'descrition',
-}

@@ -2,7 +2,7 @@ import { CreatePost } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
-interface Post {
+export interface Post {
   id: string;
   title: string;
   description: string;
